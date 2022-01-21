@@ -5,42 +5,65 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/jeffgreco13/filament-breezy/Check%20&%20fix%20styling?label=code%20style)](https://github.com/jeffgreco13/filament-breezy/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/jeffgreco13/filament-breezy.svg?style=flat-square)](https://packagist.org/packages/jeffgreco13/filament-breezy)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+The missing toolkit from Filament Admin with Breeze-like functionality. Includes login, registration, password reset, password confirmation, email verification, my profile page, and teams. All using the TALL-stack, all very Filament-y.
 
-## Support us
+## Quick Start
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/filament-breezy.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/filament-breezy)
+This package works out-of-the-box with next to no configuration. To get started quickly, run the following command:
 
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
+```bash
+composer require jeffgreco13/filament-breezy && php artisan vendor:publish --tag="filament-breezy-migrations" && php artisan migrate
+```
 
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+This will install the package, then publishes and runs the migrations.
+Then, [add the `UserIsBreezy` trait](#installation) to your User model and that's it!
 
-## Installation
+For more options, follow the Full Installation instructions below.
 
-You can install the package via composer:
+## Full Installation
+
+1. Install the package via composer:
 
 ```bash
 composer require jeffgreco13/filament-breezy
 ```
 
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="filament-breezy-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
+2. Publish the config file, then update models and table names BEFORE running your migrations.
 
 ```bash
 php artisan vendor:publish --tag="filament-breezy-config"
 ```
 
-This is the contents of the published config file:
+3. Publish the migrations:
+
+```bash
+php artisan vendor:publish --tag="filament-breezy-migrations"
+```
+
+4. Run the migrations to create the Teams tables:
+
+```bash
+php artisan migrate
+```
+
+5. Add the `UserIsBreezy` trait to your User model:
 
 ```php
-return [
-];
+<?php namespace App;
+
+use JeffGreco13\FilamentBreezy\Traits\UserIsBreezy;
+
+class User extends Model
+{
+    use UserIsBreezy; // Add this trait to your model
+    ...
+}
+```
+
+6. Don't forget to dump composer autoload
+
+```bash
+composer dump-autoload
 ```
 
 Optionally, you can publish the views using
@@ -53,7 +76,7 @@ php artisan vendor:publish --tag="filament-breezy-views"
 
 ```php
 $filamentBreezy = new JeffGreco13\FilamentBreezy();
-echo $filamentBreezy->echoPhrase('Hello, JeffGreco13!');
+echo $filamentBreezy->echoPhrase("Hello, JeffGreco13!");
 ```
 
 ## Testing
@@ -76,8 +99,8 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [Jeff Greco](https://github.com/jeffgreco13)
-- [All Contributors](../../contributors)
+-   [Jeff Greco](https://github.com/jeffgreco13)
+-   [All Contributors](../../contributors)
 
 ## License
 

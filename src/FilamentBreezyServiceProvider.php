@@ -5,6 +5,8 @@ namespace JeffGreco13\FilamentBreezy;
 use Filament\PluginServiceProvider;
 use Spatie\LaravelPackageTools\Package;
 use JeffGreco13\FilamentBreezy\Commands\FilamentBreezyCommand;
+use Livewire\Livewire;
+use JeffGreco13\FilamentBreezy\Http\Livewire\Auth;
 
 class FilamentBreezyServiceProvider extends PluginServiceProvider
 {
@@ -20,7 +22,21 @@ class FilamentBreezyServiceProvider extends PluginServiceProvider
             ->hasConfigFile()
             ->hasViews()
             ->hasMigration("create_filament-breezy_table")
+            ->hasRoute("web")
+            ->hasTranslations()
             ->hasCommand(FilamentBreezyCommand::class);
+    }
+
+    public function packageBooted(): void
+    {
+        parent::packageBooted();
+        Livewire::component(Auth\Register::getName(), Auth\Register::class);
+        Livewire::component(Auth\Login::getName(), Auth\Login::class);
+        Livewire::component(
+            Auth\ResetPassword::getName(),
+            Auth\ResetPassword::class
+        );
+        Livewire::component(Auth\Verify::getName(), Auth\Verify::class);
     }
 
     protected function getResources(): array

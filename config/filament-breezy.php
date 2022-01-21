@@ -30,6 +30,8 @@ return [
     | The users table in your database.
     */
     "users_table" => "users",
+
+    "registration_redirect_url" => config("filament.home_url", "/"),
     /*
     |--------------------------------------------------------------------------
     | Teams configurations

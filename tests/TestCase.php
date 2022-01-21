@@ -3,8 +3,8 @@
 namespace JeffGreco13\FilamentBreezy\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
 use JeffGreco13\FilamentBreezy\FilamentBreezyServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {

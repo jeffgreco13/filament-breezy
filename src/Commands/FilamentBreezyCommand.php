@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace JeffGreco13\FilamentBreezy\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class FilamentBreezyCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'filament-breezy';
 
     public $description = 'My command';
 

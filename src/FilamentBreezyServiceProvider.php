@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace JeffGreco13\FilamentBreezy;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use VendorName\Skeleton\Commands\SkeletonCommand;
+use JeffGreco13\FilamentBreezy\Commands\FilamentBreezyCommand;
 
-class SkeletonServiceProvider extends PackageServiceProvider
+class FilamentBreezyServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
@@ -16,10 +16,10 @@ class SkeletonServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('skeleton')
+            ->name('filament-breezy')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_skeleton_table')
-            ->hasCommand(SkeletonCommand::class);
+            ->hasMigration('create_filament-breezy_table')
+            ->hasCommand(FilamentBreezyCommand::class);
     }
 }

@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "jeffgreco13/filament-breezy",
+    "description": "A custom package for Filament with login flow, profile and teams support.",
     "keywords": [
-        ":vendor_name",
+        "jeffgreco13",
         "laravel",
-        ":package_slug"
+        "filament-breezy"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/jeffgreco13/filament-breezy",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Jeff Greco",
+            "email": "jeff@jeffpgreco.com",
             "role": "Developer"
         }
     ],
@@ -34,13 +34,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "JeffGreco13\\FilamentBreezy\\": "src",
+            "JeffGreco13\\FilamentBreezy\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "JeffGreco13\\FilamentBreezy\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -54,10 +54,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "JeffGreco13\\FilamentBreezy\\FilamentBreezyServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "FilamentBreezy": "JeffGreco13\\FilamentBreezy\\Facades\\FilamentBreezy"
             }
         }
     },

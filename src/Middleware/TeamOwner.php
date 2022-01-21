@@ -16,7 +16,7 @@ class TeamOwner
     public function handle($request, Closure $next)
     {
         if (
-            !auth()
+            ! auth()
                 ->user()
                 ->isOwnerOfTeam(auth()->user()->currentTeam)
         ) {

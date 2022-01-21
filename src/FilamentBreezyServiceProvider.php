@@ -3,8 +3,8 @@
 namespace JeffGreco13\FilamentBreezy;
 
 use Filament\PluginServiceProvider;
-use Spatie\LaravelPackageTools\Package;
 use JeffGreco13\FilamentBreezy\Commands\FilamentBreezyCommand;
+use Spatie\LaravelPackageTools\Package;
 
 class FilamentBreezyServiceProvider extends PluginServiceProvider
 {
@@ -25,9 +25,10 @@ class FilamentBreezyServiceProvider extends PluginServiceProvider
 
     protected function getResources(): array
     {
-        if (!config("filament-breezy.enable_teams")) {
+        if (! config("filament-breezy.enable_teams")) {
             return [];
         }
+
         return config("filament-breezy.enable_team_resource")
             ? [Resources\FilamentTeamResource::class]
             : [];
@@ -42,7 +43,7 @@ class FilamentBreezyServiceProvider extends PluginServiceProvider
 
     protected function getWidgets(): array
     {
-        if (!config("filament-breezy.enable_teams")) {
+        if (! config("filament-breezy.enable_teams")) {
             return [];
         }
         $widgets = [];
@@ -52,6 +53,7 @@ class FilamentBreezyServiceProvider extends PluginServiceProvider
         if (config("filament-breezy.enable_manage_invites_widget")) {
             array_push($widgets, Widgets\ManageInvites::class);
         }
+
         return $widgets;
     }
 }

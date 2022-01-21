@@ -41,7 +41,7 @@ class FilamentBreezy
         $invite->deny_token = md5(uniqid(microtime()));
         $invite->save();
 
-        if (!is_null($success)) {
+        if (! is_null($success)) {
             event(new UserInvitedToTeam($invite));
             $success($invite);
         }

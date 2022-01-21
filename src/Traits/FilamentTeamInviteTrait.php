@@ -2,8 +2,6 @@
 
 namespace JeffGreco13\FilamentBreezy\Traits;
 
-use Illuminate\Support\Facades\Config;
-
 trait FilamentTeamInviteTrait
 {
     /**

@@ -2,11 +2,11 @@
 
 namespace JeffGreco13\FilamentBreezy\Widgets;
 
-use Filament\Widgets\Widget;
 use Filament\Forms;
+use Filament\Widgets\Widget;
+use Illuminate\Support\HtmlString;
 use JeffGreco13\FilamentBreezy\FilamentBreezy;
 use JeffGreco13\FilamentBreezy\Models\TeamInvite;
-use Illuminate\Support\HtmlString;
 
 class SendInvites extends Widget implements Forms\Contracts\HasForms
 {
@@ -19,13 +19,14 @@ class SendInvites extends Widget implements Forms\Contracts\HasForms
 
     public static function canView(): bool
     {
-        return !is_null(auth()->user()->currentTeam) && auth()->user()->isOwnerOfCurrentTeam();
+        return ! is_null(auth()->user()->currentTeam) && auth()->user()->isOwnerOfCurrentTeam();
     }
 
     protected function refreshInvites()
     {
         $this->currentTeamInvites = auth()->user()->currentTeam ? auth()->user()->currentTeam?->invites : [];
     }
+
     protected function getFormSchema(): array
     {
         return [
@@ -58,6 +59,7 @@ class SendInvites extends Widget implements Forms\Contracts\HasForms
             FilamentBreezy::inviteToTeam($this->email)
         );
     }
+
     public function cancelInvite(TeamInvite $invite)
     {
         FilamentBreezy::denyInvite($invite);

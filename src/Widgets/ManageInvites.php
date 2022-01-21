@@ -34,6 +34,7 @@ class ManageInvites extends Widget
         FilamentBreezy::acceptInvite($invite);
         $this->refreshInvites();
     }
+
     public function cancelInvite(TeamInvite $invite)
     {
         FilamentBreezy::denyInvite($invite);

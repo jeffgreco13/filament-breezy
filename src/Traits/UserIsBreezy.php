@@ -4,7 +4,6 @@ namespace JeffGreco13\FilamentBreezy\Traits;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Support\Facades\Config;
 use JeffGreco13\FilamentBreezy\Events\UserJoinedTeam;
 use JeffGreco13\FilamentBreezy\Events\UserLeftTeam;
 use JeffGreco13\FilamentBreezy\Exceptions\UserNotInTeamException;
@@ -25,6 +24,7 @@ trait UserIsBreezy
             "team_id"
         )->withTimestamps();
     }
+
     /**
      * has-one relation with the current selected team model.
      *
@@ -71,7 +71,7 @@ trait UserIsBreezy
     {
         static::deleting(function (Model $user) {
             if (
-                !method_exists(
+                ! method_exists(
                     config("filament-breezy.user_model"),
                     "bootSoftDeletes"
                 )
@@ -172,7 +172,7 @@ trait UserIsBreezy
         // Reload relation
         $this->load("teams");
 
-        if (!$this->teams->contains($team)) {
+        if (! $this->teams->contains($team)) {
             $this->teams()->attach($team, $pivotData);
 
             event(new UserJoinedTeam($this, $team));
@@ -262,14 +262,16 @@ trait UserIsBreezy
             $team = $this->retrieveTeamId($team);
             $teamModel = config("filament-breezy.team_model");
             $teamObject = (new $teamModel())->find($team);
-            if (!$teamObject) {
+            if (! $teamObject) {
                 $exception = new ModelNotFoundException();
                 $exception->setModel($teamModel);
+
                 throw $exception;
             }
-            if (!$teamObject->users->contains($this->getKey())) {
+            if (! $teamObject->users->contains($this->getKey())) {
                 $exception = new UserNotInTeamException();
                 $exception->setTeam($teamObject->name);
+
                 throw $exception;
             }
         }

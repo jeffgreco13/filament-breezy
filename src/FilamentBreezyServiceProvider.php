@@ -4,8 +4,8 @@ namespace JeffGreco13\FilamentBreezy;
 
 use Filament\PluginServiceProvider;
 use JeffGreco13\FilamentBreezy\Commands\FilamentBreezyCommand;
-use Livewire\Livewire;
 use JeffGreco13\FilamentBreezy\Http\Livewire\Auth;
+use Livewire\Livewire;
 use Spatie\LaravelPackageTools\Package;
 
 class FilamentBreezyServiceProvider extends PluginServiceProvider
@@ -41,7 +41,7 @@ class FilamentBreezyServiceProvider extends PluginServiceProvider
 
     protected function getResources(): array
     {
-        if (!config("filament-breezy.enable_teams")) {
+        if (! config("filament-breezy.enable_teams")) {
             return [];
         }
 
@@ -59,7 +59,7 @@ class FilamentBreezyServiceProvider extends PluginServiceProvider
 
     protected function getWidgets(): array
     {
-        if (!config("filament-breezy.enable_teams")) {
+        if (! config("filament-breezy.enable_teams")) {
             return [];
         }
         $widgets = [];

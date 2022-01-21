@@ -2,14 +2,13 @@
 
 namespace JeffGreco13\FilamentBreezy\Http\Livewire\Auth;
 
-use Livewire\Component;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
-use Illuminate\Contracts\View\View;
 use Filament\Forms;
-use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Str;
+use Livewire\Component;
 
 class ResetPassword extends Component implements Forms\Contracts\HasForms
 {
@@ -24,7 +23,7 @@ class ResetPassword extends Component implements Forms\Contracts\HasForms
 
     public function mount($token = null): void
     {
-        if (!is_null($token)){
+        if (! is_null($token)) {
             // Verify that the token is valid before moving further.
             $this->email = request()->query('email', '');
             $this->token = $token;
@@ -34,7 +33,7 @@ class ResetPassword extends Component implements Forms\Contracts\HasForms
 
     protected function getFormSchema(): array
     {
-        if ($this->isResetting){
+        if ($this->isResetting) {
             return [
                 Forms\Components\TextInput::make("password")
                     ->required()
@@ -50,7 +49,7 @@ class ResetPassword extends Component implements Forms\Contracts\HasForms
                 Forms\Components\TextInput::make("email")
                     ->required()
                     ->email()
-                    ->exists(table: config('filament-breezy.user_model'))
+                    ->exists(table: config('filament-breezy.user_model')),
             ];
         }
     }
@@ -59,12 +58,12 @@ class ResetPassword extends Component implements Forms\Contracts\HasForms
     {
         $data = $this->form->getState();
 
-        if ($this->isResetting){
+        if ($this->isResetting) {
             $response = Password::reset([
-                'token'=>$this->token,
-                'email'=>$this->email,
-                'password'=>$data['password'],
-            ],function($user,$password){
+                'token' => $this->token,
+                'email' => $this->email,
+                'password' => $data['password'],
+            ], function ($user, $password) {
                 $user->password = Hash::make($password);
                 $user->setRememberToken(Str::random(60));
                 $user->save();
@@ -72,17 +71,16 @@ class ResetPassword extends Component implements Forms\Contracts\HasForms
             });
 
             if ($response == Password::PASSWORD_RESET) {
-                return redirect(route('filament.auth.login',['email'=>$this->email,'reset'=>true]));
+                return redirect(route('filament.auth.login', ['email' => $this->email,'reset' => true]));
             } else {
                 session()->flash("notify", [
                     "status" => "danger",
                     "message" => "Error: please try again later.",
                 ]);
             }
-
         } else {
             $response = Password::sendResetLink(['email' => $this->email]);
-            if ($response == Password::RESET_LINK_SENT){
+            if ($response == Password::RESET_LINK_SENT) {
                 session()->flash("notify", [
                     "status" => "success",
                     "message" => "Check your inbox for instructions.",
@@ -91,7 +89,7 @@ class ResetPassword extends Component implements Forms\Contracts\HasForms
             } else {
                 session()->flash("notify", [
                     "status" => "danger",
-                    "message" => match($response){
+                    "message" => match ($response) {
                         "passwords.throttled" => "Please wait before trying again.",
                         "passwords.user" => "User with this email not found."
                     },

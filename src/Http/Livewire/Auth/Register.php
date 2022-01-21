@@ -2,12 +2,12 @@
 
 namespace JeffGreco13\FilamentBreezy\Http\Livewire\Auth;
 
-use Livewire\Component;
+use Filament\Forms;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Contracts\View\View;
-use Filament\Forms;
+use Livewire\Component;
 
 class Register extends Component implements Forms\Contracts\HasForms
 {
@@ -54,6 +54,7 @@ class Register extends Component implements Forms\Contracts\HasForms
             "email" => $data["email"],
             "password" => Hash::make($data["password"]),
         ];
+
         return $preparedData;
     }
 
@@ -65,6 +66,7 @@ class Register extends Component implements Forms\Contracts\HasForms
 
         event(new Registered($user));
         Auth::login($user, true);
+
         return redirect()->to(config("filament-breezy.register_redirect_url"));
     }
 

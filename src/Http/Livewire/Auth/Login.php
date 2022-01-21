@@ -4,8 +4,6 @@ namespace JeffGreco13\FilamentBreezy\Http\Livewire\Auth;
 
 use Filament\Http\Livewire\Auth\Login as FilamentLogin;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\HtmlString;
-use Filament\Forms;
 
 class Login extends FilamentLogin
 {

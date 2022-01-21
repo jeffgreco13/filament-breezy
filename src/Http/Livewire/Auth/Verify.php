@@ -2,10 +2,9 @@
 
 namespace JeffGreco13\FilamentBreezy\Http\Livewire\Auth;
 
-use Livewire\Component;
-use Illuminate\Auth\Events\Verified;
-use Illuminate\Contracts\View\View;
 use Filament\Forms;
+use Illuminate\Contracts\View\View;
+use Livewire\Component;
 
 class Verify extends Component implements Forms\Contracts\HasForms
 {
@@ -29,6 +28,7 @@ class Verify extends Component implements Forms\Contracts\HasForms
         auth()->logout();
         session()->invalidate();
         session()->regenerateToken();
+
         return redirect()->route("filament.auth.login");
     }
 

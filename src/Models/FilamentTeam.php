@@ -3,7 +3,6 @@
 namespace JeffGreco13\FilamentBreezy\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Config;
 use JeffGreco13\FilamentBreezy\Traits\FilamentTeamTrait;
 
 class FilamentTeam extends Model

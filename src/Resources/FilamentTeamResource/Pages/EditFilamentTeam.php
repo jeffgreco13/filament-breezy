@@ -2,8 +2,8 @@
 
 namespace JeffGreco13\FilamentBreezy\Resources\FilamentTeamResource\Pages;
 
-use JeffGreco13\FilamentBreezy\Resources\FilamentTeamResource;
 use Filament\Resources\Pages\EditRecord;
+use JeffGreco13\FilamentBreezy\Resources\FilamentTeamResource;
 
 class EditFilamentTeam extends EditRecord
 {

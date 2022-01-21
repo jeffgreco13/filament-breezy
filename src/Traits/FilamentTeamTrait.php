@@ -18,13 +18,14 @@ trait FilamentTeamTrait
             // Only if the config is true and the user isn't already on the team.
             if (
                 config("filament-breezy.sync_owner_as_team_member") &&
-                !$team->hasUser($team->owner)
+                ! $team->hasUser($team->owner)
             ) {
                 dd("option true and team does not have user");
                 $team->owner->attachTeam($team);
             }
         });
     }
+
     /**
      * One-to-Many relation with the invite model.
      * @return mixed

@@ -2,11 +2,10 @@
 
 namespace JeffGreco13\FilamentBreezy\Pages;
 
-use Filament\Pages\Page;
-use Filament\Filament;
-use Filament\Forms;
-use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Filament\Forms;
+use Filament\Pages\Page;
+use Illuminate\Support\Facades\Hash;
 
 class MyProfile extends Page implements Forms\Contracts\HasForms
 {
@@ -17,7 +16,8 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
     protected static string $view = "filament-breezy::filament.pages.my-profile";
 
     public User $user;
-    public $new_password, $new_password_confirmation;
+    public $new_password;
+    public $new_password_confirmation;
     public $hasTeams;
 
     public function mount()

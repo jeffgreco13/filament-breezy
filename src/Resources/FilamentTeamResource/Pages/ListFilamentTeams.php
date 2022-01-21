@@ -2,8 +2,8 @@
 
 namespace JeffGreco13\FilamentBreezy\Resources\FilamentTeamResource\Pages;
 
-use JeffGreco13\FilamentBreezy\Resources\FilamentTeamResource;
 use Filament\Resources\Pages\ListRecords;
+use JeffGreco13\FilamentBreezy\Resources\FilamentTeamResource;
 
 class ListFilamentTeams extends ListRecords
 {

@@ -2,14 +2,13 @@
 
 namespace JeffGreco13\FilamentBreezy\Resources;
 
-use JeffGreco13\FilamentBreezy\Resources\FilamentTeamResource\Pages;
-use JeffGreco13\FilamentBreezy\Resources\FilamentTeamResource\RelationManagers;
-use JeffGreco13\FilamentBreezy\Models\FilamentTeam;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use JeffGreco13\FilamentBreezy\Models\FilamentTeam;
+use JeffGreco13\FilamentBreezy\Resources\FilamentTeamResource\Pages;
 
 class FilamentTeamResource extends Resource
 {
@@ -61,9 +60,9 @@ class FilamentTeamResource extends Resource
                     ->label("Owner")
                     ->colors(["success"])
                     ->getStateUsing(
-                        fn($record) => $record->owner?->name
+                        fn ($record) => $record->owner?->name
                     ),
-                Tables\Columns\BadgeColumn::make("users_count")->counts('users')->label('Team members')
+                Tables\Columns\BadgeColumn::make("users_count")->counts('users')->label('Team members'),
             ])
             ->filters([
                 //

@@ -5,7 +5,6 @@ namespace JeffGreco13\FilamentBreezy\Traits;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Config;
 
 /**
  * Class UsedByTeams.
@@ -29,7 +28,7 @@ trait UsedByTeams
         });
 
         static::saving(function (Model $model) {
-            if (!isset($model->team_id)) {
+            if (! isset($model->team_id)) {
                 static::teamGuard();
 
                 $model->team_id = auth()
@@ -61,7 +60,7 @@ trait UsedByTeams
      */
     protected static function teamGuard()
     {
-        if (auth()->guest() || !auth()->user()->currentTeam) {
+        if (auth()->guest() || ! auth()->user()->currentTeam) {
             throw new Exception(
                 "No authenticated user with selected team present."
             );

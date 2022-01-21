@@ -2,9 +2,9 @@
 
 namespace JeffGreco13\FilamentBreezy;
 
+use JeffGreco13\FilamentBreezy\Commands\FilamentBreezyCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use JeffGreco13\FilamentBreezy\Commands\FilamentBreezyCommand;
 
 class FilamentBreezyServiceProvider extends PackageServiceProvider
 {

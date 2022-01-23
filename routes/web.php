@@ -33,8 +33,7 @@ Route::domain(config("filament.domain"))
         Route::middleware(config("filament.middleware.auth"))->group(
             function (): void {
                 //
-                // Route::get('password/confirm', Confirm::class)
-                //     ->name('password.confirm');
+                // TODO: Route::get('password/confirm', Confirm::class)
                 //
             }
         );

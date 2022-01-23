@@ -21,10 +21,10 @@ class FilamentBreezyServiceProvider extends PluginServiceProvider
             ->name("filament-breezy")
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration("create_filament-breezy_table")
+            //->hasMigration("create_filament-breezy_table")
             ->hasRoute("web")
-            ->hasTranslations()
-            ->hasCommand(FilamentBreezyCommand::class);
+            ->hasTranslations();
+        //->hasCommand(FilamentBreezyCommand::class);
     }
 
     public function packageBooted(): void
@@ -39,37 +39,10 @@ class FilamentBreezyServiceProvider extends PluginServiceProvider
         Livewire::component(Auth\Verify::getName(), Auth\Verify::class);
     }
 
-    protected function getResources(): array
-    {
-        if (! config("filament-breezy.enable_teams")) {
-            return [];
-        }
-
-        return config("filament-breezy.enable_team_resource")
-            ? [Resources\FilamentTeamResource::class]
-            : [];
-    }
-
     protected function getPages(): array
     {
         return config("filament-breezy.enable_profile_page")
             ? [Pages\MyProfile::class]
             : [];
-    }
-
-    protected function getWidgets(): array
-    {
-        if (! config("filament-breezy.enable_teams")) {
-            return [];
-        }
-        $widgets = [];
-        if (config("filament-breezy.enable_send_widget")) {
-            array_push($widgets, Widgets\SendInvites::class);
-        }
-        if (config("filament-breezy.enable_manage_invites_widget")) {
-            array_push($widgets, Widgets\ManageInvites::class);
-        }
-
-        return $widgets;
     }
 }

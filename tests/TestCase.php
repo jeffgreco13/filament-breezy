@@ -2,8 +2,10 @@
 
 namespace JeffGreco13\FilamentBreezy\Tests;
 
+use Filament\FilamentServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use JeffGreco13\FilamentBreezy\FilamentBreezyServiceProvider;
+use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
@@ -24,7 +26,8 @@ class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            //PluginServiceProvider::class,
+            LivewireServiceProvider::class,
+            FilamentServiceProvider::class,
             FilamentBreezyServiceProvider::class,
         ];
     }

@@ -15,7 +15,7 @@ return [
         "title" => "Forgot password",
         "heading" => "Reset your password",
         "submit" => [
-            "label" => "Send reset email",
+            "label" => "Submit",
         ],
         "notification_success" => "Check your inbox for instructions!",
     ],

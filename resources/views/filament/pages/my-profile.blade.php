@@ -3,11 +3,11 @@
     <x-filament-breezy::grid-section class="mt-8">
 
         <x-slot name="title">
-            Personal Information
+            {{ __('filament-breezy::default.profile.personal_info.heading') }}
         </x-slot>
 
         <x-slot name="description">
-            Update your personal information here.
+            {{ __('filament-breezy::default.profile.personal_info.subheading') }}
         </x-slot>
 
         <form wire:submit.prevent="updateProfile" class="col-span-2 sm:col-span-1  mt-5 md:mt-0">
@@ -18,7 +18,7 @@
                 <x-slot name="footer">
                     <div class="text-right">
                         <x-filament::button type="submit">
-                            Update
+                            {{ __('filament-breezy::default.profile.personal_info.submit.label') }}
                         </x-filament::button>
                     </div>
                 </x-slot>
@@ -32,11 +32,11 @@
     <x-filament-breezy::grid-section>
 
         <x-slot name="title">
-            Password
+            {{ __('filament-breezy::default.profile.password.heading') }}
         </x-slot>
 
         <x-slot name="description">
-            Minimum password length: 8 characters
+            {{ __('filament-breezy::default.profile.password.subheading') }}
         </x-slot>
 
         <form wire:submit.prevent="updatePassword" class="space-y-4">
@@ -47,7 +47,7 @@
                 <x-slot name="footer">
                     <div class="text-right">
                         <x-filament::button type="submit">
-                            Update
+                            {{ __('filament-breezy::default.profile.password.submit.label') }}
                         </x-filament::button>
                     </div>
                 </x-slot>

@@ -19,6 +19,6 @@
         {{ __('filament-breezy::default.reset_password.submit.label') }}
     </x-filament::button>
     @else
-    <span class="block text-center text-success-600 font-semibold">Check your inbox for instructions!</span>
+    <span class="block text-center text-success-600 font-semibold">{{ __('filament-breezy::default.reset_password.notification_success') }}</span>
     @endunless
 </x-filament-breezy::auth-card>

@@ -8,9 +8,11 @@
         <h2 class="font-bold tracking-tight text-center text-2xl">
             {{ __('filament::login.heading') }}
         </h2>
+        @if(config("filament-breezy.enable_registration"))
         <p class="mt-2 text-sm text-center">
             Or <a class="text-primary-600" href="{{route('register')}}">create an account</a>
         </p>
+        @endif
     </div>
 
     {{ $this->form }}

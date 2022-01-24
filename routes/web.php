@@ -10,7 +10,9 @@ Route::domain(config("filament.domain"))
     ->prefix(config("filament.path"))
     ->group(function () {
         // Login will be replaced in the Filament config.
-        Route::get("/register", Register::class)->name("register");
+        if (config("filament-breezy.enable_registration")) {
+            Route::get("/register", Register::class)->name("register");
+        }
         Route::get("/password/reset", ResetPassword::class)->name(
             "password.request"
         );

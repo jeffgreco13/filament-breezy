@@ -9,9 +9,7 @@ return [
     */
     "enable_profile_page" => true,
     /*
-        Set an array that's compatible with the Filament Forms rules() method. You can also pass an instance of \Illuminate\Validation\Rules\Password::class.
-        Rules for required and confirmed are already set.
-        These rules will apply to the My Profile, registration, and password reset forms.
+    | Set an array that's compatible with the Filament Forms rules() method. You can also pass an instance of \Illuminate\Validation\Rules\Password::class. Rules for required and confirmed are already set. These rules will apply to the My Profile, registration, and password reset forms.
     */
     "password_rules" => [\Illuminate\Validation\Rules\Password::min(8)],
 
@@ -30,6 +28,11 @@ return [
     | The users table in your database.
     */
     "users_table" => "users",
+    /*
+    |--------------------------------------------------------------------------
+    | Enable or disable registration.
+    */
+    "enable_registration" => true,
     /*
     |--------------------------------------------------------------------------
     | Where to redirect the user after registration.

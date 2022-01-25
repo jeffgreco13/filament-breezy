@@ -2,10 +2,10 @@
 
 namespace JeffGreco13\FilamentBreezy\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class EmailVerificationController extends Controller

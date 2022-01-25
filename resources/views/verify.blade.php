@@ -12,7 +12,7 @@
             @unless($hasBeenSent)
                 If you did not receive the email, <a class="text-primary-600" href="#" wire:click="resend">click here to request another one</a>.
             @else
-                <span class="block text-success-600 font-semibold">Check your inbox for instructions!</span>
+                <span class="block text-success-600 font-semibold">{{ __('filament-breezy::default.verification.notification_success') }}</span>
             @endunless
         </div>
     </div>

@@ -1,3 +1,7 @@
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/41773797/131910226-676cb28a-332d-4162-a6a8-136a93d5a70f.png" alt="Banner" style="width: 100%; max-width: 800px;" />
+</p>
+
 # A custom package for Filament with login flow, profile and teams support.
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/jeffgreco13/filament-breezy.svg?style=flat-square)](https://packagist.org/packages/jeffgreco13/filament-breezy)
@@ -6,6 +10,14 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/jeffgreco13/filament-breezy.svg?style=flat-square)](https://packagist.org/packages/jeffgreco13/filament-breezy)
 
 The missing toolkit from Filament Admin with Breeze-like functionality. Includes login, registration, password reset, password confirmation, email verification, and a my profile page. All using the TALL-stack, all very Filament-y.
+
+## Screenshots
+
+![Screenshot of Login](./art/login.png)
+![Screenshot of Profile](./art/profile.png)
+![Screenshot of Register](./art/register.png)
+![Screenshot of Reset](./art/reset.png)
+![Screenshot of Reset](./art/reset-step2.png)
 
 ## Installation
 

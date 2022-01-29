@@ -34,6 +34,11 @@ return [
             "submit" => [
                 "label" => "Update",
             ],
+            "fields" => [
+                "name" => "Name",
+                "email" => "Email",
+            ],
+            "notify" => "Profile updated successfully!",
         ],
         "password" => [
             "heading" => "Password",
@@ -41,6 +46,12 @@ return [
             "submit" => [
                 "label" => "Update",
             ],
+            "fields" => [
+
+                "new_password" => "New password",
+                "new_password_confirmation" => "Confirm passord",
+            ],
+            "notify" => "Password updated successfully!",
         ],
     ],
 ];

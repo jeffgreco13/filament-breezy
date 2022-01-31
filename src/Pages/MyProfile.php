@@ -11,8 +11,8 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
 {
     use Forms\Concerns\InteractsWithForms;
 
-    protected static ?string $navigationGroup = "Account";
-    protected static ?string $navigationIcon = "heroicon-o-document-text";
+    protected static ?string $navigationGroup = "Account"; //config
+    protected static ?string $navigationIcon = "heroicon-o-document-text"; //config
     protected static string $view = "filament-breezy::filament.pages.my-profile";
 
     public User $user;
@@ -41,26 +41,29 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
     protected function getUpdateProfileFormSchema(): array
     {
         return [
-            Forms\Components\TextInput::make("name"),
-            Forms\Components\TextInput::make("email")->unique(ignorable: $this->user),
+            Forms\Components\TextInput::make("name")
+                ->label(__('filament-breezy::default.profile.personal_info.fields.name')),
+            Forms\Components\TextInput::make("email")->unique(ignorable: $this->user)
+                ->label(__('filament-breezy::default.profile.personal_info.fields.email')),
         ];
     }
 
     public function updateProfile()
     {
         $this->user->update($this->updateProfileForm->getState());
-        $this->notify("success", "Profile updated successfully!");
+        $this->notify("success", __('filament-breezy::default.profile.personal_info.notify'));
     }
 
     protected function getUpdatePasswordFormSchema(): array
     {
         return [
             Forms\Components\TextInput::make("new_password")
+                ->label(__('filament-breezy::default.profile.password.fields.new_password'))
                 ->password()
                 ->rules(config('filament-breezy.password_rules'))
                 ->required(),
             Forms\Components\TextInput::make("new_password_confirmation")
-                ->label("Confirm password")
+                ->label(__('filament-breezy::default.profile.password.fields.new_password_confirmation'))
                 ->password()
                 ->same("new_password")
                 ->required(),
@@ -75,7 +78,7 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
         ]);
         session()->forget("password_hash_web");
         auth("web")->login($this->user);
-        $this->notify("success", "Password updated successfully!");
+        $this->notify("success", __('filament-breezy::default.profile.password.notify'));
         $this->reset(["new_password", "new_password_confirmation"]);
     }
 

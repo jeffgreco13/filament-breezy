@@ -2,6 +2,18 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.0.2 - 2022-01-31
+
+## What's Changed
+
+- Change MyProfile to use translates and pt_BR translation file by @felipe-balloni in https://github.com/jeffgreco13/filament-breezy/pull/8
+
+## New Contributors
+
+- @felipe-balloni made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/8
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.0.1...v1.0.2
+
 ## v1.0.1 - 2022-01-28
 
 ## What's Changed

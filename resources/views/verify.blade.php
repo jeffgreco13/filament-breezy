@@ -8,9 +8,12 @@
             {{ __('filament-breezy::default.verification.heading') }}
         </h2>
         <div>
-            Before proceeding, please check your email for a verification link.
+            {{ __('filament-breezy::default.verification.before_proceeding') }}
             @unless($hasBeenSent)
-                If you did not receive the email, <a class="text-primary-600" href="#" wire:click="resend">click here to request another one</a>.
+                {{ __('filament-breezy::default.verification.not_receive') }}
+                <a class="text-primary-600" href="#" wire:click="resend">
+                    {{ __('filament-breezy::default.verification.request_another') }}
+                </a>.
             @else
                 <span class="block text-success-600 font-semibold">{{ __('filament-breezy::default.verification.notification_success') }}</span>
             @endunless

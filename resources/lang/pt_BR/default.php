@@ -3,6 +3,7 @@
 return [
     "login" => [
         "forgot_password_link" => "Esqueceu a senha?",
+        "create_an_account" => "Criar a sua conta",
     ],
     "registration" => [
         "title" => "Registrar",
@@ -26,6 +27,9 @@ return [
             "label" => "Sair",
         ],
         "notification_success" => "Verifique sua caixa de entrada para instruções!",
+        "before_proceeding" => "Antes de prosseguir, por favor, verifique no seu e-mail o link de verificação.",
+        "not_receive" => "Se você não recebeu o e-mail,",
+        "request_another" => "clique aqui para solicitar outro.",
     ],
     "profile" => [
         "personal_info" => [
@@ -54,4 +58,5 @@ return [
             "notify" => "Senha alterada com sucesso!"
         ],
     ],
+    "or" => "Ou"
 ];

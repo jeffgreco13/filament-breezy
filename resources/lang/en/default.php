@@ -3,6 +3,7 @@
 return [
     "login" => [
         "forgot_password_link" => "Forgot password?",
+        "create_an_account" => "create an account",
     ],
     "registration" => [
         "title" => "Register",
@@ -26,6 +27,9 @@ return [
             "label" => "Sign out",
         ],
         "notification_success" => "Check your inbox for instructions!",
+        "before_proceeding" => "Before proceeding, please check your email for a verification link.",
+        "not_receive" => "If you did not receive the email,",
+        "request_another" => "click here to request another one.",
     ],
     "profile" => [
         "personal_info" => [
@@ -54,4 +58,5 @@ return [
             "notify" => "Password updated successfully!",
         ],
     ],
+    "or" => "Or"
 ];

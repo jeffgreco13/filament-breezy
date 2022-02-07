@@ -2,6 +2,14 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.0.3 - 2022-02-07
+
+## What's Changed
+
+- Convert blade fixed text to translations by @felipe-balloni in https://github.com/jeffgreco13/filament-breezy/pull/10
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.0.2...v1.0.3
+
 ## v1.0.2 - 2022-01-31
 
 ## What's Changed

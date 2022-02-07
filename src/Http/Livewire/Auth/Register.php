@@ -18,29 +18,36 @@ class Register extends Component implements Forms\Contracts\HasForms
     public $password;
     public $password_confirm;
 
-    protected $messages = [
-        "email.unique" =>
-            "An account with this email already exists. Please login.",
-    ];
-
     public function mount(): void
     {
         //
     }
 
+    public function messages(): array
+    {
+        return [
+            'email.unique' => __("filament-breezy::default.registration.notification_unique"),
+        ];
+    }
+
     protected function getFormSchema(): array
     {
         return [
-            Forms\Components\TextInput::make("name")->required(),
+            Forms\Components\TextInput::make("name")
+                ->label(__("filament-breezy.fields.name"))
+                ->required(),
             Forms\Components\TextInput::make("email")
+                ->label(__("filament-breezy.fields.email"))
                 ->required()
                 ->email()
                 ->unique(table: config('filament-breezy.user_model')),
             Forms\Components\TextInput::make("password")
+                ->label(__("filament-breezy.fields.password"))
                 ->required()
                 ->password()
                 ->rules(config('filament-breezy.password_rules')),
             Forms\Components\TextInput::make("password_confirm")
+                ->label(__("filament-breezy.fields.password_confirm"))
                 ->required()
                 ->password()
                 ->same("password"),

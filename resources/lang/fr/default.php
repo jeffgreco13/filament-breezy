@@ -2,7 +2,8 @@
 
 return [
     "login" => [
-        "forgot_password_link" => "Mot de passe oublié?",
+        "forgot_password_link" => "Mot de passe oublié ?",
+        "create_an_account" => "Créer un compte",
     ],
     "registration" => [
         "title" => "S'inscrire",
@@ -10,37 +11,54 @@ return [
         "submit" => [
             "label" => "S'inscrire",
         ],
+        "notification_unique" => "Un compte avec cet email existe déjà. Veuillez vous connecter."
     ],
     "reset_password" => [
         "title" => "Mot de passe oublié",
         "heading" => "Réinitialisez votre mot de passe",
         "submit" => [
-            "label" => "Envoyer un e-mail de réinitialisation",
+            "label" => "Valider",
         ],
-        "notification_success" => "Vérifier votre e-mail!",
+        "notification_error" => "Erreur : veuillez réessayer plus tard.",
+        "notification_success" => "Vérifiez votre boîte de réception pour les instructions !",
     ],
     "verification" => [
-        "title" => "Vérifier votre e-mail",
+        "title" => "Vérifier les courriels",
         "heading" => "Vérification de l'e-mail requise",
         "submit" => [
             "label" => "Déconnexion",
         ],
-        "notification_success" => "Vérifier votre e-mail!",
+        "notification_success" => "Vérifiez votre boîte de réception pour les instructions !",
+        "notification_resend" => "L'e-mail de vérification a été renvoyé.",
+        "before_proceeding" => "Avant de continuer, veuillez vérifier votre e-mail pour un lien de vérification.",
+        "not_receive" => "Si vous n'avez pas reçu l'e-mail,",
+        "request_another" => "Cliquez ici pour en demander un autre.",
     ],
     "profile" => [
         "personal_info" => [
-            "heading" => "Personal Information",
-            "subheading" => "Manage your personal information.",
+            "heading" => "Informations personnelles",
+            "subheading" => "Gérer vos informations personnelles.",
             "submit" => [
-                "label" => "Update",
+                "label" => "Mettre à jour",
             ],
+            "notify" => "Mise à jour du profil réussie !",
         ],
         "password" => [
             "heading" => "Mot de passe",
-            "subheading" => "Must be 8 characters.",
+            "subheading" => "Doit être de 8 caractères.",
             "submit" => [
-                "label" => "Update",
+                "label" => "Mettre à jour",
             ],
+            "notify" => "Mot de passe mis à jour avec succès !",
         ],
     ],
+    "fields" => [
+        "name" => "Nom",
+        "email" => "E-mail",
+        "password" => "Mot de passe",
+        "password_confirm" => "Confirmer le mot de passe",
+        "new_password" => "Nouveau mot de passe",
+        "new_password_confirmation" => "Confirmez le mot de passe",
+    ],
+    "or" => "Ou",
 ];

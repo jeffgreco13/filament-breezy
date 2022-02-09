@@ -35,6 +35,9 @@ return [
         "request_another" => "clique aqui para solicitar reenvio.",
     ],
     "profile" => [
+        "account" => "Conta",
+        "profile" => "Perfil",
+        "my_profile" => "Meu Perfil",
         "personal_info" => [
             "heading" => "Informações pessoais",
             "subheading" => "Gerencie suas informações pessoais.",

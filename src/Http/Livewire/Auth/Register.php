@@ -34,20 +34,20 @@ class Register extends Component implements Forms\Contracts\HasForms
     {
         return [
             Forms\Components\TextInput::make("name")
-                ->label(__("filament-breezy.fields.name"))
+                ->label(__("filament-breezy::default.fields.name"))
                 ->required(),
             Forms\Components\TextInput::make("email")
-                ->label(__("filament-breezy.fields.email"))
+                ->label(__("filament-breezy::default.fields.email"))
                 ->required()
                 ->email()
                 ->unique(table: config('filament-breezy.user_model')),
             Forms\Components\TextInput::make("password")
-                ->label(__("filament-breezy.fields.password"))
+                ->label(__("filament-breezy::default.fields.password"))
                 ->required()
                 ->password()
                 ->rules(config('filament-breezy.password_rules')),
             Forms\Components\TextInput::make("password_confirm")
-                ->label(__("filament-breezy.fields.password_confirm"))
+                ->label(__("filament-breezy::default.fields.password_confirm"))
                 ->required()
                 ->password()
                 ->same("password"),

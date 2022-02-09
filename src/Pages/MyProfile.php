@@ -57,12 +57,12 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
     {
         return [
             Forms\Components\TextInput::make("new_password")
-                ->label(__('filament-breezy::default.profile.password.fields.new_password'))
+                ->label(__('filament-breezy::default.fields.new_password'))
                 ->password()
                 ->rules(config('filament-breezy.password_rules'))
                 ->required(),
             Forms\Components\TextInput::make("new_password_confirmation")
-                ->label(__('filament-breezy::default.profile.password.fields.new_password_confirmation'))
+                ->label(__('filament-breezy::default.fields.new_password_confirmation'))
                 ->password()
                 ->same("new_password")
                 ->required(),

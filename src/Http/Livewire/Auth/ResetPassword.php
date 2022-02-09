@@ -36,10 +36,12 @@ class ResetPassword extends Component implements Forms\Contracts\HasForms
         if ($this->isResetting) {
             return [
                 Forms\Components\TextInput::make("password")
+                    ->label(__("filament-breezy::default.fields.password"))
                     ->required()
                     ->password()
                     ->rules(config("filament-breezy.password_rules")),
                 Forms\Components\TextInput::make("password_confirm")
+                    ->label(__("filament-breezy::default.fields.password_confirm"))
                     ->required()
                     ->password()
                     ->same("password"),
@@ -47,7 +49,7 @@ class ResetPassword extends Component implements Forms\Contracts\HasForms
         } else {
             return [
                 Forms\Components\TextInput::make("email")
-                    ->label(__("filament-breezy.fields.email"))
+                    ->label(__("filament-breezy::default.fields.email"))
                     ->required()
                     ->email()
                     ->exists(table: config('filament-breezy.user_model')),

@@ -16,7 +16,7 @@ class Login extends FilamentLogin
         if (request()->query("reset")) {
             session()->flash("notify", [
                 "status" => "success",
-                "message" => "Your password has been reset!",
+                "message" => __("passwords.reset"),
             ]);
         }
     }

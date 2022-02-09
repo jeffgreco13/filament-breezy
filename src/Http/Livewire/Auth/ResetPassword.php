@@ -47,6 +47,7 @@ class ResetPassword extends Component implements Forms\Contracts\HasForms
         } else {
             return [
                 Forms\Components\TextInput::make("email")
+                    ->label(__("filament-breezy.fields.email"))
                     ->required()
                     ->email()
                     ->exists(table: config('filament-breezy.user_model')),
@@ -75,7 +76,7 @@ class ResetPassword extends Component implements Forms\Contracts\HasForms
             } else {
                 session()->flash("notify", [
                     "status" => "danger",
-                    "message" => "Error: please try again later.",
+                    "message" => __("filament-breezy::default.reset_password.notification_error"),
                 ]);
             }
         } else {
@@ -83,15 +84,15 @@ class ResetPassword extends Component implements Forms\Contracts\HasForms
             if ($response == Password::RESET_LINK_SENT) {
                 session()->flash("notify", [
                     "status" => "success",
-                    "message" => "Check your inbox for instructions.",
+                    "message" => __("filament-breezy::default.reset_password.notification_success"),
                 ]);
                 $this->hasBeenSent = true;
             } else {
                 session()->flash("notify", [
                     "status" => "danger",
                     "message" => match ($response) {
-                        "passwords.throttled" => "Please wait before trying again.",
-                        "passwords.user" => "User with this email not found."
+                        "passwords.throttled" => __("passwords.throttled"),
+                        "passwords.user" => __("passwords.user")
                     },
                 ]);
             }

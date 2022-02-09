@@ -41,7 +41,7 @@ class Verify extends Component implements Forms\Contracts\HasForms
 
         session()->flash("notify", [
             "status" => "success",
-            "message" => "Verification email has been resent.",
+            "message" => __("filament-breezy::default.verification.notification_resend"),
         ]);
     }
 

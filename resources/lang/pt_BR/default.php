@@ -11,6 +11,7 @@ return [
         "submit" => [
             "label" => "Inscrever-se",
         ],
+        "notification_unique" => "An account with this email already exists. Please login."
     ],
     "reset_password" => [
         "title" => "Esqueceu a senha",
@@ -18,6 +19,7 @@ return [
         "submit" => [
             "label" => "Enviar",
         ],
+        "notification_error" => "Erro: Por favor, tente novamente mais tarde.",
         "notification_success" => "Verifique sua caixa de entrada para instruções!",
     ],
     "verification" => [
@@ -27,9 +29,10 @@ return [
             "label" => "Sair",
         ],
         "notification_success" => "Verifique sua caixa de entrada para instruções!",
+        "notification_resend" => "O e-mail de verificação foi reenviado.",
         "before_proceeding" => "Antes de prosseguir, por favor, verifique no seu e-mail o link de verificação.",
         "not_receive" => "Se você não recebeu o e-mail,",
-        "request_another" => "clique aqui para solicitar outro.",
+        "request_another" => "clique aqui para solicitar reenvio.",
     ],
     "profile" => [
         "personal_info" => [
@@ -37,10 +40,6 @@ return [
             "subheading" => "Gerencie suas informações pessoais.",
             "submit" => [
                 "label" => "Atualizar",
-            ],
-            "fields" => [
-                "name" => "Nome",
-                "email" => "E-mail",
             ],
             "notify" => "Perfil atualizado com sucesso!",
         ],
@@ -50,13 +49,16 @@ return [
             "submit" => [
                 "label" => "Atualizar",
             ],
-            "fields" => [
-
-                "new_password" => "Nova senha",
-                "new_password_confirmation" => "Confirme a senha",
-            ],
             "notify" => "Senha alterada com sucesso!"
         ],
+    ],
+    "fields" => [
+        "name" => "Nome",
+        "email" => "E-mail",
+        "password" => "Senha",
+        "password_confirm" => "Confirme a senha",
+        "new_password" => "Nova senha",
+        "new_password_confirmation" => "Confirme a senha",
     ],
     "or" => "Ou"
 ];

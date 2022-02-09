@@ -42,9 +42,9 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
     {
         return [
             Forms\Components\TextInput::make("name")
-                ->label(__('filament-breezy::default.profile.personal_info.fields.name')),
+                ->label(__('filament-breezy::default.fields.name')),
             Forms\Components\TextInput::make("email")->unique(ignorable: $this->user)
-                ->label(__('filament-breezy::default.profile.personal_info.fields.email')),
+                ->label(__('filament-breezy::default.fields.email')),
         ];
     }
 

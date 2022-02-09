@@ -11,6 +11,7 @@ return [
         "submit" => [
             "label" => "Sign up",
         ],
+        "notification_unique" => "An account with this email already exists. Please login."
     ],
     "reset_password" => [
         "title" => "Forgot password",
@@ -18,6 +19,7 @@ return [
         "submit" => [
             "label" => "Submit",
         ],
+        "notification_error" => "Error: please try again later.",
         "notification_success" => "Check your inbox for instructions!",
     ],
     "verification" => [
@@ -27,6 +29,7 @@ return [
             "label" => "Sign out",
         ],
         "notification_success" => "Check your inbox for instructions!",
+        "notification_resend" => "Verification email has been resent.",
         "before_proceeding" => "Before proceeding, please check your email for a verification link.",
         "not_receive" => "If you did not receive the email,",
         "request_another" => "click here to request another one.",
@@ -38,10 +41,6 @@ return [
             "submit" => [
                 "label" => "Update",
             ],
-            "fields" => [
-                "name" => "Name",
-                "email" => "Email",
-            ],
             "notify" => "Profile updated successfully!",
         ],
         "password" => [
@@ -50,13 +49,16 @@ return [
             "submit" => [
                 "label" => "Update",
             ],
-            "fields" => [
-
-                "new_password" => "New password",
-                "new_password_confirmation" => "Confirm passord",
-            ],
             "notify" => "Password updated successfully!",
         ],
     ],
-    "or" => "Or"
+    "fields" => [
+        "name" => "Name",
+        "email" => "Email",
+        "password" => "Password",
+        "password_confirm" => "Password confirm",
+        "new_password" => "New password",
+        "new_password_confirmation" => "Confirm password",
+    ],
+    "or" => "Or",
 ];

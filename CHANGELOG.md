@@ -2,6 +2,20 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.1.0 - 2022-02-09
+
+## What's Changed
+
+- fix and organize translations by @felipe-balloni in https://github.com/jeffgreco13/filament-breezy/pull/11
+- Make all component strings translatable by @underdpt in https://github.com/jeffgreco13/filament-breezy/pull/12
+- L9 Support by @jvkassi in https://github.com/jeffgreco13/filament-breezy/pull/13
+
+## New Contributors
+
+- @underdpt made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/12
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.0.3...v1.1.0
+
 ## v1.0.3 - 2022-02-07
 
 ## What's Changed

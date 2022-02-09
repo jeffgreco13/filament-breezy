@@ -11,7 +11,6 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
 {
     use Forms\Concerns\InteractsWithForms;
 
-    protected static ?string $navigationGroup = "Account"; //config
     protected static ?string $navigationIcon = "heroicon-o-document-text"; //config
     protected static string $view = "filament-breezy::filament.pages.my-profile";
 
@@ -85,7 +84,22 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
     protected function getBreadcrumbs(): array
     {
         return [
-            url()->current() => 'Profile',
+            url()->current() => __('filament-breezy::default.profile.profile'),
         ];
+    }
+
+    protected static function getNavigationGroup(): ?string
+    {
+        return __('filament-breezy::default.profile.account');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('filament-breezy::default.profile.profile');
+    }
+
+    protected function getTitle(): string
+    {
+        return __('filament-breezy::default.profile.my_profile');
     }
 }

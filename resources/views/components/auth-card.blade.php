@@ -1,5 +1,5 @@
 @props(['action'])
-<div class="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
+<div @class(['flex items-center justify-center min-h-screen bg-gray-100 text-gray-900','dark:bg-gray-900 dark:text-white' => config('filament.dark_mode')])>
 
     @if(session()->has('notify'))
     <x-filament::notification :status="session('notify.status')" :message="session('notify.message')" />

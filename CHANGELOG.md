@@ -2,6 +2,14 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.1.3 - 2022-02-11
+
+## What's Changed
+
+- fix: Override OS dark mode setting by @jeffgreco13 in https://github.com/jeffgreco13/filament-breezy/pull/18
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.1.2...v1.1.3
+
 ## v1.1.2 - 2022-02-11
 
 ## What's Changed

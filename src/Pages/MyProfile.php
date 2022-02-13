@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Hash;
 
 class MyProfile extends Page
 {
-
     protected static ?string $navigationIcon = "heroicon-o-document-text"; //config
     protected static string $view = "filament-breezy::filament.pages.my-profile";
 
@@ -29,7 +28,7 @@ class MyProfile extends Page
 
     protected function getForms(): array
     {
-        return array_merge(parent::getForms(),[
+        return array_merge(parent::getForms(), [
             "updateProfileForm" => $this->makeForm()
                 ->schema($this->getUpdateProfileFormSchema())
                 ->model($this->user),
@@ -98,7 +97,8 @@ class MyProfile extends Page
         ];
     }
 
-    public function createApiToken(){
+    public function createApiToken()
+    {
         $state = $this->createApiTokenForm->getState();
         $indexes = $state['abilities'];
         $abilities = config("filament-breezy.sanctum_permissions");
@@ -107,7 +107,7 @@ class MyProfile extends Page
         ) {
             return in_array($key, $indexes);
         })->toArray();
-        $this->plain_text_token = auth()->user()->createToken($state['token_name'],$selected)->plainTextToken;
+        $this->plain_text_token = auth()->user()->createToken($state['token_name'], $selected)->plainTextToken;
         $this->notify("success", __('filament-breezy::default.profile.sanctum.create.notify'));
         $this->emit('tokenCreated');
         $this->reset(['token_name']);

@@ -2,12 +2,12 @@
 
 namespace JeffGreco13\FilamentBreezy\Http\Livewire;
 
-use Livewire\Component;
 use Filament\Facades\Filament;
-use Filament\Tables;
 use Filament\Forms;
+use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Laravel\Sanctum\PersonalAccessToken;
+use Livewire\Component;
 
 class BreezySanctumTokens extends Component implements Tables\Contracts\HasTable
 {
@@ -45,7 +45,7 @@ class BreezySanctumTokens extends Component implements Tables\Contracts\HasTable
                 ->icon("heroicon-o-pencil-alt")
                 ->modalWidth("sm")
                 ->mountUsing(
-                    fn($form, $record) => $form->fill($record->toArray())
+                    fn ($form, $record) => $form->fill($record->toArray())
                 )
                 ->form([
                     Forms\Components\CheckboxList::make("abilities")

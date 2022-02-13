@@ -94,9 +94,7 @@ class MyProfile extends Page
             ->label(__('filament-breezy::default.fields.abilities'))
             ->options(config('filament-breezy.sanctum_permissions'))
             ->columns(2)
-            ->required()->reactive()->afterStateUpdated(
-                fn($component, $state) => ray($component)
-            ),
+            ->required(),
         ];
     }
 

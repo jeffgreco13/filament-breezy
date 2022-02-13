@@ -2,6 +2,14 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v.1.2.0 - 2022-02-13
+
+## What's Changed
+
+- Support for Laravel Sanctum by @jeffgreco13 in https://github.com/jeffgreco13/filament-breezy/pull/19
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.1.3...v.1.2.0
+
 ## v1.1.3 - 2022-02-11
 
 ## What's Changed

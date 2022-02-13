@@ -111,6 +111,18 @@ class Register extends FilamentBreezyRegister
 ...
 ```
 
+### Sanctum API Tokens
+
+The most recent version of Laravel include Sanctum, but if you don't already have the package follow the [installation instructions here](https://laravel.com/docs/8.x/sanctum#installation).
+
+As soon as Sanctum is installed, you are ready to allow users to create new API tokens from the Profile page. Enable this option in the config:
+`enable_sanctum => true`
+
+You can then control the available permissions abilities from the config, which will add each ability as a checkbox:
+`"sanctum_permissions" => ["create", "read", "update", "delete"]`
+
+Follow the Sanctum instructions for authenticating requests as usual.
+
 ### Flash Notifications
 
 The Breezy auth layouts use the `<x-filament::notification>` component to flash messages to the page. Flash messages in the same way as you would with `$this->notify()` but instead flash to the session:

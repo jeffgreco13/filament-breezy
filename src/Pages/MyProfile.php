@@ -7,16 +7,17 @@ use Filament\Forms;
 use Filament\Pages\Page;
 use Illuminate\Support\Facades\Hash;
 
-class MyProfile extends Page implements Forms\Contracts\HasForms
+class MyProfile extends Page
 {
-    use Forms\Concerns\InteractsWithForms;
-
     protected static ?string $navigationIcon = "heroicon-o-document-text"; //config
     protected static string $view = "filament-breezy::filament.pages.my-profile";
 
     public User $user;
     public $new_password;
     public $new_password_confirmation;
+    public $token_name;
+    public $abilities = [];
+    public $plain_text_token;
     public $hasTeams;
 
     public function mount()
@@ -27,14 +28,17 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
 
     protected function getForms(): array
     {
-        return [
+        return array_merge(parent::getForms(), [
             "updateProfileForm" => $this->makeForm()
                 ->schema($this->getUpdateProfileFormSchema())
                 ->model($this->user),
             "updatePasswordForm" => $this->makeForm()->schema(
                 $this->getUpdatePasswordFormSchema()
             ),
-        ];
+            "createApiTokenForm" => $this->makeForm()->schema(
+                $this->getCreateApiTokenFormSchema()
+            ),
+        ]);
     }
 
     protected function getUpdateProfileFormSchema(): array
@@ -79,6 +83,34 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
         auth("web")->login($this->user);
         $this->notify("success", __('filament-breezy::default.profile.password.notify'));
         $this->reset(["new_password", "new_password_confirmation"]);
+    }
+
+    protected function getCreateApiTokenFormSchema(): array
+    {
+        return [
+            Forms\Components\TextInput::make('token_name')->label(__('filament-breezy::default.fields.token_name'))->required(),
+            Forms\Components\CheckboxList::make('abilities')
+            ->label(__('filament-breezy::default.fields.abilities'))
+            ->options(config('filament-breezy.sanctum_permissions'))
+            ->columns(2)
+            ->required(),
+        ];
+    }
+
+    public function createApiToken()
+    {
+        $state = $this->createApiTokenForm->getState();
+        $indexes = $state['abilities'];
+        $abilities = config("filament-breezy.sanctum_permissions");
+        $selected = collect($abilities)->filter(function ($item, $key) use (
+            $indexes
+        ) {
+            return in_array($key, $indexes);
+        })->toArray();
+        $this->plain_text_token = auth()->user()->createToken($state['token_name'], array_values($selected))->plainTextToken;
+        $this->notify("success", __('filament-breezy::default.profile.sanctum.create.notify'));
+        $this->emit('tokenCreated');
+        $this->reset(['token_name']);
     }
 
     protected function getBreadcrumbs(): array

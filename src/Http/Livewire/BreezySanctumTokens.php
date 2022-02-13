@@ -45,7 +45,7 @@ class BreezySanctumTokens extends Component implements Tables\Contracts\HasTable
                 ->icon("heroicon-o-pencil-alt")
                 ->modalWidth("sm")
                 ->mountUsing(
-                    fn ($form, $record) => $form->fill($record->toArray())
+                    fn($form, $record) => $form->fill($record->toArray())
                 )
                 ->form([
                     Forms\Components\CheckboxList::make("abilities")
@@ -83,13 +83,13 @@ class BreezySanctumTokens extends Component implements Tables\Contracts\HasTable
     {
         $indexes = $data["abilities"];
         $abilities = config("filament-breezy.sanctum_permissions");
-        $selected = collect($abilities)->filter(function ($item, $key) use (
-            $indexes
-        ) {
-            return in_array($key, $indexes);
-        });
+        $selected = collect($abilities)
+            ->filter(function ($item, $key) use ($indexes) {
+                return in_array($key, $indexes);
+            })
+            ->toArray();
         $record->update([
-            "abilities" => $selected,
+            "abilities" => array_values($selected),
         ]);
         Filament::notify(
             "success",

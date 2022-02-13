@@ -107,7 +107,7 @@ class MyProfile extends Page
         ) {
             return in_array($key, $indexes);
         })->toArray();
-        $this->plain_text_token = auth()->user()->createToken($state['token_name'], $selected)->plainTextToken;
+        $this->plain_text_token = auth()->user()->createToken($state['token_name'], array_values($selected))->plainTextToken;
         $this->notify("success", __('filament-breezy::default.profile.sanctum.create.notify'));
         $this->emit('tokenCreated');
         $this->reset(['token_name']);

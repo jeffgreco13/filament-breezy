@@ -2,84 +2,84 @@
 
 return [
     "login" => [
-        "forgot_password_link" => "Forgot password?",
-        "create_an_account" => "create an account",
+        "forgot_password_link" => "Lupa kata sandi?",
+        "create_an_account" => "Buat akun baru",
     ],
     "registration" => [
-        "title" => "Register",
-        "heading" => "Create a new account",
+        "title" => "Daftar",
+        "heading" => "Buat akun baru",
         "submit" => [
-            "label" => "Sign up",
+            "label" => "Daftar",
         ],
         "notification_unique" =>
-            "An account with this email already exists. Please login.",
+            "Akun dengan email ini sudah terdaftar. Silahkan coba login kembali.",
     ],
     "reset_password" => [
-        "title" => "Forgot password",
-        "heading" => "Reset your password",
+        "title" => "Lupa kata sandi",
+        "heading" => "Setel ulang kata sandi",
         "submit" => [
-            "label" => "Submit",
+            "label" => "Kirim",
         ],
-        "notification_error" => "Error: please try again later.",
-        "notification_success" => "Check your inbox for instructions!",
+        "notification_error" => "Error: silahkan coba kembali.",
+        "notification_success" => "Coba cek instruksi di inbox email anda!",
     ],
     "verification" => [
-        "title" => "Verify email",
-        "heading" => "Email verification required",
+        "title" => "Verifikasi email",
+        "heading" => "Verifikasi email diperlukan",
         "submit" => [
-            "label" => "Sign out",
+            "label" => "Keluar",
         ],
-        "notification_success" => "Check your inbox for instructions!",
-        "notification_resend" => "Verification email has been resent.",
+        "notification_success" => "Coba cek instruksi di inbox email anda!",
+        "notification_resend" => "Verifikasi email sudah dikirim kembali",
         "before_proceeding" =>
-            "Before proceeding, please check your email for a verification link.",
-        "not_receive" => "If you did not receive the email,",
-        "request_another" => "click here to request another one.",
+            "Sebelum dilanjutkan, silahkan cek email anda untuk tautan verifikasi email.",
+        "not_receive" => "Jika anda tidak menerima email,",
+        "request_another" => "klik disini untuk meminta kembali.",
     ],
     "profile" => [
-        "account" => "Account",
-        "profile" => "Profile",
-        "my_profile" => "My Profile",
+        "account" => "Akun",
+        "profile" => "Profil",
+        "my_profile" => "Profil saya",
         "personal_info" => [
-            "heading" => "Personal Information",
-            "subheading" => "Manage your personal information.",
+            "heading" => "Informasi pribadi",
+            "subheading" => "Atur informasi pribadi anda",
             "submit" => [
-                "label" => "Update",
+                "label" => "Perbaharui",
             ],
-            "notify" => "Profile updated successfully!",
+            "notify" => "Profi sukses diperbaharui!",
         ],
         "password" => [
-            "heading" => "Password",
-            "subheading" => "Must be 8 characters.",
+            "heading" => "Kata sandi",
+            "subheading" => "harus 8 karakter.",
             "submit" => [
-                "label" => "Update",
+                "label" => "Perbaharui",
             ],
-            "notify" => "Password updated successfully!",
+            "notify" => "kata sandi sukses diperbaharui!",
         ],
         "sanctum" => [
-            "title" => "API Tokens",
-            "description" =>
-                "Manage API tokens that allow third-party services to access this application on your behalf. NOTE: your token is shown once upon creation. If you lose your token, you will need to delete it and create a new one.",
+            "title" => "Token API",
+            "description" => 
+                "Mengelola token API yang memungkinkan layanan pihak ketiga mengakses aplikasi ini atas nama Anda. CATATAN: token Anda ditampilkan sekali setelah dibuat. Jika Anda kehilangan token, Anda harus menghapusnya dan membuat yang baru. ",
             "create" => [
-                "notify" => "Token created successfully!",
+                "notify" => "Token sukses dibuat!",
                 "submit" => [
-                    "label" => "Create",
+                    "label" => "Buat",
                 ],
             ],
             "update" => [
-                "notify" => "Token updated successfully!",
+                "notify" => "Token sukses diperbaharui!",
             ],
         ],
     ],
     "fields" => [
-        "name" => "Name",
+        "name" => "Nama",
         "email" => "Email",
-        "password" => "Password",
-        "password_confirm" => "Password confirm",
-        "new_password" => "New password",
-        "new_password_confirmation" => "Confirm password",
-        "token_name" => "Token name",
-        "abilities" => "Abilities",
+        "password" => "Kata Sandi",
+        "password_confirm" => "Konfirmasi Kata Sandi",
+        "new_password" => "Kata Sandi Baru",
+        "new_password_confirmation" => "Konfirmasi Kata Sandi baru",
+        "token_name" => "Nama Token",
+        "abilities" => "Kemampuan",
     ],
     "or" => "Or",
 ];

@@ -2,6 +2,20 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.2.2 - 2022-02-15
+
+## What's Changed
+
+- Correction to config parameters used for the registration redirect URL by @ap1969 in https://github.com/jeffgreco13/filament-breezy/pull/21
+- add indonesian translations by @creativeplus2 in https://github.com/jeffgreco13/filament-breezy/pull/20
+
+## New Contributors
+
+- @ap1969 made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/21
+- @creativeplus2 made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/20
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v.1.2.0...v1.2.2
+
 ## v1.2.1 - 2022-02-13
 
 ## What's Changed

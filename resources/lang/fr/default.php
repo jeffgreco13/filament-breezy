@@ -35,6 +35,9 @@ return [
         "request_another" => "Cliquez ici pour en demander un autre.",
     ],
     "profile" => [
+        "account" => "Compte",
+        "profile" => "Profil",
+        "my_profile" => "Mon Profil",
         "personal_info" => [
             "heading" => "Informations personnelles",
             "subheading" => "Gérer vos informations personnelles.",

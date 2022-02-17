@@ -3,9 +3,9 @@
 namespace JeffGreco13\FilamentBreezy\Http\Livewire\Auth;
 
 use Filament\Forms;
+use Filament\Http\Livewire\Concerns\CanNotify;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
-use Filament\Http\Livewire\Concerns\CanNotify;
 
 class Verify extends Component implements Forms\Contracts\HasForms
 {

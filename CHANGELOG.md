@@ -2,6 +2,17 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.2.3 - 2022-02-17
+
+## What's Changed
+
+- Use new notification system by @jeffgreco13 in https://github.com/jeffgreco13/filament-breezy/pull/25
+- [ar] Translate new phrases by @mohamedsabil83 in https://github.com/jeffgreco13/filament-breezy/pull/24
+- Removed extraneous full-stop from verify.blade.php by @ap1969 in https://github.com/jeffgreco13/filament-breezy/pull/23
+- Add new keys to pt_BR translation file by @felipe-balloni in https://github.com/jeffgreco13/filament-breezy/pull/22
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.2.2...v1.2.3
+
 ## v1.2.2 - 2022-02-15
 
 ## What's Changed

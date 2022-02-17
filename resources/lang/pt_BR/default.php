@@ -11,7 +11,8 @@ return [
         "submit" => [
             "label" => "Inscrever-se",
         ],
-        "notification_unique" => "An account with this email already exists. Please login."
+        "notification_unique" =>
+            "Já existe uma conta com este e-mail. Por favor, verifique."
     ],
     "reset_password" => [
         "title" => "Esqueceu a senha",
@@ -30,7 +31,8 @@ return [
         ],
         "notification_success" => "Verifique sua caixa de entrada para instruções!",
         "notification_resend" => "O e-mail de verificação foi reenviado.",
-        "before_proceeding" => "Antes de prosseguir, por favor, verifique no seu e-mail o link de verificação.",
+        "before_proceeding" =>
+            "Antes de prosseguir, por favor, procure no seu e-mail o link de verificação.",
         "not_receive" => "Se você não recebeu o e-mail,",
         "request_another" => "clique aqui para solicitar reenvio.",
     ],
@@ -55,6 +57,20 @@ return [
             "notify" => "Senha alterada com sucesso!"
         ],
     ],
+    "sanctum" => [
+        "title" => "Tokens API",
+        "description" =>
+            "Gerencie tokens de API para permitir serviços de terceiros acessar este aplicativo em seu nome. NOTA: seu token é mostrado uma vez após a criação. Se você perder seu token, será necessário excluí-lo e criar um novo.",
+        "create" => [
+            "notify" => "Token criado com sucesso!",
+            "submit" => [
+                "label" => "Criar",
+            ],
+        ],
+        "update" => [
+            "notify" => "Token atualizado com sucesso!",
+        ],
+    ],
     "fields" => [
         "name" => "Nome",
         "email" => "E-mail",
@@ -62,6 +78,8 @@ return [
         "password_confirm" => "Confirme a senha",
         "new_password" => "Nova senha",
         "new_password_confirmation" => "Confirme a senha",
+        "token_name" => "Nome do Token",
+        "abilities" => "Permissões",
     ],
     "or" => "Ou"
 ];

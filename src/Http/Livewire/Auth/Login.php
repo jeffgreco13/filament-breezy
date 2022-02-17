@@ -4,9 +4,12 @@ namespace JeffGreco13\FilamentBreezy\Http\Livewire\Auth;
 
 use Filament\Http\Livewire\Auth\Login as FilamentLogin;
 use Illuminate\Contracts\View\View;
+use Filament\Http\Livewire\Concerns\CanNotify;
 
 class Login extends FilamentLogin
 {
+    use CanNotify;
+
     public function mount(): void
     {
         parent::mount();
@@ -14,10 +17,7 @@ class Login extends FilamentLogin
             $this->form->fill(["email" => $email]);
         }
         if (request()->query("reset")) {
-            session()->flash("notify", [
-                "status" => "success",
-                "message" => __("passwords.reset"),
-            ]);
+            $this->notify("success", __("passwords.reset"), true);
         }
     }
 

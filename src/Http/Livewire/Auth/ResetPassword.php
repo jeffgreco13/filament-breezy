@@ -9,10 +9,12 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Livewire\Component;
+use Filament\Http\Livewire\Concerns\CanNotify;
 
 class ResetPassword extends Component implements Forms\Contracts\HasForms
 {
     use Forms\Concerns\InteractsWithForms;
+    use CanNotify;
 
     public $email;
     public $token;
@@ -76,27 +78,19 @@ class ResetPassword extends Component implements Forms\Contracts\HasForms
             if ($response == Password::PASSWORD_RESET) {
                 return redirect(route('filament.auth.login', ['email' => $this->email,'reset' => true]));
             } else {
-                session()->flash("notify", [
-                    "status" => "danger",
-                    "message" => __("filament-breezy::default.reset_password.notification_error"),
-                ]);
+                $this->notify('danger',__("filament-breezy::default.reset_password.notification_error"));
             }
         } else {
             $response = Password::sendResetLink(['email' => $this->email]);
             if ($response == Password::RESET_LINK_SENT) {
-                session()->flash("notify", [
-                    "status" => "success",
-                    "message" => __("filament-breezy::default.reset_password.notification_success"),
-                ]);
+                $this->notify('success',__("filament-breezy::default.reset_password.notification_success"));
+
                 $this->hasBeenSent = true;
             } else {
-                session()->flash("notify", [
-                    "status" => "danger",
-                    "message" => match ($response) {
-                        "passwords.throttled" => __("passwords.throttled"),
-                        "passwords.user" => __("passwords.user")
-                    },
-                ]);
+                $this->notify('danger',match ($response) {
+                    "passwords.throttled" => __("passwords.throttled"),
+                    "passwords.user" => __("passwords.user")
+                });
             }
         }
     }

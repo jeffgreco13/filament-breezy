@@ -54,6 +54,19 @@ return [
             ],
             'notify' => 'تم تحديث كلمة المرور بنجاح!',
         ],
+        'sanctum' => [
+            'title' => 'رموز API',
+            'description' => 'إدارة رموز API التي تسمح لخدمات الطرف الثالث الإتصال بالتطبيق بالإنابة عنك. ملاحظة: يتم عرض الرمز مرة واحدة لحظة إنشائه. إذا فقدت رمزك، فسيتوجب عليك حذفه وإنشاء رمز جديد.',
+            'create' => [
+                'notify' => 'تم إنشاء الرمز بنجاح!',
+                'submit' => [
+                    'label' => 'Create',
+                ],
+            ],
+            'update' => [
+                'notify' => 'Token updated successfully!',
+            ],
+        ],
     ],
     'fields' => [
         'name' => 'الإسم',
@@ -62,6 +75,8 @@ return [
         'password_confirm' => 'تأكيد كلمة المرور',
         'new_password' => 'كلمة مرور جديدة',
         'new_password_confirmation' => 'تأكيد كلمة المرور الجديدة',
+        'token_name' => 'اسم الرمز',
+        'abilities' => 'القدرات',
     ],
     'or' => 'أو',
 ];

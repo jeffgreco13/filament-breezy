@@ -3,11 +3,13 @@
 namespace JeffGreco13\FilamentBreezy\Http\Livewire\Auth;
 
 use Filament\Forms;
+use Filament\Http\Livewire\Concerns\CanNotify;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
 class Verify extends Component implements Forms\Contracts\HasForms
 {
+    use CanNotify;
     use Forms\Concerns\InteractsWithForms;
 
     public bool $hasBeenSent = false;
@@ -34,15 +36,15 @@ class Verify extends Component implements Forms\Contracts\HasForms
 
     public function resend()
     {
-        $this->hasBeenSent = true;
         auth()
             ->user()
             ->sendEmailVerificationNotification();
 
-        session()->flash("notify", [
-            "status" => "success",
-            "message" => __("filament-breezy::default.verification.notification_resend"),
-        ]);
+        $this->notify(
+            "success",
+            __("filament-breezy::default.verification.notification_resend")
+        );
+        $this->hasBeenSent = true;
     }
 
     public function render(): View

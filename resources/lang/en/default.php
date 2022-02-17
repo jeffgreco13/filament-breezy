@@ -34,7 +34,7 @@ return [
         "before_proceeding" =>
             "Before proceeding, please check your email for a verification link.",
         "not_receive" => "If you did not receive the email,",
-        "request_another" => "click here to request another one.",
+        "request_another" => "click here to request another one",
     ],
     "profile" => [
         "account" => "Account",

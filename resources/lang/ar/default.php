@@ -64,7 +64,7 @@ return [
                 ],
             ],
             'update' => [
-                'notify' => 'Token updated successfully!',
+                'notify' => 'تم تحديث الرموز بنجاح!',
             ],
         ],
     ],

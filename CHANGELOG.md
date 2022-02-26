@@ -2,6 +2,21 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.2.4 - 2022-02-26
+
+## What's Changed
+
+- Bump dependabot/fetch-metadata from 1.1.1 to 1.2.0 by @dependabot in https://github.com/jeffgreco13/filament-breezy/pull/27
+- Translate update notification message by @mohamedsabil83 in https://github.com/jeffgreco13/filament-breezy/pull/28
+- Add Spanish translations by @pathros in https://github.com/jeffgreco13/filament-breezy/pull/26
+
+## New Contributors
+
+- @dependabot made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/27
+- @pathros made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/26
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.2.3...v1.2.4
+
 ## v1.2.3 - 2022-02-17
 
 ## What's Changed

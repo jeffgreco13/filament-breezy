@@ -39,7 +39,7 @@
             {{ __('filament-breezy::default.profile.password.subheading') }}
         </x-slot>
 
-        <form wire:submit.prevent="updatePassword" class="space-y-4">
+        <form wire:submit.prevent="updatePassword" class="col-span-2 sm:col-span-1 mt-5 md:mt-0">
             <x-filament::card>
 
                 {{ $this->updatePasswordForm }}

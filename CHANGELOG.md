@@ -2,6 +2,14 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.25 - 2022-02-27
+
+## What's Changed
+
+- fix: Responsive card issue on forgot password by @jeffgreco13 in https://github.com/jeffgreco13/filament-breezy/pull/30
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.2.4...v1.25
+
 ## v1.2.4 - 2022-02-26
 
 ## What's Changed

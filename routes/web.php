@@ -1,8 +1,5 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use JeffGreco13\FilamentBreezy\Http\Livewire\Auth\Register;
-use JeffGreco13\FilamentBreezy\Http\Livewire\Auth\ResetPassword;
-use JeffGreco13\FilamentBreezy\Http\Livewire\Auth\Verify;
 use JeffGreco13\FilamentBreezy\Http\Controllers\EmailVerificationController;
 
 Route::domain(config("filament.domain"))
@@ -11,17 +8,17 @@ Route::domain(config("filament.domain"))
     ->group(function () {
         // Login will be replaced in the Filament config.
         if (config("filament-breezy.enable_registration")) {
-            Route::get("/register", Register::class)->name("register");
+            Route::get("/register", config('filament-breezy.registration_component_path'))->name("register");
         }
-        Route::get("/password/reset", ResetPassword::class)->name(
+        Route::get("/password/reset", config('filament-breezy.password_reset_component_path'))->name(
             "password.request"
         );
 
-        Route::get("/password/reset/{token}", ResetPassword::class)->name(
+        Route::get("/password/reset/{token}", config('filament-breezy.password_reset_component_path'))->name(
             "password.reset"
         );
 
-        Route::get("email/verify", Verify::class)
+        Route::get("email/verify", config('filament-breezy.email_verification_component_path'))
             ->middleware("throttle:6,1")
             ->name("verification.notice");
 

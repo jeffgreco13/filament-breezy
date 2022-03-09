@@ -35,6 +35,21 @@ return [
     "enable_registration" => true,
     /*
     |--------------------------------------------------------------------------
+    | Path to registration Livewire component.
+    */
+    "registration_component_path" => \JeffGreco13\FilamentBreezy\Http\Livewire\Auth\Register::class,
+    /*
+    |--------------------------------------------------------------------------
+    | Path to password reset Livewire component.
+    */
+    "password_reset_component_path" => \JeffGreco13\FilamentBreezy\Http\Livewire\Auth\ResetPassword::class,
+    /*
+    |--------------------------------------------------------------------------
+    | Path to email verification Livewire component.
+    */
+    "email_verification_component_path" => \JeffGreco13\FilamentBreezy\Http\Livewire\Auth\Verify::class,
+    /*
+    |--------------------------------------------------------------------------
     | Where to redirect the user after registration.
     */
     "registration_redirect_url" => config("filament.home_url", "/"),

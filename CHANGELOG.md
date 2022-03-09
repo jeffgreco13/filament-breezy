@@ -2,6 +2,17 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.2.6 - 2022-03-09
+
+## What's Changed
+
+- Bump dependabot/fetch-metadata from 1.2.0 to 1.2.1 by @dependabot in https://github.com/jeffgreco13/filament-breezy/pull/31
+- Bump dependabot/fetch-metadata from 1.2.1 to 1.3.0 by @dependabot in https://github.com/jeffgreco13/filament-breezy/pull/35
+- Ability to override auth component classes by @jeffgreco13 in https://github.com/jeffgreco13/filament-breezy/pull/36
+- Bump actions/checkout from 2 to 3 by @dependabot in https://github.com/jeffgreco13/filament-breezy/pull/34
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.25...v1.2.6
+
 ## v1.25 - 2022-02-27
 
 ## What's Changed

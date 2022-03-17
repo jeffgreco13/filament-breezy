@@ -134,4 +134,9 @@ class MyProfile extends Page
     {
         return __('filament-breezy::default.profile.my_profile');
     }
+
+    protected static function shouldRegisterNavigation(): bool
+    {
+        return config('filament-breezy.show_profile_page_in_navbar');
+    }
 }

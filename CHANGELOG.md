@@ -2,6 +2,20 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.2.7 - 2022-03-23
+
+## What's Changed
+
+- Return the user's ID by @alexjustesen in https://github.com/jeffgreco13/filament-breezy/pull/39
+- Add config override for profile page in navbar by @countnoobula in https://github.com/jeffgreco13/filament-breezy/pull/38
+
+## New Contributors
+
+- @alexjustesen made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/39
+- @countnoobula made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/38
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.2.6...v1.2.7
+
 ## v1.2.6 - 2022-03-09
 
 ## What's Changed

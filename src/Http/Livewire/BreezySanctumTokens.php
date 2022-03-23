@@ -22,7 +22,7 @@ class BreezySanctumTokens extends Component implements Tables\Contracts\HasTable
 
     protected function getTableQuery(): Builder
     {
-        return PersonalAccessToken::where("tokenable_id", auth()->user()->id);
+        return PersonalAccessToken::where("tokenable_id", auth()->id());
     }
 
     protected function getTableColumns(): array

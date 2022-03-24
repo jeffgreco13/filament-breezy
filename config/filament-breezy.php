@@ -9,9 +9,13 @@ return [
     */
     "enable_profile_page" => true,
     /*
+    | Whether or not to automatically link the My Profile page in the user menu of Filament.
+    */
+    "show_profile_page_in_user_menu" => true,
+    /*
     | Whether or not to automatically display the My Profile page in the navigation of Filament.
     */
-    "show_profile_page_in_navbar" => true,
+    "show_profile_page_in_navbar" => false,
     /*
     | Set an array that's compatible with the Filament Forms rules() method. You can also pass an instance of \Illuminate\Validation\Rules\Password::class. ex.\Illuminate\Validation\Rules\Password::min(8). Rules for required and confirmed are already set. These rules will apply to the My Profile, registration, and password reset forms.
     */

@@ -2,6 +2,18 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## 1.2.8 - 2022-03-24
+
+## What's Changed
+
+- feature: User menu account link by @danharrin in https://github.com/jeffgreco13/filament-breezy/pull/40
+
+## New Contributors
+
+- @danharrin made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/40
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.2.7...1.2.8
+
 ## v1.2.7 - 2022-03-23
 
 ## What's Changed

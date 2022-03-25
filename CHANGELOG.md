@@ -2,6 +2,14 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.2.9 - 2022-03-25
+
+## What's Changed
+
+- fix: remove getKey() references by @jeffgreco13 in https://github.com/jeffgreco13/filament-breezy/pull/41
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.2.8...v1.2.9
+
 ## 1.2.8 - 2022-03-24
 
 ## What's Changed

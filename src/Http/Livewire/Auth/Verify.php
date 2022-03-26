@@ -18,7 +18,7 @@ class Verify extends Component implements Forms\Contracts\HasForms
     {
         if (auth()->check() && auth()->user()?->hasVerifiedEmail()) {
             return redirect(config("filament.home_url"));
-        } else if (!auth()->check()){
+        } elseif (! auth()->check()) {
             // User is not logged in...
             return redirect(route('filament.auth.login'));
         }

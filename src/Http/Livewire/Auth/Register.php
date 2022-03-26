@@ -20,7 +20,9 @@ class Register extends Component implements Forms\Contracts\HasForms
 
     public function mount()
     {
-        if (auth()->check()) return redirect(config("filament.home_url"));
+        if (auth()->check()) {
+            return redirect(config("filament.home_url"));
+        }
     }
 
     public function messages(): array

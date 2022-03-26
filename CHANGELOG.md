@@ -2,6 +2,14 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.2.10 - 2022-03-26
+
+## What's Changed
+
+- fix: auth checks for components by @jeffgreco13 in https://github.com/jeffgreco13/filament-breezy/pull/42
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.2.9...v1.2.10
+
 ## v1.2.9 - 2022-03-25
 
 ## What's Changed

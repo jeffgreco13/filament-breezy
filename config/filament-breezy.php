@@ -38,6 +38,11 @@ return [
     "users_table" => "users",
     /*
     |--------------------------------------------------------------------------
+    | The max-w-xx of the auth card used on all pages.
+    */
+    "auth_card_max_w" => "md",
+    /*
+    |--------------------------------------------------------------------------
     | Enable or disable registration.
     */
     "enable_registration" => true,

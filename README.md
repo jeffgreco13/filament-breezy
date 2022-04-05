@@ -93,6 +93,8 @@ use JeffGreco13\FilamentBreezy\Http\Livewire\Auth\Register as FilamentBreezyRegi
 
 class Register extends FilamentBreezyRegister
 {
+    
+    public $consent_to_terms;
 
     protected function getFormSchema(): array
     {
@@ -100,13 +102,20 @@ class Register extends FilamentBreezyRegister
             Forms\Components\Checkbox::make('consent_to_terms')->label('I consent to the terms of service and privacy policy.')->required()
         ]);
     }
-
+    
+    // Use this method to append your new data to the Model::create() method. Remember to make sure this column is fillable in your model.
     protected function getPreparedData($data): array
     {
         $preparedData = parent::getPreparedData($data);
         $preparedData['consent_to_terms'] = $data['consent_to_terms'];
 
         return $preparedData;
+    }
+    
+    // Optionally, you can override the entire register() method to customize exactly what happens at registration
+    public function register()
+    {
+        //
     }
 ...
 ```

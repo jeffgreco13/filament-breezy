@@ -13,6 +13,7 @@ class MyProfile extends Page
     protected static string $view = "filament-breezy::filament.pages.my-profile";
 
     public User $user;
+    public $userData;
     public $new_password;
     public $new_password_confirmation;
     public $token_name;
@@ -31,7 +32,7 @@ class MyProfile extends Page
         return array_merge(parent::getForms(), [
             "updateProfileForm" => $this->makeForm()
                 ->schema($this->getUpdateProfileFormSchema())
-                ->model($this->user),
+                ->statePath('userData'),
             "updatePasswordForm" => $this->makeForm()->schema(
                 $this->getUpdatePasswordFormSchema()
             ),

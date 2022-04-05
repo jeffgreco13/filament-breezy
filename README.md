@@ -91,23 +91,27 @@ All pages within the auth flow are full-page Livewire components made to work wi
 
 use JeffGreco13\FilamentBreezy\Http\Livewire\Auth\Register as FilamentBreezyRegister;
 
+
 class Register extends FilamentBreezyRegister
 {
+    // Define the new attributes
+    public $consent_to_terms, $team_name;
     
-    public $consent_to_terms;
-
+    // Override the getFormSchema method and merge the default fields then add your own.
     protected function getFormSchema(): array
     {
         return array_merge(parent::getFormSchema(),[
-            Forms\Components\Checkbox::make('consent_to_terms')->label('I consent to the terms of service and privacy policy.')->required()
+            Forms\Components\Checkbox::make('consent_to_terms')->label('I consent to the terms of service and privacy policy.')->required(),
+            Forms\Components\TextInput::make("team_name")->required()
         ]);
     }
     
-    // Use this method to append your new data to the Model::create() method. Remember to make sure this column is fillable in your model.
-    protected function getPreparedData($data): array
+    // Use this method to modify the preparedData before the register() method is called.
+    protected function prepareModelData($data): array
     {
-        $preparedData = parent::getPreparedData($data);
-        $preparedData['consent_to_terms'] = $data['consent_to_terms'];
+        $preparedData = parent::prepareModelData($data);
+        $preparedData['consent_to_terms'] = $this->consent_to_terms;
+        $preparedData["team_name"] = $this->team_name;
 
         return $preparedData;
     }
@@ -115,7 +119,10 @@ class Register extends FilamentBreezyRegister
     // Optionally, you can override the entire register() method to customize exactly what happens at registration
     public function register()
     {
-        //
+        $preparedData = $this->prepareModelData($this->form->getState());
+        $team = Team::create(["name" => $preparedData["team_name"]]);
+        unset($preparedData["team_name"]);
+        // ...
     }
 ...
 ```

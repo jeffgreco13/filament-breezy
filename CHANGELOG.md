@@ -2,6 +2,14 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.2.11 - 2022-04-05
+
+## What's Changed
+
+- Allow resize of auth card from config. by @jeffgreco13 in https://github.com/jeffgreco13/filament-breezy/pull/43
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.2.10...v1.2.11
+
 ## v1.2.10 - 2022-03-26
 
 ## What's Changed

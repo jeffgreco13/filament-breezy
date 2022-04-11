@@ -3,28 +3,25 @@
 namespace JeffGreco13\FilamentBreezy\Http\Livewire\Auth;
 
 use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
+use Filament\Facades\Filament;
+use Filament\Forms\Components\Checkbox;
+use Filament\Forms\Components\TextInput;
 use Filament\Http\Livewire\Auth\Login as FilamentLogin;
 use Filament\Http\Livewire\Concerns\CanNotify;
 use Filament\Http\Responses\Auth\Contracts\LoginResponse;
-use Filament\Forms\Components\Checkbox;
-use Filament\Forms\Components\TextInput;
-use Filament\Facades\Filament;
 use Illuminate\Contracts\View\View;
-
 
 class Login extends FilamentLogin
 {
     use CanNotify;
 
-
     public function authenticate(): ?LoginResponse
     {
-
         $data = $this->form->getState();
 
         // login field
-        $fieldType  = config('filament-breezy.fallback_login_field') == 'email' ? 'email' : 'login';
-        // user column 
+        $fieldType = config('filament-breezy.fallback_login_field') == 'email' ? 'email' : 'login';
+        // user column
         $loginColumn = filter_var($data[$fieldType], FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 
         try {
@@ -38,7 +35,7 @@ class Login extends FilamentLogin
             return null;
         }
 
-        if (!Filament::auth()->attempt([
+        if (! Filament::auth()->attempt([
             $loginColumn => $data[$fieldType],
             'password' => $data['password'],
         ], $data['remember'])) {
@@ -49,7 +46,6 @@ class Login extends FilamentLogin
 
         return app(LoginResponse::class);
     }
-
 
     protected function getFormSchema(): array
     {
@@ -67,8 +63,6 @@ class Login extends FilamentLogin
             ->label(__('filament::login.fields.remember.label')),
         ];
     }
-
-
 
     public function mount(): void
     {

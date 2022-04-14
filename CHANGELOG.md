@@ -2,6 +2,15 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.2.13 - 2022-04-14
+
+## What's Changed
+
+- fix: redirect to login during email verify by @jeffgreco13 in https://github.com/jeffgreco13/filament-breezy/pull/48
+- Updated a recently added translation string for Spanish by @pathros in https://github.com/jeffgreco13/filament-breezy/pull/47
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.2.12...v1.2.13
+
 ## v1.2.12 - 2022-04-14
 
 ## What's Changed

@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use JeffGreco13\FilamentBreezy\Http\Controllers\EmailVerificationController;
+use Filament\Http\Middleware\Authenticate;
 
 Route::domain(config("filament.domain"))
     ->middleware(config("filament.middleware.base"))
@@ -19,14 +20,14 @@ Route::domain(config("filament.domain"))
         );
 
         Route::get("email/verify", config('filament-breezy.email_verification_component_path'))
-            ->middleware("throttle:6,1")
+            ->middleware(["throttle:6,1","auth"])
             ->name("verification.notice");
 
         Route::get("email/verify/{id}/{hash}", [
             EmailVerificationController::class,
             "__invoke",
         ])
-            ->middleware("signed")
+            ->middleware([Authenticate::class,"signed"])
             ->name("verification.verify");
 
         Route::middleware(config("filament.middleware.auth"))->group(

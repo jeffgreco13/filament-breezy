@@ -47,6 +47,14 @@ return [
     */
     "enable_registration" => true,
     /*
+
+    /*
+    |--------------------------------------------------------------------------
+    | Extra column to check in users table if a user doesn't enter a valid email. Example: username
+    */
+    "fallback_login_field" => "email",
+    
+    /*  
     |--------------------------------------------------------------------------
     | Path to registration Livewire component.
     */

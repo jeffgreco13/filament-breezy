@@ -2,6 +2,7 @@
 
 return [
     "login" => [
+        "username_or_email" => "Identifiant ou E-mail",
         "forgot_password_link" => "Mot de passe oublié ?",
         "create_an_account" => "Créer un compte",
     ],

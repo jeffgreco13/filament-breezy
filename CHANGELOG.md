@@ -2,6 +2,15 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.2.12 - 2022-04-14
+
+## What's Changed
+
+- fix: switch so statePath on Profile page by @jeffgreco13 in https://github.com/jeffgreco13/filament-breezy/pull/44
+- Feature:  login with fallback column by @jvkassi in https://github.com/jeffgreco13/filament-breezy/pull/46
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.2.11...v1.2.12
+
 ## v1.2.11 - 2022-04-05
 
 ## What's Changed

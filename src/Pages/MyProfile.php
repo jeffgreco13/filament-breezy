@@ -2,7 +2,6 @@
 
 namespace JeffGreco13\FilamentBreezy\Pages;
 
-use App\Models\User;
 use Filament\Forms;
 use Filament\Pages\Page;
 use Illuminate\Support\Facades\Hash;
@@ -12,7 +11,7 @@ class MyProfile extends Page
     protected static ?string $navigationIcon = "heroicon-o-document-text"; //config
     protected static string $view = "filament-breezy::filament.pages.my-profile";
 
-    public User $user;
+    public $user;
     public $userData;
     public $new_password;
     public $new_password_confirmation;

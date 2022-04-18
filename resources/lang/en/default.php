@@ -70,8 +70,9 @@ return [
         ],
     ],
     "fields" => [
-        "name" => "Name",
         "email" => "Email",
+        "login" => "login",
+        "name" => "Name",
         "password" => "Password",
         "password_confirm" => "Password confirm",
         "new_password" => "New password",

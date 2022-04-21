@@ -72,8 +72,9 @@ return [
         ],
     ],
     "fields" => [
-        "name" => "Nome",
         "email" => "E-mail",
+        "login" => "Usuário"
+        "name" => "Nome",
         "password" => "Senha",
         "password_confirm" => "Confirme a senha",
         "new_password" => "Nova senha",

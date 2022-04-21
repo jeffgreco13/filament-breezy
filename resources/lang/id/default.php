@@ -72,8 +72,9 @@ return [
         ],
     ],
     "fields" => [
+        "email" => "Surel",
+        "login" => "Pengguna"
         "name" => "Nama",
-        "email" => "Email",
         "password" => "Kata Sandi",
         "password_confirm" => "Konfirmasi Kata Sandi",
         "new_password" => "Kata Sandi Baru",

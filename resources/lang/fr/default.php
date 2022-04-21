@@ -57,8 +57,9 @@ return [
         ],
     ],
     "fields" => [
+        "email" => "E-mail", 
+        "login" => "Identifiant",
         "name" => "Nom",
-        "email" => "E-mail",
         "password" => "Mot de passe",
         "password_confirm" => "Confirmer le mot de passe",
         "new_password" => "Nouveau mot de passe",

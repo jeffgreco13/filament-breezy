@@ -70,8 +70,9 @@ return [
         ],
     ],
     "fields" => [
-        "name" => "Nombre",
         "email" => "Correo electrónico",
+        "login" => "Pengguna",
+        "name" => "Nombre",
         "password" => "Contraseña",
         "password_confirm" => "Confirmar contraseña",
         "new_password" => "Nueva contraseña",

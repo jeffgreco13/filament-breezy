@@ -2,6 +2,21 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.2.14 - 2022-04-21
+
+## What's Changed
+
+- Added dutch translation by @annejan89 in https://github.com/jeffgreco13/filament-breezy/pull/52
+- fix: dark mode on auth-card form by @ashleyhood in https://github.com/jeffgreco13/filament-breezy/pull/51
+- Add translations for login field by @jvkassi in https://github.com/jeffgreco13/filament-breezy/pull/49
+
+## New Contributors
+
+- @annejan89 made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/52
+- @ashleyhood made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/51
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.2.13...v1.2.14
+
 ## v1.2.13 - 2022-04-14
 
 ## What's Changed

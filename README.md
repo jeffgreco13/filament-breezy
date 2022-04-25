@@ -85,7 +85,31 @@ Or, force verified emails on your entire Filament Admin by adding the `EnsureEma
 
 ### Extending and Overriding Components
 
-All pages within the auth flow are full-page Livewire components made to work with Filament Forms. So you can easily extend any component to add your own fields and actions:
+All pages within the auth flow are full-page Livewire components made to work with Filament Forms. So you can easily extend any component to add your own fields and actions.
+
+You can instruct Breezy to use any custom components by updating the paths in the filament-breezy config file:
+
+```php
+/*  
+|--------------------------------------------------------------------------
+| Path to registration Livewire component.
+*/
+"registration_component_path" => \JeffGreco13\FilamentBreezy\Http\Livewire\Auth\Register::class,
+/*
+|--------------------------------------------------------------------------
+| Path to password reset Livewire component.
+*/
+"password_reset_component_path" => \JeffGreco13\FilamentBreezy\Http\Livewire\Auth\ResetPassword::class,
+/*
+|--------------------------------------------------------------------------
+| Path to email verification Livewire component.
+*/
+"email_verification_component_path" => \JeffGreco13\FilamentBreezy\Http\Livewire\Auth\Verify::class,
+```
+
+*NOTE:* Remember, the Login path is set in the Filament config, not in the filament-breezy config.
+
+Here is an example of extending the BreezyRegister class to add new fields to registration:
 
 ```php
 
@@ -126,6 +150,36 @@ class Register extends FilamentBreezyRegister
     }
 ...
 ```
+
+#### Extending and Customizing the Profile Page
+
+Similar to above, you can add new fields to your Profile forms by extending the Filament Page:
+
+```php
+namespace App\Filament\Pages;
+
+use JeffGreco13\FilamentBreezy\Pages\MyProfile as BaseProfile;
+use Filament\Forms;
+
+class MyProfile extends BaseProfile
+{
+
+  // ..
+
+  protected function getUpdateProfileFormSchema(): array
+    {
+        return array_merge(parent::getUpdateProfileFormSchema(), [
+            Forms\Components\TextInput::make("job_title"),
+            Forms\Components\Checkbox::make("marketing_consent")->label(
+                "I consent to receive email notifications....."
+            ),
+        ]);
+    }
+```
+
+You will then need to set `"enable_profile_page" => false,` in filament-breezy config to unregister the default Profile page.
+
+*NOTE:* in order to add new sections to the Profile page, you will need to extend the class and publish/create your own views. The above method will only allow for adding new fields to the existing Personal Information or Password forms.
 
 ### Sanctum API Tokens
 

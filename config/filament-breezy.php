@@ -9,11 +9,11 @@ return [
     */
     "enable_profile_page" => true,
     /*
-    | Whether or not to automatically link the My Profile page in the user menu of Filament.
+    | Whether or not to automatically link the My Profile page in the user menu of Filament. NOTE: if enable_profile_page => false then this value is ignored and you'll need to register the item in your service provider manually.
     */
     "show_profile_page_in_user_menu" => true,
     /*
-    | Whether or not to automatically display the My Profile page in the navigation of Filament.
+    | Whether or not to automatically display the My Profile page in the navigation of Filament. NOTE: if enable_profile_page => false then this value is ignored.
     */
     "show_profile_page_in_navbar" => false,
     /*
@@ -53,8 +53,8 @@ return [
     | Extra column to check in users table if a user doesn't enter a valid email. Example: username
     */
     "fallback_login_field" => "email",
-    
-    /*  
+
+    /*
     |--------------------------------------------------------------------------
     | Path to registration Livewire component.
     */

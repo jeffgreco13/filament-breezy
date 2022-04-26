@@ -18,6 +18,10 @@ The missing toolkit from Filament Admin with Breeze-like functionality. Includes
 ![Screenshot of Register](./art/register.png)
 ![Screenshot of Reset](./art/reset.png)
 ![Screenshot of Reset](./art/reset-step2.png)
+![Screenshot of Two Factor codes](./art/2fa-challenge.png)
+![Screenshot of Two Factor codes](./art/2fa-codes.png)
+![Screenshot of Password confirmation action](./art/confirm-password.png)
+![Screenshot of Sanctum tokens](./art/sanctum.png)
 
 ## Installation
 
@@ -49,6 +53,40 @@ Optionally, you can publish the views using:
 
 ```bash
 php artisan vendor:publish --tag="filament-breezy-views"
+```
+
+### Enable Two Factor Authentication (2FA)
+
+By default, 2FA is disabled. To enable it Two Factor Authentication in your app:
+
+1. Set `enable_2fa => true` in the filament-breezy config:
+
+```php
+/*
+|--------------------------------------------------------------------------
+| Enable Two-Factor Authentication (2FA).
+*/
+"enable_2fa" => true,
+```
+
+*NOTE:* if you are using a table other than `users`, you can update the table name in the filament-breezy config or modify the published migration.
+
+2. Publish and run the migrations:
+
+```bash
+php artisan vendor:publish --tag="filament-breezy-migrations"
+php artisan migrate
+```
+
+3. Add `JeffGreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable` to your User model:
+
+```php
+use JeffGreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
+
+class User extends Authenticatable
+{
+    use HasApiTokens, HasFactory, Notifiable, TwoFactorAuthenticatable;
+    ...
 ```
 
 ## Usage
@@ -177,9 +215,39 @@ class MyProfile extends BaseProfile
     }
 ```
 
-You will then need to set `"enable_profile_page" => false,` in filament-breezy config to unregister the default Profile page.
+You will then need to set `"enable_profile_page" => false,` in filament-breezy config to unregister the default Profile page. When you set `"enable_profile_page" => false,` then `"show_profile_page_in_user_menu" => true` is ignored and you will need to [manually register a new item](https://filamentphp.com/docs/2.x/admin/navigation#customizing-the-user-menu) for the user menu within your service provider:
+
+```php
+use App\Filament\Pages\MyProfile;
+
+Filament::serving(function () {
+    
+    // ..
+    
+    Filament::registerUserMenuItems([
+        'account' => UserMenuItem::make()->url(MyProfile::getUrl()),
+    ]);
+    
+    // ..
+    
+});
+```
 
 *NOTE:* in order to add new sections to the Profile page, you will need to extend the class and publish/create your own views. The above method will only allow for adding new fields to the existing Personal Information or Password forms.
+
+### NEW: Password Confirmation Button Action
+
+Since v1.3.0, Breezy has a `PasswordButtonAction` shortcut which extends the default Page\ButtonAction class. This button action will prompt the user to enter their password for sensitive actions (eg. delete), then will not ask for password again for the # of seconds defined in the filament-breezy config (default 300s).
+
+```php
+use JeffGreco13\FilamentBreezy\Actions\PasswordButtonAction;
+
+PasswordButtonAction::make('secure_action')->action('doSecureAction')
+
+// Customize the icon, action, modalHeading and anything else.
+PasswordButtonAction::make('secure_action')->label('Delete')->icon('heroicon-s-shield-check')->modalHeading('Confirmation')->action(fn()=>$this->doAction())
+```
+
 
 ### Sanctum API Tokens
 
@@ -192,17 +260,6 @@ You can then control the available permissions abilities from the config, which 
 `"sanctum_permissions" => ["create", "read", "update", "delete"]`
 
 Follow the Sanctum instructions for authenticating requests as usual.
-
-### Flash Notifications
-
-The Breezy auth layouts use the `<x-filament::notification>` component to flash messages to the page. Flash messages in the same way as you would with `$this->notify()` but instead flash to the session:
-
-```php
-session()->flash("notify", [
-    "status" => "success",
-    "message" => "Check your inbox for instructions.",
-]);
-```
 
 ## Testing
 

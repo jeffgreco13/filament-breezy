@@ -2,6 +2,7 @@
 
 namespace JeffGreco13\FilamentBreezy\Http\Livewire\Auth;
 
+use Filament\Facades\Filament;
 use Filament\Forms;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\View\View;
@@ -20,7 +21,7 @@ class Register extends Component implements Forms\Contracts\HasForms
 
     public function mount()
     {
-        if (auth()->check()) {
+        if (Filament::auth()->check()) {
             return redirect(config("filament.home_url"));
         }
     }

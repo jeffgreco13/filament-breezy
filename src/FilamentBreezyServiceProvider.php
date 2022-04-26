@@ -8,7 +8,6 @@ use Filament\PluginServiceProvider;
 use JeffGreco13\FilamentBreezy\Commands\FilamentBreezyCommand;
 use JeffGreco13\FilamentBreezy\Http\Livewire\Auth;
 use JeffGreco13\FilamentBreezy\Http\Livewire\BreezySanctumTokens;
-use JeffGreco13\FilamentBreezy\Http\Livewire\BreezyTwoFactorForm;
 use JeffGreco13\FilamentBreezy\Pages\MyProfile;
 use Livewire\Livewire;
 use Spatie\LaravelPackageTools\Package;

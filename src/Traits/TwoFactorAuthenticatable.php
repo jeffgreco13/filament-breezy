@@ -1,7 +1,7 @@
 <?php
+
 namespace JeffGreco13\FilamentBreezy\Traits;
 
-use JeffGreco13\FilamentBreezy\FilamentBreezy;
 use BaconQrCode\Renderer\Color\Rgb;
 use BaconQrCode\Renderer\Image\SvgImageBackEnd;
 use BaconQrCode\Renderer\ImageRenderer;
@@ -10,10 +10,10 @@ use BaconQrCode\Renderer\RendererStyle\RendererStyle;
 use BaconQrCode\Writer;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use JeffGreco13\FilamentBreezy\FilamentBreezy;
 
 trait TwoFactorAuthenticatable
 {
-
     public function enableTwoFactorAuthentication(FilamentBreezy $breezy)
     {
         $this->forceFill([
@@ -35,6 +35,7 @@ trait TwoFactorAuthenticatable
     {
         return ! is_null($this->two_factor_secret);
     }
+
     public function getHasConfirmedTwoFactorAttribute()
     {
         return ! is_null($this->two_factor_secret) && ! is_null($this->two_factor_confirmed_at);
@@ -43,7 +44,8 @@ trait TwoFactorAuthenticatable
     public function generateRecoveryCodes()
     {
         return encrypt(json_encode(Collection::times(8, function () {
-            return Str::random(10).'-'.Str::random(10);;
+            return Str::random(10).'-'.Str::random(10);
+            ;
         })->all()));
     }
 
@@ -64,7 +66,7 @@ trait TwoFactorAuthenticatable
         $svg = (new Writer(
             new ImageRenderer(
                 new RendererStyle(192, 1, null, null, Fill::uniformColor(new Rgb(255, 255, 255), new Rgb(45, 55, 72))),
-                new SvgImageBackEnd
+                new SvgImageBackEnd()
             )
         ))->writeString($this->twoFactorQrCodeUrl($breezy));
 
@@ -82,6 +84,6 @@ trait TwoFactorAuthenticatable
 
     public function verifyTwoFactor($code, FilamentBreezy $breezy)
     {
-        return $breezy->verify(decrypt($this->two_factor_secret),$code);
+        return $breezy->verify(decrypt($this->two_factor_secret), $code);
     }
 }

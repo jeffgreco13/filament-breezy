@@ -16,23 +16,28 @@ class Login extends FilamentLogin
 {
     use CanNotify;
 
-    public $fieldType, $loginColumn, $showCodeForm = false, $usingRecoveryCode = false, $code, $user;
+    public $fieldType;
+    public $loginColumn;
+    public $showCodeForm = false;
+    public $usingRecoveryCode = false;
+    public $code;
+    public $user;
 
     public function toggleRecoveryCode()
     {
         $this->resetErrorBag('code');
         $this->code = null;
-        $this->usingRecoveryCode = !$this->usingRecoveryCode;
+        $this->usingRecoveryCode = ! $this->usingRecoveryCode;
     }
 
     public function hasValidCode()
     {
-        if ($this->usingRecoveryCode){
+        if ($this->usingRecoveryCode) {
             return $this->code && collect($this->user->recoveryCodes())->first(function ($code) {
                 return hash_equals($this->code, $code) ? $code : false;
             });
         } else {
-            return $this->code && app(FilamentBreezy::class)->verify(decrypt($this->user->two_factor_secret),$this->code);
+            return $this->code && app(FilamentBreezy::class)->verify(decrypt($this->user->two_factor_secret), $this->code);
         }
     }
 
@@ -58,45 +63,48 @@ class Login extends FilamentLogin
         // login field
         $this->fieldType = config('filament-breezy.fallback_login_field') == 'email' ? 'email' : 'login';
         // user column
-        if (isset($data[$this->fieldType])){
+        if (isset($data[$this->fieldType])) {
             $this->loginColumn = filter_var($data[$this->fieldType], FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
         }
 
-        if (config('filament-breezy.enable_2fa')){
-
-            if ($this->showCodeForm){
+        if (config('filament-breezy.enable_2fa')) {
+            if ($this->showCodeForm) {
                 // Verify the code, then attempt to log them in now.
-                if (!$this->hasValidCode()){
+                if (! $this->hasValidCode()) {
                     $this->addError('code', __('filament-breezy::default.profile.2fa.confirmation.invalid_code'));
+
                     return null;
                 }
-                Filament::auth()->login($this->user,$this->remember);
+                Filament::auth()->login($this->user, $this->remember);
+
                 return app(LoginResponse::class);
             } else {
                 // Validate the user's login details in order to show them the code challenge.
                 $this->doRateLimit();
 
                 $model = Filament::auth()->getProvider()->getModel();
-                $this->user = $model::where($this->loginColumn,$data[$this->fieldType])->first();
+                $this->user = $model::where($this->loginColumn, $data[$this->fieldType])->first();
 
                 // If the user hasn't setup 2FA, authenticate and exit early.
-                if (!$this->user->has_confirmed_two_factor){
+                if (! $this->user->has_confirmed_two_factor) {
                     // THIS is where we can force 2fa...
                     return $this->attemptAuth($data);
                 }
 
-                if (!$this->user || ! Filament::auth()->getProvider()->validateCredentials($this->user, ['password' => $data['password']])){
+                if (! $this->user || ! Filament::auth()->getProvider()->validateCredentials($this->user, ['password' => $data['password']])) {
                     $this->addError($this->fieldType, __('filament::login.messages.failed'));
+
                     return null;
                 }
 
                 $this->password = null;
                 $this->showCodeForm = true;
+
                 return null;
             }
-
         } else {
             $this->doRateLimit();
+
             return $this->attemptAuth($data);
         }
     }
@@ -130,7 +138,7 @@ class Login extends FilamentLogin
         return [
             TextInput::make('code')
                 ->label($this->usingRecoveryCode ? __('filament-breezy::default.fields.2fa_recovery_code') : __('filament-breezy::default.fields.2fa_code'))
-                ->placeholder($this->usingRecoveryCode ? __('filament-breezy::default.two_factor.recovery_code_placeholder') : __('filament-breezy::default.two_factor.code_placeholder') )->required(),
+                ->placeholder($this->usingRecoveryCode ? __('filament-breezy::default.two_factor.recovery_code_placeholder') : __('filament-breezy::default.two_factor.code_placeholder'))->required(),
         ];
     }
 
@@ -164,7 +172,7 @@ class Login extends FilamentLogin
 
     public function render(): View
     {
-        $view = view($this->showCodeForm?"filament-breezy::two-factor":"filament-breezy::login");
+        $view = view($this->showCodeForm ? "filament-breezy::two-factor" : "filament-breezy::login");
 
         $view->layout("filament::components.layouts.base", [
             "title" => __("filament::login.title"),

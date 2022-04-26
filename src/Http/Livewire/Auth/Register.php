@@ -2,13 +2,13 @@
 
 namespace JeffGreco13\FilamentBreezy\Http\Livewire\Auth;
 
+use Filament\Facades\Filament;
 use Filament\Forms;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
-use Filament\Facades\Filament;
 
 class Register extends Component implements Forms\Contracts\HasForms
 {

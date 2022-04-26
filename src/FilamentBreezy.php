@@ -2,7 +2,6 @@
 
 namespace JeffGreco13\FilamentBreezy;
 
-use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Contracts\Cache\Repository;
 use PragmaRX\Google2FA\Google2FA;
 
@@ -49,5 +48,4 @@ class FilamentBreezy
 
         return false;
     }
-
 }

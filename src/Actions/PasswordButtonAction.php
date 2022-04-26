@@ -2,12 +2,11 @@
 
 namespace JeffGreco13\FilamentBreezy\Actions;
 
-use Filament\Pages\Actions\ButtonAction;
 use Filament\Forms;
+use Filament\Pages\Actions\ButtonAction;
 
 class PasswordButtonAction extends ButtonAction
 {
-
     protected function isPasswordSessionValid()
     {
         return (session()->has('auth.password_confirmed_at') && (time() - session('auth.password_confirmed_at', 0)) < config('filament-breezy.password_confirmation_seconds'));
@@ -15,7 +14,7 @@ class PasswordButtonAction extends ButtonAction
 
     protected function setUp(): void
     {
-        if ($this->isPasswordSessionValid()){
+        if ($this->isPasswordSessionValid()) {
             // Password confirmation is still valid
             //
         } else {
@@ -36,7 +35,7 @@ class PasswordButtonAction extends ButtonAction
     public function call(array $data = [])
     {
         // If the session already has a cookie and it's still valid, we don't want to reset the time on it.
-        if ($this->isPasswordSessionValid()){
+        if ($this->isPasswordSessionValid()) {
         } else {
             session(['auth.password_confirmed_at' => time()]);
         }

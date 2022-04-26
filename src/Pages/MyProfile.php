@@ -5,8 +5,8 @@ namespace JeffGreco13\FilamentBreezy\Pages;
 use Filament\Facades\Filament;
 use Filament\Forms;
 use Filament\Pages\Page;
-use JeffGreco13\FilamentBreezy\Traits\HasBreezyTwoFactor;
 use Illuminate\Support\Facades\Hash;
+use JeffGreco13\FilamentBreezy\Traits\HasBreezyTwoFactor;
 
 class MyProfile extends Page
 {
@@ -129,7 +129,7 @@ class MyProfile extends Page
 
     protected static function getNavigationIcon(): string
     {
-        return config('filament-breezy.profile_page_icon','heroicon-o-document-text');
+        return config('filament-breezy.profile_page_icon', 'heroicon-o-document-text');
     }
 
     protected static function getNavigationGroup(): ?string

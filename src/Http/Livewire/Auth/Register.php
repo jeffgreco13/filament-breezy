@@ -8,6 +8,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
+use Filament\Facades\Filament;
 
 class Register extends Component implements Forms\Contracts\HasForms
 {
@@ -20,7 +21,7 @@ class Register extends Component implements Forms\Contracts\HasForms
 
     public function mount()
     {
-        if (auth()->check()) {
+        if (Filament::auth()->check()) {
             return redirect(config("filament.home_url"));
         }
     }

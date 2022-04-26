@@ -7,9 +7,15 @@ use Filament\Forms;
 
 class PasswordButtonAction extends ButtonAction
 {
+
+    protected function isPasswordSessionValid()
+    {
+        return (session()->has('auth.password_confirmed_at') && (time() - session('auth.password_confirmed_at', 0)) < config('filament-breezy.password_confirmation_seconds'));
+    }
+
     protected function setUp(): void
     {
-        if ((time() - session('auth.password_confirmed_at', 0)) < config('filament-breezy.password_confirmation_seconds')){
+        if ($this->isPasswordSessionValid()){
             // Password confirmation is still valid
             //
         } else {
@@ -29,7 +35,12 @@ class PasswordButtonAction extends ButtonAction
 
     public function call(array $data = [])
     {
-        session(['auth.password_confirmed_at' => time()]);
+        // If the session already has a cookie and it's still valid, we don't want to reset the time on it.
+        if ($this->isPasswordSessionValid()){
+        } else {
+            session(['auth.password_confirmed_at' => time()]);
+        }
+
         parent::call($data);
     }
 }

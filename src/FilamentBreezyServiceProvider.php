@@ -8,6 +8,7 @@ use Filament\PluginServiceProvider;
 use JeffGreco13\FilamentBreezy\Commands\FilamentBreezyCommand;
 use JeffGreco13\FilamentBreezy\Http\Livewire\Auth;
 use JeffGreco13\FilamentBreezy\Http\Livewire\BreezySanctumTokens;
+use JeffGreco13\FilamentBreezy\Http\Livewire\BreezyTwoFactorForm;
 use JeffGreco13\FilamentBreezy\Pages\MyProfile;
 use Livewire\Livewire;
 use Spatie\LaravelPackageTools\Package;
@@ -48,6 +49,7 @@ class FilamentBreezyServiceProvider extends PluginServiceProvider
                 BreezySanctumTokens::class
             );
         }
+
 
         if (config("filament-breezy.enable_profile_page") && config('filament-breezy.show_profile_page_in_user_menu')) {
             Filament::serving(function () {

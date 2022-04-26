@@ -2,6 +2,7 @@
 
 namespace JeffGreco13\FilamentBreezy\Http\Livewire\Auth;
 
+use Filament\Facades\Filament;
 use Filament\Forms;
 use Filament\Http\Livewire\Concerns\CanNotify;
 use Illuminate\Contracts\View\View;
@@ -16,9 +17,9 @@ class Verify extends Component implements Forms\Contracts\HasForms
 
     public function mount()
     {
-        if (auth()->check() && auth()->user()?->hasVerifiedEmail()) {
+        if (Filament::auth()->check() && Filament::auth()->user()?->hasVerifiedEmail()) {
             return redirect(config("filament.home_url"));
-        } elseif (! auth()->check()) {
+        } elseif (! Filament::auth()->check()) {
             // User is not logged in...
             return redirect(route('filament.auth.login'));
         }
@@ -26,7 +27,7 @@ class Verify extends Component implements Forms\Contracts\HasForms
 
     public function logout()
     {
-        auth()->logout();
+        Filament::auth()->logout();
         session()->invalidate();
         session()->regenerateToken();
 
@@ -35,7 +36,7 @@ class Verify extends Component implements Forms\Contracts\HasForms
 
     public function resend()
     {
-        auth()
+        Filament::auth()
             ->user()
             ->sendEmailVerificationNotification();
 

@@ -12,7 +12,7 @@ return [
             "label" => "Inscrever-se",
         ],
         "notification_unique" =>
-            "Já existe uma conta com este e-mail. Por favor, verifique."
+            "Já existe uma conta com este e-mail. Por favor, verifique.",
     ],
     "reset_password" => [
         "title" => "Esqueceu a senha",
@@ -54,7 +54,7 @@ return [
             "submit" => [
                 "label" => "Atualizar",
             ],
-            "notify" => "Senha alterada com sucesso!"
+            "notify" => "Senha alterada com sucesso!",
         ],
     ],
     "sanctum" => [
@@ -73,7 +73,7 @@ return [
     ],
     "fields" => [
         "email" => "E-mail",
-        "login" => "Usuário"
+        "login" => "Usuário",
         "name" => "Nome",
         "password" => "Senha",
         "password_confirm" => "Confirme a senha",
@@ -82,5 +82,5 @@ return [
         "token_name" => "Nome do Token",
         "abilities" => "Permissões",
     ],
-    "or" => "Ou"
+    "or" => "Ou",
 ];

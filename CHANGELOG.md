@@ -2,6 +2,25 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.3.0 - 2022-04-26
+
+## What's Changed
+
+- Bump dependabot/fetch-metadata from 1.3.0 to 1.3.1 by @dependabot in https://github.com/jeffgreco13/filament-breezy/pull/55
+- Add missing comma to PT_BR translation by @saade in https://github.com/jeffgreco13/filament-breezy/pull/54
+- 2fa by @jeffgreco13 in https://github.com/jeffgreco13/filament-breezy/pull/56
+
+## New Contributors
+
+- @saade made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/54
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.2.14...v1.3.0
+
+**NEW:**
+
+1. Two factor authentication!
+2. PasswordButtonAction with stored session
+
 ## v1.2.14 - 2022-04-21
 
 ## What's Changed

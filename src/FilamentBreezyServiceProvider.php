@@ -16,16 +16,11 @@ class FilamentBreezyServiceProvider extends PluginServiceProvider
 {
     public function configurePackage(Package $package): void
     {
-        /*
-         * This class is a Package Service Provider
-         *
-         * More info: https://github.com/spatie/laravel-package-tools
-         */
         $package
             ->name("filament-breezy")
             ->hasConfigFile()
             ->hasViews()
-            //->hasMigration("create_filament-breezy_table")
+            ->hasMigration('add_two_factor_columns_to_table')
             ->hasRoute("web")
             ->hasTranslations();
         //->hasCommand(FilamentBreezyCommand::class);

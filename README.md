@@ -78,7 +78,7 @@ php artisan vendor:publish --tag="filament-breezy-migrations"
 php artisan migrate
 ```
 
-3. Add `JeffGreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable` to your User model:
+3. Add `JeffGreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable` to your Authenticatable model:
 
 ```php
 use JeffGreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;

@@ -60,12 +60,10 @@ class Login extends FilamentLogin
         // Form data
         $data = $this->showCodeForm ? $this->twoFactorForm->getState() : $this->form->getState();
 
-        // login field
-        $this->fieldType = config('filament-breezy.fallback_login_field') == 'email' ? 'email' : 'login';
         // user column
-        if (isset($data[$this->fieldType])) {
-            $this->loginColumn = filter_var($data[$this->fieldType], FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-        }
+        $this->loginColumn = config('filament-breezy.fallback_login_field');
+        // login field
+        $this->fieldType = $this->loginColumn === 'email' ? 'email' : 'login';
 
         if (config('filament-breezy.enable_2fa')) {
             if ($this->showCodeForm) {

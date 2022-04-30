@@ -4,14 +4,13 @@ namespace JeffGreco13\FilamentBreezy\Http\Livewire\Auth;
 
 use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
 use Filament\Facades\Filament;
-use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\TextInput;
 use Filament\Http\Livewire\Auth\Login as FilamentLogin;
 use Filament\Http\Livewire\Concerns\CanNotify;
 use Filament\Http\Responses\Auth\Contracts\LoginResponse;
 use Illuminate\Contracts\View\View;
-use JeffGreco13\FilamentBreezy\FilamentBreezy;
 use Illuminate\Support\Arr;
+use JeffGreco13\FilamentBreezy\FilamentBreezy;
 
 class Login extends FilamentLogin
 {
@@ -138,16 +137,18 @@ class Login extends FilamentLogin
     protected function getFormSchema(): array
     {
         $parentSchema = parent::getFormSchema();
-        if ($this->loginColumn !== 'email'){
+        if ($this->loginColumn !== 'email') {
             // Pop off the email field and replace it with loginColumn
             unset($parentSchema[0]);
-            $parentSchema = Arr::prepend($parentSchema,
+            $parentSchema = Arr::prepend(
+                $parentSchema,
                 TextInput::make($this->loginColumn)
                     ->label(__('filament-breezy::default.fields.login'))
                     ->required()
                     ->autocomplete()
             );
         }
+
         return $parentSchema;
     }
 

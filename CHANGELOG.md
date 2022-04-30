@@ -2,6 +2,21 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.3.1 - 2022-04-30
+
+## What's Changed
+
+- [ar] Translate 2FA phrases by @mohamedsabil83 in https://github.com/jeffgreco13/filament-breezy/pull/57
+- Bugfix: Attempt to read property "has_confirmed_two_factor" by @oyepez003 in https://github.com/jeffgreco13/filament-breezy/pull/58
+- Bugfix: Avoid detecting loginColumn based on the username field value. by @oyepez003 in https://github.com/jeffgreco13/filament-breezy/pull/59
+- #59 also adds new functionality for setting the login column and docs from @jeffgreco13
+
+## New Contributors
+
+- @oyepez003 made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/58
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.3.0...v1.3.1
+
 ## v1.3.0 - 2022-04-26
 
 ## What's Changed

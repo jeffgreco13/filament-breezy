@@ -86,7 +86,7 @@ class Login extends FilamentLogin
                 $this->user = $model::where($this->loginColumn, $data[$this->fieldType])->first();
 
                 // If the user hasn't setup 2FA, authenticate and exit early.
-                if ($this->user && !$this->user->has_confirmed_two_factor) {
+                if ($this->user && ! $this->user->has_confirmed_two_factor) {
                     // THIS is where we can force 2fa...
                     return $this->attemptAuth($data);
                 }

@@ -11,12 +11,12 @@ use Filament\Http\Livewire\Concerns\CanNotify;
 use Filament\Http\Responses\Auth\Contracts\LoginResponse;
 use Illuminate\Contracts\View\View;
 use JeffGreco13\FilamentBreezy\FilamentBreezy;
+use Illuminate\Support\Arr;
 
 class Login extends FilamentLogin
 {
     use CanNotify;
 
-    public $fieldType;
     public $loginColumn;
     public $showCodeForm = false;
     public $usingRecoveryCode = false;
@@ -46,7 +46,7 @@ class Login extends FilamentLogin
         try {
             $this->rateLimit(5);
         } catch (TooManyRequestsException $exception) {
-            $this->addError($this->fieldType, __('filament::login.messages.throttled', [
+            $this->addError($this->loginColumn, __('filament::login.messages.throttled', [
                 'seconds' => $exception->secondsUntilAvailable,
                 'minutes' => ceil($exception->secondsUntilAvailable / 60),
             ]));
@@ -59,11 +59,6 @@ class Login extends FilamentLogin
     {
         // Form data
         $data = $this->showCodeForm ? $this->twoFactorForm->getState() : $this->form->getState();
-
-        // user column
-        $this->loginColumn = config('filament-breezy.fallback_login_field');
-        // login field
-        $this->fieldType = $this->loginColumn === 'email' ? 'email' : 'login';
 
         if (config('filament-breezy.enable_2fa')) {
             if ($this->showCodeForm) {
@@ -81,7 +76,7 @@ class Login extends FilamentLogin
                 $this->doRateLimit();
 
                 $model = Filament::auth()->getProvider()->getModel();
-                $this->user = $model::where($this->loginColumn, $data[$this->fieldType])->first();
+                $this->user = $model::where($this->loginColumn, $data[$this->loginColumn])->first();
 
                 // If the user hasn't setup 2FA, authenticate and exit early.
                 if (! $this->user->has_confirmed_two_factor) {
@@ -90,7 +85,7 @@ class Login extends FilamentLogin
                 }
 
                 if (! $this->user || ! Filament::auth()->getProvider()->validateCredentials($this->user, ['password' => $data['password']])) {
-                    $this->addError($this->fieldType, __('filament::login.messages.failed'));
+                    $this->addError($this->loginColumn, __('filament::login.messages.failed'));
 
                     return null;
                 }
@@ -111,10 +106,10 @@ class Login extends FilamentLogin
     {
         // ->attempt will actually log the person in, then the response sends them to the dashboard. We need to catch the auth, show the code prompt, then log them in.
         if (! Filament::auth()->attempt([
-            $this->loginColumn => $data[$this->fieldType],
+            $this->loginColumn => $data[$this->loginColumn],
             'password' => $data['password'],
         ], $data['remember'])) {
-            $this->addError($this->fieldType, __('filament::login.messages.failed'));
+            $this->addError($this->loginColumn, __('filament::login.messages.failed'));
 
             return null;
         }
@@ -142,26 +137,32 @@ class Login extends FilamentLogin
 
     protected function getFormSchema(): array
     {
-        return config('filament-breezy.fallback_login_field') == 'email' ?
-        parent::getFormSchema() : [
-            TextInput::make('login')
-            ->label(__('filament-breezy::default.fields.login'))
-            ->required()
-            ->autocomplete(),
-            TextInput::make('password')
-            ->label(__('filament::login.fields.password.label'))
-            ->password()
-                ->required(),
-            Checkbox::make('remember')
-            ->label(__('filament::login.fields.remember.label')),
-        ];
+        $parentSchema = parent::getFormSchema();
+        if ($this->loginColumn !== 'email'){
+            // Pop off the email field and replace it with loginColumn
+            unset($parentSchema[0]);
+            $parentSchema = Arr::prepend($parentSchema,
+                TextInput::make($this->loginColumn)
+                    ->label(__('filament-breezy::default.fields.login'))
+                    ->required()
+                    ->autocomplete()
+            );
+        }
+        return $parentSchema;
+    }
+
+    public function boot(): void
+    {
+        // user column
+        $this->loginColumn = config('filament-breezy.fallback_login_field');
     }
 
     public function mount(): void
     {
         parent::mount();
-        if ($email = request()->query("email", "")) {
-            $this->form->fill(["email" => $email]);
+
+        if ($login = request()->query($this->loginColumn, "")) {
+            $this->form->fill([$this->loginColumn => $login]);
         }
         if (request()->query("reset")) {
             $this->notify("success", __("passwords.reset"), true);

@@ -115,7 +115,7 @@ return [
     ],
     "fields" => [
         "email" => "Email",
-        "login" => "login",
+        "login" => "Login",
         "name" => "Name",
         "password" => "Password",
         "password_confirm" => "Password confirm",

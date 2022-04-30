@@ -235,6 +235,24 @@ Filament::serving(function () {
 
 *NOTE:* in order to add new sections to the Profile page, you will need to extend the class and publish/create your own views. The above method will only allow for adding new fields to the existing Personal Information or Password forms.
 
+
+#### Using a Column Other Than email for Login
+
+You may want to authenticate your users using a column other than `email` in your Authenticatable model. After you have setup your database, you can change the column in the config:
+
+```php
+"fallback_login_field" => "username",
+```
+
+Optionally, update the field label in your language file:
+
+```php
+"fields" => [
+   //
+   "login" => "Username",
+   //
+```
+
 ### NEW: Password Confirmation Button Action
 
 Since v1.3.0, Breezy has a `PasswordButtonAction` shortcut which extends the default Page\ButtonAction class. This button action will prompt the user to enter their password for sensitive actions (eg. delete), then will not ask for password again for the # of seconds defined in the filament-breezy config (default 300s).

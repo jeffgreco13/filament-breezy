@@ -42,6 +42,12 @@ return [
     "users_table" => "users",
     /*
     |--------------------------------------------------------------------------
+    | The column to use for login/username authentication. NOTE: this may change to just 'login_field' in a later release.
+    */
+    "fallback_login_field" => "email",
+
+    /*
+    |--------------------------------------------------------------------------
     | Enable Two-Factor Authentication (2FA).
     */
     "enable_2fa" => false,
@@ -60,14 +66,6 @@ return [
     | Enable or disable registration.
     */
     "enable_registration" => true,
-    /*
-
-    /*
-    |--------------------------------------------------------------------------
-    | Extra column to check in users table if a user doesn't enter a valid email. Example: username
-    */
-    "fallback_login_field" => "email",
-
     /*
     |--------------------------------------------------------------------------
     | Path to registration Livewire component.

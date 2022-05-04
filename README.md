@@ -18,6 +18,10 @@ The missing toolkit from Filament Admin with Breeze-like functionality. Includes
 ![Screenshot of Register](./art/register.png)
 ![Screenshot of Reset](./art/reset.png)
 ![Screenshot of Reset](./art/reset-step2.png)
+![Screenshot of Two Factor codes](./art/2fa-challenge.png)
+![Screenshot of Two Factor codes](./art/2fa-codes.png)
+![Screenshot of Password confirmation action](./art/confirm-password.png)
+![Screenshot of Sanctum tokens](./art/sanctum.png)
 
 ## Installation
 
@@ -49,6 +53,40 @@ Optionally, you can publish the views using:
 
 ```bash
 php artisan vendor:publish --tag="filament-breezy-views"
+```
+
+### Enable Two Factor Authentication (2FA)
+
+By default, 2FA is disabled. To enable it Two Factor Authentication in your app:
+
+1. Set `enable_2fa => true` in the filament-breezy config:
+
+```php
+/*
+|--------------------------------------------------------------------------
+| Enable Two-Factor Authentication (2FA).
+*/
+"enable_2fa" => true,
+```
+
+*NOTE:* if you are using a table other than `users`, you can update the table name in the filament-breezy config or modify the published migration.
+
+2. Publish and run the migrations:
+
+```bash
+php artisan vendor:publish --tag="filament-breezy-migrations"
+php artisan migrate
+```
+
+3. Add `JeffGreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable` to your Authenticatable model:
+
+```php
+use JeffGreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
+
+class User extends Authenticatable
+{
+    use HasApiTokens, HasFactory, Notifiable, TwoFactorAuthenticatable;
+    ...
 ```
 
 ## Usage
@@ -85,7 +123,31 @@ Or, force verified emails on your entire Filament Admin by adding the `EnsureEma
 
 ### Extending and Overriding Components
 
-All pages within the auth flow are full-page Livewire components made to work with Filament Forms. So you can easily extend any component to add your own fields and actions:
+All pages within the auth flow are full-page Livewire components made to work with Filament Forms. So you can easily extend any component to add your own fields and actions.
+
+You can instruct Breezy to use any custom components by updating the paths in the filament-breezy config file:
+
+```php
+/*  
+|--------------------------------------------------------------------------
+| Path to registration Livewire component.
+*/
+"registration_component_path" => \JeffGreco13\FilamentBreezy\Http\Livewire\Auth\Register::class,
+/*
+|--------------------------------------------------------------------------
+| Path to password reset Livewire component.
+*/
+"password_reset_component_path" => \JeffGreco13\FilamentBreezy\Http\Livewire\Auth\ResetPassword::class,
+/*
+|--------------------------------------------------------------------------
+| Path to email verification Livewire component.
+*/
+"email_verification_component_path" => \JeffGreco13\FilamentBreezy\Http\Livewire\Auth\Verify::class,
+```
+
+*NOTE:* Remember, the Login path is set in the Filament config, not in the filament-breezy config.
+
+Here is an example of extending the BreezyRegister class to add new fields to registration:
 
 ```php
 
@@ -127,6 +189,84 @@ class Register extends FilamentBreezyRegister
 ...
 ```
 
+#### Extending and Customizing the Profile Page
+
+Similar to above, you can add new fields to your Profile forms by extending the Filament Page:
+
+```php
+namespace App\Filament\Pages;
+
+use JeffGreco13\FilamentBreezy\Pages\MyProfile as BaseProfile;
+use Filament\Forms;
+
+class MyProfile extends BaseProfile
+{
+
+  // ..
+
+  protected function getUpdateProfileFormSchema(): array
+    {
+        return array_merge(parent::getUpdateProfileFormSchema(), [
+            Forms\Components\TextInput::make("job_title"),
+            Forms\Components\Checkbox::make("marketing_consent")->label(
+                "I consent to receive email notifications....."
+            ),
+        ]);
+    }
+```
+
+You will then need to set `"enable_profile_page" => false,` in filament-breezy config to unregister the default Profile page. When you set `"enable_profile_page" => false,` then `"show_profile_page_in_user_menu" => true` is ignored and you will need to [manually register a new item](https://filamentphp.com/docs/2.x/admin/navigation#customizing-the-user-menu) for the user menu within your service provider:
+
+```php
+use App\Filament\Pages\MyProfile;
+
+Filament::serving(function () {
+    
+    // ..
+    
+    Filament::registerUserMenuItems([
+        'account' => UserMenuItem::make()->url(MyProfile::getUrl()),
+    ]);
+    
+    // ..
+    
+});
+```
+
+*NOTE:* in order to add new sections to the Profile page, you will need to extend the class and publish/create your own views. The above method will only allow for adding new fields to the existing Personal Information or Password forms.
+
+
+#### Using a Column Other Than email for Login
+
+You may want to authenticate your users using a column other than `email` in your Authenticatable model. After you have setup your database, you can change the column in the config:
+
+```php
+"fallback_login_field" => "username",
+```
+
+Optionally, update the field label in your language file:
+
+```php
+"fields" => [
+   //
+   "login" => "Username",
+   //
+```
+
+### NEW: Password Confirmation Button Action
+
+Since v1.3.0, Breezy has a `PasswordButtonAction` shortcut which extends the default Page\ButtonAction class. This button action will prompt the user to enter their password for sensitive actions (eg. delete), then will not ask for password again for the # of seconds defined in the filament-breezy config (default 300s).
+
+```php
+use JeffGreco13\FilamentBreezy\Actions\PasswordButtonAction;
+
+PasswordButtonAction::make('secure_action')->action('doSecureAction')
+
+// Customize the icon, action, modalHeading and anything else.
+PasswordButtonAction::make('secure_action')->label('Delete')->icon('heroicon-s-shield-check')->modalHeading('Confirmation')->action(fn()=>$this->doAction())
+```
+
+
 ### Sanctum API Tokens
 
 The most recent version of Laravel include Sanctum, but if you don't already have the package follow the [installation instructions here](https://laravel.com/docs/8.x/sanctum#installation).
@@ -138,17 +278,6 @@ You can then control the available permissions abilities from the config, which 
 `"sanctum_permissions" => ["create", "read", "update", "delete"]`
 
 Follow the Sanctum instructions for authenticating requests as usual.
-
-### Flash Notifications
-
-The Breezy auth layouts use the `<x-filament::notification>` component to flash messages to the page. Flash messages in the same way as you would with `$this->notify()` but instead flash to the session:
-
-```php
-session()->flash("notify", [
-    "status" => "success",
-    "message" => "Check your inbox for instructions.",
-]);
-```
 
 ## Testing
 

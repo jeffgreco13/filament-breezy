@@ -2,27 +2,31 @@
 
 namespace JeffGreco13\FilamentBreezy\Pages;
 
+use Filament\Facades\Filament;
 use Filament\Forms;
 use Filament\Pages\Page;
 use Illuminate\Support\Facades\Hash;
+use JeffGreco13\FilamentBreezy\Traits\HasBreezyTwoFactor;
 
 class MyProfile extends Page
 {
-    protected static ?string $navigationIcon = "heroicon-o-document-text"; //config
+    use HasBreezyTwoFactor;
+
     protected static string $view = "filament-breezy::filament.pages.my-profile";
 
     public $user;
     public $userData;
+    // Password
     public $new_password;
     public $new_password_confirmation;
+    // Sanctum tokens
     public $token_name;
     public $abilities = [];
     public $plain_text_token;
-    public $hasTeams;
 
     public function mount()
     {
-        $this->user = auth()->user();
+        $this->user = Filament::auth()->user();
         $this->updateProfileForm->fill($this->user->toArray());
     }
 
@@ -37,6 +41,9 @@ class MyProfile extends Page
             ),
             "createApiTokenForm" => $this->makeForm()->schema(
                 $this->getCreateApiTokenFormSchema()
+            ),
+            "confirmTwoFactorForm" => $this->makeForm()->schema(
+                $this->getConfirmTwoFactorFormSchema()
             ),
         ]);
     }
@@ -80,7 +87,7 @@ class MyProfile extends Page
             "password" => Hash::make($state["new_password"]),
         ]);
         session()->forget("password_hash_web");
-        auth("web")->login($this->user);
+        Filament::auth()->login($this->user);
         $this->notify("success", __('filament-breezy::default.profile.password.notify'));
         $this->reset(["new_password", "new_password_confirmation"]);
     }
@@ -107,7 +114,7 @@ class MyProfile extends Page
         ) {
             return in_array($key, $indexes);
         })->toArray();
-        $this->plain_text_token = auth()->user()->createToken($state['token_name'], array_values($selected))->plainTextToken;
+        $this->plain_text_token = Filament::auth()->user()->createToken($state['token_name'], array_values($selected))->plainTextToken;
         $this->notify("success", __('filament-breezy::default.profile.sanctum.create.notify'));
         $this->emit('tokenCreated');
         $this->reset(['token_name']);
@@ -118,6 +125,11 @@ class MyProfile extends Page
         return [
             url()->current() => __('filament-breezy::default.profile.profile'),
         ];
+    }
+
+    protected static function getNavigationIcon(): string
+    {
+        return config('filament-breezy.profile_page_icon', 'heroicon-o-document-text');
     }
 
     protected static function getNavigationGroup(): ?string

@@ -9,13 +9,17 @@ return [
     */
     "enable_profile_page" => true,
     /*
-    | Whether or not to automatically link the My Profile page in the user menu of Filament.
+    | Whether or not to automatically link the My Profile page in the user menu of Filament. NOTE: if enable_profile_page => false then this value is ignored and you'll need to register the item in your service provider manually.
     */
     "show_profile_page_in_user_menu" => true,
     /*
-    | Whether or not to automatically display the My Profile page in the navigation of Filament.
+    | Whether or not to automatically display the My Profile page in the navigation of Filament. NOTE: if enable_profile_page => false then this value is ignored.
     */
     "show_profile_page_in_navbar" => false,
+    /*
+    | Customize the icon profile page icon in the navbar. Does not apply to the user menu.
+    */
+    "profile_page_icon" => 'heroicon-o-document-text',
     /*
     | Set an array that's compatible with the Filament Forms rules() method. You can also pass an instance of \Illuminate\Validation\Rules\Password::class. ex.\Illuminate\Validation\Rules\Password::min(8). Rules for required and confirmed are already set. These rules will apply to the My Profile, registration, and password reset forms.
     */
@@ -38,6 +42,22 @@ return [
     "users_table" => "users",
     /*
     |--------------------------------------------------------------------------
+    | The column to use for login/username authentication. NOTE: this may change to just 'login_field' in a later release.
+    */
+    "fallback_login_field" => "email",
+
+    /*
+    |--------------------------------------------------------------------------
+    | Enable Two-Factor Authentication (2FA).
+    */
+    "enable_2fa" => false,
+    /*
+    |--------------------------------------------------------------------------
+    | Number of seconds before asking the user to confirm their password in PasswordButtonAction again. 300 = 5 minutes
+    */
+    "password_confirmation_seconds" => 300,
+    /*
+    |--------------------------------------------------------------------------
     | The max-w-xx of the auth card used on all pages.
     */
     "auth_card_max_w" => "md",
@@ -47,14 +67,6 @@ return [
     */
     "enable_registration" => true,
     /*
-
-    /*
-    |--------------------------------------------------------------------------
-    | Extra column to check in users table if a user doesn't enter a valid email. Example: username
-    */
-    "fallback_login_field" => "email",
-    
-    /*  
     |--------------------------------------------------------------------------
     | Path to registration Livewire component.
     */

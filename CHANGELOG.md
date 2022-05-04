@@ -2,6 +2,14 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.3.2 - 2022-05-04
+
+## What's Changed
+
+- Add classnames to components by @jeffgreco13 in https://github.com/jeffgreco13/filament-breezy/pull/60
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.3.1...v1.3.2
+
 ## v1.3.1 - 2022-04-30
 
 ## What's Changed

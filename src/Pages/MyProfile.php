@@ -23,6 +23,13 @@ class MyProfile extends Page
     public $token_name;
     public $abilities = [];
     public $plain_text_token;
+    protected $loginColumn;
+
+    public function boot()
+    {
+        // user column
+        $this->loginColumn = config('filament-breezy.fallback_login_field');
+    }
 
     public function mount()
     {
@@ -50,10 +57,11 @@ class MyProfile extends Page
 
     protected function getUpdateProfileFormSchema(): array
     {
+        ray($this->loginColumn);
         return [
             Forms\Components\TextInput::make("name")
                 ->label(__('filament-breezy::default.fields.name')),
-            Forms\Components\TextInput::make("email")->unique(ignorable: $this->user)
+            Forms\Components\TextInput::make($this->loginColumn)->unique(ignorable: $this->user)
                 ->label(__('filament-breezy::default.fields.email')),
         ];
     }

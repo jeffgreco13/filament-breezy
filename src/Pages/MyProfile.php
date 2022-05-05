@@ -57,7 +57,6 @@ class MyProfile extends Page
 
     protected function getUpdateProfileFormSchema(): array
     {
-        ray($this->loginColumn);
         return [
             Forms\Components\TextInput::make("name")
                 ->label(__('filament-breezy::default.fields.name')),

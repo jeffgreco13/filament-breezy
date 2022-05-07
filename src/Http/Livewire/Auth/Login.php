@@ -176,7 +176,7 @@ class Login extends FilamentLogin
 
         $view->layout("filament::components.layouts.base", [
             "title" => __("filament::login.title"),
-            "enableResetPassword" => config('filament-breezy.enable_reset_password', true),
+            "enableResetPassword" => config('filament-breezy.enable_reset_password', true)
         ]);
 
         return $view;

@@ -19,6 +19,15 @@ class Register extends Component implements Forms\Contracts\HasForms
     public $password;
     public $password_confirm;
 
+    public function booted() : void
+    {
+        if(! config('filament-breezy.enable_registration', true)) {
+            redirect(config('filament.home_url', '/'));
+
+            return;
+        }
+    }
+
     public function mount()
     {
         if (Filament::auth()->check()) {

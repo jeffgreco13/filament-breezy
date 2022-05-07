@@ -23,6 +23,15 @@ class ResetPassword extends Component implements Forms\Contracts\HasForms
     public bool $isResetting = false;
     public bool $hasBeenSent = false;
 
+    public function booted() : void
+    {
+        if(! config('filament-breezy.enable_reset_password', true)) {
+            redirect(config('filament.home_url', '/'));
+
+            return;
+        }
+    }
+
     public function mount($token = null): void
     {
         if (! is_null($token)) {

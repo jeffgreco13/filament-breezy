@@ -24,7 +24,9 @@
         {{ __('filament::login.buttons.submit.label') }}
     </x-filament::button>
 
+    @if($enableResetPassword)
     <div class="text-center">
         <a class="text-primary-600 hover:text-primary-700" href="{{route('password.request')}}">{{ __('filament-breezy::default.login.forgot_password_link') }}</a>
     </div>
+    @endif
 </x-filament-breezy::auth-card>

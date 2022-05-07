@@ -68,6 +68,11 @@ return [
     "enable_registration" => true,
     /*
     |--------------------------------------------------------------------------
+    | Enable or disable the reset password workflow.
+    */
+    "enable_reset_password" => true,
+    /*
+    |--------------------------------------------------------------------------
     | Path to registration Livewire component.
     */
     "registration_component_path" => \JeffGreco13\FilamentBreezy\Http\Livewire\Auth\Register::class,

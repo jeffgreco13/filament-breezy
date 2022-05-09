@@ -2,6 +2,20 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.3.3 - 2022-05-09
+
+## What's Changed
+
+- Feature: Glassy Auth by @awcodes in https://github.com/jeffgreco13/filament-breezy/pull/65
+- Use fallback_login_field instead of email in MyProfile by @andycowan in https://github.com/jeffgreco13/filament-breezy/pull/62
+
+## New Contributors
+
+- @awcodes made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/65
+- @andycowan made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/62
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.3.2...v1.3.3
+
 ## v1.3.2 - 2022-05-04
 
 ## What's Changed

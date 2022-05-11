@@ -46,7 +46,7 @@ return [
             "submit" => [
                 "label" => "Perbaharui",
             ],
-            "notify" => "Profi sukses diperbaharui!",
+            "notify" => "Profil sukses diperbaharui!",
         ],
         "password" => [
             "heading" => "Kata sandi",
@@ -58,7 +58,7 @@ return [
         ],
         "sanctum" => [
             "title" => "Token API",
-            "description" => 
+            "description" =>
                 "Mengelola token API yang memungkinkan layanan pihak ketiga mengakses aplikasi ini atas nama Anda. CATATAN: token Anda ditampilkan sekali setelah dibuat. Jika Anda kehilangan token, Anda harus menghapusnya dan membuat yang baru. ",
             "create" => [
                 "notify" => "Token sukses dibuat!",
@@ -72,8 +72,8 @@ return [
         ],
     ],
     "fields" => [
-        "email" => "Surel",
-        "login" => "Pengguna"
+        "email" => "Email",
+        "login" => "Pengguna",
         "name" => "Nama",
         "password" => "Kata Sandi",
         "password_confirm" => "Konfirmasi Kata Sandi",

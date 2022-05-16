@@ -2,6 +2,21 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.3.4 - 2022-05-16
+
+## What's Changed
+
+- fixed missing koma and some typo, also changed some word. by @sayasuhendra in https://github.com/jeffgreco13/filament-breezy/pull/67
+- Add missing french translations by @invaders-xx in https://github.com/jeffgreco13/filament-breezy/pull/66
+- Bump filament vers. Use filament::hr component by @jeffgreco13 in https://github.com/jeffgreco13/filament-breezy/pull/68
+
+## New Contributors
+
+- @sayasuhendra made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/67
+- @invaders-xx made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/66
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.3.3...v1.3.4
+
 ## v1.3.3 - 2022-05-09
 
 ## What's Changed

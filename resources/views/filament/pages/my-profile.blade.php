@@ -27,7 +27,7 @@
 
     </x-filament-breezy::grid-section>
 
-    <hr />
+    <x-filament::hr />
 
     <x-filament-breezy::grid-section>
 
@@ -57,7 +57,7 @@
     </x-filament-breezy::grid-section>
 
     @if(config('filament-breezy.enable_2fa'))
-    <hr />
+    <x-filament::hr />
 
     <x-filament-breezy::grid-section class="mt-8">
 
@@ -139,7 +139,7 @@
     @endif
 
     @if(config('filament-breezy.enable_sanctum'))
-    <hr />
+    <x-filament::hr />
 
     <x-filament-breezy::grid-section class="mt-8">
 
@@ -170,7 +170,7 @@
                 </x-filament::card>
             </form>
 
-            <hr />
+            <x-filament::hr />
 
             @livewire(\JeffGreco13\FilamentBreezy\Http\Livewire\BreezySanctumTokens::class)
 

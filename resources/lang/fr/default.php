@@ -113,7 +113,6 @@ return [
             ],
         ],
     ],
-    ],
     "fields" => [
         "email" => "E-mail", 
         "login" => "Identifiant",

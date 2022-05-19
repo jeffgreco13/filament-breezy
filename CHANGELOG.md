@@ -2,6 +2,14 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.3.5 - 2022-05-19
+
+## What's Changed
+
+- Update default.php fix [ in fr lang file by @invaders-xx in https://github.com/jeffgreco13/filament-breezy/pull/69
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.3.4...v1.3.5
+
 ## v1.3.4 - 2022-05-16
 
 ## What's Changed

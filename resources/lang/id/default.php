@@ -2,130 +2,130 @@
 
 return [
     "login" => [
-        "username_or_email" => "Username ou Email",
-        "forgot_password_link" => "Forgot password?",
-        "create_an_account" => "create an account",
+        "username_or_email" => "Username atau Email",
+        "forgot_password_link" => "Lupa password?",
+        "create_an_account" => "Buat akun",
     ],
     "two_factor" => [
         "heading" => "Two Factor Challenge",
-        "description" => "Please confirm access to your account by entering the authentication code provided by your authenticator application.",
+        "description" => "Harap konfirmasi akses ke akun Anda dengan memasukkan kode autentikasi yang telah diberikan oleh aplikasi autentikator Anda.",
         "code_placeholder" => "XXX-XXX",
         "recovery" => [
             "heading" => "Two Factor Challenge",
-            "description" => "Please confirm access to your account by entering one of your emergency recovery codes.",
+            "description" => "Harap konfirmasi akses ke akun Anda dengan memasukkan salah satu dari kode pemulihan darurat Anda.",
         ],
         "recovery_code_placeholder" => "abcdef-98765",
-        "recovery_code_text" => "Lost device?",
-        "recovery_code_link" => "Use a recovery code",
-        "back_to_login_link" => "Back to login"
+        "recovery_code_text" => "Perangkat hilang?",
+        "recovery_code_link" => "Gunakan kode pemulihan",
+        "back_to_login_link" => "Kembali ke login"
     ],
     "registration" => [
         "title" => "Register",
-        "heading" => "Create a new account",
+        "heading" => "Buat akun baru",
         "submit" => [
-            "label" => "Sign up",
+            "label" => "Daftar",
         ],
-        "notification_unique" => "An account with this email already exists. Please login.",
+        "notification_unique" => "Akun dengan email ini telah terdaftar. Harap login.",
     ],
     "reset_password" => [
         "title" => "Forgot password",
-        "heading" => "Reset your password",
+        "heading" => "Atur ulang kata sandi",
         "submit" => [
-            "label" => "Submit",
+            "label" => "Kirim",
         ],
-        "notification_error" => "Error: please try again later.",
-        "notification_success" => "Check your inbox for instructions!",
+        "notification_error" => "Error: harap coba beberapa saat lagi.",
+        "notification_success" => "Periksa inbox Anda untuk instruksi selanjutnya!",
     ],
     "verification" => [
         "title" => "Verify email",
-        "heading" => "Email verification required",
+        "heading" => "Verifikasi email dibutuhkan",
         "submit" => [
-            "label" => "Sign out",
+            "label" => "Keluar",
         ],
-        "notification_success" => "Check your inbox for instructions!",
-        "notification_resend" => "Verification email has been resent.",
-        "before_proceeding" => "Before proceeding, please check your email for a verification link.",
-        "not_receive" => "If you did not receive the email,",
-        "request_another" => "click here to request another one",
+        "notification_success" => "Periksa inbox Anda untuk instruksi selanjutnya!",
+        "notification_resend" => "Email verifikasi telah dikirimkan kembali.",
+        "before_proceeding" => "Sebelum melanjutkan, harap periksa email Anda untuk tautan verifikasi.",
+        "not_receive" => "Jika Anda tidak menerima email,",
+        "request_another" => "klik di sini untuk meminta kembali",
     ],
     "profile" => [
         "account" => "Account",
-        "profile" => "Profile",
-        "my_profile" => "My Profile",
+        "profile" => "Profil",
+        "my_profile" => "Profil saya",
         "personal_info" => [
-            "heading" => "Personal Information",
-            "subheading" => "Manage your personal information.",
+            "heading" => "Informasi Pribadi",
+            "subheading" => "Kelola informasi pribadi Anda.",
             "submit" => [
-                "label" => "Update",
+                "label" => "Perbarui",
             ],
-            "notify" => "Profile updated successfully!",
+            "notify" => "Profil berhasil diperbarui!",
         ],
         "password" => [
             "heading" => "Password",
-            "subheading" => "Must be 8 characters.",
+            "subheading" => "Harus 8 karakter.",
             "submit" => [
-                "label" => "Update",
+                "label" => "Perbarui",
             ],
-            "notify" => "Password updated successfully!",
+            "notify" => "Password berhasil diperbarui!",
         ],
         "2fa" => [
             "title" => "Two Factor Authentication",
-            "description" => "Manage 2 factor authentication for your account (recommended).",
+            "description" => "Atur 2 factor authentication untuk akun Anda (disarankan).",
             "actions" => [
-                "enable" => "Enable",
-                "regenerate_codes"=>"Regenerate Codes",
-                "disable"=>"Disable",
-                "confirm_finish" => "Confirm & finish",
-                "cancel_setup" => "Cancel setup"
+                "enable" => "Aktifkan",
+                "regenerate_codes"=>"Buat ulang kode",
+                "disable"=>"Nonaktifkan",
+                "confirm_finish" => "Konfirmasi & selesai",
+                "cancel_setup" => "Batalkan pengaturan"
             ],
-            "setup_key" => "Setup key",
+            "setup_key" => "Kunci pengaturan",
             "not_enabled" => [
-                "title" => "You have not enabled two factor authentication.",
-                "description"=>"When two factor authentication is enabled, you will be prompted for a secure, random token during authentication. You may retrieve this token from your phone's Google Authenticator application."
+                "title" => "Anda belum mengaktifkan two factor authentication.",
+                "description"=>"Ketika two factor authentication aktif, Anda akan diminta token acak yang aman saat autentikasi. Anda mungkin menerima token ini dari aplikasi Google Authenticator dari ponsel Anda."
             ],
             "finish_enabling" => [
-                "title"=>"Finish enabling two factor authentication.",
-                "description" => "To finish enabling two factor authentication, scan the following QR code using your phone's authenticator application or enter the setup key and provide the generated OTP code."
+                "title"=>"Selesai mengaktifkan two factor authentication.",
+                "description" => "Untuk selesai mengaktifkan two factor authentication, scan QR code berikut menggunakan aplikasi authenticator dari ponsel Anda atau masukkan kunci pengaturan dan masukkan kode OTP yang dihasilkan."
             ],
             "enabled"=>[
-                "title"=>"You have enabled two factor authentication!",
-                "description"=>"Two factor authentication is now enabled. Scan the following QR code using your phone's authenticator application or enter the setup key.",
-                "store_codes"=>"Store these recovery codes in a secure password manager. They can be used to recover access to your account if your two factor authentication device is lost.",
-                "show_codes"=>'Show Recovery Codes',
-                "hide_codes" => 'Hide Recovery Codes'
+                "title"=>"Anda telah mengaktifkan two factor authentication!",
+                "description"=>"Two factor authentication sudah diaktifkan. Scan QR code berikut menggunakan aplikasi authenticator ponsel Anda atau masukkan kunci pengaturan.",
+                "store_codes"=>"Simpan kode pemulihan ini di tempat yang aman. Kode ini dapat digunakan untuk memulihkan akses ke akun Anda jika perangkat two factor authentication Anda hilang.",
+                "show_codes"=>'Perlihatkan Kode Pemulihan',
+                "hide_codes" => 'Sembunyikan Kode Pemulihan'
             ],
             "confirmation" => [
-                "success_notification" => 'Code verified. Two factor authentication enabled.',
-                "invalid_code" => "The code you have entered is invalid."
+                "success_notification" => 'Kode terverifikasi. Two factor authentication diaktifkan.',
+                "invalid_code" => "Kode yang Anda masukkan tidak valid."
             ]
         ],
         "sanctum" => [
             "title" => "API Tokens",
-            "description" => "Manage API tokens that allow third-party services to access this application on your behalf. NOTE: your token is shown once upon creation. If you lose your token, you will need to delete it and create a new one.",
+            "description" => "Kelola token API yang memungkinkan layanan pihak ketiga mengakses aplikasi ini atas nama Anda. CATATAN: token Anda ditampilkan sekali setelah dibuat. Jika Anda kehilangan token, Anda harus menghapusnya dan membuat yang baru.",
             "create" => [
-                "notify" => "Token created successfully!",
+                "notify" => "Token berhasil dibuat!",
                 "submit" => [
-                    "label" => "Create",
+                    "label" => "Buat",
                 ],
             ],
             "update" => [
-                "notify" => "Token updated successfully!",
+                "notify" => "Token berhasil diperbarui!",
             ],
         ],
     ],
     "fields" => [
         "email" => "Email",
         "login" => "Login",
-        "name" => "Name",
-        "password" => "Password",
-        "password_confirm" => "Password confirm",
-        "new_password" => "New password",
-        "new_password_confirmation" => "Confirm password",
-        "token_name" => "Token name",
-        "abilities" => "Abilities",
-        "2fa_code" => "Code",
-        "2fa_recovery_code" => "Recovery Code"
+        "name" => "Nama",
+        "password" => "Kata Sandi",
+        "password_confirm" => "Konfirmasi Kata Sandi",
+        "new_password" => "Kata Sandi Baru",
+        "new_password_confirmation" => "Konfirmasi Kata Sandi Baru",
+        "token_name" => "Nama Token",
+        "abilities" => "Kemampuan",
+        "2fa_code" => "Kode",
+        "2fa_recovery_code" => "Kode Pemulihan"
     ],
-    "or" => "Or",
-    "cancel" => "Cancel"
+    "or" => "Atau",
+    "cancel" => "Batal"
 ];

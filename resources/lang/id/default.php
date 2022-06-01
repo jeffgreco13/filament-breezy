@@ -3,7 +3,7 @@
 return [
     "login" => [
         "username_or_email" => "Username atau Email",
-        "forgot_password_link" => "Lupa password?",
+        "forgot_password_link" => "Lupa kata sandi?",
         "create_an_account" => "Buat akun",
     ],
     "two_factor" => [
@@ -66,7 +66,7 @@ return [
             "submit" => [
                 "label" => "Perbarui",
             ],
-            "notify" => "Password berhasil diperbarui!",
+            "notify" => "Kata sandi berhasil diperbarui!",
         ],
         "2fa" => [
             "title" => "Two Factor Authentication",

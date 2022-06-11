@@ -19,12 +19,13 @@ class PasswordButtonAction extends ButtonAction
             //
         } else {
             $this->requiresConfirmation()
-                ->modalHeading("Confirm password")
+                ->modalHeading(__('filament-breezy::default.password_confirm.heading'))
                 ->modalSubheading(
-                    "Please confirm your password to complete this action."
+                    __('filament-breezy::default.password_confirm.description')
                 )
                 ->form([
                     Forms\Components\TextInput::make("current_password")
+                        ->label(__('filament-breezy::default.password_confirm.current_password'))
                         ->required()
                         ->password()
                         ->rule("current_password"),

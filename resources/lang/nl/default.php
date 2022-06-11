@@ -6,6 +6,24 @@ return [
         "forgot_password_link" => "Wachtwoord vergeten?",
         "create_an_account" => "account aanmaken",
     ],
+    "password_confirm" => [
+        "heading" => "Bevestig wachtwoord",
+        "description" => "Bevestig je wachtwoord om deze actie te voltooien.",
+        "current_password" => "Huidig wachtwoord"
+    ],
+    "two_factor" => [
+        "heading" => "Twee-factorenauthenticatie",
+        "description" => "Bevestig de toegang tot je account door de authenticatiecode in te voeren die door je authenticatietoepassing is verstrekt.",
+        "code_placeholder" => "XXX-XXX",
+        "recovery" => [
+            "heading" => "Twee-factorenauthenticatie",
+            "description" => "Bevestig de toegang tot je account door een van je noodherstelcodes in te voeren.",
+        ],
+        "recovery_code_placeholder" => "abcdef-98765",
+        "recovery_code_text" => "Apparaat kwijt?",
+        "recovery_code_link" => "Gebruik een herstelcode",
+        "back_to_login_link" => "Terug naar Inloggen"
+    ],
     "registration" => [
         "title" => "Registreren",
         "heading" => "Nieuwe account aanmaken",
@@ -54,6 +72,37 @@ return [
                 "label" => "Opslaan",
             ],
             "notify" => "Wachtwoord succesvol bijgewerkt!",
+        ],
+        "2fa" => [
+            "title" => "Twee-factorenauthenticatie",
+            "description" => "Beheer 2-factor authenticatie voor je account (aanbevolen).",
+            "actions" => [
+                "enable" => "Inschakelen",
+                "regenerate_codes" => "Codes opnieuw genereren",
+                "disable"=>"Uitschakelen",
+                "confirm_finish" => "Bevestigen",
+                "cancel_setup" => "Annuleren"
+            ],
+            "setup_key" => "Sleutel: ",
+            "not_enabled" => [
+                "title" => "Je hebt tweefactorauthenticatie niet ingeschakeld.",
+                "description"=>"Wanneer tweefactorauthenticatie is ingeschakeld, wordt je tijdens de authenticatie om een veilige, willekeurige token gevraagd. Je kunt deze token ophalen uit de Google Authenticator-app van je telefoon."
+            ],
+            "finish_enabling" => [
+                "title"=>"Voltooi het inschakelen van tweefactorauthenticatie.",
+                "description" => "Om het inschakelen van tweefactorauthenticatie te voltooien, scan je de volgende QR-code met behulp van de authenticatietoepassing van je telefoon of voer je de configuratiesleutel in en geef je de gegenereerde OTP-code op."
+            ],
+            "enabled" => [
+                "title"=>"Je hebt tweefactorauthenticatie niet ingeschakeld!",
+                "description" => "Tweefactorauthenticatie is nu ingeschakeld. Scan de volgende QR-code met de authenticatietoepassing van je telefoon of voer de configuratiesleutel in.",
+                "store_codes" => "Bewaar deze herstelcodes in een veilige wachtwoordbeheerder. Ze kunnen worden gebruikt om de toegang tot je account te herstellen als je apparaat voor tweefactorauthenticatie verloren is gegaan.",
+                "show_codes" => "Toon herstelcodes",
+                "hide_codes" => "Herstelcodes verbergen"
+            ],
+            "confirmation" => [
+                "success_notification" => 'Code geverifieerd. Tweefactorauthenticatie ingeschakeld.',
+                "invalid_code" => "De code die je hebt ingevoerd is ongeldig."
+            ]
         ],
         "sanctum" => [
             "title" => "API Tokens",

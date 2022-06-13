@@ -6,6 +6,11 @@ return [
         "forgot_password_link" => "Forgot password?",
         "create_an_account" => "create an account",
     ],
+    "password_confirm" => [
+        "heading" => "Confirm password",
+        "description" => "Please confirm your password to complete this action.",
+        "current_password" => "Current password"
+    ],
     "two_factor" => [
         "heading" => "Two Factor Challenge",
         "description" => "Please confirm access to your account by entering the authentication code provided by your authenticator application.",

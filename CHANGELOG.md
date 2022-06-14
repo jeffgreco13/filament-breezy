@@ -2,6 +2,20 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.3.6 - 2022-06-14
+
+### What's Changed
+
+- Added more dutch translations by @sweebee in https://github.com/jeffgreco13/filament-breezy/pull/72
+- Update Indonesian Translation by @risangbaskoro in https://github.com/jeffgreco13/filament-breezy/pull/71
+
+### New Contributors
+
+- @sweebee made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/72
+- @risangbaskoro made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/71
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.3.5...v1.3.6
+
 ## v1.3.5 - 2022-05-19
 
 ## What's Changed

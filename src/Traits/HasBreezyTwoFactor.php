@@ -65,7 +65,7 @@ trait HasBreezyTwoFactor
         $this->showing_two_factor_recovery_codes = true;
     }
 
-    protected function getActions(): array | null
+    protected function getActions(): array
     {
         $actions = parent::getActions() ?? [];
         if (config('filament-breezy.enable_2fa')) {

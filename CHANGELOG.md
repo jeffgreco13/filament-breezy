@@ -2,6 +2,18 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.3.7 - 2022-06-15
+
+### What's Changed
+
+- Patch getActions compatibility by @EmilioBravo in https://github.com/jeffgreco13/filament-breezy/pull/74
+
+### New Contributors
+
+- @EmilioBravo made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/74
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.3.6...v1.3.7
+
 ## v1.3.6 - 2022-06-14
 
 ### What's Changed

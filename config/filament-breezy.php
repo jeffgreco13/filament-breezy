@@ -29,7 +29,7 @@ return [
     |--------------------------------------------------------------------------
     | Auth / User configs
     |--------------------------------------------------------------------------
-    | This is the Auth model used by Filament Teams.
+    | This is the Auth model.
     */
     "user_model" => config(
         "auth.providers.users.model",

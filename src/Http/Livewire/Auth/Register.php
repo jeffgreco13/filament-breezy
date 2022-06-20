@@ -6,7 +6,6 @@ use Filament\Facades\Filament;
 use Filament\Forms;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use JeffGreco13\FilamentBreezy\FilamentBreezy;
 use Livewire\Component;
@@ -76,7 +75,7 @@ class Register extends Component implements Forms\Contracts\HasForms
         $user = config('filament-breezy.user_model')::create($preparedData);
 
         event(new Registered($user));
-        Auth::login($user, true);
+        Filament::auth()->login($user, true);
 
         return redirect()->to(config('filament-breezy.registration_redirect_url'));
     }

@@ -2,7 +2,6 @@
 
 namespace JeffGreco13\FilamentBreezy\Http\Livewire\Auth;
 
-use JeffGreco13\FilamentBreezy\FilamentBreezy;
 use Filament\Forms;
 use Filament\Http\Livewire\Concerns\CanNotify;
 use Illuminate\Auth\Events\PasswordReset;
@@ -10,6 +9,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
+use JeffGreco13\FilamentBreezy\FilamentBreezy;
 use Livewire\Component;
 
 class ResetPassword extends Component implements Forms\Contracts\HasForms

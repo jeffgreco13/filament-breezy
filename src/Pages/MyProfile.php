@@ -6,8 +6,8 @@ use Filament\Facades\Filament;
 use Filament\Forms;
 use Filament\Pages\Page;
 use Illuminate\Support\Facades\Hash;
-use JeffGreco13\FilamentBreezy\Traits\HasBreezyTwoFactor;
 use JeffGreco13\FilamentBreezy\FilamentBreezy;
+use JeffGreco13\FilamentBreezy\Traits\HasBreezyTwoFactor;
 
 class MyProfile extends Page
 {

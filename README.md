@@ -1,8 +1,6 @@
-<p align="center">
-    <img src="https://user-images.githubusercontent.com/41773797/131910226-676cb28a-332d-4162-a6a8-136a93d5a70f.png" alt="Banner" style="width: 100%; max-width: 800px;" />
-</p>
+![Filament Breezy cover art](./art/filament-breezy.png)
 
-# An authentication starter kit for Filament Admin!
+# The top authentication starter kit for Filament Admin!
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/jeffgreco13/filament-breezy.svg?style=flat-square)](https://packagist.org/packages/jeffgreco13/filament-breezy)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/jeffgreco13/filament-breezy/run-tests?label=tests)](https://github.com/jeffgreco13/filament-breezy/actions?query=workflow%3Arun-tests+branch%3Amain)
@@ -90,6 +88,33 @@ class User extends Authenticatable
 ```
 
 ## Usage
+
+### Customizing Password Rules
+
+The registration, my profile and password reset forms use the same set of password validation rules. You can add new rules to the array from the filament-breezy.php config file:
+
+```php
+"password_rules" => ['min:8'],
+```
+
+If you would like to use an instance of `Illuminate\Validation\Rules\Password::class` for validation, you can register new rules from the `boot()` method of your AppServiceProvider:
+
+```php
+use Illuminate\Validation\Rules\Password;
+
+public function boot()
+{
+    FilamentBreezy::setPasswordRules(
+        [
+            Password::min(8)
+                ->letters()
+                ->numbers()
+                ->mixedCase()
+                ->uncompromised(3)
+        ]
+    );
+}
+```
 
 ### Email Verification
 
@@ -253,7 +278,7 @@ Optionally, update the field label in your language file:
    //
 ```
 
-### NEW: Password Confirmation Button Action
+### Password Confirmation Button Action
 
 Since v1.3.0, Breezy has a `PasswordButtonAction` shortcut which extends the default Page\ButtonAction class. This button action will prompt the user to enter their password for sensitive actions (eg. delete), then will not ask for password again for the # of seconds defined in the filament-breezy config (default 300s).
 

@@ -2,6 +2,14 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.3.9.1 - 2022-06-20
+
+### What's Changed
+
+- fix: abstraction issue in Register by @jeffgreco13 in https://github.com/jeffgreco13/filament-breezy/pull/77
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.3.9...v1.3.9.1
+
 ## v1.3.9 - 2022-06-20
 
 ### What's Changed

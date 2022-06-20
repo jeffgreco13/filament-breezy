@@ -30,6 +30,8 @@ class FilamentBreezyServiceProvider extends PluginServiceProvider
     {
         parent::packageBooted();
 
+        FilamentBreezy::setPasswordRules(config('filament-breezy.password_rules'));
+
         Livewire::component(Auth\Login::getName(), Auth\Login::class);
 
         Livewire::component(

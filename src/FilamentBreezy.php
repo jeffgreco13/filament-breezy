@@ -11,6 +11,8 @@ class FilamentBreezy
 
     protected $cache;
 
+    protected static array $passwordRules;
+
     public function __construct(Google2FA $engine, Repository $cache = null)
     {
         $this->engine = $engine;
@@ -47,5 +49,15 @@ class FilamentBreezy
         }
 
         return false;
+    }
+
+    public static function getPasswordRules(): array
+    {
+        return static::$passwordRules;
+    }
+
+    public static function setPasswordRules(array $rules)
+    {
+        static::$passwordRules = $rules;
     }
 }

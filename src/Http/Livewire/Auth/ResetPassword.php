@@ -2,6 +2,7 @@
 
 namespace JeffGreco13\FilamentBreezy\Http\Livewire\Auth;
 
+use JeffGreco13\FilamentBreezy\FilamentBreezy;
 use Filament\Forms;
 use Filament\Http\Livewire\Concerns\CanNotify;
 use Illuminate\Auth\Events\PasswordReset;
@@ -41,7 +42,7 @@ class ResetPassword extends Component implements Forms\Contracts\HasForms
                     ->label(__("filament-breezy::default.fields.password"))
                     ->required()
                     ->password()
-                    ->rules(config("filament-breezy.password_rules")),
+                    ->rules(app(FilamentBreezy::class)->getPasswordRules()),
                 Forms\Components\TextInput::make("password_confirm")
                     ->label(__("filament-breezy::default.fields.password_confirm"))
                     ->required()

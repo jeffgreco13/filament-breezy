@@ -2,6 +2,15 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.3.9 - 2022-06-20
+
+### What's Changed
+
+- Fix config serialization issue related to password rules in config by @jeffgreco13 in https://github.com/jeffgreco13/filament-breezy/pull/76
+- I have updated the Spanish translations for 2 factor authentication by @pathros in https://github.com/jeffgreco13/filament-breezy/pull/75
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.3.7...v1.3.9
+
 ## v1.3.7 - 2022-06-15
 
 ### What's Changed

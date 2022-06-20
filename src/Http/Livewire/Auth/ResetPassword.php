@@ -9,6 +9,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
+use JeffGreco13\FilamentBreezy\FilamentBreezy;
 use Livewire\Component;
 
 class ResetPassword extends Component implements Forms\Contracts\HasForms
@@ -41,7 +42,7 @@ class ResetPassword extends Component implements Forms\Contracts\HasForms
                     ->label(__("filament-breezy::default.fields.password"))
                     ->required()
                     ->password()
-                    ->rules(config("filament-breezy.password_rules")),
+                    ->rules(app(FilamentBreezy::class)->getPasswordRules()),
                 Forms\Components\TextInput::make("password_confirm")
                     ->label(__("filament-breezy::default.fields.password_confirm"))
                     ->required()

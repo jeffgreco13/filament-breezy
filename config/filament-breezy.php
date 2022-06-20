@@ -21,7 +21,7 @@ return [
     */
     "profile_page_icon" => 'heroicon-o-document-text',
     /*
-    | Set an array that's compatible with the Filament Forms rules() method. You can also pass an instance of \Illuminate\Validation\Rules\Password::class. ex.\Illuminate\Validation\Rules\Password::min(8). Rules for required and confirmed are already set. These rules will apply to the My Profile, registration, and password reset forms.
+    | Set an array that's compatible with the Filament Forms rules() method. Rules for required and confirmed are already set. These rules will apply to the My Profile, registration, and password reset forms. To use an instance of the \Illuminate\Validation\Rules\Password::class, see documentation.
     */
     "password_rules" => ['min:8'],
 

@@ -64,7 +64,7 @@ class FilamentBreezyServiceProvider extends PluginServiceProvider
     protected function getPages(): array
     {
         return config("filament-breezy.enable_profile_page")
-            ? [Pages\MyProfile::class]
+            ? [config("filament-breezy.profile_page_component_path")]
             : [];
     }
 }

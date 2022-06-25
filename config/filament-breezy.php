@@ -83,6 +83,11 @@ return [
     "email_verification_component_path" => \JeffGreco13\FilamentBreezy\Http\Livewire\Auth\Verify::class,
     /*
     |--------------------------------------------------------------------------
+    | Path to Profile page component.
+    */
+    "profile_page_component_path" => \JeffGreco13\FilamentBreezy\Pages\MyProfile::class,
+    /*
+    |--------------------------------------------------------------------------
     | Where to redirect the user after registration.
     */
     "registration_redirect_url" => config("filament.home_url", "/"),

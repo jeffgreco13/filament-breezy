@@ -2,6 +2,26 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.3.10 - 2022-07-07
+
+### What's Changed
+
+- Bump dependabot/fetch-metadata from 1.3.1 to 1.3.3 by @dependabot in https://github.com/jeffgreco13/filament-breezy/pull/82
+- fix: compatibility with latest version of Filament by @jeffgreco13 in https://github.com/jeffgreco13/filament-breezy/pull/85
+- Russian and Ukrainian Translate by @HomaEEE in https://github.com/jeffgreco13/filament-breezy/pull/83
+- Romanian translation by @molcsab in https://github.com/jeffgreco13/filament-breezy/pull/79
+- feat: load MyProfile page from config by @akunbeben in https://github.com/jeffgreco13/filament-breezy/pull/80
+- Hungarian translation by @molcsab in https://github.com/jeffgreco13/filament-breezy/pull/78
+- bump required Filament version by @jeffgreco13 in https://github.com/jeffgreco13/filament-breezy/pull/86
+
+### New Contributors
+
+- @HomaEEE made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/83
+- @molcsab made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/79
+- @akunbeben made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/80
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.3.9.1...v1.3.10
+
 ## v1.3.9.1 - 2022-06-20
 
 ### What's Changed

@@ -79,7 +79,7 @@ trait HasBreezyTwoFactor
         return $actions;
     }
 
-    protected function getCachedActions($hidePageActions = true): array
+    public function getCachedActions($hidePageActions = true): array
     {
         $actions = parent::getCachedActions();
         if ($hidePageActions) {
@@ -89,7 +89,7 @@ trait HasBreezyTwoFactor
         return $actions;
     }
 
-    protected function getCachedAction(string $name): ?Action
+    public function getCachedAction(string $name): ?Action
     {
         return $this->getCachedActions(false)[$name] ?? null;
     }

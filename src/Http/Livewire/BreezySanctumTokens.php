@@ -24,7 +24,7 @@ class BreezySanctumTokens extends Component implements Tables\Contracts\HasTable
     {
         return PersonalAccessToken::where([
             ["tokenable_id", '=', Filament::auth()->id()],
-            ["tokenable_type", '=', config('filament-breezy.user_model')]
+            ["tokenable_type", '=', config('filament-breezy.user_model')],
         ]);
     }
 

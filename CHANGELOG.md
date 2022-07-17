@@ -2,6 +2,18 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.3.11 - 2022-07-17
+
+### What's Changed
+
+- fix - show only access tokens that are created for the User Model by @bfiessinger in https://github.com/jeffgreco13/filament-breezy/pull/89
+
+### New Contributors
+
+- @bfiessinger made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/89
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.3.10...v1.3.11
+
 ## v1.3.10 - 2022-07-07
 
 ### What's Changed

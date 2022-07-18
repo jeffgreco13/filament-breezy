@@ -6,7 +6,7 @@ use Filament\Facades\Filament;
 use Filament\Forms;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
-use Laravel\Sanctum\PersonalAccessToken;
+use Laravel\Sanctum\Sanctum;
 use Livewire\Component;
 
 class BreezySanctumTokens extends Component implements Tables\Contracts\HasTable

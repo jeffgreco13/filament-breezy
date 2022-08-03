@@ -135,7 +135,7 @@ Route::get("/profile", function () {
 })->middleware('verified:filament.verification.notice');
 ```
 
-Or, force verified emails on your entire Filament Admin by adding the `EnsureEmailIsVerified` class to the auth middleware in `config/filament.php`:
+Or, force verified emails on your entire Filament Admin by adding the `verified:filament.verification.notice` class to the auth middleware in `config/filament.php`:
 
 ```php
 "middleware" => [

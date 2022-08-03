@@ -7,10 +7,10 @@ use Filament\Facades\Filament;
 use Filament\Forms\Components\TextInput;
 use Filament\Http\Livewire\Auth\Login as FilamentLogin;
 use Filament\Http\Responses\Auth\Contracts\LoginResponse;
+use Filament\Notifications\Notification;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Arr;
 use JeffGreco13\FilamentBreezy\FilamentBreezy;
-use Filament\Notifications\Notification;
 
 class Login extends FilamentLogin
 {

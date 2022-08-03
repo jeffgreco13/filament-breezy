@@ -6,6 +6,7 @@ use Filament\Http\Middleware\Authenticate;
 Route::domain(config("filament.domain"))
     ->middleware(config("filament.middleware.base"))
     ->prefix(config("filament.path"))
+    ->name('filament.')
     ->group(function () {
         // Login will be replaced in the Filament config.
         if (config("filament-breezy.enable_registration")) {

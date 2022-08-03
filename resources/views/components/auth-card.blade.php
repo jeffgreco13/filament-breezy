@@ -4,8 +4,6 @@
     'dark:bg-gray-900 dark:text-white' => config('filament.dark_mode'),
 ])>
 
-    <x-filament::notification-manager />
-
     <div
         class="px-6 -mt-16 md:mt-0 md:px-2 max-w-{{ config('filament-breezy.auth_card_max_w') ?? 'md' }} space-y-8 w-screen">
         <form wire:submit.prevent="{{ $action }}" @class([
@@ -18,4 +16,7 @@
         {{ $this->modal }}
         <x-filament::footer />
     </div>
+
+    @livewire('notifications')
+
 </div>

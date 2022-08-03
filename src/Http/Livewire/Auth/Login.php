@@ -6,16 +6,14 @@ use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
 use Filament\Facades\Filament;
 use Filament\Forms\Components\TextInput;
 use Filament\Http\Livewire\Auth\Login as FilamentLogin;
-use Filament\Http\Livewire\Concerns\CanNotify;
 use Filament\Http\Responses\Auth\Contracts\LoginResponse;
+use Filament\Notifications\Notification;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Arr;
 use JeffGreco13\FilamentBreezy\FilamentBreezy;
 
 class Login extends FilamentLogin
 {
-    use CanNotify;
-
     public $loginColumn;
     public $showCodeForm = false;
     public $usingRecoveryCode = false;
@@ -166,7 +164,7 @@ class Login extends FilamentLogin
             $this->form->fill([$this->loginColumn => $login]);
         }
         if (request()->query("reset")) {
-            $this->notify("success", __("passwords.reset"), true);
+            Notification::make()->title(__("passwords.reset"))->success()->send();
         }
     }
 

@@ -3,7 +3,7 @@
 namespace JeffGreco13\FilamentBreezy\Http\Livewire\Auth;
 
 use Filament\Forms;
-use Filament\Http\Livewire\Concerns\CanNotify;
+use Filament\Notifications\Notification;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Hash;
@@ -15,7 +15,6 @@ use Livewire\Component;
 class ResetPassword extends Component implements Forms\Contracts\HasForms
 {
     use Forms\Concerns\InteractsWithForms;
-    use CanNotify;
 
     public $email;
     public $token;
@@ -79,19 +78,19 @@ class ResetPassword extends Component implements Forms\Contracts\HasForms
             if ($response == Password::PASSWORD_RESET) {
                 return redirect(route('filament.auth.login', ['email' => $this->email,'reset' => true]));
             } else {
-                $this->notify('danger', __("filament-breezy::default.reset_password.notification_error"));
+                Notification::make()->title(__("filament-breezy::default.reset_password.notification_error"))->danger()->send();
             }
         } else {
             $response = Password::sendResetLink(['email' => $this->email]);
             if ($response == Password::RESET_LINK_SENT) {
-                $this->notify('success', __("filament-breezy::default.reset_password.notification_success"));
+                Notification::make()->title(__("filament-breezy::default.reset_password.notification_success"))->success()->send();
 
                 $this->hasBeenSent = true;
             } else {
-                $this->notify('danger', match ($response) {
+                Notification::make()->title(match ($response) {
                     "passwords.throttled" => __("passwords.throttled"),
                     "passwords.user" => __("passwords.user")
-                });
+                })->danger()->send();
             }
         }
     }

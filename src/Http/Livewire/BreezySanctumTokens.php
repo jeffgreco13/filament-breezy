@@ -6,7 +6,7 @@ use Filament\Facades\Filament;
 use Filament\Forms;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
-use Laravel\Sanctum\PersonalAccessToken;
+use Laravel\Sanctum\Sanctum;
 use Livewire\Component;
 
 class BreezySanctumTokens extends Component implements Tables\Contracts\HasTable
@@ -22,7 +22,7 @@ class BreezySanctumTokens extends Component implements Tables\Contracts\HasTable
 
     protected function getTableQuery(): Builder
     {
-        return PersonalAccessToken::where([
+        return app(Sanctum::$personalAccessTokenModel)->where([
             ["tokenable_id", '=', Filament::auth()->id()],
             ["tokenable_type", '=', config('filament-breezy.user_model')],
         ]);

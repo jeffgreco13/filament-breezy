@@ -2,6 +2,14 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.4.1 - 2022-08-03
+
+### What's Changed
+
+- Update route group with filament prefix by @jeffgreco13 in https://github.com/jeffgreco13/filament-breezy/pull/97
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.4...v1.4.1
+
 ## v1.4 - 2022-08-03
 
 ### What's Changed

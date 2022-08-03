@@ -2,6 +2,14 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.4 - 2022-08-03
+
+### What's Changed
+
+- Update to use new Filament Notifications package by @jeffgreco13 in https://github.com/jeffgreco13/filament-breezy/pull/96
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.3.12...v1.4
+
 ## v1.3.12 - 2022-08-03
 
 ### What's Changed

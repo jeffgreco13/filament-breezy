@@ -127,12 +127,12 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 class User extends Authenticatable implements MustVerifyEmail
 ```
 
-Then you can add the `verified` middleware to any of your routes:
+Then you can add the `verified:filament.verification.notice` middleware to any of your routes:
 
 ```php
 Route::get("/profile", function () {
     // Only verified users may access this route...
-})->middleware("verified");
+})->middleware('verified:filament.verification.notice');
 ```
 
 Or, force verified emails on your entire Filament Admin by adding the `EnsureEmailIsVerified` class to the auth middleware in `config/filament.php`:
@@ -141,7 +141,7 @@ Or, force verified emails on your entire Filament Admin by adding the `EnsureEma
 "middleware" => [
     "auth" => [
         Authenticate::class,
-        Illuminate\Auth\Middleware\EnsureEmailIsVerified::class
+        'verified:filament.verification.notice'
     ],
     ....
 ```

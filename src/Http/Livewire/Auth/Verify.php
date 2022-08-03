@@ -30,7 +30,7 @@ class Verify extends Component implements Forms\Contracts\HasForms
         session()->invalidate();
         session()->regenerateToken();
 
-        return redirect()->route("filament.auth.login");
+        return redirect()->route('filament.auth.login');
     }
 
     public function resend()

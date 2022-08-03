@@ -61,7 +61,7 @@ class MyProfile extends Page
         return [
             Forms\Components\TextInput::make("name")
                 ->label(__('filament-breezy::default.fields.name')),
-            Forms\Components\TextInput::make($this->loginColumn)->unique(config('filament-breezy.user_model'),ignorable: $this->user)
+            Forms\Components\TextInput::make($this->loginColumn)->unique(config('filament-breezy.user_model'), ignorable: $this->user)
                 ->label(__('filament-breezy::default.fields.email')),
         ];
     }

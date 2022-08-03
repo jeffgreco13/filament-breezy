@@ -3,6 +3,7 @@
 namespace JeffGreco13\FilamentBreezy\Http\Livewire\Auth;
 
 use Filament\Forms;
+use Filament\Notifications\Notification;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Hash;
@@ -10,7 +11,6 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use JeffGreco13\FilamentBreezy\FilamentBreezy;
 use Livewire\Component;
-use Filament\Notifications\Notification;
 
 class ResetPassword extends Component implements Forms\Contracts\HasForms
 {
@@ -88,9 +88,9 @@ class ResetPassword extends Component implements Forms\Contracts\HasForms
                 $this->hasBeenSent = true;
             } else {
                 Notification::make()->title(match ($response) {
-                        "passwords.throttled" => __("passwords.throttled"),
-                        "passwords.user" => __("passwords.user")
-                    })->danger()->send();
+                    "passwords.throttled" => __("passwords.throttled"),
+                    "passwords.user" => __("passwords.user")
+                })->danger()->send();
             }
         }
     }

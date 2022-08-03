@@ -2,6 +2,22 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.3.12 - 2022-08-03
+
+### What's Changed
+
+- fix: use the correct model for Sanctum PersonalAccessToken by @bfiessinger in https://github.com/jeffgreco13/filament-breezy/pull/90
+- Turkish language support added by @yidemir in https://github.com/jeffgreco13/filament-breezy/pull/91
+- fix: validate email uniqueness by @LittleHans8 in https://github.com/jeffgreco13/filament-breezy/pull/93
+- Support modal action by @mohamedsabil83 in https://github.com/jeffgreco13/filament-breezy/pull/94
+
+### New Contributors
+
+- @yidemir made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/91
+- @LittleHans8 made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/93
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.3.11...v1.3.12
+
 ## v1.3.11 - 2022-07-17
 
 ### What's Changed

@@ -12,6 +12,8 @@
         ])>
             {{ $slot }}
         </form>
+
+        {{ $this->modal }}
         <x-filament::footer />
     </div>
 

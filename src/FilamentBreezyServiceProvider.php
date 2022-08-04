@@ -11,6 +11,7 @@ use JeffGreco13\FilamentBreezy\Http\Livewire\BreezySanctumTokens;
 use JeffGreco13\FilamentBreezy\Pages\MyProfile;
 use Livewire\Livewire;
 use Spatie\LaravelPackageTools\Package;
+use Illuminate\Auth\Notifications\ResetPassword;
 
 class FilamentBreezyServiceProvider extends PluginServiceProvider
 {
@@ -59,6 +60,10 @@ class FilamentBreezyServiceProvider extends PluginServiceProvider
                 ]);
             });
         }
+
+        ResetPassword::createUrlUsing(function ($user, string $token) {
+            return route('filament.password.reset',['token'=>$token]);
+        });
     }
 
     protected function getPages(): array

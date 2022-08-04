@@ -5,6 +5,7 @@ namespace JeffGreco13\FilamentBreezy;
 use Filament\Facades\Filament;
 use Filament\Navigation\UserMenuItem;
 use Filament\PluginServiceProvider;
+use Illuminate\Auth\Notifications\ResetPassword;
 use JeffGreco13\FilamentBreezy\Commands\FilamentBreezyCommand;
 use JeffGreco13\FilamentBreezy\Http\Livewire\Auth;
 use JeffGreco13\FilamentBreezy\Http\Livewire\BreezySanctumTokens;
@@ -59,6 +60,10 @@ class FilamentBreezyServiceProvider extends PluginServiceProvider
                 ]);
             });
         }
+
+        ResetPassword::createUrlUsing(function ($user, string $token) {
+            return route('filament.password.reset', ['token' => $token]);
+        });
     }
 
     protected function getPages(): array

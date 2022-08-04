@@ -5,13 +5,13 @@ namespace JeffGreco13\FilamentBreezy;
 use Filament\Facades\Filament;
 use Filament\Navigation\UserMenuItem;
 use Filament\PluginServiceProvider;
+use Illuminate\Auth\Notifications\ResetPassword;
 use JeffGreco13\FilamentBreezy\Commands\FilamentBreezyCommand;
 use JeffGreco13\FilamentBreezy\Http\Livewire\Auth;
 use JeffGreco13\FilamentBreezy\Http\Livewire\BreezySanctumTokens;
 use JeffGreco13\FilamentBreezy\Pages\MyProfile;
 use Livewire\Livewire;
 use Spatie\LaravelPackageTools\Package;
-use Illuminate\Auth\Notifications\ResetPassword;
 
 class FilamentBreezyServiceProvider extends PluginServiceProvider
 {
@@ -62,7 +62,7 @@ class FilamentBreezyServiceProvider extends PluginServiceProvider
         }
 
         ResetPassword::createUrlUsing(function ($user, string $token) {
-            return route('filament.password.reset',['token'=>$token]);
+            return route('filament.password.reset', ['token' => $token]);
         });
     }
 

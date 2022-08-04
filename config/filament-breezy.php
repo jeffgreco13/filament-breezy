@@ -55,7 +55,7 @@ return [
     |--------------------------------------------------------------------------
     | Number of seconds before asking the user to confirm their password in PasswordButtonAction again. 300 = 5 minutes
     */
-    "password_confirmation_seconds" => 300,
+    "password_confirmation_seconds" => config('auth.password_timeout'),
     /*
     |--------------------------------------------------------------------------
     | The max-w-xx of the auth card used on all pages.

@@ -2,6 +2,20 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.4.1.1 - 2022-08-04
+
+### What's Changed
+
+- fix: filament authentication routes by @jeffgreco13 in https://github.com/jeffgreco13/filament-breezy/pull/100
+- fix ReadMe to insure verified is correct. by @Saifallak in https://github.com/jeffgreco13/filament-breezy/pull/98
+- fix: auth route prefixes and ResetPassword override by @jeffgreco13 in https://github.com/jeffgreco13/filament-breezy/pull/101
+
+### New Contributors
+
+- @Saifallak made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/98
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.4.1...v1.4.1.1
+
 ## v1.4.1 - 2022-08-03
 
 ### What's Changed

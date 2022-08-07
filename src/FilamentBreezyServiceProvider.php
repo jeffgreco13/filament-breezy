@@ -65,8 +65,11 @@ class FilamentBreezyServiceProvider extends PluginServiceProvider
             });
         }
 
-        ResetPassword::createUrlUsing(function ($user, string $token) {
-            return route('filament.password.reset', ['token' => $token]);
+        ResetPassword::createUrlUsing(function ($notifiable, string $token) {
+            return route('filament.password.reset', [
+                'token' => $token,
+                'email' => $notifiable->getEmailForPasswordReset(),
+            ]);
         });
 
         VerifyEmail::createUrlUsing(function ($notifiable) {

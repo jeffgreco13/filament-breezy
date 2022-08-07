@@ -2,6 +2,14 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.4.1.2 - 2022-08-07
+
+### What's Changed
+
+- fix: switch to optional route name prefix by @jeffgreco13 in https://github.com/jeffgreco13/filament-breezy/pull/103
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.4.1.1...v1.4.1.2
+
 ## v1.4.1.1 - 2022-08-04
 
 ### What's Changed

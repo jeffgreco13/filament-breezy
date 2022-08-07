@@ -60,10 +60,6 @@ class FilamentBreezyServiceProvider extends PluginServiceProvider
                 ]);
             });
         }
-
-        ResetPassword::createUrlUsing(function ($user, string $token) {
-            return route('filament.password.reset', ['token' => $token]);
-        });
     }
 
     protected function getPages(): array

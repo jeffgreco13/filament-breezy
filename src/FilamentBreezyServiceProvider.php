@@ -6,6 +6,10 @@ use Filament\Facades\Filament;
 use Filament\Navigation\UserMenuItem;
 use Filament\PluginServiceProvider;
 use Illuminate\Auth\Notifications\ResetPassword;
+use Illuminate\Auth\Notifications\VerifyEmail;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\URL;
 use JeffGreco13\FilamentBreezy\Commands\FilamentBreezyCommand;
 use JeffGreco13\FilamentBreezy\Http\Livewire\Auth;
 use JeffGreco13\FilamentBreezy\Http\Livewire\BreezySanctumTokens;
@@ -63,6 +67,17 @@ class FilamentBreezyServiceProvider extends PluginServiceProvider
 
         ResetPassword::createUrlUsing(function ($user, string $token) {
             return route('filament.password.reset', ['token' => $token]);
+        });
+
+        VerifyEmail::createUrlUsing(function ($notifiable) {
+            return URL::temporarySignedRoute(
+                'filament.verification.verify',
+                Carbon::now()->addMinutes(Config::get('auth.verification.expire', 60)),
+                [
+                    'id' => $notifiable->getKey(),
+                    'hash' => sha1($notifiable->getEmailForVerification()),
+                ]
+            );
         });
     }
 

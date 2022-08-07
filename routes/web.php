@@ -28,7 +28,7 @@ Route::domain(config("filament.domain"))
             "__invoke",
         ])
             ->middleware([Authenticate::class,"signed"])
-            ->name("verification.verify");
+            ->name("filament.verification.verify");
 
         Route::middleware(config("filament.middleware.auth"))->group(
             function (): void {

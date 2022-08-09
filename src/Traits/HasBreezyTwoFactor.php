@@ -65,33 +65,32 @@ trait HasBreezyTwoFactor
         $this->showing_two_factor_recovery_codes = true;
     }
 
-    protected function getActions(): array
+    protected function getHiddenActions(): array
     {
-        $actions = parent::getActions() ?? [];
         if (config('filament-breezy.enable_2fa')) {
-            return array_merge($actions, [
+            return [
                 PasswordButtonAction::make('enable2fa')->label(__('filament-breezy::default.profile.2fa.actions.enable'))->action('enableTwoFactor')->icon('heroicon-s-shield-check'),
                 ButtonAction::make('regenerate2fa')->label(__('filament-breezy::default.profile.2fa.actions.regenerate_codes'))->icon('heroicon-o-refresh')->requiresConfirmation()->action('reGenerateRecoveryCodes'),
                 PasswordButtonAction::make('disable2fa')->label(__('filament-breezy::default.profile.2fa.actions.disable'))->color('danger')->action('disableTwoFactor'),
-            ]);
+            ];
+        } else {
+            return [];
         }
-
-        return $actions;
-    }
-
-    public function getCachedActions($hidePageActions = true): array
-    {
-        $actions = parent::getCachedActions();
-        if ($hidePageActions) {
-            Arr::forget($actions, ['enable2fa','disable2fa','regenerate2fa']);
-        }
-
-        return $actions;
     }
 
     public function getCachedAction(string $name): ?Action
     {
-        return $this->getCachedActions(false)[$name] ?? null;
+        if ($action = parent::getCachedAction($name)) {
+             return $action;
+        }
+
+        foreach ($this->getHiddenActions() as $action) {
+            if ($name === $action->getName()) {
+                return $action->livewire($this);
+            }
+        }
+
+        return null;
     }
 
     protected function getConfirmTwoFactorFormSchema()

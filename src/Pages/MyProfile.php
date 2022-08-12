@@ -42,6 +42,7 @@ class MyProfile extends Page
     {
         return array_merge(parent::getForms(), [
             "updateProfileForm" => $this->makeForm()
+                ->model(config('auth.providers.users.model'))
                 ->schema($this->getUpdateProfileFormSchema())
                 ->statePath('userData'),
             "updatePasswordForm" => $this->makeForm()->schema(

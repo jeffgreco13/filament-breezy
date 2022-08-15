@@ -94,7 +94,7 @@
                         <span class="inline-flex items-center p-2 rounded-full text-xs font-medium bg-gray-100 text-gray-800">{{ $code }}</span>
                     @endforeach
                     </div>
-                    {{$this->getCachedActions(false)['regenerate2fa']}}
+                    {{$this->getCachedAction('regenerate2fa')}}
 
                 @endif
 
@@ -110,7 +110,7 @@
                         <x-filament::button color="secondary" wire:click="toggleRecoveryCodes">
                             {{$this->showing_two_factor_recovery_codes ? __('filament-breezy::default.profile.2fa.enabled.hide_codes') :__('filament-breezy::default.profile.2fa.enabled.show_codes')}}
                         </x-filament::button>
-                        {{$this->getCachedActions(false)['disable2fa']}}
+                        {{$this->getCachedAction('disable2fa')}}
                     </div>
                 @elseif($this->user->has_enabled_two_factor)
                     <form wire:submit.prevent="confirmTwoFactor">
@@ -129,7 +129,7 @@
                     </form>
                 @else
                     <div class="text-right">
-                        {{$this->getCachedActions(false)['enable2fa']}}
+                        {{$this->getCachedAction('enable2fa')}}
                     </div>
                 @endif
             </x-slot>

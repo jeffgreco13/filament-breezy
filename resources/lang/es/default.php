@@ -39,6 +39,7 @@ return [
             "label" => "Enviar",
         ],
         "notification_error" => "Error: intente de nuevo más tarde.",
+        "notification_error_link_text"=>"Try Again",
         "notification_success" => "Se ha enviado un correo, abra el mensaje para seguir las instrucciones.",
     ],
     "verification" => [

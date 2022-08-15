@@ -34,6 +34,7 @@ return [
             "label" => "Подтвердить",
         ],
         "notification_error" => "Ошибка: повторите попытку позже.",
+        "notification_error_link_text"=>"Try Again",
         "notification_success" => "Проверьте свой почтовый ящик для получения инструкций!",
     ],
     "verification" => [
@@ -114,7 +115,7 @@ return [
         ],
     ],
     "fields" => [
-        "email" => "E-mail", 
+        "email" => "E-mail",
         "login" => "Имя пользователя",
         "name" => "Имя",
         "password" => "Пароль",

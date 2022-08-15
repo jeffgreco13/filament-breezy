@@ -21,6 +21,7 @@ return [
             "label" => "Enviar",
         ],
         "notification_error" => "Erro: Por favor, tente novamente mais tarde.",
+        "notification_error_link_text"=>"Try Again",
         "notification_success" => "Verifique sua caixa de entrada para instruções!",
     ],
     "verification" => [

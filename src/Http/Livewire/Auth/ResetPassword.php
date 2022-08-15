@@ -3,6 +3,7 @@
 namespace JeffGreco13\FilamentBreezy\Http\Livewire\Auth;
 
 use Filament\Forms;
+use Filament\Notifications\Actions\Action as NotificationAction;
 use Filament\Notifications\Notification;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Contracts\View\View;
@@ -78,7 +79,7 @@ class ResetPassword extends Component implements Forms\Contracts\HasForms
             if ($response == Password::PASSWORD_RESET) {
                 return redirect(route('filament.auth.login', ['email' => $this->email,'reset' => true]));
             } else {
-                Notification::make()->title(__("filament-breezy::default.reset_password.notification_error"))->danger()->send();
+                Notification::make()->title(__("filament-breezy::default.reset_password.notification_error"))->persistent()->actions([NotificationAction::make('resetAgain')->label(__("filament-breezy::default.reset_password.notification_error_link_text"))->url(route(config('filament-breezy.route_group_prefix').'password.request'))])->danger()->send();
             }
         } else {
             $response = Password::sendResetLink(['email' => $this->email]);

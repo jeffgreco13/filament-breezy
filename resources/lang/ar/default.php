@@ -34,6 +34,7 @@ return [
             'label' => 'أرسل',
         ],
         'notification_error' => 'عذراً، نرجو المحاولة مرة أخرى لاحقاً.',
+        "notification_error_link_text"=>"Try Again",
         'notification_success' => 'تم إرسال التعليمات للبريد الإليكتروني الخاص بك!',
     ],
     'verification' => [

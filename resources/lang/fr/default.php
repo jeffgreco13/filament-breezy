@@ -34,6 +34,7 @@ return [
             "label" => "Valider",
         ],
         "notification_error" => "Erreur : veuillez réessayer plus tard.",
+        "notification_error_link_text"=>"Try Again",
         "notification_success" => "Vérifiez votre boîte de réception pour les instructions !",
     ],
     "verification" => [
@@ -114,7 +115,7 @@ return [
         ],
     ],
     "fields" => [
-        "email" => "E-mail", 
+        "email" => "E-mail",
         "login" => "Identifiant",
         "name" => "Nom",
         "password" => "Mot de passe",

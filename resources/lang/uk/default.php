@@ -34,6 +34,7 @@ return [
             "label" => "Підтвердити",
         ],
         "notification_error" => "Помилка: повторіть спробу пізніше.",
+        "notification_error_link_text"=>"Try Again",
         "notification_success" => "Перевірте свою поштову скриньку для отримання вказівок!",
     ],
     "verification" => [

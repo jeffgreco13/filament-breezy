@@ -39,6 +39,7 @@ return [
             "label" => "Küldés",
         ],
         "notification_error" => "Hiba: próbálja újra később.",
+        "notification_error_link_text"=>"Try Again",
         "notification_success" => "Tekintse meg beérkezett üzeneteit az utasításokért!",
     ],
     "verification" => [

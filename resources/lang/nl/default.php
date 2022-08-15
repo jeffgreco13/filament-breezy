@@ -39,6 +39,7 @@ return [
             "label" => "Verzenden",
         ],
         "notification_error" => "Error: probeer het later nogmaals.",
+        "notification_error_link_text"=>"Try Again",
         "notification_success" => "Controleer je e-mail voor instructies!",
     ],
     "verification" => [

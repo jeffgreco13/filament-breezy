@@ -39,6 +39,7 @@ return [
             "label" => "Trimite",
         ],
         "notification_error" => "Eroare: vă rugăm să încercați din nou mai târziu.",
+        "notification_error_link_text"=>"Try Again",
         "notification_success" => "Verificați-vă căsuța de e-mail pentru instrucțiuni!",
     ],
     "verification" => [

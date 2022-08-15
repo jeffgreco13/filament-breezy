@@ -5,7 +5,6 @@ namespace JeffGreco13\FilamentBreezy\Traits;
 use Filament\Forms;
 use Filament\Pages\Actions\Action;
 use Filament\Pages\Actions\ButtonAction;
-use Illuminate\Support\Arr;
 use JeffGreco13\FilamentBreezy\Actions\PasswordButtonAction;
 use JeffGreco13\FilamentBreezy\FilamentBreezy;
 
@@ -81,7 +80,7 @@ trait HasBreezyTwoFactor
     public function getCachedAction(string $name): ?Action
     {
         if ($action = parent::getCachedAction($name)) {
-             return $action;
+            return $action;
         }
 
         foreach ($this->getHiddenActions() as $action) {

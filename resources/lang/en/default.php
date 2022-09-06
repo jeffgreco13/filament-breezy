@@ -2,7 +2,7 @@
 
 return [
     "login" => [
-        "username_or_email" => "Username ou Email",
+        "username_or_email" => "Username or Email",
         "forgot_password_link" => "Forgot password?",
         "create_an_account" => "create an account",
     ],

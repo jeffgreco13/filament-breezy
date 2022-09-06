@@ -2,6 +2,19 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.4.3 - 2022-09-06
+
+### What's Changed
+
+- fix: duplicate 2fa description message by @jeffgreco13 in https://github.com/jeffgreco13/filament-breezy/pull/111
+- Fix typo in lang file (change 'ou' to 'or') by @caendesilva in https://github.com/jeffgreco13/filament-breezy/pull/108
+
+### New Contributors
+
+- @caendesilva made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/108
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.4.2...v1.4.3
+
 ## v1.4.2 - 2022-08-15
 
 ### What's Changed

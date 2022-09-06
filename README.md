@@ -89,6 +89,11 @@ class User extends Authenticatable
 
 ## Usage
 
+### Routing
+
+*IMPORTANT NOTE*
+Breezy uses the default Laravel Auth routes, such as `password.request` and `password.reset` in order to deliver a seamless experience with Laravel Auth. If you are using Jetstream, Breeze, or another plugin that uses the default auth routes then you may experience unexpected behaviour.
+
 ### Customizing Password Rules
 
 The registration, my profile and password reset forms use the same set of password validation rules. You can add new rules to the array from the filament-breezy.php config file:

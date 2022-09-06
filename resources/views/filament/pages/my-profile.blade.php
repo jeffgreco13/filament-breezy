@@ -75,7 +75,7 @@
 
                 @if ($this->user->has_confirmed_two_factor)
                     <p class="text-lg font-medium text-gray-900 dark:text-white">{{ __('filament-breezy::default.profile.2fa.enabled.title') }}</p>
-                    {{ __('filament-breezy::default.profile.2fa.enabled.store_codes') }}
+                    {{ __('filament-breezy::default.profile.2fa.enabled.description') ?? __('filament-breezy::default.profile.2fa.enabled.store_codes') }}
                 @else
                     <p class="text-lg font-medium text-gray-900 dark:text-white">{{ __('filament-breezy::default.profile.2fa.finish_enabling.title') }}</p>
                     {{ __('filament-breezy::default.profile.2fa.finish_enabling.description') }}

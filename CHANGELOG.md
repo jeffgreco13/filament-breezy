@@ -2,6 +2,20 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.4.4 - 2022-10-17
+
+### What's Changed
+
+- Bump dependabot/fetch-metadata from 1.3.3 to 1.3.4 by @dependabot in https://github.com/jeffgreco13/filament-breezy/pull/113
+- Fix Auth middleware for non-default guards. by @Saifallak in https://github.com/jeffgreco13/filament-breezy/pull/114
+- vi translations by @datlechin in https://github.com/jeffgreco13/filament-breezy/pull/112
+
+### New Contributors
+
+- @datlechin made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/112
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.4.3...v1.4.4
+
 ## v1.4.3 - 2022-09-06
 
 ### What's Changed

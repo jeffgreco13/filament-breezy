@@ -21,6 +21,11 @@ The missing toolkit from Filament Admin with Breeze-like functionality. Includes
 ![Screenshot of Password confirmation action](./art/confirm-password.png)
 ![Screenshot of Sanctum tokens](./art/sanctum.png)
 
+## Warning: Jetstream or Breeze Users
+
+Please read the [Routing instructions](#routing) before installing to ensure that Filament Breezy will suit your needs.
+
+
 ## Installation
 
 1. Install the package via composer:
@@ -91,8 +96,14 @@ class User extends Authenticatable
 
 ### Routing
 
-*IMPORTANT NOTE*
-Breezy uses the default Laravel Auth routes, such as `password.request` and `password.reset` in order to deliver a seamless experience with Laravel Auth. If you are using Jetstream, Breeze, or another plugin that uses the default auth routes then you may experience unexpected behaviour.
+*COMPATIBILITY WARNING*
+Breezy uses the default Laravel Auth routes, `register`, `login`, `password.request`, `password.reset`, `verification.verify` and `verifciation.notice` in order to deliver a seamless experience with Laravel Auth. If you are using Jetstream, Breeze, or another plugin that uses the default auth routes then you will get an error that the routes are already registered.
+
+You can use the `"route_group_prefix"=>'',` option in the Filament Breezy config file to set a name prefix for all of Breezy's routes. Ex. `"route_group_prefix"=>'breezy.',`
+
+However, since Breezy uses Laravel Auth to generate password reset and email verfication emails you will need to customize these emails to use the appropriate routes. For example, a user resetting their password from Filament Breezy will receive an email directing them to the `password.reset` route because Laravel Auth generates the URL in this email automatically.
+
+Please see instructions for [Password Reset Customization](https://laravel.com/docs/9.x/passwords#password-customization) and [Email Verification Customization](https://laravel.com/docs/9.x/verification#customization) for instructions on how to customize these URLs to suit your needs.
 
 ### Customizing Password Rules
 

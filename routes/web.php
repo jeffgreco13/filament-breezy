@@ -26,10 +26,9 @@ Route::domain(config("filament.domain"))
             ->name("verification.notice");
 
         Route::get("email/verify/{id}/{hash}", [
-            EmailVerificationController::class,
+            config('filament-breezy.email_verification_controller_path'),
             "__invoke",
         ])
-            ->middleware([Authenticate::class, "signed"])
             ->name("verification.verify");
 
         Route::middleware(config("filament.middleware.auth"))->group(

@@ -29,6 +29,7 @@ Route::domain(config("filament.domain"))
             config('filament-breezy.email_verification_controller_path'),
             "__invoke",
         ])
+            ->middleware(["signed"])
             ->name("verification.verify");
 
         Route::middleware(config("filament.middleware.auth"))->group(

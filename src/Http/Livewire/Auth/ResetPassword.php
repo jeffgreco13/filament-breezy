@@ -65,7 +65,7 @@ class ResetPassword extends Component implements Forms\Contracts\HasForms
         $data = $this->form->getState();
 
         if ($this->isResetting) {
-            $response = Password::reset([
+            $response = Password::broker(config('filament-breezy.reset_broker', config('auth.defaults.passwords')))->reset([
                 'token' => $this->token,
                 'email' => $this->email,
                 'password' => $data['password'],
@@ -82,7 +82,7 @@ class ResetPassword extends Component implements Forms\Contracts\HasForms
                 Notification::make()->title(__("filament-breezy::default.reset_password.notification_error"))->persistent()->actions([NotificationAction::make('resetAgain')->label(__("filament-breezy::default.reset_password.notification_error_link_text"))->url(route(config('filament-breezy.route_group_prefix').'password.request'))])->danger()->send();
             }
         } else {
-            $response = Password::sendResetLink(['email' => $this->email]);
+            $response = Password::broker(config('filament-breezy.reset_broker', config('auth.defaults.passwords')))->sendResetLink(['email' => $this->email]);
             if ($response == Password::RESET_LINK_SENT) {
                 Notification::make()->title(__("filament-breezy::default.reset_password.notification_success"))->success()->send();
 

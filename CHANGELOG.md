@@ -2,6 +2,14 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.4.6 - 2022-10-19
+
+### What's Changed
+
+- fix: Bug with Emailverification by @jeffgreco13 in https://github.com/jeffgreco13/filament-breezy/pull/118
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.4.5...v1.4.6
+
 ## v1.4.5 - 2022-10-19
 
 ### What's Changed

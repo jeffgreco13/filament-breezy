@@ -14,7 +14,7 @@ class EmailVerificationController extends Controller
     {
         $this->middleware([Authenticate::class]);
     }
-    
+
     public function __invoke(string $id, string $hash): RedirectResponse
     {
         if (! hash_equals((string) $id, (string) Filament::auth()->id())) {

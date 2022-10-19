@@ -2,6 +2,21 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.4.5 - 2022-10-19
+
+### What's Changed
+
+- add greek lang by @panakour in https://github.com/jeffgreco13/filament-breezy/pull/117
+- Email verification controller by @EzimetYusup in https://github.com/jeffgreco13/filament-breezy/pull/116
+- use custom reset broker for reset passwords. by @Saifallak in https://github.com/jeffgreco13/filament-breezy/pull/115
+
+### New Contributors
+
+- @panakour made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/117
+- @EzimetYusup made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/116
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.4.4...v1.4.5
+
 ## v1.4.4 - 2022-10-17
 
 ### What's Changed

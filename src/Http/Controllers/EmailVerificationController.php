@@ -3,6 +3,7 @@
 namespace JeffGreco13\FilamentBreezy\Http\Controllers;
 
 use Filament\Facades\Filament;
+use Filament\Http\Middleware\Authenticate;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Http\RedirectResponse;

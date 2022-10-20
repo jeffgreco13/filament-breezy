@@ -2,6 +2,14 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.4.7 - 2022-10-20
+
+### What's Changed
+
+- Fix Authenticate class name space by @EzimetYusup in https://github.com/jeffgreco13/filament-breezy/pull/120
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.4.6...v1.4.7
+
 ## v1.4.6 - 2022-10-19
 
 ### What's Changed

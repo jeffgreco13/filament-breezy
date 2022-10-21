@@ -43,13 +43,13 @@ return [
     ],
     "verification" => [
         "title" => "Vahvista sähköposti",
-        "heading" => "Vaaditaan sähköpostin vahvistus",
+        "heading" => "Sähköpostin vahvistus vaaditaan",
         "submit" => [
             "label" => "Kirjaudu ulos",
         ],
         "notification_success" => "Tarkista sähköpostisi ohjeita varten!",
         "notification_resend" => "Sähköpostin vahvistus on lähetetty uudestaan",
-        "before_proceeding" => "Ennen kuin voit jatkaa, tarkista vahvistualinkki sähköpostistasi.",
+        "before_proceeding" => "Ennen kuin voit jatkaa, tarkista vahvistuslinkki sähköpostistasi.",
         "not_receive" => "Jos et saanut sähköpostia,",
         "request_another" => "paina tästä lähettääksesi uuden",
     ],
@@ -67,7 +67,7 @@ return [
         ],
         "password" => [
             "heading" => "Salasana",
-            "subheading" => "Pitää olla vähintää 8 merkkiä.",
+            "subheading" => "Pitää olla vähintään 8 merkkiä.",
             "submit" => [
                 "label" => "Päivitä",
             ],
@@ -80,7 +80,7 @@ return [
                 "enable" => "Ota käyttöön",
                 "regenerate_codes" => "Luo koodit uudestaan",
                 "disable" => "Ota pois käytöstä",
-                "confirm_finish" => "Vahvista & lopeta",
+                "confirm_finish" => "Vahvista & Lopeta",
                 "cancel_setup" => "Peruuta asetus"
             ],
             "setup_key" => "Avaimen asetus",
@@ -95,7 +95,7 @@ return [
             "enabled" => [
                 "title" => "Olet ottanut kaksivaiheisen tunnistautumisen käyttöön!",
                 "description" => "Kaksivaiheinen tunnistautuminen on päällä. Tämän avulla tilisi on turvallisempi.",
-                "store_codes" => "Pidä palautuskoodit turvallisessa sijainnissa. Näitä koodeja käytetään jos kaksivaiheisen tunnistautumisen laite katoaa.",
+                "store_codes" => "Pidä palautuskoodit turvallisessa sijainnissa. Näitä koodeja käytetään jos kaksivaiheisen tunnistautumisen laite ei ole saatavilla.",
                 "show_codes" => "Näytä palautuskoodit",
                 "hide_codes" => "Piilota palautuskoodit"
             ],

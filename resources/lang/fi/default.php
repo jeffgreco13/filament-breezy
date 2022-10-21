@@ -38,7 +38,8 @@ return [
         "submit" => [
             "label" => "Lähetä",
         ],
-        "notification_error" => "Virhe: Yritä uudelleen myöhemmin.",
+        "notification_error" => "Virhe: Yritä uudelleen myöhemmin. Pyydä uusi palautuslinkki.",
+        "notification_error_link_text" => "Yritä uudestaan",
         "notification_success" => "Tarkista sähköpostisi ohjeita varten!",
     ],
     "verification" => [

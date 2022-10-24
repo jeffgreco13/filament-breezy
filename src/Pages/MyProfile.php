@@ -65,7 +65,7 @@ class MyProfile extends Page
                 ->label(__('filament-breezy::default.fields.name')),
             Forms\Components\TextInput::make($this->loginColumn)
                 ->required()
-                ->email()
+                ->email(fn () => $this->loginColumn === 'email')
                 ->unique(config('filament-breezy.user_model'), ignorable: $this->user)
                 ->label(__('filament-breezy::default.fields.email')),
         ];

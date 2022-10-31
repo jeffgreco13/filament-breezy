@@ -60,9 +60,13 @@ class MyProfile extends Page
     protected function getUpdateProfileFormSchema(): array
     {
         return [
-            Forms\Components\TextInput::make("name")
+            Forms\Components\TextInput::make('name')
+                ->required()
                 ->label(__('filament-breezy::default.fields.name')),
-            Forms\Components\TextInput::make($this->loginColumn)->unique(config('filament-breezy.user_model'), ignorable: $this->user)
+            Forms\Components\TextInput::make($this->loginColumn)
+                ->required()
+                ->email(fn () => $this->loginColumn === 'email')
+                ->unique(config('filament-breezy.user_model'), ignorable: $this->user)
                 ->label(__('filament-breezy::default.fields.email')),
         ];
     }

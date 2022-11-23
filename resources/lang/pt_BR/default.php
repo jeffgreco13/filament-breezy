@@ -76,37 +76,37 @@ return [
             ],
             "notify" => "Senha alterada com sucesso!",
         ],
-    ],
-    "2fa" => [
-        "title" => "Autenticação de 2 fatores",
-        "description" => "Gerencie a autenticação de 2 fatores para sua conta (recomendado).",
-        "actions" => [
-            "enable" => "Habilitar",
-            "regenerate_codes" => "Regerar códigos",
-            "disable" => "Desabilitar",
-            "confirm_finish" => "Confirmar & finalizar",
-            "cancel_setup" => "Cancelar"
+        "2fa" => [
+            "title" => "Autenticação de 2 fatores",
+            "description" => "Gerencie a autenticação de 2 fatores para sua conta (recomendado).",
+            "actions" => [
+                "enable" => "Habilitar",
+                "regenerate_codes" => "Regerar códigos",
+                "disable" => "Desabilitar",
+                "confirm_finish" => "Confirmar & finalizar",
+                "cancel_setup" => "Cancelar"
+            ],
+            "setup_key" => "Chave de configuração",
+            "not_enabled" => [
+                "title" => "Você não ativou a autenticação de dois fatores.",
+                "description" => "Quando a autenticação de dois fatores estiver habilitada, você será solicitado a fornecer um token seguro e aleatório durante a autenticação. Você pode recuperar esse token do aplicativo Google Authenticator do seu telefone."
+            ],
+            "finish_enabling" => [
+                "title" => "Conclua a ativação da autenticação de dois fatores.",
+                "description" => "Para concluir a ativação da autenticação de dois fatores, digitalize o código QR a seguir usando o aplicativo autenticador do seu telefone ou insira a chave de configuração e forneça o código OTP gerado."
+            ],
+            "enabled" => [
+                "title" => "Você habilitou a autenticação de dois fatores!",
+                "description" => "A autenticação de dois fatores agora está habilitada. Isso ajuda a tornar sua conta mais segura.",
+                "store_codes" => "Armazene esses códigos de recuperação em um gerenciador de senhas seguro. Eles podem ser usados para recuperar o acesso à sua conta se seu dispositivo de autenticação de dois fatores for perdido.",
+                "show_codes" => 'Mostrar códigos de recuperação',
+                "hide_codes" => 'Ocultar códigos de recuperação'
+            ],
+            "confirmation" => [
+                "success_notification" => 'Código verificado. Autenticação de dois fatores habilitada.',
+                "invalid_code" => "O código que você digitou é inválido."
+            ]
         ],
-        "setup_key" => "Chave de configuração",
-        "not_enabled" => [
-            "title" => "Você não ativou a autenticação de dois fatores.",
-            "description" => "Quando a autenticação de dois fatores estiver habilitada, você será solicitado a fornecer um token seguro e aleatório durante a autenticação. Você pode recuperar esse token do aplicativo Google Authenticator do seu telefone."
-        ],
-        "finish_enabling" => [
-            "title" => "Conclua a ativação da autenticação de dois fatores.",
-            "description" => "Para concluir a ativação da autenticação de dois fatores, digitalize o código QR a seguir usando o aplicativo autenticador do seu telefone ou insira a chave de configuração e forneça o código OTP gerado."
-        ],
-        "enabled" => [
-            "title" => "Você habilitou a autenticação de dois fatores!",
-            "description" => "A autenticação de dois fatores agora está habilitada. Isso ajuda a tornar sua conta mais segura.",
-            "store_codes" => "Armazene esses códigos de recuperação em um gerenciador de senhas seguro. Eles podem ser usados para recuperar o acesso à sua conta se seu dispositivo de autenticação de dois fatores for perdido.",
-            "show_codes" => 'Mostrar códigos de recuperação',
-            "hide_codes" => 'Ocultar códigos de recuperação'
-        ],
-        "confirmation" => [
-            "success_notification" => 'Código verificado. Autenticação de dois fatores habilitada.',
-            "invalid_code" => "O código que você digitou é inválido."
-        ]
     ],
     "sanctum" => [
         "title" => "Tokens API",

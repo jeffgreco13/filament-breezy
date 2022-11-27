@@ -34,10 +34,13 @@ class FilamentBreezyServiceProvider extends PluginServiceProvider
 
         Livewire::component(Auth\Login::getName(), Auth\Login::class);
 
-        Livewire::component(
-            Auth\ResetPassword::getName(),
-            Auth\ResetPassword::class
-        );
+        if (config("filament-breezy.enable_password_reset")) {
+            Livewire::component(
+                Auth\ResetPassword::getName(),
+                Auth\ResetPassword::class
+            );
+        }
+
         Livewire::component(Auth\Verify::getName(), Auth\Verify::class);
 
         if (config("filament-breezy.enable_registration")) {

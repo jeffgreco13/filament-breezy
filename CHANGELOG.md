@@ -2,6 +2,26 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.4.8 - 2022-12-11
+
+### What's Changed
+
+- Add ms translation. by @sumardi in https://github.com/jeffgreco13/filament-breezy/pull/124
+- Finnish translation by @Zagna in https://github.com/jeffgreco13/filament-breezy/pull/121
+- Fix: Validate name and email. by @sumardi in https://github.com/jeffgreco13/filament-breezy/pull/123
+- Bump dependabot/fetch-metadata from 1.3.4 to 1.3.5 by @dependabot in https://github.com/jeffgreco13/filament-breezy/pull/127
+- Split profile form into sections by @boris-glumpler in https://github.com/jeffgreco13/filament-breezy/pull/125
+- Add missing translations in translate pt_BR by @franciscpd in https://github.com/jeffgreco13/filament-breezy/pull/129
+
+### New Contributors
+
+- @sumardi made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/124
+- @Zagna made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/121
+- @boris-glumpler made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/125
+- @franciscpd made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/129
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.4.7...v1.4.8
+
 ## v1.4.7 - 2022-10-20
 
 ### What's Changed

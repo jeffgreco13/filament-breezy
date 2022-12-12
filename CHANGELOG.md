@@ -2,6 +2,12 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.4.9 - 2022-12-12
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.4.8...v1.4.9
+
+- Fixed bug with ssanctum component.
+
 ## v1.4.8 - 2022-12-11
 
 ### What's Changed

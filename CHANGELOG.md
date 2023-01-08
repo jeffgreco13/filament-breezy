@@ -2,6 +2,19 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.4.10 - 2023-01-08
+
+### What's Changed
+
+- Added italian translation by @gabriserra in https://github.com/jeffgreco13/filament-breezy/pull/133
+- Add LoginSuccess event to auth by @jeffgreco13 in https://github.com/jeffgreco13/filament-breezy/pull/135
+
+### New Contributors
+
+- @gabriserra made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/133
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.4.9...v1.4.10
+
 ## v1.4.9 - 2022-12-12
 
 **Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.4.8...v1.4.9

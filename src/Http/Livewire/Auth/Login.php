@@ -114,6 +114,7 @@ class Login extends FilamentLogin
             return null;
         }
         event(new LoginSuccess(Filament::auth()->user()));
+
         return app(LoginResponse::class);
     }
 

@@ -2,6 +2,14 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.4.10.1 - 2023-01-08
+
+### What's Changed
+
+- Bug fix by @jeffgreco13 in https://github.com/jeffgreco13/filament-breezy/pull/136
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.4.10...v1.4.10.1
+
 ## v1.4.10 - 2023-01-08
 
 ### What's Changed

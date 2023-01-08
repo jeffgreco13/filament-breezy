@@ -11,6 +11,7 @@ use Filament\Notifications\Notification;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Arr;
 use JeffGreco13\FilamentBreezy\FilamentBreezy;
+use JeffGreco13\FilamentBreezy\Events\LoginSuccess;
 
 class Login extends FilamentLogin
 {
@@ -67,6 +68,7 @@ class Login extends FilamentLogin
                 }
                 Filament::auth()->login($this->user, $this->remember);
 
+                event(new LoginSuccess($this->user));
                 return app(LoginResponse::class);
             } else {
                 // Validate the user's login details in order to show them the code challenge.
@@ -111,6 +113,7 @@ class Login extends FilamentLogin
             return null;
         }
 
+        event(new LoginSuccess($this->user));
         return app(LoginResponse::class);
     }
 

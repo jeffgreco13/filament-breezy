@@ -13,13 +13,16 @@ Route::domain(config("filament.domain"))
         if (config("filament-breezy.enable_registration")) {
             Route::get("/register", config('filament-breezy.registration_component_path'))->name("register");
         }
-        Route::get("/password/reset", config('filament-breezy.password_reset_component_path'))->name(
-            "password.request"
-        );
 
-        Route::get("/password/reset/{token}", config('filament-breezy.password_reset_component_path'))->name(
-            "password.reset"
-        );
+        if (config("filament-breezy.enable_password_reset")) {
+            Route::get("/password/reset", config('filament-breezy.password_reset_component_path'))->name(
+                "password.request"
+            );
+
+            Route::get("/password/reset/{token}", config('filament-breezy.password_reset_component_path'))->name(
+                "password.reset"
+            );
+        }
 
         Route::get("email/verify", config('filament-breezy.email_verification_component_path'))
             ->middleware(["throttle:6,1", "auth:" . config('filament.auth.guard')])

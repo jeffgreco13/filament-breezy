@@ -167,7 +167,7 @@ class Login extends FilamentLogin
         if ($login = request()->query($this->loginColumn, "")) {
             $this->form->fill([$this->loginColumn => $login]);
         }
-        if (request()->query("reset")) {
+        if (config("filament-breezy.enable_password_reset") && request()->query("reset")) {
             Notification::make()->title(__("passwords.reset"))->success()->send();
         }
     }

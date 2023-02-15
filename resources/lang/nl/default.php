@@ -87,7 +87,7 @@ return [
             "setup_key" => "Sleutel: ",
             "not_enabled" => [
                 "title" => "Je hebt tweefactorauthenticatie niet ingeschakeld.",
-                "description"=>"Wanneer tweefactorauthenticatie is ingeschakeld, wordt je tijdens de authenticatie om een veilige, willekeurige token gevraagd. Je kunt deze token ophalen uit de Google Authenticator-app van je telefoon."
+                "description"=>"Wanneer tweefactorauthenticatie is ingeschakeld, word je tijdens de authenticatie om een veilige, willekeurige token gevraagd. Je kunt deze token ophalen uit de Google Authenticator-app van je telefoon."
             ],
             "finish_enabling" => [
                 "title"=>"Voltooi het inschakelen van tweefactorauthenticatie.",

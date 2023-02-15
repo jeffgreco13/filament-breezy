@@ -99,7 +99,7 @@ class MyProfile extends Page
         $this->user->update([
             "password" => Hash::make($state["new_password"]),
         ]);
-        session()->forget("password_hash_web");
+        session()->forget('password_hash_' . config('filament.auth.guard'));
         Filament::auth()->login($this->user);
         $this->notify("success", __('filament-breezy::default.profile.password.notify'));
         $this->reset(["new_password", "new_password_confirmation"]);

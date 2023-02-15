@@ -2,6 +2,24 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.5 - 2023-02-15
+
+### What's Changed
+
+- Bump dependabot/fetch-metadata from 1.3.5 to 1.3.6 by @dependabot in https://github.com/jeffgreco13/filament-breezy/pull/140
+- L10 compatibility by @saade in https://github.com/jeffgreco13/filament-breezy/pull/144
+- Added ru translation, and corrected existing by @ankkk in https://github.com/jeffgreco13/filament-breezy/pull/143
+- fixed translation issue by @SebastiaanKloos in https://github.com/jeffgreco13/filament-breezy/pull/137
+- fix: use guard name from filament config by @zhanang19 in https://github.com/jeffgreco13/filament-breezy/pull/141
+
+### New Contributors
+
+- @ankkk made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/143
+- @SebastiaanKloos made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/137
+- @zhanang19 made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/141
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.4.10.1...v1.5
+
 ## v1.4.10.1 - 2023-01-08
 
 ### What's Changed

@@ -3,7 +3,7 @@
 return [
     "login" => [
         "username_or_email" => "Nazwa użytkownik lub email",
-        "forgot_password_link" => "Nie pamiętasz hasła??",
+        "forgot_password_link" => "Nie pamiętasz hasła?",
         "create_an_account" => "załóż konto",
     ],
     "password_confirm" => [
@@ -122,7 +122,7 @@ return [
     "fields" => [
         "email" => "Email",
         "login" => "Login",
-        "name" => "Imię",
+        "name" => "Nazwa użytkownika",
         "password" => "Hasło",
         "password_confirm" => "Potwierdź hasło",
         "new_password" => "Nowe hasło",

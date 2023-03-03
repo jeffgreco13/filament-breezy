@@ -2,6 +2,20 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.5.1 - 2023-03-03
+
+### What's Changed
+
+- Add Polish translation by @SochaAdrian in https://github.com/jeffgreco13/filament-breezy/pull/147
+- add german translation by @grafst in https://github.com/jeffgreco13/filament-breezy/pull/145
+
+### New Contributors
+
+- @SochaAdrian made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/147
+- @grafst made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/145
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.5...v1.5.1
+
 ## v1.5 - 2023-02-15
 
 ### What's Changed

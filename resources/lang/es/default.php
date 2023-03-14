@@ -121,7 +121,7 @@ return [
     ],
     "fields" => [
         "email" => "Correo electrónico",
-        "login" => "Pengguna",
+        "login" => "Usuario",
         "name" => "Nombre",
         "password" => "Contraseña",
         "password_confirm" => "Confirmar la contraseña",

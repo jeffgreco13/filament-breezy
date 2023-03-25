@@ -2,6 +2,18 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.5.2 - 2023-03-25
+
+### What's Changed
+
+- Fix to spanish translation in fields.login by @fiere210 in https://github.com/jeffgreco13/filament-breezy/pull/148
+
+### New Contributors
+
+- @fiere210 made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/148
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.5.1...v1.5.2
+
 ## v1.5.1 - 2023-03-03
 
 ### What's Changed

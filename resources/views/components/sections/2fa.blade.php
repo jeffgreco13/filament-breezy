@@ -56,7 +56,7 @@
                     <div class="flex items-center justify-between">
                         <div>{{$this->confirmTwoFactorForm}}</div>
                         <div class="mt-5">
-                            <x-filament::button type="submit">
+                            <x-filament::button type="submit" form="confirmTwoFactor">
                                 {{ __('filament-breezy::default.profile.2fa.actions.confirm_finish') }}
                             </x-filament::button>
 

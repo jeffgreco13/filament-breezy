@@ -20,7 +20,7 @@
 
     {{ $this->form }}
 
-    <x-filament::button type="submit" class="w-full">
+    <x-filament::button type="submit" class="w-full" form="authenticate">
         {{ __('filament::login.buttons.submit.label') }}
     </x-filament::button>
 

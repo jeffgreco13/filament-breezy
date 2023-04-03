@@ -2,6 +2,14 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.5.3 - 2023-04-03
+
+### What's Changed
+
+- feat: add form submit loading indicator by @zhanang19 in https://github.com/jeffgreco13/filament-breezy/pull/150
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.5.2...v1.5.3
+
 ## v1.5.2 - 2023-03-25
 
 ### What's Changed

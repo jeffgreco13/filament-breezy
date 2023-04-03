@@ -15,7 +15,7 @@
 
             <x-slot name="footer">
                 <div class="text-right">
-                    <x-filament::button type="submit">
+                    <x-filament::button type="submit" form="updateProfile">
                         {{ __('filament-breezy::default.profile.personal_info.submit.label') }}
                     </x-filament::button>
                 </div>

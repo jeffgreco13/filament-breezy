@@ -18,7 +18,7 @@
     @unless($hasBeenSent)
     {{ $this->form }}
 
-    <x-filament::button type="submit" class="w-full">
+    <x-filament::button type="submit" class="w-full" form="submit">
         {{ __('filament-breezy::default.reset_password.submit.label') }}
     </x-filament::button>
     @else

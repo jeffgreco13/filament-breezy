@@ -17,7 +17,7 @@
 
     {{ $this->form }}
 
-    <x-filament::button type="submit" class="w-full">
+    <x-filament::button type="submit" class="w-full" form="register">
         {{ __('filament-breezy::default.registration.submit.label') }}
     </x-filament::button>
 </x-filament-breezy::auth-card>

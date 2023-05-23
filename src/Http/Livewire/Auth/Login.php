@@ -39,24 +39,26 @@ class Login extends FilamentLogin
         }
     }
 
-    public function doRateLimit()
+    public function authenticate(): ?LoginResponse
     {
+        // Form data
+        $data = $this->showCodeForm ? $this->twoFactorForm->getState() : $this->form->getState();
+
         try {
             $this->rateLimit(5);
         } catch (TooManyRequestsException $exception) {
-            $this->addError($this->loginColumn, __('filament::login.messages.throttled', [
+            $name = $this->loginColumn;
+            if (config('filament-breezy.enable_2fa') && $this->showCodeForm) {
+                $name = 'code';
+            }
+
+            $this->addError($name, __('filament::login.messages.throttled', [
                 'seconds' => $exception->secondsUntilAvailable,
                 'minutes' => ceil($exception->secondsUntilAvailable / 60),
             ]));
 
             return null;
         }
-    }
-
-    public function authenticate(): ?LoginResponse
-    {
-        // Form data
-        $data = $this->showCodeForm ? $this->twoFactorForm->getState() : $this->form->getState();
 
         if (config('filament-breezy.enable_2fa')) {
             if ($this->showCodeForm) {
@@ -73,8 +75,6 @@ class Login extends FilamentLogin
                 return app(LoginResponse::class);
             } else {
                 // Validate the user's login details in order to show them the code challenge.
-                $this->doRateLimit();
-
                 $model = Filament::auth()->getProvider()->getModel();
                 $this->user = $model::where($this->loginColumn, $data[$this->loginColumn])->first();
 
@@ -96,8 +96,6 @@ class Login extends FilamentLogin
                 return null;
             }
         } else {
-            $this->doRateLimit();
-
             return $this->attemptAuth($data);
         }
     }

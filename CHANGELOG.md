@@ -2,6 +2,23 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.5.5 - 2023-05-23
+
+A special thank you to @JaZo.
+
+### What's Changed
+
+- Bump dependabot/fetch-metadata from 1.3.6 to 1.4.0 by @dependabot in https://github.com/jeffgreco13/filament-breezy/pull/153
+- fix: stop authentication process when rate limit is exceeded by @JaZo in https://github.com/jeffgreco13/filament-breezy/pull/155
+- Creating a translation file for Hebrew by @gasner in https://github.com/jeffgreco13/filament-breezy/pull/152
+
+### New Contributors
+
+- @JaZo made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/155
+- @gasner made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/152
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.5.3...v1.5.5
+
 ## v1.5.3 - 2023-04-03
 
 ### What's Changed

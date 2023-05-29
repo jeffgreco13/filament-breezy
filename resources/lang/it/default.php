@@ -87,7 +87,7 @@ return [
             "setup_key" => "Setup della chiave",
             "not_enabled" => [
                 "title" => "Non hai abilitato l'autenticazione a due fattori.",
-                "description" => "When two factor authentication is enabled, you will be prompted for a secure, random token during authentication. You may retrieve this token from your phone's Google Authenticator application."
+                "description" => "Quando l'autenticazione a due fattori è attivata, durante l'autenticazione, ti verrà richiesto un token casuale. Potrai recuperare questo toke tramite l'app mobile di Google Authenticator"
             ],
             "finish_enabling" => [
                 "title" => "Finisci di abilitare l'autenticazione a due fattori.",

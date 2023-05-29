@@ -97,7 +97,7 @@ class User extends Authenticatable
 ### Routing
 
 *COMPATIBILITY WARNING*
-Breezy uses the default Laravel Auth routes, `register`, `login`, `password.request`, `password.reset`, `verification.verify` and `verifciation.notice` in order to deliver a seamless experience with Laravel Auth. If you are using Jetstream, Breeze, or another plugin that uses the default auth routes then you will get an error that the routes are already registered.
+Breezy uses the default Laravel Auth routes, `register`, `login`, `password.request`, `password.reset`, `verification.verify` and `verification.notice` in order to deliver a seamless experience with Laravel Auth. If you are using Jetstream, Breeze, or another plugin that uses the default auth routes then you will get an error that the routes are already registered.
 
 You can use the `"route_group_prefix"=>'',` option in the Filament Breezy config file to set a name prefix for all of Breezy's routes. Ex. `"route_group_prefix"=>'breezy.',`
 

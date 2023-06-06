@@ -48,7 +48,7 @@ return [
         "submit" => [
             "label" => "Uitloggen",
         ],
-        "notification_success" => "Er is een e-mail verstuurd met instructies om een nieuw wachtwoord in te stellen.",
+        "notification_success" => "Er is een e-mail verstuurd met instructies om je e-mailadres te verifiëren.",
         "notification_resend" => "Verificatie email opnieuw verstuurd.",
         "before_proceeding" => "Voordat je verder gaat, controleer je e-mail voor een verificatie link.",
         "not_receive" => "Indien je geen e-mail ontvangen hebt,",

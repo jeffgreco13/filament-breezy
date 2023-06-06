@@ -2,6 +2,25 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.5.6 - 2023-06-06
+
+### What's Changed
+
+- Bump dependabot/fetch-metadata from 1.4.0 to 1.5.1 by @dependabot in https://github.com/jeffgreco13/filament-breezy/pull/156
+- fix: fixed typo by @BillyBouman-2B-IT in https://github.com/jeffgreco13/filament-breezy/pull/158
+- fix: fix translation to be more concise with the performed action by @AnthonySchuijlenburg in https://github.com/jeffgreco13/filament-breezy/pull/161
+- Update password subheading by @rubenvanerk in https://github.com/jeffgreco13/filament-breezy/pull/160
+- Update lang/it/default.php by @Piteus in https://github.com/jeffgreco13/filament-breezy/pull/157
+
+### New Contributors
+
+- @BillyBouman-2B-IT made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/158
+- @AnthonySchuijlenburg made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/161
+- @rubenvanerk made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/160
+- @Piteus made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/157
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.5.5...v1.5.6
+
 ## v1.5.5 - 2023-05-23
 
 A special thank you to @JaZo.

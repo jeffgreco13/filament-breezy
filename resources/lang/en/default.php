@@ -39,7 +39,7 @@ return [
             "label" => "Submit",
         ],
         "notification_error" => "Error resetting password. Please request a new password reset.",
-        "notification_error_link_text"=>"Try Again",
+        "notification_error_link_text" => "Try Again",
         "notification_success" => "Check your inbox for instructions!",
     ],
     "verification" => [
@@ -79,25 +79,25 @@ return [
             "description" => "Manage 2 factor authentication for your account (recommended).",
             "actions" => [
                 "enable" => "Enable",
-                "regenerate_codes"=>"Regenerate Codes",
-                "disable"=>"Disable",
+                "regenerate_codes" => "Regenerate Codes",
+                "disable" => "Disable",
                 "confirm_finish" => "Confirm & finish",
                 "cancel_setup" => "Cancel setup"
             ],
             "setup_key" => "Setup key",
             "not_enabled" => [
                 "title" => "You have not enabled two factor authentication.",
-                "description"=>"When two factor authentication is enabled, you will be prompted for a secure, random token during authentication. You may retrieve this token from your phone's Google Authenticator application."
+                "description" => "When two factor authentication is enabled, you will be prompted for a secure, random token during authentication. You may retrieve this token from your phone's Google Authenticator application."
             ],
             "finish_enabling" => [
-                "title"=>"Finish enabling two factor authentication.",
+                "title" => "Finish enabling two factor authentication.",
                 "description" => "To finish enabling two factor authentication, scan the following QR code using your phone's authenticator application or enter the setup key and provide the generated OTP code."
             ],
-            "enabled"=>[
-                "title"=>"You have enabled two factor authentication!",
-                "description"=>"Two factor authentication is now enabled. This helps make your account more secure.",
-                "store_codes"=>"Store these recovery codes in a secure password manager. They can be used to recover access to your account if your two factor authentication device is lost.",
-                "show_codes"=>'Show Recovery Codes',
+            "enabled" => [
+                "title" => "You have enabled two factor authentication!",
+                "description" => "Two factor authentication is now enabled. This helps make your account more secure.",
+                "store_codes" => "Store these recovery codes in a secure password manager. They can be used to recover access to your account if your two factor authentication device is lost.",
+                "show_codes" => 'Show Recovery Codes',
                 "hide_codes" => 'Hide Recovery Codes'
             ],
             "confirmation" => [

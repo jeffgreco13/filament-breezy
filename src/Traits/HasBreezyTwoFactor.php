@@ -39,7 +39,7 @@ trait HasBreezyTwoFactor
 
     public function toggleRecoveryCodes()
     {
-        $this->showing_two_factor_recovery_codes = ! $this->showing_two_factor_recovery_codes;
+        $this->showing_two_factor_recovery_codes = !$this->showing_two_factor_recovery_codes;
     }
 
     public function reGenerateRecoveryCodes()
@@ -50,9 +50,11 @@ trait HasBreezyTwoFactor
 
     public function confirmTwoFactor()
     {
-        if (empty($this->user->two_factor_secret) ||
+        if (
+            empty($this->user->two_factor_secret) ||
             empty($this->twofactor_code) ||
-            ! $this->user->verifyTwoFactor($this->twofactor_code, $this->breezy)) {
+            !$this->user->verifyTwoFactor($this->twofactor_code, $this->breezy)
+        ) {
             $this->addError('twofactor_code', __('filament-breezy::default.profile.2fa.confirmation.invalid_code'));
 
             return;

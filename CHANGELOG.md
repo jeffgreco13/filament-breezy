@@ -2,6 +2,20 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.5.7 - 2023-06-20
+
+### What's Changed
+
+- Add lang ja (Japanese) by @shibomb in https://github.com/jeffgreco13/filament-breezy/pull/165
+- Add Persian Language Support by @mohammadraufzahed in https://github.com/jeffgreco13/filament-breezy/pull/164
+
+### New Contributors
+
+- @shibomb made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/165
+- @mohammadraufzahed made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/164
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.5.6...v1.5.7
+
 ## v1.5.6 - 2023-06-06
 
 ### What's Changed

@@ -12,7 +12,7 @@
         <p class="mt-2 text-sm text-center">
             {{ __('filament-breezy::default.or') }}
             <a class="text-primary-600" href="{{route(config('filament-breezy.route_group_prefix').'register')}}">
-                {{ strtolower(__('filament-breezy::default.registration.heading')) }}
+                {{ __('filament-breezy::default.registration.heading') }}
             </a>
         </p>
         @endif

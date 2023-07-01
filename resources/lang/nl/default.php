@@ -76,7 +76,7 @@ return [
         ],
         "2fa" => [
             "title" => "Tweefactorenauthenticatie",
-            "description" => "Beheer 2-factor authenticatie voor je account (aanbevolen).",
+            "description" => "Beheer tweefactorenauthenticatie voor je account (aanbevolen).",
             "actions" => [
                 "enable" => "Inschakelen",
                 "regenerate_codes" => "Codes opnieuw genereren",

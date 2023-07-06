@@ -8,35 +8,30 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::table(filament('filament-breezy')->getTwoFactorUsersTableName(), function (
+        Schema::create('breezy_sessions', function (
             Blueprint $table
         ) {
+            $table->id();
+            $table->string('authenticatable_type');
+            $table->unsignedBigInteger('authenticatable_id');
+            $table->string('panel_id')->nullable();
+            $table->string('guard')->nullable();
+            $table->string('ip_address', 45)->nullable();
+            $table->text('user_agent')->nullable();
+            $table->timestamp('expires_at')->nullable();
             $table->text('two_factor_secret')
-                ->after('password')
                 ->nullable();
-
             $table->text('two_factor_recovery_codes')
-                ->after('two_factor_secret')
                 ->nullable();
-
             $table->timestamp('two_factor_confirmed_at')
-                ->after('two_factor_recovery_codes')
                 ->nullable();
+            $table->timestamps();
         });
 
     }
 
     public function down()
     {
-        Schema::table(filament('filament-breezy')->getTwoFactorUsersTableName(), function (
-            Blueprint $table
-        ) {
-            $table->dropColumn([
-                'two_factor_secret',
-                'two_factor_recovery_codes',
-                'two_factor_confirmed_at',
-            ]);
-        });
-
+        Schema::dropIfExists('breezy_sessions');
     }
 };

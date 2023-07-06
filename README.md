@@ -1,55 +1,35 @@
-![Filament Breezy cover art](./art/filament-breezy.png)
+![Filament Breezy cover art](./art/breezy-banner.png)
 
-# The top authentication starter kit for Filament Admin!
+# Enhanced security for Filament v3+ Panels.
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/jeffgreco13/filament-breezy.svg?style=flat-square)](https://packagist.org/packages/jeffgreco13/filament-breezy)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/jeffgreco13/filament-breezy/run-tests?label=tests)](https://github.com/jeffgreco13/filament-breezy/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/jeffgreco13/filament-breezy/Check%20&%20fix%20styling?label=code%20style)](https://github.com/jeffgreco13/filament-breezy/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/jeffgreco13/filament-breezy.svg?style=flat-square)](https://packagist.org/packages/jeffgreco13/filament-breezy)
 
-The missing toolkit from Filament Admin with Breeze-like functionality. Includes login, registration, password reset, password confirmation, email verification, and a my profile page. All using the TALL-stack, all very Filament-y.
+Enhanced security features for Filament (v3) Panels. Includes a customizable My Profile page with personal info & avatar support, update password, two factor authentication, and Sanctum token management.
+Installs in minutes!
 
-## Screenshots
-
-![Screenshot of Login](./art/login.png)
-![Screenshot of Profile](./art/profile.png)
-![Screenshot of Register](./art/register.png)
-![Screenshot of Reset](./art/reset.png)
-![Screenshot of Reset](./art/reset-step2.png)
-![Screenshot of Two Factor codes](./art/2fa-challenge.png)
-![Screenshot of Two Factor codes](./art/2fa-codes.png)
-![Screenshot of Password confirmation action](./art/confirm-password.png)
-![Screenshot of Sanctum tokens](./art/sanctum.png)
-
-## Warning: Jetstream or Breeze Users
-
-Please read the [Routing instructions](#routing) before installing to ensure that Filament Breezy will suit your needs.
-
+## Features & Screenshots
+My Profile - Personal info with avatar support
+![Screenshot of Profile with avatar support](./art/profile-with-avatar.png)
+Update password with customizable validation rules
+![Screenshot of Two Factor codes](./art/password-update.png)
+Protected sensitive actions with a password confirmation modal Action
+![Screenshot of Password confirmation action](./art/actions-confirm-password.png)
+Two factor authentication with recovery codes
+![Screenshot of Two Factor codes](./art/2fa-confirm.png)
+Force the user to enable two factor authentication before they can use the app
+![Screenshot of forcing two factor auth](./art/2fa-must-enable.png)
+Create and manage Sanctum personal access tokens
+![Screenshot of Sanctum token management](./art/sanctum-manage-tokens.png)
+![Screenshot of Sanctum token management](./art/sanctum-create.png)
 
 ## Installation
 
-1. Install the package via composer:
+Install the package via composer and install:
 
 ```bash
 composer require jeffgreco13/filament-breezy
-```
-
-2. Update the `config/filament.php` to point to the Breezy Login::class.
-
-```php
-"auth" => [
-    "guard" => env("FILAMENT_AUTH_GUARD", "web"),
-    "pages" => [
-        "login" =>
-            \JeffGreco13\FilamentBreezy\Http\Livewire\Auth\Login::class,
-    ],
-],
-```
-
-Optionally, you can publish the Breezy config file for further customizations, such as Password rules, redirect after registration, and enable/disable the profile page.
-
-```bash
-php artisan vendor:publish --tag="filament-breezy-config"
+php artisan breezy:install
 ```
 
 Optionally, you can publish the views using:
@@ -58,30 +38,174 @@ Optionally, you can publish the views using:
 php artisan vendor:publish --tag="filament-breezy-views"
 ```
 
-### Enable Two Factor Authentication (2FA)
+## Usage & Configuration
 
-By default, 2FA is disabled. To enable it Two Factor Authentication in your app:
-
-1. Set `enable_2fa => true` in the filament-breezy config:
+You must enable Breezy by adding the class to your Filament Panel's `plugin()` or `plugins([])` method:
 
 ```php
-/*
-|--------------------------------------------------------------------------
-| Enable Two-Factor Authentication (2FA).
-*/
-"enable_2fa" => true,
+use Jeffgreco13\FilamentBreezy\BreezyCore;
+
+class CustomersPanelProvider extends PanelProvider
+{
+    public function panel(Panel $panel): Panel
+    {
+        return $panel
+            ...
+            ->plugin(
+                BreezyCore::make()
+            )
+    }
+}
 ```
 
-*NOTE:* if you are using a table other than `users`, you can update the table name in the filament-breezy config or modify the published migration.
+### Update the auth guard
 
-2. Publish and run the migrations:
+Breezy will use the `authGuard` set on the Filament Panel that you create. You may update the authGuard as you please:
 
-```bash
-php artisan vendor:publish --tag="filament-breezy-migrations"
-php artisan migrate
+```php
+use Jeffgreco13\FilamentBreezy\BreezyCore;
+
+class CustomersPanelProvider extends PanelProvider
+{
+    public function panel(Panel $panel): Panel
+    {
+        return $panel
+            ...
+            ->authGuard('customers')
+            ->plugin(
+                BreezyCore::make()
+            )
+    }
+}
 ```
 
-3. Add `JeffGreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable` to your Authenticatable model:
+**NOTE:** you must ensure that the model used in your Guard extends the Authenticatable class.
+
+### My Profile
+
+Enable the My Profile page with configuration options.
+
+**NOTE:** if you are using avatars,
+
+```php
+BreezyCore::make()
+    ->myProfile(
+        shouldRegisterUserMenu: true, // Sets the 'account' link in the panel User Menu (default = true),
+        shouldRegisterNavigation: false, // Adds a main navigation item for the My Profile page (default = false)
+        hasAvatars: false // enables the avatar upload form component. (default = false)
+    )
+```
+
+#### Customize the avatar upload component
+
+
+```php
+use Filament\Forms\Components\FileUpload;
+
+BreezyCore::make()
+    ->avatarUploadComponent(fn($fileUpload) => $fileUpload->disableLabel())
+    // OR, replace with your own component
+    ->avatarUploadComponent(fn() => FileUpload::make('myUpload')->disk('profile-photos'))
+```
+
+#### Customize password update
+
+You can customize the validation rules for the update password component by passing an array of validation strings, or an instance of the `Illuminate\Validation\Rules\Password` class.
+
+```php
+use Illuminate\Validation\Rules\Password;
+
+BreezyCore::make()
+    ->passwordUpdateRules(
+        rules:Password::mixedCase()->uncompromised(3), // you may pass an array of validation rules as well. (default = ['min:8'])
+        requiresCurrentPassword: true, // when false, the user can update their password without entering their current password. (default = true)
+        )
+
+```
+#### Create custom My Profile components
+
+In Breezy v2, you can now create custom Livewire components for the My Profile page and append them easily.
+
+1. Create a new Livewire component in your project using:
+
+```
+php artisan make:livewire MyCustomComponent
+```
+
+2. Extend the `MyProfileComponent` class included with Breezy. This class implements Actions and Forms.
+
+```php
+use Jeffgreco13\FilamentBreezy\Livewire\MyProfileComponent;
+
+class MyCustomComponent extends MyProfileComponent
+{
+    protected string $view = "livewire.my-custom-component";
+
+    //
+
+    public array $data;
+
+    public function form(Form $form): Form
+    {
+        return $form
+            ->schema([
+                Forms\Components\TextInput::make('name')
+                    ->required()
+            ])
+            ->statePath('data');
+    }
+}
+
+```
+
+3. Within your Livewire component's view, you can use Breezy's `grid-section` blade component to match the style:
+
+```blade
+<x-filament-breezy::grid-section md=2 title="Your title" description="This is the description">
+    <x-filament::card>
+        <form wire:submit.prevent="submit" class="space-y-6">
+
+            {{ $this->form }}
+
+            <div class="text-right">
+                <x-filament::button type="submit" form="submit" class="align-right">
+                    Submit!
+                </x-filament::button>
+            </div>
+        </form>
+    </x-filament::card>
+</x-filament-breezy::grid-section>
+```
+
+4. Finally, register your new component with Breezy:
+
+```php
+use App\Livewire\MyCustomComponent;
+
+BreezyCore::make()
+    ->myProfileComponents([MyCustomComponent::class])
+```
+
+#### Override My Profile components
+
+You may override the existing MyProfile components to replace them with your own:
+
+```php
+use App\Livewire\MyCustomComponent;
+
+BreezyCore::make()
+    ->myProfileComponents([
+        // 'personal_info' => ,
+        'update_password' => MyCustomComponent::class, // replaces UpdatePassword component with your own.
+        // 'two_factor_authentication' => ,
+        // 'sanctum_tokens' =>
+    ])
+```
+
+
+### Two Factor Authentication
+
+1. Add `Jeffgreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable` to your Authenticatable model:
 
 ```php
 use JeffGreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
@@ -89,225 +213,39 @@ use JeffGreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, TwoFactorAuthenticatable;
-    ...
-```
+    // ...
 
-## Usage
-
-### Routing
-
-*COMPATIBILITY WARNING*
-Breezy uses the default Laravel Auth routes, `register`, `login`, `password.request`, `password.reset`, `verification.verify` and `verification.notice` in order to deliver a seamless experience with Laravel Auth. If you are using Jetstream, Breeze, or another plugin that uses the default auth routes then you will get an error that the routes are already registered.
-
-You can use the `"route_group_prefix"=>'',` option in the Filament Breezy config file to set a name prefix for all of Breezy's routes. Ex. `"route_group_prefix"=>'breezy.',`
-
-However, since Breezy uses Laravel Auth to generate password reset and email verfication emails you will need to customize these emails to use the appropriate routes. For example, a user resetting their password from Filament Breezy will receive an email directing them to the `password.reset` route because Laravel Auth generates the URL in this email automatically.
-
-Please see instructions for [Password Reset Customization](https://laravel.com/docs/9.x/passwords#password-customization) and [Email Verification Customization](https://laravel.com/docs/9.x/verification#customization) for instructions on how to customize these URLs to suit your needs.
-
-### Customizing Password Rules
-
-The registration, my profile and password reset forms use the same set of password validation rules. You can add new rules to the array from the filament-breezy.php config file:
-
-```php
-"password_rules" => ['min:8'],
-```
-
-If you would like to use an instance of `Illuminate\Validation\Rules\Password::class` for validation, you can register new rules from the `boot()` method of your AppServiceProvider:
-
-```php
-use Illuminate\Validation\Rules\Password;
-
-public function boot()
-{
-    FilamentBreezy::setPasswordRules(
-        [
-            Password::min(8)
-                ->letters()
-                ->numbers()
-                ->mixedCase()
-                ->uncompromised(3)
-        ]
-    );
 }
 ```
 
-### Email Verification
-
-Uses the [Laravel Email Verification](https://laravel.com/docs/8.x/verification) service.
-Implement `MustVerifyEmail` on your User model:
+2. Enable Two Factory Authentication using the `enableTwoFactorAuthentication()` method on the Breezy plugin.
 
 ```php
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-
-class User extends Authenticatable implements MustVerifyEmail
+BreezyCore::make()
+    ->enableTwoFactorAuthentication(
+        force: false // force the user to enable 2FA before they can use the application (default = false)
+    )
 ```
 
-Then you can add the `verified` middleware to any of your routes:
+### Sanctum Personal Access tokens
+
+As of Laravel 8.x Sanctum is included with Laravel, but if you don't already have the package follow the [installation instructions here](https://laravel.com/docs/8.x/sanctum#installation).
+
+Enable the Sanctum token management component:
 
 ```php
-Route::get("/profile", function () {
-    // Only verified users may access this route...
-})->middleware('verified');
-```
-
-Or, if you're using a custom route name prefix:
-
-```php
-Route::get("/profile", function () {
-    // Only verified users may access this route...
-})->middleware('verified:my-prefix.verification.notice');
-```
-
-To force verified emails on your entire Filament Admin by adding the `verified` class to the auth middleware in `config/filament.php`:
-
-```php
-"middleware" => [
-    "auth" => [
-        Authenticate::class,
-        'verified'
-    ],
-    ....
-```
-
-### Extending and Overriding Components
-
-All pages within the auth flow are full-page Livewire components made to work with Filament Forms. So you can easily extend any component to add your own fields and actions.
-
-You can instruct Breezy to use any custom components by updating the paths in the filament-breezy config file:
-
-```php
-/*  
-|--------------------------------------------------------------------------
-| Path to registration Livewire component.
-*/
-"registration_component_path" => \JeffGreco13\FilamentBreezy\Http\Livewire\Auth\Register::class,
-/*
-|--------------------------------------------------------------------------
-| Path to password reset Livewire component.
-*/
-"password_reset_component_path" => \JeffGreco13\FilamentBreezy\Http\Livewire\Auth\ResetPassword::class,
-/*
-|--------------------------------------------------------------------------
-| Path to email verification Livewire component.
-*/
-"email_verification_component_path" => \JeffGreco13\FilamentBreezy\Http\Livewire\Auth\Verify::class,
-```
-
-*NOTE:* Remember, the Login path is set in the Filament config, not in the filament-breezy config.
-
-Here is an example of extending the BreezyRegister class to add new fields to registration:
-
-```php
-
-use JeffGreco13\FilamentBreezy\Http\Livewire\Auth\Register as FilamentBreezyRegister;
-
-
-class Register extends FilamentBreezyRegister
-{
-    // Define the new attributes
-    public $consent_to_terms, $team_name;
-    
-    // Override the getFormSchema method and merge the default fields then add your own.
-    protected function getFormSchema(): array
-    {
-        return array_merge(parent::getFormSchema(),[
-            Forms\Components\Checkbox::make('consent_to_terms')->label('I consent to the terms of service and privacy policy.')->required(),
-            Forms\Components\TextInput::make("team_name")->required()
-        ]);
-    }
-    
-    // Use this method to modify the preparedData before the register() method is called.
-    protected function prepareModelData($data): array
-    {
-        $preparedData = parent::prepareModelData($data);
-        $preparedData['consent_to_terms'] = $this->consent_to_terms;
-        $preparedData["team_name"] = $this->team_name;
-
-        return $preparedData;
-    }
-    
-    // Optionally, you can override the entire register() method to customize exactly what happens at registration
-    public function register()
-    {
-        $preparedData = $this->prepareModelData($this->form->getState());
-        $team = Team::create(["name" => $preparedData["team_name"]]);
-        unset($preparedData["team_name"]);
-        // ...
-    }
-...
-```
-
-#### Extending and Customizing the Profile Page
-
-Similar to above, you can add new fields to your Profile forms by extending the Filament Page:
-
-```php
-namespace App\Filament\Pages;
-
-use JeffGreco13\FilamentBreezy\Pages\MyProfile as BaseProfile;
-use Filament\Forms;
-
-class MyProfile extends BaseProfile
-{
-
-  // ..
-
-  protected function getUpdateProfileFormSchema(): array
-    {
-        return array_merge(parent::getUpdateProfileFormSchema(), [
-            Forms\Components\TextInput::make("job_title"),
-            Forms\Components\Checkbox::make("marketing_consent")->label(
-                "I consent to receive email notifications....."
-            ),
-        ]);
-    }
-```
-
-You will then need to set `"enable_profile_page" => false,` in filament-breezy config to unregister the default Profile page. When you set `"enable_profile_page" => false,` then `"show_profile_page_in_user_menu" => true` is ignored and you will need to [manually register a new item](https://filamentphp.com/docs/2.x/admin/navigation#customizing-the-user-menu) for the user menu within your service provider:
-
-```php
-use App\Filament\Pages\MyProfile;
-
-Filament::serving(function () {
-    
-    // ..
-    
-    Filament::registerUserMenuItems([
-        'account' => UserMenuItem::make()->url(MyProfile::getUrl()),
-    ]);
-    
-    // ..
-    
-});
-```
-
-*NOTE:* in order to add new sections to the Profile page, you will need to extend the class and publish/create your own views. The above method will only allow for adding new fields to the existing Personal Information or Password forms.
-
-
-#### Using a Column Other Than email for Login
-
-You may want to authenticate your users using a column other than `email` in your Authenticatable model. After you have setup your database, you can change the column in the config:
-
-```php
-"fallback_login_field" => "username",
-```
-
-Optionally, update the field label in your language file:
-
-```php
-"fields" => [
-   //
-   "login" => "Username",
-   //
+BreezyCore::make()
+    ->enableSanctumTokens(
+        permissions: ['my','custom','permissions'] // optional, customize the permissions (default = ["create", "view", "update", "delete"])
+    )
 ```
 
 ### Password Confirmation Button Action
 
-Since v1.3.0, Breezy has a `PasswordButtonAction` shortcut which extends the default Page\ButtonAction class. This button action will prompt the user to enter their password for sensitive actions (eg. delete), then will not ask for password again for the # of seconds defined in the filament-breezy config (default 300s).
+This button action will prompt the user to enter their password for sensitive actions (eg. delete), then will not ask for password again for the # of seconds defined in the filament-breezy config (default 300s).
 
 ```php
-use JeffGreco13\FilamentBreezy\Actions\PasswordButtonAction;
+use Jeffgreco13\FilamentBreezy\Actions\PasswordButtonAction;
 
 PasswordButtonAction::make('secure_action')->action('doSecureAction')
 
@@ -315,18 +253,20 @@ PasswordButtonAction::make('secure_action')->action('doSecureAction')
 PasswordButtonAction::make('secure_action')->label('Delete')->icon('heroicon-s-shield-check')->modalHeading('Confirmation')->action(fn()=>$this->doAction())
 ```
 
+## FAQ
+> How the 2FA session work across multiple panels?
 
-### Sanctum API Tokens
+By default, Breezy uses the same guard as defined on your Panel. The default is 'web'. Only panels that have registered the BreezyCore plugin will have access to 2FA. If multiple panels use 2FA, and share the same guard, the User only has to enter the OTP once for the duration of the session.
 
-The most recent version of Laravel include Sanctum, but if you don't already have the package follow the [installation instructions here](https://laravel.com/docs/8.x/sanctum#installation).
+> How does 2FA interact with MustVerifyEmail?
 
-As soon as Sanctum is installed, you are ready to allow users to create new API tokens from the Profile page. Enable this option in the config:
-`enable_sanctum => true`
+When 2FA is properly configured, and the User is prompted for the OTP code before email verification.
 
-You can then control the available permissions abilities from the config, which will add each ability as a checkbox:
-`"sanctum_permissions" => ["create", "read", "update", "delete"]`
+> How long does the 2FA session last?
 
-Follow the Sanctum instructions for authenticating requests as usual.
+The 2FA session is the same as the Laravel session lifetime. Once the user is logged out, or the session expires, they will need to enter the OTP code again.
+
+
 
 ## Testing
 

@@ -2,88 +2,117 @@
 
 namespace JeffGreco13\FilamentBreezy\Traits;
 
-use BaconQrCode\Renderer\Color\Rgb;
-use BaconQrCode\Renderer\Image\SvgImageBackEnd;
-use BaconQrCode\Renderer\ImageRenderer;
-use BaconQrCode\Renderer\RendererStyle\Fill;
-use BaconQrCode\Renderer\RendererStyle\RendererStyle;
-use BaconQrCode\Writer;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use JeffGreco13\FilamentBreezy\FilamentBreezy;
+use Filament\Facades\Filament;
+use Illuminate\Support\Collection;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Jeffgreco13\FilamentBreezy\Models\BreezySession;
 
 trait TwoFactorAuthenticatable
 {
-    public function enableTwoFactorAuthentication(FilamentBreezy $breezy)
+    public static function bootTwoFactorAuthenticatable()
     {
-        $this->forceFill([
-            'two_factor_secret' => encrypt($breezy->getEngine()->generateSecretKey()),
+        static::deleting(function ($model) {
+            $this->breezySessions()->get()->each->delete();
+        });
+    }
+    public function initializeTwoFactorAuthenticatable()
+    {
+        $this->with[] = "breezySessions";
+    }
+
+    public function breezySessions()
+    {
+        return $this->morphMany(BreezySession::class,'authenticatable');
+    }
+
+    public function breezySession(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => $this->breezySessions->first()
+        );
+    }
+
+    public function hasEnabledTwoFactor(): bool
+    {
+        return $this->breezySession?->is_enabled ?? false;
+    }
+
+    public function hasConfirmedTwoFactor(): bool
+    {
+        return $this->breezySession?->is_confirmed ?? false;
+    }
+
+    public function twoFactorRecoveryCodes(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => json_decode(decrypt(
+                $this->breezySession?->two_factor_recovery_codes),true)
+        );
+    }
+
+    public function twoFactorSecret(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->breezySession?->two_factor_secret
+        );
+    }
+
+    public function enableTwoFactorAuthentication()
+    {
+        $twoFactorData = [
+            'two_factor_secret' => encrypt(filament('filament-breezy')->getEngine()->generateSecretKey()),
             'two_factor_recovery_codes' => $this->generateRecoveryCodes(),
-        ])->save();
+        ];
+        if ($this->breezy_session){
+            $this->disableTwoFactorAuthentication(); // Delete the session if it exists.
+        }
+        $this->breezySession = $this->breezySessions()->create($twoFactorData);
+        $this->load('breezySessions');
     }
 
     public function disableTwoFactorAuthentication()
     {
-        $this->forceFill([
-            'two_factor_secret' => null,
-            'two_factor_recovery_codes' => null,
-            'two_factor_confirmed_at' => null,
-        ])->save();
+        $this->breezySession?->delete();
     }
 
-    public function getHasEnabledTwoFactorAttribute()
+    public function confirmTwoFactorAuthentication()
     {
-        return ! is_null($this->two_factor_secret);
+        $this->breezySession?->confirm();
+        $this->setTwoFactorSession();
     }
 
-    public function getHasConfirmedTwoFactorAttribute()
+    public function setTwoFactorSession(?int $lifetime=null)
     {
-        return ! is_null($this->two_factor_secret) && ! is_null($this->two_factor_confirmed_at);
+        $this->breezySession->setSession($lifetime);
+    }
+
+    public function hasValidTwoFactorSession(): bool
+    {
+        return $this->breezySession?->is_valid ?? false;
     }
 
     public function generateRecoveryCodes()
     {
         return encrypt(json_encode(Collection::times(8, function () {
-            return Str::random(10).'-'.Str::random(10);
-            ;
+            return Str::random(10) . '-' . Str::random(10);;
         })->all()));
+    }
+
+    public function getTwoFactorQrCodeUrl()
+    {
+        return filament('filament-breezy')->getQrCodeUrl(
+            config('app.name'),
+            $this->email,
+            decrypt($this->breezySession->two_factor_secret)
+        );
     }
 
     public function reGenerateRecoveryCodes()
     {
-        $this->forceFill([
+        $this->breezy_session->forceFill([
             'two_factor_recovery_codes' => $this->generateRecoveryCodes(),
         ])->save();
     }
 
-    public function recoveryCodes()
-    {
-        return json_decode(decrypt($this->two_factor_recovery_codes), true);
-    }
-
-    public function twoFactorQrCodeSvg(FilamentBreezy $breezy)
-    {
-        $svg = (new Writer(
-            new ImageRenderer(
-                new RendererStyle(192, 1, null, null, Fill::uniformColor(new Rgb(255, 255, 255), new Rgb(45, 55, 72))),
-                new SvgImageBackEnd()
-            )
-        ))->writeString($this->twoFactorQrCodeUrl($breezy));
-
-        return trim(substr($svg, strpos($svg, "\n") + 1));
-    }
-
-    public function twoFactorQrCodeUrl(FilamentBreezy $breezy)
-    {
-        return $breezy->qrCodeUrl(
-            config('app.name'),
-            $this->email,
-            decrypt($this->two_factor_secret)
-        );
-    }
-
-    public function verifyTwoFactor($code, FilamentBreezy $breezy)
-    {
-        return $breezy->verify(decrypt($this->two_factor_secret), $code);
-    }
 }

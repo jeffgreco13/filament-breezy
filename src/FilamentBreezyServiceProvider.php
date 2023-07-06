@@ -23,7 +23,6 @@ class FilamentBreezyServiceProvider extends PluginServiceProvider
             ->hasMigration('add_two_factor_columns_to_table')
             ->hasRoute("web")
             ->hasTranslations();
-        //->hasCommand(FilamentBreezyCommand::class);
     }
 
     public function packageBooted(): void

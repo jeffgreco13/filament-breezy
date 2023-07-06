@@ -2,6 +2,20 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.5.8 - 2023-07-06
+
+### What's Changed
+
+- remove strtolower() function by @manhofmann in https://github.com/jeffgreco13/filament-breezy/pull/168
+- Bump dependabot/fetch-metadata from 1.5.1 to 1.6.0 by @dependabot in https://github.com/jeffgreco13/filament-breezy/pull/171
+- Update Dutch translations by @AnthonySchuijlenburg in https://github.com/jeffgreco13/filament-breezy/pull/170
+
+### New Contributors
+
+- @manhofmann made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/168
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.5.7...v1.5.8
+
 ## v1.5.7 - 2023-06-20
 
 ### What's Changed

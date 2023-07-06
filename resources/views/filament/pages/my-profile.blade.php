@@ -37,7 +37,7 @@
                 {{$this->createApiTokenForm}}
 
                 <div class="text-right">
-                    <x-filament::button type="submit">
+                    <x-filament::button type="submit" form="createApiToken">
                         {{ __('filament-breezy::default.profile.sanctum.create.submit.label') }}
                     </x-filament::button>
                 </div>

@@ -1,6 +1,6 @@
 <?php
 
-namespace JeffGreco13\FilamentBreezy\Traits;
+namespace Jeffgreco13\FilamentBreezy\Traits;
 
 use Illuminate\Support\Str;
 use Filament\Facades\Filament;

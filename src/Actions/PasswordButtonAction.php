@@ -1,45 +1,46 @@
 <?php
 
-namespace Jeffgreco13\FilamentBreezy\Actions;
+namespace JeffGreco13\FilamentBreezy\Actions;
 
 use Filament\Forms;
-use Filament\Actions\Action;
+use Filament\Pages\Actions\ButtonAction;
 
-class PasswordButtonAction extends Action
+class PasswordButtonAction extends ButtonAction
 {
     protected function isPasswordSessionValid()
     {
-        return (session()->has('auth.password_confirmed_at') && (time() - session('auth.password_confirmed_at', 0)) < config('auth.password_timeout'));
+        return (session()->has('auth.password_confirmed_at') && (time() - session('auth.password_confirmed_at', 0)) < config('filament-breezy.password_confirmation_seconds'));
     }
 
     protected function setUp(): void
     {
-        // session()->forget('auth.password_confirmed_at');
-        parent::setUp();
-        if (!$this->isPasswordSessionValid()) {
-            // Require password confirmation
+        if ($this->isPasswordSessionValid()) {
+            // Password confirmation is still valid
+            //
+        } else {
             $this->requiresConfirmation()
                 ->modalHeading(__('filament-breezy::default.password_confirm.heading'))
-                ->modalDescription(
+                ->modalSubheading(
                     __('filament-breezy::default.password_confirm.description')
                 )
                 ->form([
                     Forms\Components\TextInput::make("current_password")
-                    ->label(__('filament-breezy::default.password_confirm.current_password'))
-                    ->required()
-                    ->password()
+                        ->label(__('filament-breezy::default.password_confirm.current_password'))
+                        ->required()
+                        ->password()
                         ->rule("current_password"),
                 ]);
         }
     }
 
-    public function call(array $data = []): mixed
+    public function call(array $data = [])
     {
         // If the session already has a cookie and it's still valid, we don't want to reset the time on it.
-        if (!$this->isPasswordSessionValid()) {
+        if ($this->isPasswordSessionValid()) {
+        } else {
             session(['auth.password_confirmed_at' => time()]);
         }
 
-        return parent::call($data);
+        parent::call($data);
     }
 }

@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::table(filament('filament-breezy')->getTwoFactorUsersTableName(), function (
+        Schema::table(config("filament-breezy.users_table"), function (
             Blueprint $table
         ) {
             $table->text('two_factor_secret')
@@ -28,7 +28,7 @@ return new class extends Migration
 
     public function down()
     {
-        Schema::table(filament('filament-breezy')->getTwoFactorUsersTableName(), function (
+        Schema::table(config("filament-breezy.users_table"), function (
             Blueprint $table
         ) {
             $table->dropColumn([

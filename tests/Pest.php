@@ -1,5 +1,5 @@
 <?php
 
-use JeffGreco13\FilamentBreezy\Tests\TestCase;
+use Jeffgreco13\FilamentBreezy\Tests\TestCase;
 
 uses(TestCase::class)->in(__DIR__);

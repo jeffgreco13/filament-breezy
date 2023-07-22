@@ -65,7 +65,7 @@ class BreezyCore implements Plugin
         // If TwoFactor is enabled, register the middleware.
         if ($this->twoFactorAuthentication) {
             $panel->authMiddleware([MustTwoFactor::class]);
-            Livewire::component(Pages\TwoFactorPage::getName(), Pages\TwoFactorPage::class);
+            Livewire::component('two-factor-page', Pages\TwoFactorPage::class);
         }
     }
     protected function preparePages(): array
@@ -80,23 +80,23 @@ class BreezyCore implements Plugin
     public function boot(Panel $panel): void
     {
         if ($this->myProfile) {
-            Livewire::component(PersonalInfo::getName(), PersonalInfo::class);
-            Livewire::component(UpdatePassword::getName(), UpdatePassword::class);
+            Livewire::component('personal_info', PersonalInfo::class);
+            Livewire::component('update_password', UpdatePassword::class);
             $this->myProfileComponents(array_merge([
-                PersonalInfo::getName() => PersonalInfo::class,
-                UpdatePassword::getName() => UpdatePassword::class
+                'personal_info' => PersonalInfo::class,
+                'update_password' => UpdatePassword::class
             ], $this->registeredMyProfileComponents));
 
             if ($this->twoFactorAuthentication) {
-                Livewire::component(TwoFactorAuthentication::getName(), TwoFactorAuthentication::class);
+                Livewire::component('two_factor_authentication', TwoFactorAuthentication::class);
                 $this->myProfileComponents([
-                    TwoFactorAuthentication::getName() => TwoFactorAuthentication::class
+                    'two_factor_authentication' => TwoFactorAuthentication::class
                 ]);
             }
             if ($this->sanctumTokens) {
-                Livewire::component(SanctumTokens::getName(), SanctumTokens::class);
+                Livewire::component('sanctum_tokens', SanctumTokens::class);
                 $this->myProfileComponents([
-                    SanctumTokens::getName() => SanctumTokens::class
+                    'sanctum_tokens' => SanctumTokens::class
                 ]);
             }
 
@@ -157,7 +157,7 @@ class BreezyCore implements Plugin
     {
         $components = $this->registeredMyProfileComponents;
         if ($this->shouldForceTwoFactor()){
-            $components = Arr::only($components,[TwoFactorAuthentication::getName()]);
+            $components = Arr::only($components,['two_factor_authentication']);
         }
         return collect($components)->all();
     }

@@ -4,19 +4,16 @@ namespace Jeffgreco13\FilamentBreezy\Pages;
 
 use Filament\Forms;
 use Filament\Actions\Action;
-use Filament\Pages\CardPage;
+// use Filament\Pages\CardPage;
 use Filament\Facades\Filament;
 use Illuminate\Support\HtmlString;
-use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Blade;
-use Filament\Pages\Concerns\HasRoutes;
-use Illuminate\Database\Eloquent\Model;
 use DanHarrin\LivewireRateLimiting\WithRateLimiting;
 use Filament\Http\Controllers\Auth\LogoutController;
-use Jeffgreco13\FilamentBreezy\Facades\FilamentBreezy;
 use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
+use Filament\Pages\SimplePage;
 
-class TwoFactorPage extends CardPage
+class TwoFactorPage extends SimplePage
 {
     use WithRateLimiting;
 
@@ -41,7 +38,7 @@ class TwoFactorPage extends CardPage
         } else if (filament('filament-breezy')->auth()->user()->hasValidTwoFactorSession()){
             return redirect()->to(Filament::getHomeUrl());
         }
-        return parent::mount();
+        // return parent::mount();
     }
 
     protected function getFormSchema(): array

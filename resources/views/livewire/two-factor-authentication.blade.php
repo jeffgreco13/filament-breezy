@@ -4,7 +4,7 @@
 
         @if($this->showRequiresTwoFactorAlert())
 
-            <div style="{{ \Illuminate\Support\Arr::toCssStyles([\Filament\Support\get_color_css_variables('danger',shades: [300, 400, 500, 600])]) }}" class="p-4 rounded bg-custom-500/20">
+            <div style="{{ \Illuminate\Support\Arr::toCssStyles([\Filament\Support\get_color_css_variables('danger',shades: [300, 400, 500, 600])]) }}" class="p-4 rounded bg-custom-500">
                 <div class="flex">
                     <div class="flex-shrink-0">
                         <x-heroicon-s-shield-exclamation class="w-5 h-5 text-danger-600" />
@@ -24,11 +24,11 @@
                 {{__('filament-breezy::default.profile.2fa.not_enabled.title') }}
             </h3>
             <p class="text-sm">{{ __('filament-breezy::default.profile.2fa.not_enabled.description') }}</p>
-            <x-slot:footer>
-                <div class="flex justify-between">
-                    {{ $this->enableAction }}
-                </div>
-            </x-slot:footer>
+
+            <div class="flex justify-between mt-3">
+                {{ $this->enableAction }}
+            </div>
+
         @else
             @if ($user->hasConfirmedTwoFactor())
                 <h3 class="flex items-center gap-2 text-lg font-medium">
@@ -50,12 +50,10 @@
                         </div>
                     </div>
                 @endif
-                <x-slot:footer>
-                    <div class="flex justify-between">
-                        {{ $this->regenerateCodesAction }}
-                        {{ $this->disableAction()->color('danger') }}
-                    </div>
-                </x-slot:footer>
+                <div class="flex justify-between mt-3">
+                    {{ $this->regenerateCodesAction }}
+                    {{ $this->disableAction()->color('danger') }}
+                </div>
             @else
                 <h3 class="flex items-center gap-2 text-lg font-medium">
                     <x-heroicon-o-question-mark-circle class="w-6" />
@@ -80,12 +78,12 @@
                         </div>
                     </div>
                 </div>
-                <x-slot:footer>
-                    <div class="flex justify-between">
-                        {{ $this->confirmAction }}
-                        {{ $this->disableAction }}
-                    </div>
-                </x-slot:footer>
+
+                <div class="flex justify-between mt-3">
+                    {{ $this->confirmAction }}
+                    {{ $this->disableAction }}
+                </div>
+
             @endif
 
         @endunless

@@ -3,7 +3,6 @@
 namespace Jeffgreco13\FilamentBreezy\Livewire;
 
 use Filament\Forms;
-use App\Models\User;
 use Filament\Forms\Form;
 use Filament\Facades\Filament;
 use Filament\Notifications\Notification;
@@ -13,13 +12,15 @@ class PersonalInfo extends MyProfileComponent
     protected string $view = "filament-breezy::livewire.personal-info";
 
     public ?array $data = [];
-    public User $user;
+    public $user;
+    public $userClass;
     public bool $hasAvatars;
     public array $only = ['name','email'];
 
     public function mount()
     {
         $this->user = Filament::getCurrentPanel()->auth()->user();
+        $this->userClass = get_class($this->user);
         $this->hasAvatars = filament('filament-breezy')->hasAvatars();
         if ($this->hasAvatars){
             $this->only[] = filament('filament-breezy')->getAvatarUploadComponent()->getStatePath(false);
@@ -35,7 +36,7 @@ class PersonalInfo extends MyProfileComponent
         $email = Forms\Components\TextInput::make('email')
                     ->required()
                     ->email()
-                    ->unique(User::class, ignorable: $this->user)
+                    ->unique($this->userClass, ignorable: $this->user)
                     ->label(__('filament-breezy::default.fields.email'));
 
         if ($this->hasAvatars){

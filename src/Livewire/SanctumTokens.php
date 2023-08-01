@@ -3,7 +3,6 @@
 namespace Jeffgreco13\FilamentBreezy\Livewire;
 
 use Filament\Forms;
-use App\Models\User;
 use Filament\Tables;
 use Laravel\Sanctum\Sanctum;
 use Filament\Facades\Filament;
@@ -18,7 +17,7 @@ class SanctumTokens extends MyProfileComponent implements Tables\Contracts\HasTa
 
     protected string $modalWidth = "md";
 
-    public User $user;
+    public $user;
     public ?string $plainTextToken;
 
 

@@ -3,7 +3,6 @@
 namespace Jeffgreco13\FilamentBreezy\Livewire;
 
 use Filament\Forms;
-use App\Models\User;
 use Filament\Forms\Form;
 use Filament\Facades\Filament;
 use Illuminate\Support\Facades\Hash;
@@ -14,7 +13,7 @@ class UpdatePassword extends MyProfileComponent
     protected string $view = "filament-breezy::livewire.update-password";
 
     public ?array $data = [];
-    public User $user;
+    public $user;
 
     public function mount()
     {

@@ -3,7 +3,6 @@
 namespace Jeffgreco13\FilamentBreezy\Livewire;
 
 use Filament\Forms;
-use App\Models\User;
 use Filament\Forms\Form;
 use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
@@ -18,7 +17,7 @@ class TwoFactorAuthentication extends MyProfileComponent
     protected string $view = "filament-breezy::livewire.two-factor-authentication";
 
     // public ?array $data = [];
-    public User $user;
+    public $user;
     public $code;
     public bool $showRecoveryCodes = false;
 

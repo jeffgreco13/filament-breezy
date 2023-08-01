@@ -19,8 +19,7 @@ class MustTwoFactor
     public function handle(Request $request, Closure $next): Response
     {
         $breezy = filament('filament-breezy');
-
-        if($breezy->auth()->check()){
+        if($breezy->auth()->check() && !$request->routeIs('filament.admin.auth.logout')){
             // Logged in.
             $myProfileRouteName = 'filament.' . filament('filament-breezy')->getCurrentPanel()->getId() . '.pages.my-profile';
             if ($breezy->shouldForceTwoFactor() && !$request->routeIs($myProfileRouteName)){

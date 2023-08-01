@@ -1,7 +1,8 @@
-<div>
-    <form wire:submit.prevent="authenticate" class="grid gap-y-8">
+<x-filament-panels::page.simple>
+    <x-filament-panels::form wire:submit="authenticate">
         {{ $this->form }}
 
-        <x-filament::button type="submit" form="authenticate">Submit</x-filament::button>
-    </form>
-</div>
+        <x-filament-panels::form.actions :actions="$this->getCachedFormActions()"
+            :full-width="$this->hasFullWidthFormActions()" />
+    </x-filament-panels::form>
+</x-filament-panels::page.simple>

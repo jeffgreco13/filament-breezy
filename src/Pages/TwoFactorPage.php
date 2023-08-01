@@ -6,15 +6,17 @@ use Filament\Forms;
 use Filament\Actions\Action;
 // use Filament\Pages\CardPage;
 use Filament\Facades\Filament;
+use Filament\Pages\SimplePage;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Facades\Blade;
 use DanHarrin\LivewireRateLimiting\WithRateLimiting;
 use Filament\Http\Controllers\Auth\LogoutController;
+use Filament\Pages\Concerns\InteractsWithFormActions;
 use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
-use Filament\Pages\SimplePage;
 
 class TwoFactorPage extends SimplePage
 {
+    use InteractsWithFormActions;
     use WithRateLimiting;
 
     protected static string $view = 'filament-breezy::filament.pages.two-factor';
@@ -38,7 +40,6 @@ class TwoFactorPage extends SimplePage
         } else if (filament('filament-breezy')->auth()->user()->hasValidTwoFactorSession()){
             return redirect()->to(Filament::getHomeUrl());
         }
-        // return parent::mount();
     }
 
     protected function getFormSchema(): array
@@ -72,10 +73,20 @@ class TwoFactorPage extends SimplePage
         }
     }
 
-    public function authenticateAction(): Action
+    /**
+     * @return array<Action | ActionGroup>
+     */
+    protected function getFormActions(): array
+    {
+        return [
+            $this->getAuthenticateFormAction(),
+        ];
+    }
+
+    protected function getAuthenticateFormAction(): Action
     {
         return Action::make('authenticate')
-            ->label(__('filament::pages/auth/login.buttons.authenticate.label'))
+            ->label(__('filament-panels::pages/auth/login.form.actions.authenticate.label'))
             ->submit('authenticate');
     }
 

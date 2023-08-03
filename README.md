@@ -117,7 +117,7 @@ use Illuminate\Validation\Rules\Password;
 
 BreezyCore::make()
     ->passwordUpdateRules(
-        rules:Password::mixedCase()->uncompromised(3), // you may pass an array of validation rules as well. (default = ['min:8'])
+        rules: [Password::default()->mixedCase()->uncompromised(3)], // you may pass an array of validation rules as well. (default = ['min:8'])
         requiresCurrentPassword: true, // when false, the user can update their password without entering their current password. (default = true)
         )
 

@@ -101,9 +101,15 @@ class BreezyCore implements Plugin
             }
 
             if ($this->myProfile['shouldRegisterUserMenu']) {
-                $panel->userMenuItems([
-                    'account' => MenuItem::make()->url(Pages\MyProfilePage::getUrl()),
-                ]);
+                if(request()->route()->parameter('tenant') !=null){
+                    $panel->userMenuItems([
+                        'account' => MenuItem::make()->url( Pages\MyProfilePage::getUrl(panel: $panel->getId(),tenant: app($panel->getTenantModel())::where($panel->getTenantSlugAttribute()??'id',request()->route()->parameter('tenant'))->first())),
+                    ]);
+                }else{
+                    $panel->userMenuItems([
+                        'account' => MenuItem::make()->url( Pages\MyProfilePage::getUrl()),
+                    ]);
+                }
             }
         }
     }

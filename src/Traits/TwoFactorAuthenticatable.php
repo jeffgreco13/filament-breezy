@@ -13,7 +13,7 @@ trait TwoFactorAuthenticatable
     public static function bootTwoFactorAuthenticatable()
     {
         static::deleting(function ($model) {
-            $this->breezySessions()->get()->each->delete();
+            $model->breezySessions()->get()->each->delete();
         });
     }
     public function initializeTwoFactorAuthenticatable()

@@ -17,6 +17,7 @@ class FilamentBreezyServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('filament-breezy')
+            ->hasConfigFile()
             ->hasRoute("web")
             ->hasViews()
             ->hasTranslations()

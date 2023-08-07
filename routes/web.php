@@ -8,12 +8,14 @@ Route::name('filament.')
     ->group(function () {
         foreach (Filament::getPanels() as $panel) {
             $panelId = $panel->getId();
-            Route::domain($panel->getDomain())
-                ->middleware($panel->getMiddleware())
-                ->name("{$panelId}.")
-                ->prefix($panel->getPath())
-                ->group(function () use ($panel) {
-                    Route::get('/two-factor-authentication',TwoFactorPage::class)->name('auth.two-factor');
-                });
+            foreach ((empty($domains) ? [null] : $domains) as $domain) {
+                Route::domain($domain)
+                    ->middleware($panel->getMiddleware())
+                    ->name("{$panelId}.")
+                    ->prefix($panel->getPath())
+                    ->group(function () use ($panel) {
+                        Route::get('/two-factor-authentication', TwoFactorPage::class)->name('auth.two-factor');
+                    });
+            }
         }
     });

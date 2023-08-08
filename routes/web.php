@@ -8,6 +8,7 @@ Route::name('filament.')
     ->group(function () {
         foreach (Filament::getPanels() as $panel) {
             $panelId = $panel->getId();
+            $domains = $panel->getDomains();
             foreach ((empty($domains) ? [null] : $domains) as $domain) {
                 Route::domain($domain)
                     ->middleware($panel->getMiddleware())

@@ -9,13 +9,14 @@ Route::name('filament.')
         foreach (Filament::getPanels() as $panel) {
             $panelId = $panel->getId();
             $domains = $panel->getDomains();
+            $hasTenancy = $panel->hasTenancy();
             foreach ((empty($domains) ? [null] : $domains) as $domain) {
                 Route::domain($domain)
                     ->middleware($panel->getMiddleware())
                     ->name("{$panelId}.")
                     ->prefix($panel->getPath())
-                    ->group(function () use ($panel) {
-                        Route::get('/two-factor-authentication', TwoFactorPage::class)->name('auth.two-factor');
+                    ->group(function () use ($panel, $hasTenancy) {
+                        Route::get($hasTenancy ? '/{tenant}/two-factor-authentication' : '/two-factor-authentication', TwoFactorPage::class)->name('auth.two-factor');
                     });
             }
         }

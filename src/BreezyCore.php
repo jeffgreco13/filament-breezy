@@ -127,7 +127,7 @@ class BreezyCore implements Plugin
         return Filament::getCurrentPanel();
     }
 
-    public function myProfile(bool $condition = true, bool $shouldRegisterUserMenu = true, bool $shouldRegisterNavigation = false, bool $hasAvatars = false){
+    public function myProfile(bool $condition = true, bool $shouldRegisterUserMenu = true, bool $shouldRegisterNavigation = false, bool $hasAvatars = false, string $slug = 'my-profile'){
         $this->myProfile = get_defined_vars();
         return $this;
     }
@@ -135,6 +135,11 @@ class BreezyCore implements Plugin
     public function hasAvatars()
     {
         return $this->myProfile['hasAvatars'];
+    }
+
+    public function slug()
+    {
+        return $this->myProfile['slug'];
     }
 
     public function avatarUploadComponent(Closure $component)

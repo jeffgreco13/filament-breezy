@@ -80,25 +80,25 @@ class BreezyCore implements Plugin
     public function boot(Panel $panel): void
     {
         if ($this->myProfile) {
-            Livewire::component('personal_info', PersonalInfo::class);
-            Livewire::component('update_password', UpdatePassword::class);
-            $this->myProfileComponents([
-                'personal_info' => PersonalInfo::class,
-                'update_password' => UpdatePassword::class
-            ]);
-
-            if ($this->twoFactorAuthentication) {
-                Livewire::component('two_factor_authentication', TwoFactorAuthentication::class);
-                $this->myProfileComponents([
-                    'two_factor_authentication' => TwoFactorAuthentication::class
-                ]);
-            }
             if ($this->sanctumTokens) {
                 Livewire::component('sanctum_tokens', SanctumTokens::class);
                 $this->myProfileComponents([
                     'sanctum_tokens' => SanctumTokens::class
                 ]);
             }
+            if ($this->twoFactorAuthentication) {
+                Livewire::component('two_factor_authentication', TwoFactorAuthentication::class);
+                $this->myProfileComponents([
+                    'two_factor_authentication' => TwoFactorAuthentication::class
+                ]);
+            }
+
+            Livewire::component('personal_info', PersonalInfo::class);
+            Livewire::component('update_password', UpdatePassword::class);
+            $this->myProfileComponents([
+                'personal_info' => PersonalInfo::class,
+                'update_password' => UpdatePassword::class
+            ]);
 
             if ($this->myProfile['shouldRegisterUserMenu']) {
                 if ($panel->hasTenancy()) {

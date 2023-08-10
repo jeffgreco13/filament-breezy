@@ -82,10 +82,10 @@ class BreezyCore implements Plugin
         if ($this->myProfile) {
             Livewire::component('personal_info', PersonalInfo::class);
             Livewire::component('update_password', UpdatePassword::class);
-            $this->myProfileComponents(array_merge([
+            $this->myProfileComponents([
                 'personal_info' => PersonalInfo::class,
                 'update_password' => UpdatePassword::class
-            ], $this->registeredMyProfileComponents));
+            ]);
 
             if ($this->twoFactorAuthentication) {
                 Livewire::component('two_factor_authentication', TwoFactorAuthentication::class);
@@ -155,8 +155,8 @@ class BreezyCore implements Plugin
     public function myProfileComponents(array $components)
     {
         $this->registeredMyProfileComponents = [
-            ...$this->registeredMyProfileComponents,
             ...$components,
+            ...$this->registeredMyProfileComponents,
         ];
 
         return $this;

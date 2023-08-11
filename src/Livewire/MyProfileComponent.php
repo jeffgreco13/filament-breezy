@@ -24,4 +24,8 @@ class MyProfileComponent extends Component implements HasForms, HasActions
         return view($this->view);
     }
 
+    public static function canView(): bool
+    {
+        return true;
+    }
 }

@@ -169,11 +169,14 @@ class BreezyCore implements Plugin
 
     public function getRegisteredMyProfileComponents(): array
     {
-        $components = $this->registeredMyProfileComponents;
+        $components = collect($this->registeredMyProfileComponents)->filter(
+            fn (string $component) => $component::canView()
+        );
+
         if ($this->shouldForceTwoFactor()){
-            $components = Arr::only($components,['two_factor_authentication']);
+            $components = $components->only(['two_factor_authentication']);
         }
-        return collect($components)->all();
+        return $components->all();
     }
 
     public function passwordUpdateRules(array | Password $rules, bool $requiresCurrentPassword = true)

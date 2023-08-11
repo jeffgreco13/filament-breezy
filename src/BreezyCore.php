@@ -171,6 +171,8 @@ class BreezyCore implements Plugin
     {
         $components = collect($this->registeredMyProfileComponents)->filter(
             fn (string $component) => $component::canView()
+        )->sortBy(
+            fn (string $component) => $component::sort()
         );
 
         if ($this->shouldForceTwoFactor()){

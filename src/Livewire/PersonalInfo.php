@@ -17,6 +17,8 @@ class PersonalInfo extends MyProfileComponent
     public bool $hasAvatars;
     public array $only = ['name','email'];
 
+    public static $sort = 10;
+
     public function mount()
     {
         $this->user = Filament::getCurrentPanel()->auth()->user();

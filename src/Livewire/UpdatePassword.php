@@ -15,6 +15,8 @@ class UpdatePassword extends MyProfileComponent
     public ?array $data = [];
     public $user;
 
+    public static $sort = 20;
+
     public function mount()
     {
         $this->user = Filament::getCurrentPanel()->auth()->user();

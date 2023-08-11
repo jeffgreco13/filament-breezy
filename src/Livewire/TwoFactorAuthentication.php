@@ -21,6 +21,8 @@ class TwoFactorAuthentication extends MyProfileComponent
     public $code;
     public bool $showRecoveryCodes = false;
 
+    public static $sort = 30;
+
     public function mount()
     {
         $this->user = Filament::getCurrentPanel()->auth()->user();

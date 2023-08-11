@@ -203,6 +203,15 @@ BreezyCore::make()
     ])
 ```
 
+#### Sorting My Profile components
+
+Custom MyProfile components can be sorted by setting their static `$sort` property. This property can be set for existing MyProfile components in any service provider:
+
+```php
+TwoFactorAuthentication::setSort(4);
+```
+
+A lot of the time this won't be necessary, though, as the default sort order is spaced out in steps of 10, so there should be enough numbers to place any custom components in between.
 
 ### Two Factor Authentication
 

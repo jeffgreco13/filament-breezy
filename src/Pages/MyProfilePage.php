@@ -22,6 +22,11 @@ class MyProfilePage extends Page
         return __('filament-breezy::default.profile.subheading') ?? null;
     }
 
+    public static function getSlug(): string
+    {
+        return filament('filament-breezy')->slug();
+    }
+
     public static function getNavigationLabel(): string
     {
         return __('filament-breezy::default.profile.profile');

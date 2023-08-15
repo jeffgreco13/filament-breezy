@@ -2,7 +2,6 @@
 
 use Filament\Facades\Filament;
 use Illuminate\Support\Facades\Route;
-use Jeffgreco13\FilamentBreezy\Pages\TwoFactorPage;
 
 Route::name('filament.')
     ->group(function () {
@@ -16,7 +15,10 @@ Route::name('filament.')
                     ->name("{$panelId}.")
                     ->prefix($panel->getPath())
                     ->group(function () use ($panel, $hasTenancy) {
-                        Route::get($hasTenancy ? '/{tenant}/two-factor-authentication' : '/two-factor-authentication', TwoFactorPage::class)->name('auth.two-factor');
+                        $route = $hasTenancy ? '/{tenant}/two-factor-authentication' : '/two-factor-authentication';
+                        $action = filament('filament-breezy')->getTwoFactorRouteAction();
+
+                        Route::get($route, $action)->name('auth.two-factor');
                     });
             }
         }

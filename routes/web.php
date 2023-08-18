@@ -15,10 +15,12 @@ Route::name('filament.')
                     ->name("{$panelId}.")
                     ->prefix($panel->getPath())
                     ->group(function () use ($panel, $hasTenancy) {
-                        $route = $hasTenancy ? '/{tenant}/two-factor-authentication' : '/two-factor-authentication';
-                        $action = filament('filament-breezy')->getTwoFactorRouteAction();
+                        if ($panel->hasPlugin('filament-breezy')) {
+                            $route = $hasTenancy ? '/{tenant}/two-factor-authentication' : '/two-factor-authentication';
+                            $action = filament('filament-breezy')->getTwoFactorRouteAction();
 
-                        Route::get($route, $action)->name('auth.two-factor');
+                            Route::get($route, $action)->name('auth.two-factor');
+                        }
                     });
             }
         }

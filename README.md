@@ -97,6 +97,29 @@ BreezyCore::make()
     )
 ```
 
+#### Using avatars in your Panel
+
+The instructions for using custom avatars is found in the Filament v3 docs under [Setting up user avatars](https://filamentphp.com/docs/3.x/panels/users#setting-up-user-avatars).
+
+Here is a possible implementation using the example from the docs:
+
+```php
+use Illuminate\Support\Facades\Storage;
+use Filament\Models\Contracts\HasAvatar;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable implements FilamentUser, HasAvatar
+{
+    // ...
+
+    public function getFilamentAvatarUrl(): ?string
+    {
+        return $this->avatar_url ? Storage::url($this->avatar_url) : null ;
+    }
+}
+
+```
+
 #### Customize the avatar upload component
 
 

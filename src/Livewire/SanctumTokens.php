@@ -17,6 +17,8 @@ class SanctumTokens extends MyProfileComponent implements Tables\Contracts\HasTa
 
     protected string $modalWidth = "md";
 
+    protected int $abilityColumns = 2;
+
     public $user;
     public ?string $plainTextToken;
 
@@ -67,7 +69,7 @@ class SanctumTokens extends MyProfileComponent implements Tables\Contracts\HasTa
             Forms\Components\CheckboxList::make('abilities')
                 ->label(__('filament-breezy::default.fields.abilities'))
                 ->options(filament('filament-breezy')->getSanctumPermissions())
-                ->columns(2)
+                ->columns($this->abilityColumns)
                 ->required(),
             Forms\Components\DatePicker::make('expires_at')
                 ->label(__('filament-breezy::default.fields.token_expiry'))

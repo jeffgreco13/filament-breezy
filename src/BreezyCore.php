@@ -27,6 +27,7 @@ use Jeffgreco13\FilamentBreezy\Livewire\SanctumTokens;
 use Jeffgreco13\FilamentBreezy\Livewire\UpdatePassword;
 use Jeffgreco13\FilamentBreezy\Middleware\MustTwoFactor;
 use Jeffgreco13\FilamentBreezy\Livewire\TwoFactorAuthentication;
+use Jeffgreco13\FilamentBreezy\Pages\TwoFactorPage;
 
 class BreezyCore implements Plugin
 {
@@ -37,6 +38,7 @@ class BreezyCore implements Plugin
     protected $avatarUploadComponent;
     protected $twoFactorAuthentication;
     protected $forceTwoFactorAuthentication;
+    protected $twoFactorRouteAction;
     protected $registeredMyProfileComponents = [];
     protected $passwordUpdateRules = ['min:8'];
     protected bool $passwordUpdateRequireCurrent = true;
@@ -203,16 +205,22 @@ class BreezyCore implements Plugin
         return $this->{$key}['shouldRegisterNavigation'];
     }
 
-    public function enableTwoFactorAuthentication(bool $condition = true, bool $force = false)
+    public function enableTwoFactorAuthentication(bool $condition = true, bool $force = false, string | Closure | array | null $action = TwoFactorPage::class)
     {
         $this->twoFactorAuthentication = $condition;
         $this->forceTwoFactorAuthentication = $force;
+        $this->twoFactorRouteAction = $action;
         return $this;
     }
 
     public function getForceTwoFactorAuthentication(): bool
     {
         return $this->forceTwoFactorAuthentication;
+    }
+
+    public function getTwoFactorRouteAction(): string | Closure | array | null
+    {
+        return $this->twoFactorRouteAction;
     }
 
     public function getEngine()

@@ -1,10 +1,10 @@
 <?php
 
 return [
-    "login" => [
-        "username_or_email" => "Username atau Email",
-        "forgot_password_link" => "Lupa kata sandi?",
-        "create_an_account" => "Buat akun",
+    "password_confirm" => [
+        "heading" => "Konfirmasi kata sandi",
+        "description" => "Harap konfirmasi kata sandi Anda untuk melanjutkan.",
+        "current_password" => "Current password"
     ],
     "two_factor" => [
         "heading" => "Two Factor Challenge",
@@ -19,40 +19,11 @@ return [
         "recovery_code_link" => "Gunakan kode pemulihan",
         "back_to_login_link" => "Kembali ke login"
     ],
-    "registration" => [
-        "title" => "Register",
-        "heading" => "Buat akun baru",
-        "submit" => [
-            "label" => "Daftar",
-        ],
-        "notification_unique" => "Akun dengan email ini telah terdaftar. Harap login.",
-    ],
-    "reset_password" => [
-        "title" => "Forgot password",
-        "heading" => "Atur ulang kata sandi",
-        "submit" => [
-            "label" => "Kirim",
-        ],
-        "notification_error" => "Error: harap coba beberapa saat lagi.",
-        "notification_error_link_text"=>"Try Again",
-        "notification_success" => "Periksa inbox Anda untuk instruksi selanjutnya!",
-    ],
-    "verification" => [
-        "title" => "Verify email",
-        "heading" => "Verifikasi email dibutuhkan",
-        "submit" => [
-            "label" => "Keluar",
-        ],
-        "notification_success" => "Periksa inbox Anda untuk instruksi selanjutnya!",
-        "notification_resend" => "Email verifikasi telah dikirimkan kembali.",
-        "before_proceeding" => "Sebelum melanjutkan, harap periksa email Anda untuk tautan verifikasi.",
-        "not_receive" => "Jika Anda tidak menerima email,",
-        "request_another" => "klik di sini untuk meminta kembali",
-    ],
     "profile" => [
-        "account" => "Account",
+        "account" => "Akun",
         "profile" => "Profil",
         "my_profile" => "Profil saya",
+        "subheading" => "Kelola profil pengguna Anda di sini.",
         "personal_info" => [
             "heading" => "Informasi Pribadi",
             "subheading" => "Kelola informasi pribadi Anda.",
@@ -62,8 +33,8 @@ return [
             "notify" => "Profil berhasil diperbarui!",
         ],
         "password" => [
-            "heading" => "Password",
-            "subheading" => "Harus 8 karakter.",
+            "heading" => "Kata sandi",
+            "subheading" => "Harus 8 karakter atau lebih.",
             "submit" => [
                 "label" => "Perbarui",
             ],
@@ -74,26 +45,32 @@ return [
             "description" => "Atur 2 factor authentication untuk akun Anda (disarankan).",
             "actions" => [
                 "enable" => "Aktifkan",
-                "regenerate_codes"=>"Buat ulang kode",
+                "regenerate_codes"=>"Buat Ulang Kode Pemulihan",
                 "disable"=>"Nonaktifkan",
                 "confirm_finish" => "Konfirmasi & selesai",
                 "cancel_setup" => "Batalkan pengaturan"
             ],
             "setup_key" => "Kunci pengaturan",
+            "must_enable" => "Anda harus mengaktifkan Two Factor Authentication untuk menggunakan aplikasi ini.",
             "not_enabled" => [
                 "title" => "Anda belum mengaktifkan two factor authentication.",
-                "description"=>"Ketika two factor authentication aktif, Anda akan diminta token acak yang aman saat autentikasi. Anda mungkin menerima token ini dari aplikasi Google Authenticator dari ponsel Anda."
+                "description"=>"Ketika two factor authentication aktif, Anda akan diminta token acak yang aman saat autentikasi. Anda dapat menerima token ini dari aplikasi Google Authenticator di ponsel Anda."
             ],
             "finish_enabling" => [
-                "title"=>"Selesai mengaktifkan two factor authentication.",
-                "description" => "Untuk selesai mengaktifkan two factor authentication, scan QR code berikut menggunakan aplikasi authenticator dari ponsel Anda atau masukkan kunci pengaturan dan masukkan kode OTP yang dihasilkan."
+                "title" => "Selesaikan pengaktifan two factor authentication.",
+                "description" => "Untuk menyelesaikan pengaktifan two factor authentication, scan QR code berikut menggunakan aplikasi authenticator dari ponsel Anda atau masukkan kunci pengaturan dan masukkan kode OTP yang dihasilkan."
             ],
             "enabled"=>[
-                "title"=>"Anda telah mengaktifkan two factor authentication!",
-                "description"=>"Two factor authentication sudah diaktifkan. Scan QR code berikut menggunakan aplikasi authenticator ponsel Anda atau masukkan kunci pengaturan.",
-                "store_codes"=>"Simpan kode pemulihan ini di tempat yang aman. Kode ini dapat digunakan untuk memulihkan akses ke akun Anda jika perangkat two factor authentication Anda hilang.",
-                "show_codes"=>'Perlihatkan Kode Pemulihan',
-                "hide_codes" => 'Sembunyikan Kode Pemulihan'
+                "notify" => "Two factor authentication diaktifkan.",
+                "title" => "Anda telah mengaktifkan two factor authentication!",
+                "description" => "Two factor authentication sudah diaktifkan. Scan QR code berikut menggunakan aplikasi authenticator ponsel Anda atau gunakan kunci pengaturan lalu masukkan OTP yang dihasilkan.",
+                "store_codes" => "Simpan kode pemulihan ini di tempat yang aman. Kode ini dapat digunakan untuk memulihkan akses ke akun Anda jika perangkat two factor authentication Anda tidak dapat digunakan. Penting! Kode ini hanya ditampilkan satu kali.",
+            ],
+            "disabling" => [
+                "notify" => "Two factor authentication telah dinonaktifkan."
+            ],
+            "regenerate_codes" => [
+                "notify" => "Kode pemulihan baru telah dibuat."
             ],
             "confirmation" => [
                 "success_notification" => 'Kode terverifikasi. Two factor authentication diaktifkan.',
@@ -101,10 +78,11 @@ return [
             ]
         ],
         "sanctum" => [
-            "title" => "API Tokens",
-            "description" => "Kelola token API yang memungkinkan layanan pihak ketiga mengakses aplikasi ini atas nama Anda. CATATAN: token Anda ditampilkan sekali setelah dibuat. Jika Anda kehilangan token, Anda harus menghapusnya dan membuat yang baru.",
+            "title" => "Token API",
+            "description" => "Kelola token API yang memungkinkan layanan pihak ketiga mengakses aplikasi ini atas nama Anda.",
             "create" => [
                 "notify" => "Token berhasil dibuat!",
+                "message" => "Token hanya ditampilkan sekali setelah dibuat. Jika Anda kehilangan token, Anda harus menghapusnya dan membuat yang baru.",
                 "submit" => [
                     "label" => "Buat",
                 ],
@@ -112,18 +90,27 @@ return [
             "update" => [
                 "notify" => "Token berhasil diperbarui!",
             ],
+            "copied" => [
+                "label" => "Saya telah menyalin token saya"
+            ]
         ],
     ],
+    "clipboard" => [
+        "link" => "Salin ke clipboard",
+        "tooltip" => "Disalin!"
+    ],
     "fields" => [
+        "avatar" => "Avatar",
         "email" => "Email",
         "login" => "Login",
         "name" => "Nama",
         "password" => "Kata Sandi",
-        "password_confirm" => "Konfirmasi Kata Sandi",
-        "new_password" => "Kata Sandi Baru",
-        "new_password_confirmation" => "Konfirmasi Kata Sandi Baru",
-        "token_name" => "Nama Token",
-        "abilities" => "Kemampuan",
+        "password_confirm" => "Konfirmasi kata sandi",
+        "new_password" => "Kata sandi baru",
+        "new_password_confirmation" => "Konfirmasi kata sandi baru",
+        "token_name" => "Nama token",
+        "token_expiry" => "Kedaluwarsa token",
+        "abilities" => "Hak akses",
         "2fa_code" => "Kode",
         "2fa_recovery_code" => "Kode Pemulihan"
     ],

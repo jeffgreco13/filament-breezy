@@ -97,6 +97,29 @@ BreezyCore::make()
     )
 ```
 
+#### Using avatars in your Panel
+
+The instructions for using custom avatars is found in the Filament v3 docs under [Setting up user avatars](https://filamentphp.com/docs/3.x/panels/users#setting-up-user-avatars).
+
+Here is a possible implementation using the example from the docs:
+
+```php
+use Illuminate\Support\Facades\Storage;
+use Filament\Models\Contracts\HasAvatar;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable implements FilamentUser, HasAvatar
+{
+    // ...
+
+    public function getFilamentAvatarUrl(): ?string
+    {
+        return $this->avatar_url ? Storage::url($this->avatar_url) : null ;
+    }
+}
+
+```
+
 #### Customize the avatar upload component
 
 
@@ -233,8 +256,22 @@ class User extends Authenticatable
 ```php
 BreezyCore::make()
     ->enableTwoFactorAuthentication(
-        force: false // force the user to enable 2FA before they can use the application (default = false)
+        force: false, // force the user to enable 2FA before they can use the application (default = false)
+        action: CustomTwoFactorPage::class // optionally, use a custom 2FA page
     )
+```
+
+3. Adjust the 2FA page
+
+The Breezy 2FA page can be swapped for a custom implementation (see above), same as the Filament auth pages. This allows, for example, to define a custom auth layout like so:
+
+```php
+use Jeffgreco13\FilamentBreezy\Pages\TwoFactorPage;
+
+class CustomTwoFactorPage extends TwoFactorPage
+{
+    protected static string $layout = 'custom.auth.layout.view';
+}
 ```
 
 ### Sanctum Personal Access tokens

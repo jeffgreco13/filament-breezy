@@ -12,7 +12,7 @@ class MyProfileComponent extends Component implements HasForms, HasActions
 {
     use InteractsWithForms, InteractsWithActions;
 
-    public $sort = 0;
+    public static $sort = 0;
 
     function getName()
     {
@@ -24,4 +24,18 @@ class MyProfileComponent extends Component implements HasForms, HasActions
         return view($this->view);
     }
 
+    public static function canView(): bool
+    {
+        return true;
+    }
+
+    public static function getSort(): int
+    {
+        return static::$sort;
+    }
+
+    public static function setSort(int $sort): void
+    {
+        static::$sort = $sort;
+    }
 }

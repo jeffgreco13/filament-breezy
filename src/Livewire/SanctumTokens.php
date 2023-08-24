@@ -22,6 +22,7 @@ class SanctumTokens extends MyProfileComponent implements Tables\Contracts\HasTa
     public $user;
     public ?string $plainTextToken;
 
+    public static $sort = 40;
 
     public function mount()
     {

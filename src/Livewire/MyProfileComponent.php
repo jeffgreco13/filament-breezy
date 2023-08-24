@@ -29,7 +29,7 @@ class MyProfileComponent extends Component implements HasForms, HasActions
         return true;
     }
 
-    public static function sort(): int
+    public static function getSort(): int
     {
         return static::$sort;
     }

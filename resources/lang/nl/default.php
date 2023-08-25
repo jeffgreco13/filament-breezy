@@ -57,6 +57,7 @@ return [
     "profile" => [
         "account" => "Account",
         "profile" => "Profiel",
+        "subheading" => "Beheer je gebruikers profiel hier.",
         "my_profile" => "Mijn profiel",
         "personal_info" => [
             "heading" => "Persoonlijke informatie",

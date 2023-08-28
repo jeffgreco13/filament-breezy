@@ -289,7 +289,7 @@ BreezyCore::make()
 
 ### Password Confirmation Button Action
 
-This button action will prompt the user to enter their password for sensitive actions (eg. delete), then will not ask for password again for the # of seconds defined in the filament-breezy config (default 300s).
+This button action will prompt the user to enter their password for sensitive actions (eg. delete). This action uses the same `'password_timeout'` number of seconds found in `config/auth.php`.
 
 ```php
 use Jeffgreco13\FilamentBreezy\Actions\PasswordButtonAction;

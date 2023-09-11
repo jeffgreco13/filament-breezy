@@ -41,8 +41,7 @@
                         <p class="text-xs">{{ __('filament-breezy::default.profile.2fa.enabled.store_codes') }}</p>
                         <div>
                             @foreach ($this->recoveryCodes->toArray() as $code )
-                            <span class="inline-flex items-center p-1 text-xs font-medium text-gray-800 bg-gray-100 rounded-full">{{ $code
-                                }}</span>
+                            <span class="inline-flex items-center p-1 text-xs font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-900">{{ $code }}</span>
                             @endforeach
                         </div>
                         <div class="inline-block text-xs">
@@ -70,7 +69,7 @@
                         <p class="text-xs">{{ __('filament-breezy::default.profile.2fa.enabled.store_codes') }}</p>
                         <div>
                         @foreach ($this->recoveryCodes->toArray() as $code )
-                            <span class="inline-flex items-center p-1 text-xs font-medium text-gray-800 bg-gray-100 rounded-full">{{ $code }}</span>
+                            <span class="inline-flex items-center p-1 text-xs font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-900">{{ $code }}</span>
                         @endforeach
                         </div>
                         <div class="inline-block text-xs">

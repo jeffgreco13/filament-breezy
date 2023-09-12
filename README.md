@@ -129,7 +129,7 @@ use Filament\Forms\Components\FileUpload;
 BreezyCore::make()
     ->avatarUploadComponent(fn($fileUpload) => $fileUpload->disableLabel())
     // OR, replace with your own component
-    ->avatarUploadComponent(fn() => FileUpload::make('myUpload')->disk('profile-photos'))
+    ->avatarUploadComponent(fn() => FileUpload::make('avatar_url')->disk('profile-photos'))
 ```
 
 #### Customize password update

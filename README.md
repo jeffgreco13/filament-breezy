@@ -132,6 +132,42 @@ BreezyCore::make()
     ->avatarUploadComponent(fn() => FileUpload::make('avatar_url')->disk('profile-photos'))
 ```
 
+#### Add column to table
+
+If you wish to have your own avatar, you need to create a column on the users table named `avatar_url`. It is reccomended that you create a new migration for ir, and add the column there:
+
+```php artisan make:migration add_avatar_url_column_to_users_table```
+
+```php
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('avatar_url')->nullable();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
+    }
+};
+```
 #### Customize password update
 
 You can customize the validation rules for the update password component by passing an array of validation strings, or an instance of the `Illuminate\Validation\Rules\Password` class.

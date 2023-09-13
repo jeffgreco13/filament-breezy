@@ -134,9 +134,11 @@ BreezyCore::make()
 
 #### Add column to table
 
-If you wish to have your own avatar, you need to create a column on the users table named `avatar_url`. It is reccomended that you create a new migration for ir, and add the column there:
+If you wish to have your own avatar, you need to create a column on the users table named `avatar_url`. It is reccomended that you create a new migration for it, and add the column there:
 
-```php artisan make:migration add_avatar_url_column_to_users_table```
+```
+php artisan make:migration add_avatar_url_column_to_users_table
+```
 
 ```php
 <?php

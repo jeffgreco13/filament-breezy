@@ -52,7 +52,7 @@ class BreezySession extends Model
 
     public function authenticatable()
     {
-        $this->morphTo();
+        return $this->morphTo();
     }
 
     public function confirm()

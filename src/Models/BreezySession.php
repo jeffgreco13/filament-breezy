@@ -6,7 +6,7 @@ use Filament\Facades\Filament;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use JeffGreco13\FilamentBreezy\Events\LoginSuccess;
+use Jeffgreco13\FilamentBreezy\Events\LoginSuccess;
 
 class BreezySession extends Model
 {

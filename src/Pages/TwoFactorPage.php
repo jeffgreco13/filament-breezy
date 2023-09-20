@@ -53,6 +53,7 @@ class TwoFactorPage extends SimplePage
                     </x-filament::link>')))
                 ->required()
                 ->mask('999-999')
+                ->dehydrateStateUsing(fn (string $state): string => str_replace('-', '', $state))
                 ->extraInputAttributes(['class' => 'text-center'])
                 ->autofocus(),
         ];

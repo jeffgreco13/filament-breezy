@@ -51,7 +51,8 @@ class TwoFactorPage extends SimplePage
                 ->hint(new HtmlString(Blade::render('
                     <x-filament::link href="#" wire:click="toggleRecoveryCode()">'.($this->usingRecoveryCode ? __('filament-breezy::default.cancel') : __('filament-breezy::default.two_factor.recovery_code_link')) . '
                     </x-filament::link>')))
-                ->required(),
+                ->required()
+                ->autofocus(),
         ];
     }
 

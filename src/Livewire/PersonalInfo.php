@@ -24,39 +24,40 @@ class PersonalInfo extends MyProfileComponent
         $this->user = Filament::getCurrentPanel()->auth()->user();
         $this->userClass = get_class($this->user);
         $this->hasAvatars = filament('filament-breezy')->hasAvatars();
-        if ($this->hasAvatars){
+
+        if ($this->hasAvatars) {
             $this->only[] = filament('filament-breezy')->getAvatarUploadComponent()->getStatePath(false);
         }
+
         $this->form->fill($this->user->only($this->only));
     }
 
     protected function getProfileFormSchema()
     {
-        $name = Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->label(__('filament-breezy::default.fields.name'));
-        $email = Forms\Components\TextInput::make('email')
-                    ->required()
-                    ->email()
-                    ->unique($this->userClass, ignorable: $this->user)
-                    ->label(__('filament-breezy::default.fields.email'));
+        $groupFields = Forms\Components\Group::make([
+            $this->getNameComponent(),
+            $this->getEmailComponent(),
+        ])->columnSpan(2);
 
-        if ($this->hasAvatars){
-            return [
-                filament('filament-breezy')->getAvatarUploadComponent(),
-                Forms\Components\Group::make([
-                    $name,
-                    $email
-                ])->columnSpan(2),
-            ];
-        } else {
-            return [
-                Forms\Components\Group::make([
-                    $name,
-                    $email
-                ])->columnSpan(3)
-            ];
-        }
+        return ($this->hasAvatars)
+            ? [filament('filament-breezy')->getAvatarUploadComponent(), $groupFields]
+            : [$groupFields];
+    }
+
+    protected function getNameComponent(): Forms\Components\TextInput
+    {
+        return Forms\Components\TextInput::make('name')
+            ->required()
+            ->label(__('filament-breezy::default.fields.name'));
+    }
+
+    protected function getEmailComponent(): Forms\Components\TextInput
+    {
+        return Forms\Components\TextInput::make('email')
+            ->required()
+            ->email()
+            ->unique($this->userClass, ignorable: $this->user)
+            ->label(__('filament-breezy::default.fields.email'));
     }
 
     public function form(Form $form): Form
@@ -66,14 +67,18 @@ class PersonalInfo extends MyProfileComponent
             ->statePath('data');
     }
 
-    public function submit()
+    public function submit(): void
     {
         $data = collect($this->form->getState())->only($this->only)->all();
         $this->user->update($data);
+        $this->sendNotification();
+    }
+
+    protected function sendNotification(): void
+    {
         Notification::make()
             ->success()
             ->title(__('filament-breezy::default.profile.personal_info.notify'))
             ->send();
     }
-
 }

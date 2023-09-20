@@ -52,6 +52,8 @@ class TwoFactorPage extends SimplePage
                     <x-filament::link href="#" wire:click="toggleRecoveryCode()">'.($this->usingRecoveryCode ? __('filament-breezy::default.cancel') : __('filament-breezy::default.two_factor.recovery_code_link')) . '
                     </x-filament::link>')))
                 ->required()
+                ->mask('999-999')
+                ->extraInputAttributes(['class' => 'text-center'])
                 ->autofocus(),
         ];
     }
@@ -72,6 +74,11 @@ class TwoFactorPage extends SimplePage
         } else {
             return $this->code && filament('filament-breezy')->verify(code:$this->code);
         }
+    }
+
+    protected function hasFullWidthFormActions(): bool
+    {
+        return true;
     }
 
     /**

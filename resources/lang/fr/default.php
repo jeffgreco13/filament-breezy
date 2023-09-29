@@ -53,6 +53,7 @@ return [
         "account" => "Compte",
         "profile" => "Profil",
         "my_profile" => "Mon Profil",
+        "subheading" => "Gérer votre compte et vos informations personnelles.",
         "personal_info" => [
             "heading" => "Informations personnelles",
             "subheading" => "Gérer vos informations personnelles.",

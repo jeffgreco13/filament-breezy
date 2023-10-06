@@ -18,11 +18,6 @@ trait TwoFactorAuthenticatable
         static::deleting(static function (Model $model): void {
             $model->breezySessions()->get()->each->delete();
         });
-        static::retrieved(static function (Model $model): void {
-            if (filament('filament-breezy')->twoFactorAuthentication) {
-                $model->enableTwoFactorAuthentication();
-            }
-        });
     }
 
     public function initializeTwoFactorAuthenticatable(): void
@@ -44,20 +39,20 @@ trait TwoFactorAuthenticatable
 
     public function hasEnabledTwoFactor(): bool
     {
-        return $this->breezySession?->is_enabled ?? false;
+        return $this->breezy_session?->is_enabled ?? false;
     }
 
     public function hasConfirmedTwoFactor(): bool
     {
-        return $this->breezySession?->is_confirmed ?? false;
+        return $this->breezy_session?->is_confirmed ?? false;
     }
 
     public function twoFactorRecoveryCodes(): Attribute
     {
         return Attribute::make(
-            get: fn() => $this->breezySession ?
+            get: fn() => $this->breezy_session ?
                 json_decode(
-                    decrypt($this->breezySession->two_factor_recovery_codes),
+                    decrypt($this->breezy_session->two_factor_recovery_codes),
                     true
                 ) : null
         );
@@ -66,42 +61,42 @@ trait TwoFactorAuthenticatable
     public function twoFactorSecret(): Attribute
     {
         return Attribute::make(
-            get: fn() => $this->breezySession?->two_factor_secret
+            get: fn() => $this->breezy_session?->two_factor_secret
         );
     }
 
     public function enableTwoFactorAuthentication(): void
     {
         $twoFactorData = [
-            'two_factor_secret' => encrypt(filament('filament-breezy')->getEngine()->generateSecretKey(6)),
+            'two_factor_secret' => encrypt(filament('filament-breezy')->getEngine()->generateSecretKey()),
             'two_factor_recovery_codes' => $this->generateRecoveryCodes(),
         ];
         if ($this->breezy_session) {
-            $this->disableTwoFactorAuthentication(); // Delete the session if it exists.
+            $this->deleteLastTwoFactorAuthenticationSession(); // Delete the session if it exists.
         }
-        $this->breezySession = $this->breezySessions()->create($twoFactorData);
+        $this->breezy_session = $this->breezySessions()->create($twoFactorData);
         $this->load('breezySessions');
     }
 
-    public function disableTwoFactorAuthentication(): void
+    public function deleteLastTwoFactorAuthenticationSession(): void
     {
-        $this->breezySession?->delete();
+        $this->breezy_session?->delete();
     }
 
     public function confirmTwoFactorAuthentication(): void
     {
-        $this->breezySession?->confirm();
+        $this->breezy_session?->confirm();
         $this->setTwoFactorSession();
     }
 
     public function setTwoFactorSession(?int $lifetime = null): void
     {
-        $this->breezySession->setSession($lifetime);
+        $this->breezy_session->setSession($lifetime);
     }
 
     public function hasValidTwoFactorSession(): bool
     {
-        return $this->breezySession?->is_valid ?? false;
+        return $this->breezy_session?->is_valid ?? false;
     }
 
     public function generateRecoveryCodes(): string
@@ -118,7 +113,7 @@ trait TwoFactorAuthenticatable
         return filament('filament-breezy')->getQrCodeUrl(
             config('app.name'),
             $this->email,
-            decrypt($this->breezySession->two_factor_secret)
+            decrypt($this->breezy_session->two_factor_secret)
         );
     }
 

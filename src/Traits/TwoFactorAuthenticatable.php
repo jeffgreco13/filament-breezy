@@ -3,33 +3,42 @@
 namespace Jeffgreco13\FilamentBreezy\Traits;
 
 use Illuminate\Support\Str;
-use Filament\Facades\Filament;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Model;
 use Jeffgreco13\FilamentBreezy\Models\BreezySession;
 
+/**
+ * @mixin \App\Models\User|\Illuminate\Foundation\Auth\User
+ */
 trait TwoFactorAuthenticatable
 {
-    public static function bootTwoFactorAuthenticatable()
+    public static function bootTwoFactorAuthenticatable(): void
     {
-        static::deleting(function ($model) {
+        static::deleting(static function (Model $model): void {
             $model->breezySessions()->get()->each->delete();
         });
-    }
-    public function initializeTwoFactorAuthenticatable()
-    {
-        $this->with[] = "breezySessions";
+        static::retrieved(static function (Model $model): void {
+            if (filament('filament-breezy')->twoFactorAuthentication) {
+                $model->enableTwoFactorAuthentication();
+            }
+        });
     }
 
-    public function breezySessions()
+    public function initializeTwoFactorAuthenticatable(): void
     {
-        return $this->morphMany(BreezySession::class,'authenticatable');
+        $this->with[] = 'breezySessions';
+    }
+
+    public function breezySessions(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    {
+        return $this->morphMany(BreezySession::class, 'authenticatable');
     }
 
     public function breezySession(): Attribute
     {
         return Attribute::make(
-            get: fn() => $this->breezySessions->first()
+            get: fn() => $this->breezySessions()->latest()->first()
         );
     }
 
@@ -46,43 +55,46 @@ trait TwoFactorAuthenticatable
     public function twoFactorRecoveryCodes(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->breezySession ? json_decode(decrypt(
-                $this->breezySession->two_factor_recovery_codes),true) : null
+            get: fn() => $this->breezySession ?
+                json_decode(
+                    decrypt($this->breezySession->two_factor_recovery_codes),
+                    true
+                ) : null
         );
     }
 
     public function twoFactorSecret(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->breezySession?->two_factor_secret
+            get: fn() => $this->breezySession?->two_factor_secret
         );
     }
 
-    public function enableTwoFactorAuthentication()
+    public function enableTwoFactorAuthentication(): void
     {
         $twoFactorData = [
-            'two_factor_secret' => encrypt(filament('filament-breezy')->getEngine()->generateSecretKey()),
+            'two_factor_secret' => encrypt(filament('filament-breezy')->getEngine()->generateSecretKey(6)),
             'two_factor_recovery_codes' => $this->generateRecoveryCodes(),
         ];
-        if ($this->breezy_session){
+        if ($this->breezy_session) {
             $this->disableTwoFactorAuthentication(); // Delete the session if it exists.
         }
         $this->breezySession = $this->breezySessions()->create($twoFactorData);
         $this->load('breezySessions');
     }
 
-    public function disableTwoFactorAuthentication()
+    public function disableTwoFactorAuthentication(): void
     {
         $this->breezySession?->delete();
     }
 
-    public function confirmTwoFactorAuthentication()
+    public function confirmTwoFactorAuthentication(): void
     {
         $this->breezySession?->confirm();
         $this->setTwoFactorSession();
     }
 
-    public function setTwoFactorSession(?int $lifetime=null)
+    public function setTwoFactorSession(?int $lifetime = null): void
     {
         $this->breezySession->setSession($lifetime);
     }
@@ -92,11 +104,13 @@ trait TwoFactorAuthenticatable
         return $this->breezySession?->is_valid ?? false;
     }
 
-    public function generateRecoveryCodes()
+    public function generateRecoveryCodes(): string
     {
-        return encrypt(json_encode(Collection::times(8, function () {
-            return Str::random(10) . '-' . Str::random(10);;
-        })->all()));
+        return encrypt(
+            json_encode(
+                Collection::times(8, static fn() => Str::random(10) . '-' . Str::random(10))->all()
+            )
+        );
     }
 
     public function getTwoFactorQrCodeUrl()
@@ -108,11 +122,12 @@ trait TwoFactorAuthenticatable
         );
     }
 
-    public function reGenerateRecoveryCodes()
+    public function reGenerateRecoveryCodes(): static
     {
         $this->breezy_session->forceFill([
             'two_factor_recovery_codes' => $this->generateRecoveryCodes(),
         ])->save();
-    }
 
+        return $this;
+    }
 }

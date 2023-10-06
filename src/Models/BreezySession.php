@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Jeffgreco13\FilamentBreezy\Models;
 
 use Filament\Facades\Filament;
@@ -51,38 +53,46 @@ class BreezySession extends Model
         return request()->ip();
     }
 
-    public function authenticatable()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    public function authenticatable(): \Illuminate\Database\Eloquent\Relations\MorphTo
     {
         return $this->morphTo();
     }
 
-    public function confirm()
+    public function confirm(): static
     {
         event(new LoginSuccess($this->authenticatable));
 
         $this->update([
             'two_factor_confirmed_at' => now()
         ]);
+
+        return $this;
     }
 
-    public function expire()
+    public function expire(): static
     {
         $this->update([
-            'expires_at' => now()->subMinutes(1)
+            'expires_at' => now()->subMinute()
         ]);
+
+        return $this;
     }
 
-    public function setSession(?int $lifetime = null)
+    public function setSession(?int $lifetime = null): void
     {
+        // /** @var \Jeffgreco13\FilamentBreezy\BreezyCore $breezyCore */
+        // $breezyCore = filament('filament-breezy');
+
         session(['breezy_session_id' => md5($this->id)]);
         // $this->update([
-        //     'expires_at' => now()->addSeconds($lifetime ?? filament('filament-breezy')->getTwoFactorSessionLifetime())
-        // ]);
-        // PLUS
-        // $this->update([
+        //     'panel_id' => $breezyCore->getCurrentPanel()->getId(),
+        //     'guard' => $breezyCore->getCurrentPanel()->getAuthGuard(),
         //     'ip_address' => $this->ipAddress(),
         //     'user_agent' => $this->userAgent(),
-        //     'expires_at' => now()->addSeconds($lifetime ?? filament('filament-breezy')->getTwoFactorSessionLifetime())
+        //     'expires_at' => now()->addSeconds($lifetime ?? 3600)
         // ]);
     }
 

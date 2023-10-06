@@ -72,13 +72,13 @@ trait TwoFactorAuthenticatable
             'two_factor_recovery_codes' => $this->generateRecoveryCodes(),
         ];
         if ($this->breezy_session) {
-            $this->deleteLastTwoFactorAuthenticationSession(); // Delete the session if it exists.
+            $this->disableTwoFactorAuthentication(); // Delete the session if it exists.
         }
         $this->breezy_session = $this->breezySessions()->create($twoFactorData);
         $this->load('breezySessions');
     }
 
-    public function deleteLastTwoFactorAuthenticationSession(): void
+    public function disableTwoFactorAuthentication(): void
     {
         $this->breezy_session?->delete();
     }

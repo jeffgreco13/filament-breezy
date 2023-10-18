@@ -17,7 +17,7 @@ class FilamentBreezyServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('filament-breezy')
-            ->hasRoute("web")
+            ->hasRoute('web')
             ->hasViews()
             ->hasTranslations()
             // ->hasMigration('add_two_factor_columns_to_table')

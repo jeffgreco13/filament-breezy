@@ -7,7 +7,7 @@
             <div style="{{ \Illuminate\Support\Arr::toCssStyles([\Filament\Support\get_color_css_variables('danger',shades: [300, 400, 500, 600])]) }}" class="p-4 rounded bg-custom-500">
                 <div class="flex">
                     <div class="flex-shrink-0">
-                        <x-heroicon-s-shield-exclamation class="w-5 h-5 text-danger-600" />
+                        @svg('heroicon-s-shield-exclamation', 'w-5 h-5 text-danger-600')
                     </div>
                     <div class="ml-3">
                         <p class="text-sm text-danger-500">
@@ -20,7 +20,7 @@
 
         @unless ($user->hasEnabledTwoFactor())
             <h3 class="flex items-center gap-2 text-lg font-medium">
-                <x-heroicon-o-exclamation-circle class="w-6"/>
+                @svg('heroicon-o-exclamation-circle', 'w-6')
                 {{__('filament-breezy::default.profile.2fa.not_enabled.title') }}
             </h3>
             <p class="text-sm">{{ __('filament-breezy::default.profile.2fa.not_enabled.description') }}</p>
@@ -32,7 +32,7 @@
         @else
             @if ($user->hasConfirmedTwoFactor())
                 <h3 class="flex items-center gap-2 text-lg font-medium">
-                    <x-heroicon-o-shield-check class="w-6" />
+                    @svg('heroicon-o-shield-check', 'w-6')
                     {{ __('filament-breezy::default.profile.2fa.enabled.title') }}
                 </h3>
                 <p class="text-sm">{{ __('filament-breezy::default.profile.2fa.enabled.description') }}</p>
@@ -55,7 +55,7 @@
                 </div>
             @else
                 <h3 class="flex items-center gap-2 text-lg font-medium">
-                    <x-heroicon-o-question-mark-circle class="w-6" />
+                    @svg('heroicon-o-question-mark-circle', 'w-6')
                     {{ __('filament-breezy::default.profile.2fa.finish_enabling.title') }}
                 </h3>
                 <p class="text-sm">{{ __('filament-breezy::default.profile.2fa.finish_enabling.description') }}</p>

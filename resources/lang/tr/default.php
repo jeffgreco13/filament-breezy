@@ -1,11 +1,6 @@
 <?php
 
 return [
-    "login" => [
-        "username_or_email" => "Kullanıcı Adı veya E-posta",
-        "forgot_password_link" => "Şifrenizi mi unuttunuz?",
-        "create_an_account" => "hesap oluştur",
-    ],
     "password_confirm" => [
         "heading" => "Parolayı doğrula",
         "description" => "Bu işlemi tamamlamak için lütfen şifrenizi onaylayın.",
@@ -24,40 +19,11 @@ return [
         "recovery_code_link" => "Bir kurtarma kodu kullanın",
         "back_to_login_link" => "Girişe geri dön"
     ],
-    "registration" => [
-        "title" => "Kaydol",
-        "heading" => "Yeni bir hesap oluştur",
-        "submit" => [
-            "label" => "Kayıt Ol",
-        ],
-        "notification_unique" => "Bu e-postaya sahip bir hesap zaten var. Lütfen giriş yapın.",
-    ],
-    "reset_password" => [
-        "title" => "Şifremi unuttum",
-        "heading" => "Şifrenizi sıfırlayın",
-        "submit" => [
-            "label" => "Gönder",
-        ],
-        "notification_error" => "Hata: lütfen daha sonra tekrar deneyin",
-        "notification_error_link_text"=>"Try Again",
-        "notification_success" => "Talimatlar için gelen kutunuzu kontrol edin!",
-    ],
-    "verification" => [
-        "title" => "E-posta doğrulama",
-        "heading" => "E-posta doğrulama gereklidir",
-        "submit" => [
-            "label" => "Çıkış yap",
-        ],
-        "notification_success" => "Talimatlar için gelen kutunuzu kontrol edin!",
-        "notification_resend" => "Doğrulama e-postası yeniden gönderildi.",
-        "before_proceeding" => "Devam etmeden önce lütfen doğrulama bağlantısı için e-postanızı kontrol edin.",
-        "not_receive" => "E-postayı almadıysanız,",
-        "request_another" => "bir tane daha istemek için buraya tıklayın",
-    ],
     "profile" => [
         "account" => "Hesap",
         "profile" => "Profil",
         "my_profile" => "Profilim",
+        "subheading" => "Kullanıcı profilinizi buradan yönetin.",
         "personal_info" => [
             "heading" => "Kişisel Bilgiler",
             "subheading" => "Kişisel bilgilerinizi yönetin.",
@@ -79,26 +45,32 @@ return [
             "description" => "Hesabınız için iki adımlı kimlik doğrulamayı yönetin (önerilir).",
             "actions" => [
                 "enable" => "Etkinleştir",
-                "regenerate_codes"=>"Kodları Yeniden Oluştur",
-                "disable"=>"Devredışı bırak",
+                "regenerate_codes" => "Kodları Yeniden Oluştur",
+                "disable" => "Devredışı bırak",
                 "confirm_finish" => "Onayla & bitir",
                 "cancel_setup" => "Kurulumu iptal et"
             ],
             "setup_key" => "Kurulum anahtarı",
+            "must_enable" => "Bu uygulamayı kullanmak için iki faktörlü kimlik doğrulamayı etkinleştirmeniz gerekir.",
             "not_enabled" => [
                 "title" => "İki adımlı kimlik doğrulamayı etkinleştirmediniz.",
-                "description"=>"İki adımlı kimlik doğrulaması etkinleştirildiğinde, kimlik doğrulaması sırasında güvenli, rasgele bir belirteç istenir. Bu belirteci telefonunuzun Google Authenticator uygulamasından alabilirsiniz."
+                "description" => "İki adımlı kimlik doğrulaması etkinleştirildiğinde, kimlik doğrulaması sırasında güvenli, rasgele bir belirteç istenir. Bu belirteci telefonunuzun Google Authenticator uygulamasından alabilirsiniz."
             ],
             "finish_enabling" => [
-                "title"=>"İki adımlı kimlik doğrulamayı etkinleştirmeyi bitirin.",
+                "title" => "İki adımlı kimlik doğrulamayı etkinleştirmeyi bitirin.",
                 "description" => "İki adımlı kimlik doğrulamayı etkinleştirmeyi bitirmek için telefonunuzun kimlik doğrulayıcı uygulamasını kullanarak aşağıdaki QR kodunu tarayın veya kurulum anahtarını girin ve oluşturulan OTP kodunu girin."
             ],
-            "enabled"=>[
-                "title"=>"İki adımlı kimlik doğrulamayı etkinleştirdiniz!",
-                "description"=>"İki adımlı kimlik doğrulama artık etkin. Telefonunuzun kimlik doğrulayıcı uygulamasını kullanarak aşağıdaki QR kodunu tarayın veya kurulum anahtarını girin.",
-                "store_codes"=>"Bu kurtarma kodlarını güvenli bir parola yöneticisinde saklayın. İki adımlı kimlik doğrulama cihazınız kaybolursa hesabınıza erişimi kurtarmak için kullanılabilirler.",
-                "show_codes"=>'Kurtarma Kodlarını Göster',
-                "hide_codes" => 'Kurtarma Kodlarını Gizle'
+            "enabled" => [
+                "notify" => "İki faktörlü kimlik doğrulama etkin.",
+                "title" => "İki adımlı kimlik doğrulamayı etkinleştirdiniz!",
+                "description" => "İki adımlı kimlik doğrulama artık etkin. Telefonunuzun kimlik doğrulayıcı uygulamasını kullanarak aşağıdaki QR kodunu tarayın veya kurulum anahtarını girin.",
+                "store_codes" => "Bu kurtarma kodlarını güvenli bir parola yöneticisinde saklayın. İki adımlı kimlik doğrulama cihazınız kaybolursa hesabınıza erişimi kurtarmak için kullanılabilirler.",
+            ],
+            "disabling" => [
+                "notify" => "İki faktörlü kimlik doğrulama devre dışı bırakıldı."
+            ],
+            "regenerate_codes" => [
+                "notify" => "Yeni kurtarma kodları oluşturuldu."
             ],
             "confirmation" => [
                 "success_notification" => 'Kod doğrulandı. İki adımlı kimlik doğrulaması etkin.',
@@ -110,6 +82,7 @@ return [
             "description" => "Üçüncü taraf hizmetlerinin sizin adınıza bu uygulamaya erişmesine izin veren API belirteçlerini yönetin. NOT: jetonunuz oluşturulduktan sonra bir kez gösterilir. Jetonunuzu kaybederseniz, onu silmeniz ve yeni bir tane oluşturmanız gerekir.",
             "create" => [
                 "notify" => "Belirteç başarıyla oluşturuldu!",
+                "message" => "Belirteciniz oluşturulduktan sonra yalnızca bir kez gösterilir. Belirtecinizi kaybederseniz, onu silmeniz ve yeni bir tane oluşturmanız gerekecektir.",
                 "submit" => [
                     "label" => "Oluştur",
                 ],
@@ -117,9 +90,17 @@ return [
             "update" => [
                 "notify" => "Belirteç başarıyla güncellendi!",
             ],
+            "copied" => [
+                "label" => "Belirtecimi kopyaladım"
+            ]
         ],
     ],
+    "clipboard" => [
+        "link" => "Panoya kopyala",
+        "tooltip" => "Kopyalandı!"
+    ],
     "fields" => [
+        "avatar" => "Avatar",
         "email" => "E-posta",
         "login" => "Giriş",
         "name" => "İsim",
@@ -128,6 +109,7 @@ return [
         "new_password" => "Yeni parola",
         "new_password_confirmation" => "Parola doğrulama",
         "token_name" => "Belirteç adı",
+        "token_expiry" => "Belirteç sona erişi",
         "abilities" => "Yetenekler",
         "2fa_code" => "Kod",
         "2fa_recovery_code" => "Kurtarma Kodu"

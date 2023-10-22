@@ -57,8 +57,7 @@ class UpdatePassword extends MyProfileComponent
         $this->reset(["data"]);
         Notification::make()
             ->success()
-            ->title('Updated!')
+            ->title(__('filament-breezy::default.profile.password.notify'))
             ->send();
     }
-
 }

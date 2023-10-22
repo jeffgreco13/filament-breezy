@@ -6,6 +6,7 @@ use Filament\Facades\Filament;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Jeffgreco13\FilamentBreezy\Events\LoginSuccess;
 
 class BreezySession extends Model
 {
@@ -52,11 +53,13 @@ class BreezySession extends Model
 
     public function authenticatable()
     {
-        $this->morphTo();
+        return $this->morphTo();
     }
 
     public function confirm()
     {
+        event(new LoginSuccess($this->authenticatable));
+
         $this->update([
             'two_factor_confirmed_at' => now()
         ]);

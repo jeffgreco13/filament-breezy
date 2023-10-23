@@ -124,8 +124,8 @@ return [
         ],
     ],
     "clipboard" => [
-        "link" => Copiar para área de transferência",
-        "tooltip" => "Copiado!"
+        "link" => "Copiar para área de transferência",
+        "tooltip" => "Copiado!",
     ],
     "fields" => [
         "email" => "E-mail",

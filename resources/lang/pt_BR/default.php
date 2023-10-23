@@ -59,6 +59,7 @@ return [
     "profile" => [
         "account" => "Conta",
         "profile" => "Perfil",
+        "subheading" => "Administre seu perfil de usuário aqui.",
         "my_profile" => "Meu Perfil",
         "personal_info" => [
             "heading" => "Informações pessoais",
@@ -121,6 +122,10 @@ return [
         "update" => [
             "notify" => "Token atualizado com sucesso!",
         ],
+    ],
+    "clipboard" => [
+        "link" => "Copiar para área de transferência",
+        "tooltip" => "Copiado!",
     ],
     "fields" => [
         "email" => "E-mail",

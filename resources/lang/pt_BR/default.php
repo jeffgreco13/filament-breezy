@@ -123,6 +123,10 @@ return [
             "notify" => "Token atualizado com sucesso!",
         ],
     ],
+    "clipboard" => [
+        "link" => Copiar para área de transferência",
+        "tooltip" => "Copiado!"
+    ],
     "fields" => [
         "email" => "E-mail",
         "login" => "Usuário",

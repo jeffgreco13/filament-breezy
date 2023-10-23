@@ -59,6 +59,7 @@ return [
     "profile" => [
         "account" => "Conta",
         "profile" => "Perfil",
+        "subheading" => "Administre seu perfil de usuário aqui.",
         "my_profile" => "Meu Perfil",
         "personal_info" => [
             "heading" => "Informações pessoais",

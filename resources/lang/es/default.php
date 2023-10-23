@@ -122,7 +122,7 @@ return [
     ],
     "clipboard" => [
         "link" => "Copiar al portapapeles",
-        "tooltip" => "¡Copiado!"
+        "tooltip" => "¡Copiado!",
     ],
     "fields" => [
         "email" => "Correo electrónico",

@@ -264,6 +264,41 @@ BreezyCore::make()
     ])
 ```
 
+If you want to customize only the fields and notification in the personal info component, you can extend the original breezy component:
+
+```php
+namespace App\Livewire;
+
+use Filament\Forms;
+use Filament\Notifications\Notification;
+use Jeffgreco13\FilamentBreezy\PersonalInfo;
+
+class CustomPersonalInfo extends PersonalInfo
+{
+    protected function getNameComponent(): Forms\Components\TextInput
+    {
+        return Forms\Components\TextInput::make('custom_name_field')
+            ->required();
+    }
+
+    protected function getEmailComponent(): Forms\Components\TextInput
+    {
+        return Forms\Components\TextInput::make('custom_email_field')
+            ->required();
+    }
+
+    protected function sendNotification(): void
+    {
+        Notification::make()
+            ->success()
+            ->title('Saved Data!')
+            ->send();
+    }
+}
+
+```
+Now, as mentioned above, give this component to `BreezyCore::make()->myProfileComponents` to override the original and use your custom component.
+
 #### Sorting My Profile components
 
 Custom MyProfile components can be sorted by setting their static `$sort` property. This property can be set for existing MyProfile components in any service provider:

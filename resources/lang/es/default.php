@@ -120,6 +120,10 @@ return [
             ],
         ],
     ],
+    "clipboard" => [
+        "link" => "Copiar al portapapeles",
+        "tooltip" => "¡Copiado!"
+    ],
     "fields" => [
         "email" => "Correo electrónico",
         "login" => "Usuario",

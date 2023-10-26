@@ -31,7 +31,7 @@ return [
             "label" => "Inscrever-se",
         ],
         "notification_unique" =>
-        "Já existe uma conta com este e-mail. Por favor, verifique.",
+            "Já existe uma conta com este e-mail. Por favor, verifique.",
     ],
     "reset_password" => [
         "title" => "Esqueceu a senha",
@@ -52,7 +52,7 @@ return [
         "notification_success" => "Verifique sua caixa de entrada para instruções!",
         "notification_resend" => "O e-mail de verificação foi reenviado.",
         "before_proceeding" =>
-        "Antes de prosseguir, por favor, procure no seu e-mail o link de verificação.",
+            "Antes de prosseguir, por favor, procure no seu e-mail o link de verificação.",
         "not_receive" => "Se você não recebeu o e-mail,",
         "request_another" => "clique aqui para solicitar reenvio.",
     ],
@@ -88,6 +88,7 @@ return [
                 "cancel_setup" => "Cancelar"
             ],
             "setup_key" => "Chave de configuração",
+            "must_enable" => "Você deve ativar a autenticação de dois fatores para usar este aplicativo.",
             "not_enabled" => [
                 "title" => "Você não ativou a autenticação de dois fatores.",
                 "description" => "Quando a autenticação de dois fatores estiver habilitada, você será solicitado a fornecer um token seguro e aleatório durante a autenticação. Você pode recuperar esse token do aplicativo Google Authenticator do seu telefone."
@@ -97,30 +98,38 @@ return [
                 "description" => "Para concluir a ativação da autenticação de dois fatores, digitalize o código QR a seguir usando o aplicativo autenticador do seu telefone ou insira a chave de configuração e forneça o código OTP gerado."
             ],
             "enabled" => [
+                "notify" => "Autenticação de dois fatores habilitada.",
                 "title" => "Você habilitou a autenticação de dois fatores!",
                 "description" => "A autenticação de dois fatores agora está habilitada. Isso ajuda a tornar sua conta mais segura.",
                 "store_codes" => "Armazene esses códigos de recuperação em um gerenciador de senhas seguro. Eles podem ser usados para recuperar o acesso à sua conta se seu dispositivo de autenticação de dois fatores for perdido.",
                 "show_codes" => 'Mostrar códigos de recuperação',
                 "hide_codes" => 'Ocultar códigos de recuperação'
             ],
+            "disabling" => [
+                "notify" => "A autenticação de dois fatores foi desativada."
+            ],
             "confirmation" => [
                 "success_notification" => 'Código verificado. Autenticação de dois fatores habilitada.',
                 "invalid_code" => "O código que você digitou é inválido."
             ]
         ],
-    ],
-    "sanctum" => [
-        "title" => "Tokens API",
-        "description" =>
-        "Gerencie tokens de API para permitir serviços de terceiros acessar este aplicativo em seu nome. NOTA: seu token é mostrado uma vez após a criação. Se você perder seu token, será necessário excluí-lo e criar um novo.",
-        "create" => [
-            "notify" => "Token criado com sucesso!",
-            "submit" => [
-                "label" => "Criar",
+        "sanctum" => [
+            "title" => "Tokens API",
+            "description" =>
+                "Gerencie tokens de API para permitir serviços de terceiros acessar este aplicativo em seu nome. NOTA: seu token é mostrado uma vez após a criação. Se você perder seu token, será necessário excluí-lo e criar um novo.",
+            "create" => [
+                "notify" => "Token criado com sucesso!",
+                "message" => "Seu token só é mostrado uma vez após a criação. Se você perder seu token, precisará excluí-lo e criar um novo.",
+                "submit" => [
+                    "label" => "Criar",
+                ],
             ],
-        ],
-        "update" => [
-            "notify" => "Token atualizado com sucesso!",
+            "update" => [
+                "notify" => "Token atualizado com sucesso!",
+            ],
+            "copied" => [
+                "label" => "Copiei meu token",
+            ]
         ],
     ],
     "clipboard" => [
@@ -128,6 +137,7 @@ return [
         "tooltip" => "Copiado!",
     ],
     "fields" => [
+        "avatar" => "Avatar",
         "email" => "E-mail",
         "login" => "Usuário",
         "name" => "Nome",
@@ -136,7 +146,10 @@ return [
         "new_password" => "Nova senha",
         "new_password_confirmation" => "Confirme a senha",
         "token_name" => "Nome do Token",
+        "token_expiry" => "Expiração do token",
         "abilities" => "Permissões",
+        "2fa_code" => "Código",
+        "2fa_recovery_code" => "Código de recuperação"
     ],
     "or" => "Ou",
     "cancel" => "Cancelar"

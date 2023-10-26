@@ -86,6 +86,7 @@ return [
                 "cancel_setup" => "Cancelar la configuración"
             ],
             "setup_key" => "Llave de configuración",
+            "must_enable" => "Debe habilitar la autenticación de dos factores para usar esta aplicación.",
             "not_enabled" => [
                 "title" => "Usted no ha habilitado la autentificación de dos factores.",
                 "description"=>"Cuando la autentificación de dos factores se encuentra habilitada, se le pedirá un código aleatorio durante la autentificación. Usted puede obtener dicho código desde la aplicación Autenticador de Google en su celular."
@@ -95,11 +96,15 @@ return [
                 "description" => "Para terminar de habilitar la autentificación de dos factores, escanee el siguiente código QR utilizando la aplicación autenticadora de su teléfono (por ejemplo, el Autenticador de Google) o teclee la llave de configuración e indique el código OTP generado."
             ],
             "enabled"=>[
+                "notify" => "Autenticación de dos factores habilitada.",
                 "title"=>"¡Usted ha habilitado la autentificación de dos factores!",
                 "description"=>"Se ha habilitado la autentificación de dos factores. Escanee el siguiente código QR mediante la aplicación autenticadora de su celular (por ejemplo, el Autenticador de Google) o teclee la llave de configuración.",
                 "store_codes"=>"Guarde estos códigos de recuperación en un administrador de contraseñas seguro. Pueden ser utilizadas para la recuperación del acceso a su cuenta en caso de que el dispositivo asociado a su autentificación de dos factores se pierda.",
                 "show_codes"=>'Mostrar los códigos de recuperación',
                 "hide_codes" => 'Esconder los códigos de recuperación'
+            ],
+            "disabling" => [
+                "notify" => "La autenticación de dos factores ha sido deshabilitada."
             ],
             "confirmation" => [
                 "success_notification" => 'El código ha sido verificado. La autentificación de dos factores se ha habilitado.',
@@ -111,6 +116,7 @@ return [
             "description" => "Administre los API tokens que permiten el acceso a esta aplicación a terceros en su nombre. NOTA: su token es mostrado por única vez después de su creación. Si usted pierde su token, deberá borrarlo y crear uno nuevo.",
             "create" => [
                 "notify" => "¡Token creado exitosamente!",
+                "message" => "Su token solo se muestra una vez después de la creación. Si pierde su token, deberá eliminarlo y crear uno nuevo.",
                 "submit" => [
                     "label" => "Nuevo",
                 ],
@@ -118,6 +124,9 @@ return [
             "update" => [
                 "notify" => "¡Token actualizado exitosamente!",
             ],
+            "copied" => [
+                "label" => "Copié mi ficha",
+            ]
         ],
     ],
     "clipboard" => [
@@ -125,6 +134,7 @@ return [
         "tooltip" => "¡Copiado!",
     ],
     "fields" => [
+        "avatar" => "Avatar",
         "email" => "Correo electrónico",
         "login" => "Usuario",
         "name" => "Nombre",
@@ -133,6 +143,7 @@ return [
         "new_password" => "Nueva contraseña",
         "new_password_confirmation" => "Confirme la nueva contraseña",
         "token_name" => "Nombre del token",
+        "token_expiry" => "Caducidad del token",
         "abilities" => "Capacidades",
         "2fa_code" => "Código",
         "2fa_recovery_code" => "Código de recuperación"

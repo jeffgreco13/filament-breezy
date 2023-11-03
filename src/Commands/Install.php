@@ -35,7 +35,7 @@ class Install extends Command
             ]);
             if ($this->confirm("Do you want to run migrations now?",true)){
                 $this->call("migrate");
-                $this->info("You may now enable 2FA by appending ->twoFactorAuthentication() to BreezyPlugin::make(). See the docs for more info.");
+                $this->info("You may now enable 2FA by appending ->enableTwoFactorAuthentication() to BreezyPlugin::make(). See the docs for more info.");
             } else {
                 $this->warn("You must run migrations before using Breezy.");
             }

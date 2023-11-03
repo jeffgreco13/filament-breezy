@@ -198,6 +198,8 @@ php artisan make:livewire MyCustomComponent
 
 ```php
 use Jeffgreco13\FilamentBreezy\Livewire\MyProfileComponent;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Form;
 
 class MyCustomComponent extends MyProfileComponent
 {
@@ -211,7 +213,7 @@ class MyCustomComponent extends MyProfileComponent
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
+                TextInput::make('name')
                     ->required()
             ])
             ->statePath('data');

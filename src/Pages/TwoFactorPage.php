@@ -13,6 +13,7 @@ use DanHarrin\LivewireRateLimiting\WithRateLimiting;
 use Filament\Http\Controllers\Auth\LogoutController;
 use Filament\Pages\Concerns\InteractsWithFormActions;
 use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
+use Livewire\Attributes\Url;
 
 class TwoFactorPage extends SimplePage
 {

@@ -112,7 +112,9 @@ return [
         "token_expiry" => "Token expiry",
         "abilities" => "Abilities",
         "2fa_code" => "Code",
-        "2fa_recovery_code" => "Recovery Code"
+        "2fa_recovery_code" => "Recovery Code",
+        'created' => 'Created',
+        'expires' => "Expires",
     ],
     "or" => "Or",
     "cancel" => "Cancel"

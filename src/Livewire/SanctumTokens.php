@@ -43,18 +43,20 @@ class SanctumTokens extends MyProfileComponent implements Tables\Contracts\HasTa
         return [
             Tables\Columns\TextColumn::make("name")
                 ->searchable()
-                ->sortable(),
+                ->sortable()
+                ->label(__('filament-breezy::default.fields.token_name')),
             Tables\Columns\TextColumn::make("created_at")
                 ->date()
-                ->label("Created")
+                ->label(__("filament-breezy::default.fields.created"))
                 ->sortable(),
             Tables\Columns\TextColumn::make("expires_at")
                 ->color(fn($record) => now()->gt($record->expires_at) ? 'danger' : null)
                 ->date()
-                ->label("Expires")
+                ->label(__("filament-breezy::default.fields.expires"))
                 ->sortable(),
             Tables\Columns\TextColumn::make('abilities')
                 ->badge()
+                ->label(__('filament-breezy::default.fields.abilities'))
                 ->getStateUsing(fn($record)=>sizeof($record->abilities))
         ];
     }

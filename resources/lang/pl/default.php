@@ -131,6 +131,8 @@ return [
         "abilities" => "Możliwości",
         "2fa_code" => "Kod weryfikacji dwuetapowej",
         "2fa_recovery_code" => "Kod odzyskiwania weryfikacji dwuetapowej",
+        "created" => "Utworzono",
+        "expires" => "Wygasa",
     ],
     "or" => "Lub",
     "cancel" => "Anuluj"

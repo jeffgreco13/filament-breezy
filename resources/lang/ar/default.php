@@ -110,9 +110,11 @@ return [
         "new_password_confirmation" => "تأكيد كلمة المرور",
         "token_name" => "اسم الرمز",
         "token_expiry" => "انتهاء صلاحية الرمز",
-        "abilities" => "القدرات",
+        "abilities" => "الصلاحيات",
         "2fa_code" => "الرمز",
         "2fa_recovery_code" => "رمز الاستعادة",
+        "created" => "تاريخ الإنشاء",
+        "expires" => "تاريخ الإنتهاء",
     ],
     "or" => "أو",
     "cancel" => "إلغاء"

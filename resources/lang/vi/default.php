@@ -130,7 +130,9 @@ return [
         "token_name" => "Tên mã token",
         "abilities" => "Khả năng",
         "2fa_code" => "Mã",
-        "2fa_recovery_code" => "Mã khôi phục"
+        "2fa_recovery_code" => "Mã khôi phục",
+        "created" => "Đã tạo",
+        "expires" => "Hết hạn",
     ],
     "or" => "Hoặc",
     "cancel" => "Hủy"

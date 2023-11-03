@@ -130,7 +130,9 @@ return [
         "token_name" => "Valtuutuksen nimi",
         "abilities" => "Kyvyt",
         "2fa_code" => "Koodi",
-        "2fa_recovery_code" => "Palautuskoodi"
+        "2fa_recovery_code" => "Palautuskoodi",
+        'created' => 'Luotu',
+        'expires' => "Vanhenee",
     ],
     "or" => "Tai",
     "cancel" => "Peruuta"

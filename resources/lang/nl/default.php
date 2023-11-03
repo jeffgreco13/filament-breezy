@@ -130,7 +130,9 @@ return [
         "token_name" => "Token naam",
         "abilities" => "Mogelijkheden",
         "2fa_code" => "Code",
-        "2fa_recovery_code" => "Herstelcode"
+        "2fa_recovery_code" => "Herstelcode",
+        "created" => "Aangemaakt",
+        "expires" => "Verloopt",
     ],
     "or" => "Of",
     "cancel" => "Annuleren"

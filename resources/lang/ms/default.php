@@ -130,7 +130,9 @@ return [
         "token_name" => "Nama token",
         "abilities" => "Kebolehan",
         "2fa_code" => "Kod",
-        "2fa_recovery_code" => "Kod Pemulihan"
+        "2fa_recovery_code" => "Kod Pemulihan",
+        "created" => "Dicipta",
+        "expires" => "Tamat tempoh",
     ],
     "or" => "Atau",
     "cancel" => "Batal"

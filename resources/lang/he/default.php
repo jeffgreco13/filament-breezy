@@ -130,7 +130,9 @@ return [
         "token_name" => "שם טוקן",
         "abilities" => "יכולות",
         "2fa_code" => "קוד 2FA",
-        "2fa_recovery_code" => "קוד שחזור 2FA"
+        "2fa_recovery_code" => "קוד שחזור 2FA",
+        'created' => 'נוצר',
+        'expires' => "פג תוקף",
     ],
     "or" => "או",
     "cancel" => "ביטול"

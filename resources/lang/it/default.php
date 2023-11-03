@@ -130,7 +130,9 @@ return [
         "token_name" => "Nome del Token",
         "abilities" => "Abilità",
         "2fa_code" => "Codice",
-        "2fa_recovery_code" => "Codice di Ripristino"
+        "2fa_recovery_code" => "Codice di Ripristino",
+        'created' => 'Creato',
+        'expires' => "Scade",
     ],
     "or" => "O",
     "cancel" => "Annulla"

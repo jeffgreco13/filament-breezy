@@ -24,6 +24,9 @@ class TwoFactorPage extends SimplePage
     public $usingRecoveryCode = false;
     public $code;
 
+    #[Url]
+    public ?string $next;
+
     public function getTitle(): string
     {
         return __('filament-breezy::default.two_factor.heading');
@@ -123,6 +126,6 @@ class TwoFactorPage extends SimplePage
 
         // If it makes it to the bottom, we're going to set the session var and send them to the dashboard.
         filament('filament-breezy')->auth()->user()->setTwoFactorSession();
-        return redirect()->to(Filament::getHomeUrl());
+        return redirect()->to($this->next ?? Filament::getHomeUrl());
     }
 }

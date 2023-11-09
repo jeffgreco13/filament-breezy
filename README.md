@@ -165,11 +165,22 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->dropColumn('avatar_url');
         });
     }
 };
 ```
+
+#### Add column to user model
+```php
+    protected $fillable = [
+        ...
+        'avatar_url',
+        ...
+    ];
+```
+
+
 #### Customize password update
 
 You can customize the validation rules for the update password component by passing an array of validation strings, or an instance of the `Illuminate\Validation\Rules\Password` class.

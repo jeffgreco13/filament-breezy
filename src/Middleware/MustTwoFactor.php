@@ -27,9 +27,9 @@ class MustTwoFactor
                 if (!$tenantId = request()->route()->parameter('tenant')){
                     return $next($request);
                 }
-                $twoFactorRoute = route('filament.' . filament()->getCurrentPanel()->getId() . '.auth.two-factor',['tenant'=>$tenantId]);
+                $twoFactorRoute = route('filament.' . filament()->getCurrentPanel()->getId() . '.auth.two-factor',['tenant'=>$tenantId, 'next' => request()->getRequestUri()]);
             } else {
-                $twoFactorRoute = route('filament.' . filament()->getCurrentPanel()->getId() . '.auth.two-factor');
+                $twoFactorRoute = route('filament.' . filament()->getCurrentPanel()->getId() . '.auth.two-factor', ['next' => request()->getRequestUri()]);
             }
 
             if ($breezy->shouldForceTwoFactor() && !$request->routeIs($myProfileRouteName)){

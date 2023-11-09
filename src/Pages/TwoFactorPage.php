@@ -13,6 +13,7 @@ use DanHarrin\LivewireRateLimiting\WithRateLimiting;
 use Filament\Http\Controllers\Auth\LogoutController;
 use Filament\Pages\Concerns\InteractsWithFormActions;
 use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
+use Livewire\Attributes\Url;
 
 class TwoFactorPage extends SimplePage
 {
@@ -23,6 +24,9 @@ class TwoFactorPage extends SimplePage
 
     public $usingRecoveryCode = false;
     public $code;
+
+    #[Url]
+    public ?string $next;
 
     public function getTitle(): string
     {
@@ -123,6 +127,6 @@ class TwoFactorPage extends SimplePage
 
         // If it makes it to the bottom, we're going to set the session var and send them to the dashboard.
         filament('filament-breezy')->auth()->user()->setTwoFactorSession();
-        return redirect()->to(Filament::getHomeUrl());
+        return redirect()->to($this->next ?? Filament::getHomeUrl());
     }
 }

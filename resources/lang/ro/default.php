@@ -131,6 +131,8 @@ return [
         "abilities" => "Abilități",
         "2fa_code" => "Cod",
         "2fa_recovery_code" => "Cod de recuperare",
+        "created" => "Creat",
+        "expires" => "Expiră",
     ],
     "or" => "Sau",
     "cancel" => "Anulare",

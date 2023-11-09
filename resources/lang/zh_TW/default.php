@@ -113,6 +113,8 @@ return [
         "abilities" => "Abilities",
         "2fa_code" => "Code",
         "2fa_recovery_code" => "恢復代碼",
+        "created" => "創建",
+        "expires" => "到期",
     ],
     "or" => " 或 ",
     "cancel" => "取消",

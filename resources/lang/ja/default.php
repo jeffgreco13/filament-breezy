@@ -130,7 +130,9 @@ return [
         "token_name" => "トークン名",
         "abilities" => "アビリティ",
         "2fa_code" => "コード",
-        "2fa_recovery_code" => "リカバリーコード"
+        "2fa_recovery_code" => "リカバリーコード",
+        "created" => "作成日時",
+        "expires" => "有効期限",
     ],
     "or" => "または",
     "cancel" => "キャンセル"

@@ -112,7 +112,9 @@ return [
         "token_expiry" => "Belirteç sona erişi",
         "abilities" => "Yetenekler",
         "2fa_code" => "Kod",
-        "2fa_recovery_code" => "Kurtarma Kodu"
+        "2fa_recovery_code" => "Kurtarma Kodu",
+        "created" => "Oluşturuldu",
+        "expires" => "Sona eriyor",
     ],
     "or" => "Veya",
     "cancel" => "Vazgeç"

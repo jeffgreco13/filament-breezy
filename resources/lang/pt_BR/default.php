@@ -149,7 +149,9 @@ return [
         "token_expiry" => "Expiração do token",
         "abilities" => "Permissões",
         "2fa_code" => "Código",
-        "2fa_recovery_code" => "Código de recuperação"
+        "2fa_recovery_code" => "Código de recuperação",
+        "created" => "Criado",
+        "expires" => "Expira",
     ],
     "or" => "Ou",
     "cancel" => "Cancelar"

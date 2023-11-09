@@ -146,7 +146,9 @@ return [
         "token_expiry" => "Caducidad del token",
         "abilities" => "Capacidades",
         "2fa_code" => "Código",
-        "2fa_recovery_code" => "Código de recuperación"
+        "2fa_recovery_code" => "Código de recuperación",
+        'created' => 'Creado',
+        'expires' => "Expira",
     ],
     "or" => "o",
     "cancel" => "Cancelar"

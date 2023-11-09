@@ -126,7 +126,9 @@ return [
         "token_name" => "Nom du jeton",
         "abilities" => "Aptitudes",
         "2fa_code" => "Code",
-        "2fa_recovery_code" => "Code de récupération"
+        "2fa_recovery_code" => "Code de récupération",
+        'created' => 'Créé',
+        'expires' => "Expire",
     ],
     "or" => "Ou",
     "cancel" => "Annuler"

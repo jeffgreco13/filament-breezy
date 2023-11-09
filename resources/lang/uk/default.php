@@ -125,7 +125,9 @@ return [
         "token_name" => "Ім'я токена",
         "abilities" => "Доступ",
         "2fa_code" => "Код",
-        "2fa_recovery_code" => "Код відновлення"
+        "2fa_recovery_code" => "Код відновлення",
+        "created" => "Створено",
+        "expires" => "Закінчується",
     ],
     "or" => "або",
     "cancel" => "Скасувати"

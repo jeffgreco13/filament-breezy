@@ -112,7 +112,9 @@ return [
         "token_expiry" => "Kedaluwarsa token",
         "abilities" => "Hak akses",
         "2fa_code" => "Kode",
-        "2fa_recovery_code" => "Kode Pemulihan"
+        "2fa_recovery_code" => "Kode Pemulihan",
+        'created' => 'Dibuat',
+        'expires' => "Kedaluwarsa",
     ],
     "or" => "Atau",
     "cancel" => "Batal"

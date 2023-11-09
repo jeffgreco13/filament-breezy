@@ -137,6 +137,10 @@ return [
         "new_password_confirmation" => "Confirme a senha",
         "token_name" => "Nome do Token",
         "abilities" => "Permissões",
+        "2fa_code" => "Código",
+        "2fa_recovery_code" => "Código de recuperação",
+        "created" => "Criado",
+        "expires" => "Expira",
     ],
     "or" => "Ou",
     "cancel" => "Cancelar"

@@ -130,7 +130,9 @@ return [
         "token_name" => "Token name",
         "abilities" => "Ικανότητες",
         "2fa_code" => "Code",
-        "2fa_recovery_code" => "Recovery Code"
+        "2fa_recovery_code" => "Recovery Code",
+        'created' => 'Created',
+        'expires => "Expires',
     ],
     "or" => "ή",
     "cancel" => "Ακύρωση"

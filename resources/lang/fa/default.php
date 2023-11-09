@@ -112,7 +112,9 @@ return [
         "token_expiry" => "انقضاء توکن",
         "abilities" => "توانایی ها",
         "2fa_code" => "کد",
-        "2fa_recovery_code" => "کد بازیابی"
+        "2fa_recovery_code" => "کد بازیابی",
+        'created' => 'ایجاد شده',
+        'expires' => "انقضاء",
     ],
     "or" => "یا",
     "cancel" => "لغو"

@@ -131,6 +131,8 @@ return [
         "abilities" => "Képességek",
         "2fa_code" => "Kód",
         "2fa_recovery_code" => "Helyreállítási kód",
+        "created" => "Létrehozva",
+        "expires" => "Lejár",
     ],
     "or" => "Vagy",
     "cancel" => "Mégsem",

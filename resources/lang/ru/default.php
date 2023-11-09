@@ -130,7 +130,9 @@ return [
         "token_name" => "Имя токена",
         "abilities" => "Доступ",
         "2fa_code" => "Код",
-        "2fa_recovery_code" => "Код восстановления"
+        "2fa_recovery_code" => "Код восстановления",
+        "created" => "Создано",
+        "expires" => "Истекает",
     ],
     "or" => "или",
     "cancel" => "Отмена"

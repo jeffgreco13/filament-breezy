@@ -1,10 +1,10 @@
 <?php
 
 return [
-    "login" => [
-        "username_or_email" => "Identifiant ou E-mail",
-        "forgot_password_link" => "Mot de passe oublié ?",
-        "create_an_account" => "Créer un compte",
+    "password_confirm" => [
+        "heading" => "Confirmation de mot de passe",
+        "description" => "Veuillez confirmer votre mot de passe pour procéder à cette action.",
+        "current_password" => "Mot de passe actuel"
     ],
     "two_factor" => [
         "heading" => "Authentification à deux facteurs",
@@ -18,6 +18,103 @@ return [
         "recovery_code_text" => "Appareil perdu ?",
         "recovery_code_link" => "Utiliser un code de récupération",
         "back_to_login_link" => "Retour à la page de connexion"
+    ],
+    "profile" => [
+        "account" => "Compte",
+        "profile" => "Profil",
+        "my_profile" => "Mon Profil",
+        "subheading" => "Gérer votre compte et vos informations personnelles.",
+        "personal_info" => [
+            "heading" => "Informations personnelles",
+            "subheading" => "Gérer vos informations personnelles.",
+            "submit" => [
+                "label" => "Mettre à jour",
+            ],
+            "notify" => "Mise à jour du profil réussie !",
+        ],
+        "password" => [
+            "heading" => "Mot de passe",
+            "subheading" => "Doit être de 8 caractères.",
+            "submit" => [
+                "label" => "Mettre à jour",
+            ],
+            "notify" => "Mot de passe mis à jour avec succès !",
+        ],
+        "2fa" => [
+            "title" => "Authentification à deux facteurs",
+            "description" => "Gérez l'authentification à deux facteurs pour votre compte (recommandé).",
+            "actions" => [
+                "enable" => "Activer",
+                "regenerate_codes"=>"Régénérer les codes de récupération",
+                "disable"=>"Désactiver",
+                "confirm_finish" => "Confirmer et terminer",
+                "cancel_setup" => "Annuler la configuration"
+            ],
+            "setup_key" => "Clé de configuration",
+            "not_enabled" => [
+                "title" => "Vous n'avez pas activé l'authentification à deux facteurs.",
+                "description"=>"Lorsque l'authentification à deux facteurs est activée, un jeton sécurisé et aléatoire vous sera demandé lors de l'authentification. Vous pouvez récupérer ce jeton à partir de l'application Google Authenticator de votre téléphone."
+            ],
+            "finish_enabling" => [
+                "title"=>"Terminez l'activation de l'authentification à deux facteurs.",
+                "description" => "Pour terminer l'activation de l'authentification à deux facteurs, scannez le code QR suivant à l'aide de l'application d'authentification de votre téléphone ou entrez la clé de configuration et fournissez le code OTP généré."
+            ],
+            "enabled"=>[
+                "title"=>"Vous avez activé l'authentification à deux facteurs !",
+                "description"=>"L'authentification à deux facteurs est maintenant activée. Scannez le code QR suivant en utilisant l'application d'authentification de votre téléphone ou entrez la clé de configuration.",
+                "store_codes"=>"Conservez ces codes de récupération dans un gestionnaire de mots de passe sécurisé. Ils peuvent être utilisés pour récupérer l'accès à votre compte si votre dispositif d'authentification à deux facteurs est perdu.",
+                "show_codes"=>"Afficher les codes de récupération",
+                "hide_codes" => "Cacher les codes de récupération"
+            ],
+            "confirmation" => [
+                "success_notification" => "Code vérifié. Authentification à deux facteurs activée.",
+                "invalid_code" => "Le code que vous avez saisi n'est pas valide."
+            ]
+        ],
+        "sanctum" => [
+            "title" => "Jetons d'API",
+            "description" => "Gérez les jetons d'API qui permettent aux services tiers d'accéder à cette application en votre nom. REMARQUE : votre jeton est affiché une fois lors de sa création. Si vous perdez votre jeton, vous devrez le supprimer et en créer un nouveau.",
+            "create" => [
+                "notify" => "Jeton créé avec succès !",
+                "message" => "Votre jeton ne sera visile qu'une seule fois après sa création. Si vous perdez votre rejetez, vous devrez le supprimer puis en créer un nouveau.",
+                "submit" => [
+                    "label" => "Créer",
+                ],
+            ],
+            "update" => [
+                "notify" => "Jeton mis à jour avec succès !",
+            ],
+            "copied" => [
+                "label" => "J'ai copié mon jeton"
+            ]
+        ],
+    ],
+    "clipboard" => [
+        "link" => "Copier dans le presse-papiers",
+        "tooltip" => "Copié !"
+    ],
+    "fields" => [
+        "email" => "E-mail",
+        "login" => "Identifiant",
+        "name" => "Nom",
+        "password" => "Mot de passe",
+        "password_confirm" => "Confirmer le mot de passe",
+        "new_password" => "Nouveau mot de passe",
+        "new_password_confirmation" => "Confirmez le mot de passe",
+        "token_name" => "Nom du jeton",
+        "abilities" => "Aptitudes",
+        "2fa_code" => "Code",
+        "2fa_recovery_code" => "Code de récupération",
+        'created' => 'Créé',
+        'expires' => "Expire",
+    ],
+    "or" => "Ou",
+    "cancel" => "Annuler",
+    ////
+    "login" => [
+        "username_or_email" => "Identifiant ou E-mail",
+        "forgot_password_link" => "Mot de passe oublié ?",
+        "create_an_account" => "Créer un compte",
     ],
     "registration" => [
         "title" => "S'inscrire",
@@ -49,87 +146,4 @@ return [
         "not_receive" => "Si vous n'avez pas reçu l'e-mail,",
         "request_another" => "Cliquez ici pour en demander un autre.",
     ],
-    "profile" => [
-        "account" => "Compte",
-        "profile" => "Profil",
-        "my_profile" => "Mon Profil",
-        "subheading" => "Gérer votre compte et vos informations personnelles.",
-        "personal_info" => [
-            "heading" => "Informations personnelles",
-            "subheading" => "Gérer vos informations personnelles.",
-            "submit" => [
-                "label" => "Mettre à jour",
-            ],
-            "notify" => "Mise à jour du profil réussie !",
-        ],
-        "password" => [
-            "heading" => "Mot de passe",
-            "subheading" => "Doit être de 8 caractères.",
-            "submit" => [
-                "label" => "Mettre à jour",
-            ],
-            "notify" => "Mot de passe mis à jour avec succès !",
-        ],
-        "2fa" => [
-            "title" => "Authentification à deux facteurs",
-            "description" => "Gérez l'authentification à deux facteurs pour votre compte (recommandé).",
-            "actions" => [
-                "enable" => "Activer",
-                "regenerate_codes"=>"Régénérer les codes",
-                "disable"=>"Désactiver",
-                "confirm_finish" => "Confirmer et terminer",
-                "cancel_setup" => "Annuler la configuration"
-            ],
-            "setup_key" => "Clé de configuration",
-            "not_enabled" => [
-                "title" => "Vous n'avez pas activé l'authentification à deux facteurs.",
-                "description"=>"Lorsque l'authentification à deux facteurs est activée, un jeton sécurisé et aléatoire vous sera demandé lors de l'authentification. Vous pouvez récupérer ce jeton à partir de l'application Google Authenticator de votre téléphone."
-            ],
-            "finish_enabling" => [
-                "title"=>"Terminez l'activation de l'authentification à deux facteurs.",
-                "description" => "Pour terminer l'activation de l'authentification à deux facteurs, scannez le code QR suivant à l'aide de l'application d'authentification de votre téléphone ou entrez la clé de configuration et fournissez le code OTP généré."
-            ],
-            "enabled"=>[
-                "title"=>"Vous avez activé l'authentification à deux facteurs !",
-                "description"=>"L'authentification à deux facteurs est maintenant activée. Scannez le code QR suivant en utilisant l'application d'authentification de votre téléphone ou entrez la clé de configuration.",
-                "store_codes"=>"Conservez ces codes de récupération dans un gestionnaire de mots de passe sécurisé. Ils peuvent être utilisés pour récupérer l'accès à votre compte si votre dispositif d'authentification à deux facteurs est perdu.",
-                "show_codes"=>"Afficher les codes de récupération",
-                "hide_codes" => "Cacher les codes de récupération"
-            ],
-            "confirmation" => [
-                "success_notification" => "Code vérifié. Authentification à deux facteurs activée.",
-                "invalid_code" => "Le code que vous avez saisi n'est pas valide."
-            ]
-        ],
-        "sanctum" => [
-            "title" => "Jetons d'API",
-            "description" => "Gérez les jetons d'API qui permettent aux services tiers d'accéder à cette application en votre nom. REMARQUE : votre jeton est affiché une fois lors de sa création. Si vous perdez votre jeton, vous devrez le supprimer et en créer un nouveau.",
-            "create" => [
-                "notify" => "Jeton créé avec succès !",
-                "submit" => [
-                    "label" => "Créer",
-                ],
-            ],
-            "update" => [
-                "notify" => "Jeton mis à jour avec succès !",
-            ],
-        ],
-    ],
-    "fields" => [
-        "email" => "E-mail",
-        "login" => "Identifiant",
-        "name" => "Nom",
-        "password" => "Mot de passe",
-        "password_confirm" => "Confirmer le mot de passe",
-        "new_password" => "Nouveau mot de passe",
-        "new_password_confirmation" => "Confirmez le mot de passe",
-        "token_name" => "Nom du jeton",
-        "abilities" => "Aptitudes",
-        "2fa_code" => "Code",
-        "2fa_recovery_code" => "Code de récupération",
-        'created' => 'Créé',
-        'expires' => "Expire",
-    ],
-    "or" => "Ou",
-    "cancel" => "Annuler"
 ];

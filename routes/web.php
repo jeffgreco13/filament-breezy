@@ -7,7 +7,7 @@ Route::name('filament.')
     ->group(function () {
         foreach (Filament::getPanels() as $panel) {
             $panelId = $panel->getId();
-            $domains = $panel->getDomains();
+            $domains = $panel->getDomain();
             $hasTenancy = $panel->hasTenancy();
             foreach ((empty($domains) ? [null] : $domains) as $domain) {
                 Route::domain($domain)

@@ -39,6 +39,7 @@ class BreezyCore implements Plugin
     protected $twoFactorAuthentication;
     protected $forceTwoFactorAuthentication;
     protected $twoFactorRouteAction;
+    protected $ignoredMyProfileComponents = [];
     protected $registeredMyProfileComponents = [];
     protected $passwordUpdateRules = ['min:8'];
     protected bool $passwordUpdateRequireCurrent = true;
@@ -159,12 +160,18 @@ class BreezyCore implements Plugin
         ]);
     }
 
+    public function withoutMyProfileComponents(array $components)
+    {
+        $this->ignoredMyProfileComponents = $components;
+        return $this;
+    }
+
     public function myProfileComponents(array $components)
     {
-        $this->registeredMyProfileComponents = [
+        $this->registeredMyProfileComponents = Arr::except([
             ...$components,
             ...$this->registeredMyProfileComponents,
-        ];
+        ], $this->ignoredMyProfileComponents);
 
         return $this;
     }

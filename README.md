@@ -195,6 +195,19 @@ BreezyCore::make()
         )
 
 ```
+
+#### Exclude default My Profile components
+
+If you don't want a default My Profile page component to be used, you can exclude them using the `withoutMyProfileComponents` helper.
+
+```php
+BreezyCore::make()
+    ->withoutMyProfileComponents([
+        'update_password'
+    ])
+```
+
+
 #### Create custom My Profile components
 
 In Breezy v2, you can now create custom Livewire components for the My Profile page and append them easily.

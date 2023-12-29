@@ -350,7 +350,7 @@ class User extends Authenticatable
 }
 ```
 
-2. Enable Two Factory Authentication using the `enableTwoFactorAuthentication()` method on the Breezy plugin.
+2. Enable Two Factor Authentication using the `enableTwoFactorAuthentication()` method on the Breezy plugin.
 
 ```php
 BreezyCore::make()
@@ -400,7 +400,7 @@ PasswordButtonAction::make('secure_action')->label('Delete')->icon('heroicon-s-s
 ```
 
 ## FAQ
-> How the 2FA session work across multiple panels?
+> How do 2FA sessions work across multiple panels?
 
 By default, Breezy uses the same guard as defined on your Panel. The default is 'web'. Only panels that have registered the BreezyCore plugin will have access to 2FA. If multiple panels use 2FA, and share the same guard, the User only has to enter the OTP once for the duration of the session.
 

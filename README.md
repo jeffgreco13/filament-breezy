@@ -401,7 +401,7 @@ PasswordButtonAction::make('secure_action')->label('Delete')->icon('heroicon-s-s
 
 ### Customizing the Registration form
 
-Filament v3+ introduces enhanced capabilities for handling and customizing registration forms seamlessly. This feature is now an integral part of the core Filament functionality. Consequently, the ability to customize registration forms, which was available in Breezy v2, has been deprecated in favor of the more comprehensive and integrated approach provided by Filament v3+. Laravel Daily has a concise tutorial available, guiding users on creating and registering custom registration forms while incorporating additional fields. Check out the tutorial here for step-by-step instructions.
+Filament v3+ introduces enhanced capabilities for handling and customizing registration forms seamlessly. This feature is now an integral part of the core Filament functionality. Consequently, the ability to customize registration forms, which was available in Breezy v1, has been deprecated in v2 in favor of the more comprehensive and integrated approach provided by Filament v3+. Laravel Daily has a concise tutorial available, guiding users on creating and registering custom registration forms while incorporating additional fields. [Check out the tutorial here ](https://laraveldaily.com/post/filament-registration-form-extra-fields-choose-user-role)for step-by-step instructions.
 
 ## FAQ
 > How the 2FA session work across multiple panels?

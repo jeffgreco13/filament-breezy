@@ -130,7 +130,7 @@ class BreezyCore implements Plugin
         return Filament::getCurrentPanel();
     }
 
-    public function myProfile(bool $condition = true, bool $shouldRegisterUserMenu = true, bool $shouldRegisterNavigation = false, bool $hasAvatars = false, string $slug = 'my-profile'){
+    public function myProfile(bool $condition = true, bool $shouldRegisterUserMenu = true, bool $shouldRegisterNavigation = false, bool $hasAvatars = false, string $slug = 'my-profile', ?string $navigationGroup = null){
         $this->myProfile = get_defined_vars();
         return $this;
     }
@@ -210,6 +210,11 @@ class BreezyCore implements Plugin
     public function shouldRegisterNavigation(string $key)
     {
         return $this->{$key}['shouldRegisterNavigation'];
+    }
+    
+    public function getNavigationGroup(string $key)
+    {
+        return $this->{$key}['navigationGroup'] ?? null;
     }
 
     public function enableTwoFactorAuthentication(bool $condition = true, bool $force = false, string | Closure | array | null $action = TwoFactorPage::class)

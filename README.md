@@ -97,6 +97,16 @@ BreezyCore::make()
     )
 ```
 
+#### Custom My Profile page class
+
+You can also use a custom My Profile page class by extending the default one, and registering it with the plugin.
+
+```php
+BreezyCore::make()
+    ->myProfile()
+    ->customMyProfilePage(AccountSettingsPage::class),
+```
+
 #### Using avatars in your Panel
 
 The instructions for using custom avatars is found in the Filament v3 docs under [Setting up user avatars](https://filamentphp.com/docs/3.x/panels/users#setting-up-user-avatars).

@@ -42,6 +42,10 @@ class MyProfilePage extends Page
         return filament('filament-breezy')->shouldRegisterNavigation('myProfile');
     }
 
+    public static function getNavigationGroup(): ?string
+    {
+        return filament('filament-breezy')->getNavigationGroup('myProfile');
+    }
 
     public function getRegisteredMyProfileComponents(): array
     {

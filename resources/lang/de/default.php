@@ -58,6 +58,7 @@ return [
         "account" => "Konto",
         "profile" => "Profil",
         "my_profile" => "Mein Profil",
+        "subheading" => "Verwalten Sie hier ihr Profil.",
         "personal_info" => [
             "heading" => "Persönliche Informationen",
             "subheading" => "Verwalten Sie Ihre persönlichen Daten.",

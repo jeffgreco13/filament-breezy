@@ -1,4 +1,4 @@
-<x-filament-breezy::grid-section md=2 title="{{ __('filament-breezy::default.profile.2fa.title') }}" description="{{ __('filament-breezy::default.profile.2fa.description') }}">
+<x-filament-breezy::grid-section md=2 :title="__('filament-breezy::default.profile.2fa.title')" :description="__('filament-breezy::default.profile.2fa.description')">
 
     <x-filament::card>
 

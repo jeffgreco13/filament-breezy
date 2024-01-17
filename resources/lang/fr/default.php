@@ -51,6 +51,7 @@ return [
                 "cancel_setup" => "Annuler la configuration"
             ],
             "setup_key" => "Clé de configuration",
+            "must_enable" => "Vous devez activer l'authentification à deux facteurs pour utiliser cette application.",
             "not_enabled" => [
                 "title" => "Vous n'avez pas activé l'authentification à deux facteurs.",
                 "description"=>"Lorsque l'authentification à deux facteurs est activée, un jeton sécurisé et aléatoire vous sera demandé lors de l'authentification. Vous pouvez récupérer ce jeton à partir de l'application Google Authenticator de votre téléphone."
@@ -59,12 +60,17 @@ return [
                 "title"=>"Terminez l'activation de l'authentification à deux facteurs.",
                 "description" => "Pour terminer l'activation de l'authentification à deux facteurs, scannez le code QR suivant à l'aide de l'application d'authentification de votre téléphone ou entrez la clé de configuration et fournissez le code OTP généré."
             ],
-            "enabled"=>[
-                "title"=>"Vous avez activé l'authentification à deux facteurs !",
-                "description"=>"L'authentification à deux facteurs est maintenant activée. Scannez le code QR suivant en utilisant l'application d'authentification de votre téléphone ou entrez la clé de configuration.",
-                "store_codes"=>"Conservez ces codes de récupération dans un gestionnaire de mots de passe sécurisé. Ils peuvent être utilisés pour récupérer l'accès à votre compte si votre dispositif d'authentification à deux facteurs est perdu.",
-                "show_codes"=>"Afficher les codes de récupération",
-                "hide_codes" => "Cacher les codes de récupération"
+            "enabled" => [
+                "notify" => "Authentification à deux facteurs activée.",
+                "title" => "Vous avez activé l'authentification à deux facteurs !",
+                "description" => "L'authentification à deux facteurs est maintenant activée. Scannez le code QR suivant en utilisant l'application d'authentification de votre téléphone ou entrez la clé de configuration.",
+                "store_codes" => "Conservez ces codes de récupération dans un gestionnaire de mots de passe sécurisé. Ils peuvent être utilisés pour récupérer l'accès à votre compte si votre dispositif d'authentification à deux facteurs est perdu.",
+            ],
+            "disabling" => [
+                "notify" => "L'authentification à deux facteurs a été désactivée.",
+            ],
+            "regenerate_codes" => [
+                "notify" => "De nouveaux codes de récupération ont été générés.",
             ],
             "confirmation" => [
                 "success_notification" => "Code vérifié. Authentification à deux facteurs activée.",
@@ -94,6 +100,7 @@ return [
         "tooltip" => "Copié !"
     ],
     "fields" => [
+        "avatar" => "Avatar",
         "email" => "E-mail",
         "login" => "Identifiant",
         "name" => "Nom",
@@ -102,6 +109,7 @@ return [
         "new_password" => "Nouveau mot de passe",
         "new_password_confirmation" => "Confirmez le mot de passe",
         "token_name" => "Nom du jeton",
+        "token_expiry" => "Expiration du jeton",
         "abilities" => "Aptitudes",
         "2fa_code" => "Code",
         "2fa_recovery_code" => "Code de récupération",

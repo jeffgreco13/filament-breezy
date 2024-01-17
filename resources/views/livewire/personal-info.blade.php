@@ -1,4 +1,4 @@
-<x-filament-breezy::grid-section md=2 title="{{ __('filament-breezy::default.profile.personal_info.heading') }}" description="{{ __('filament-breezy::default.profile.personal_info.subheading') }}">
+<x-filament-breezy::grid-section md=2 :title="__('filament-breezy::default.profile.personal_info.heading')" :description="__('filament-breezy::default.profile.personal_info.subheading')">
     <x-filament::card>
         <form wire:submit.prevent="submit" class="space-y-6">
 

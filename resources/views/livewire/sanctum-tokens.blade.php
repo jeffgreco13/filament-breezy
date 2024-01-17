@@ -1,4 +1,4 @@
-<x-filament-breezy::grid-section md=2 title="{{ __('filament-breezy::default.profile.sanctum.title') }}" description="{{ __('filament-breezy::default.profile.sanctum.description') }}">
+<x-filament-breezy::grid-section md=2 :title="__('filament-breezy::default.profile.sanctum.title')" :description="__('filament-breezy::default.profile.sanctum.description')">
         @if($plainTextToken)
             <div class="space-y-2 bg-warning-500">
                 <p class="text-sm">{{ __('filament-breezy::default.profile.sanctum.create.message') }}</p>

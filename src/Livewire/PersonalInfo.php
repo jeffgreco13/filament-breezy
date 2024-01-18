@@ -2,20 +2,24 @@
 
 namespace Jeffgreco13\FilamentBreezy\Livewire;
 
+use Filament\Facades\Filament;
 use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Facades\Filament;
 use Filament\Notifications\Notification;
 
 class PersonalInfo extends MyProfileComponent
 {
-    protected string $view = "filament-breezy::livewire.personal-info";
+    protected string $view = 'filament-breezy::livewire.personal-info';
 
     public ?array $data = [];
+
     public $user;
+
     public $userClass;
+
     public bool $hasAvatars;
-    public array $only = ['name','email'];
+
+    public array $only = ['name', 'email'];
 
     public static $sort = 10;
 

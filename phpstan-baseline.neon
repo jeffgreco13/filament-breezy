@@ -1,0 +1,161 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Access to an undefined property Illuminate\\\\Contracts\\\\Auth\\\\Authenticatable\\:\\:\\$two_factor_secret\\.$#"
+			count: 1
+			path: src/BreezyCore.php
+
+		-
+			message: "#^Access to an undefined property Jeffgreco13\\\\FilamentBreezy\\\\Livewire\\\\MyProfileComponent\\:\\:\\$view\\.$#"
+			count: 1
+			path: src/Livewire/MyProfileComponent.php
+
+		-
+			message: "#^Access to an undefined property Jeffgreco13\\\\FilamentBreezy\\\\Livewire\\\\PersonalInfo\\:\\:\\$form\\.$#"
+			count: 2
+			path: src/Livewire/PersonalInfo.php
+
+		-
+			message: "#^Call to an undefined method Filament\\\\Contracts\\\\Plugin\\|Filament\\\\FilamentManager\\:\\:getAvatarUploadComponent\\(\\)\\.$#"
+			count: 2
+			path: src/Livewire/PersonalInfo.php
+
+		-
+			message: "#^Call to an undefined method Filament\\\\Contracts\\\\Plugin\\|Filament\\\\FilamentManager\\:\\:hasAvatars\\(\\)\\.$#"
+			count: 1
+			path: src/Livewire/PersonalInfo.php
+
+		-
+			message: "#^Access to static property \\$personalAccessTokenModel on an unknown class Laravel\\\\Sanctum\\\\Sanctum\\.$#"
+			count: 1
+			path: src/Livewire/SanctumTokens.php
+
+		-
+			message: "#^Call to an undefined method Filament\\\\Contracts\\\\Plugin\\|Filament\\\\FilamentManager\\:\\:getSanctumPermissions\\(\\)\\.$#"
+			count: 1
+			path: src/Livewire/SanctumTokens.php
+
+		-
+			message: "#^Call to an undefined method Filament\\\\Contracts\\\\Plugin\\|Filament\\\\FilamentManager\\:\\:getTwoFactorQrCodeSvg\\(\\)\\.$#"
+			count: 1
+			path: src/Livewire/TwoFactorAuthentication.php
+
+		-
+			message: "#^Call to an undefined method Filament\\\\Contracts\\\\Plugin\\|Filament\\\\FilamentManager\\:\\:shouldForceTwoFactor\\(\\)\\.$#"
+			count: 1
+			path: src/Livewire/TwoFactorAuthentication.php
+
+		-
+			message: "#^Call to an undefined method Filament\\\\Contracts\\\\Plugin\\|Filament\\\\FilamentManager\\:\\:verify\\(\\)\\.$#"
+			count: 1
+			path: src/Livewire/TwoFactorAuthentication.php
+
+		-
+			message: "#^Access to an undefined property Jeffgreco13\\\\FilamentBreezy\\\\Livewire\\\\UpdatePassword\\:\\:\\$form\\.$#"
+			count: 1
+			path: src/Livewire/UpdatePassword.php
+
+		-
+			message: "#^Call to an undefined method Filament\\\\Contracts\\\\Plugin\\|Filament\\\\FilamentManager\\:\\:getPasswordUpdateRequiresCurrent\\(\\)\\.$#"
+			count: 1
+			path: src/Livewire/UpdatePassword.php
+
+		-
+			message: "#^Call to an undefined method Filament\\\\Contracts\\\\Plugin\\|Filament\\\\FilamentManager\\:\\:getPasswordUpdateRules\\(\\)\\.$#"
+			count: 1
+			path: src/Livewire/UpdatePassword.php
+
+		-
+			message: "#^Call to an undefined method Filament\\\\Contracts\\\\Plugin\\|Filament\\\\FilamentManager\\:\\:shouldForceTwoFactor\\(\\)\\.$#"
+			count: 1
+			path: src/Middleware/MustTwoFactor.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Foundation\\\\Auth\\\\User\\:\\:hasConfirmedTwoFactor\\(\\)\\.$#"
+			count: 1
+			path: src/Middleware/MustTwoFactor.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Foundation\\\\Auth\\\\User\\:\\:hasValidTwoFactorSession\\(\\)\\.$#"
+			count: 1
+			path: src/Middleware/MustTwoFactor.php
+
+		-
+			message: "#^Access to an undefined property Jeffgreco13\\\\FilamentBreezy\\\\Models\\\\BreezySession\\:\\:\\$authenticatable\\.$#"
+			count: 1
+			path: src/Models/BreezySession.php
+
+		-
+			message: "#^Access to an undefined property Jeffgreco13\\\\FilamentBreezy\\\\Models\\\\BreezySession\\:\\:\\$two_factor_confirmed_at\\.$#"
+			count: 1
+			path: src/Models/BreezySession.php
+
+		-
+			message: "#^Access to an undefined property Jeffgreco13\\\\FilamentBreezy\\\\Models\\\\BreezySession\\:\\:\\$two_factor_secret\\.$#"
+			count: 2
+			path: src/Models/BreezySession.php
+
+		-
+			message: "#^Property 'expires_at' does not exist in Jeffgreco13\\\\FilamentBreezy\\\\Models\\\\BreezySession model\\.$#"
+			count: 1
+			path: src/Models/BreezySession.php
+
+		-
+			message: "#^Property 'two_factor_confirmed_at' does not exist in Jeffgreco13\\\\FilamentBreezy\\\\Models\\\\BreezySession model\\.$#"
+			count: 1
+			path: src/Models/BreezySession.php
+
+		-
+			message: "#^Call to an undefined method Filament\\\\Contracts\\\\Plugin\\|Filament\\\\FilamentManager\\:\\:getNavigationGroup\\(\\)\\.$#"
+			count: 1
+			path: src/Pages/MyProfilePage.php
+
+		-
+			message: "#^Call to an undefined method Filament\\\\Contracts\\\\Plugin\\|Filament\\\\FilamentManager\\:\\:getRegisteredMyProfileComponents\\(\\)\\.$#"
+			count: 1
+			path: src/Pages/MyProfilePage.php
+
+		-
+			message: "#^Call to an undefined method Filament\\\\Contracts\\\\Plugin\\|Filament\\\\FilamentManager\\:\\:shouldRegisterNavigation\\(\\)\\.$#"
+			count: 1
+			path: src/Pages/MyProfilePage.php
+
+		-
+			message: "#^Call to an undefined method Filament\\\\Contracts\\\\Plugin\\|Filament\\\\FilamentManager\\:\\:slug\\(\\)\\.$#"
+			count: 1
+			path: src/Pages/MyProfilePage.php
+
+		-
+			message: "#^Expression on left side of \\?\\? is not nullable\\.$#"
+			count: 1
+			path: src/Pages/MyProfilePage.php
+
+		-
+			message: "#^Access to an undefined property Illuminate\\\\Foundation\\\\Auth\\\\User\\:\\:\\$two_factor_recovery_codes\\.$#"
+			count: 1
+			path: src/Pages/TwoFactorPage.php
+
+		-
+			message: "#^Access to an undefined property Jeffgreco13\\\\FilamentBreezy\\\\Pages\\\\TwoFactorPage\\:\\:\\$form\\.$#"
+			count: 1
+			path: src/Pages/TwoFactorPage.php
+
+		-
+			message: "#^Call to an undefined method Filament\\\\Contracts\\\\Plugin\\|Filament\\\\FilamentManager\\:\\:verify\\(\\)\\.$#"
+			count: 1
+			path: src/Pages/TwoFactorPage.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Foundation\\\\Auth\\\\User\\:\\:hasValidTwoFactorSession\\(\\)\\.$#"
+			count: 1
+			path: src/Pages/TwoFactorPage.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Foundation\\\\Auth\\\\User\\:\\:setTwoFactorSession\\(\\)\\.$#"
+			count: 1
+			path: src/Pages/TwoFactorPage.php
+
+		-
+			message: "#^Method Jeffgreco13\\\\FilamentBreezy\\\\Pages\\\\TwoFactorPage\\:\\:getFormActions\\(\\) has invalid return type Jeffgreco13\\\\FilamentBreezy\\\\Pages\\\\ActionGroup\\.$#"
+			count: 1
+			path: src/Pages/TwoFactorPage.php

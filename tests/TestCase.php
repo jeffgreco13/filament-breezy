@@ -2,6 +2,7 @@
 
 namespace Jeffgreco13\FilamentBreezy\Tests;
 
+use Filament\FilamentServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Jeffgreco13\FilamentBreezy\FilamentBreezyServiceProvider;
 use Livewire\LivewireServiceProvider;
@@ -16,9 +17,9 @@ class TestCase extends Orchestra
         Factory::guessFactoryNamesUsing(
             fn (
                 string $modelName
-            ) => "Jeffgreco13\\FilamentBreezy\\Database\\Factories\\" .
-                class_basename($modelName) .
-                "Factory"
+            ) => 'Jeffgreco13\\FilamentBreezy\\Database\\Factories\\'.
+                class_basename($modelName).
+                'Factory'
         );
     }
 
@@ -33,7 +34,7 @@ class TestCase extends Orchestra
 
     public function getEnvironmentSetUp($app)
     {
-        config()->set("database.default", "testing");
+        config()->set('database.default', 'testing');
 
         /*
         $migration = include __DIR__.'/../database/migrations/create_filament-breezy_table.php.stub';

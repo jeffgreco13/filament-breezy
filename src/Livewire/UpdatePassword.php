@@ -2,17 +2,18 @@
 
 namespace Jeffgreco13\FilamentBreezy\Livewire;
 
+use Filament\Facades\Filament;
 use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Facades\Filament;
-use Illuminate\Support\Facades\Hash;
 use Filament\Notifications\Notification;
+use Illuminate\Support\Facades\Hash;
 
 class UpdatePassword extends MyProfileComponent
 {
-    protected string $view = "filament-breezy::livewire.update-password";
+    protected string $view = 'filament-breezy::livewire.update-password';
 
     public ?array $data = [];
+
     public $user;
 
     public static $sort = 20;
@@ -26,21 +27,21 @@ class UpdatePassword extends MyProfileComponent
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make("current_password")
+                Forms\Components\TextInput::make('current_password')
                     ->label(__('filament-breezy::default.password_confirm.current_password'))
                     ->required()
                     ->password()
-                    ->rule("current_password")
+                    ->rule('current_password')
                     ->visible(filament('filament-breezy')->getPasswordUpdateRequiresCurrent()),
-                Forms\Components\TextInput::make("new_password")
+                Forms\Components\TextInput::make('new_password')
                     ->label(__('filament-breezy::default.fields.new_password'))
                     ->password()
                     ->rules(filament('filament-breezy')->getPasswordUpdateRules())
                     ->required(),
-                Forms\Components\TextInput::make("new_password_confirmation")
+                Forms\Components\TextInput::make('new_password_confirmation')
                     ->label(__('filament-breezy::default.fields.new_password_confirmation'))
                     ->password()
-                    ->same("new_password")
+                    ->same('new_password')
                     ->required(),
             ])
             ->statePath('data');
@@ -50,11 +51,11 @@ class UpdatePassword extends MyProfileComponent
     {
         $data = collect($this->form->getState())->only('new_password')->all();
         $this->user->update([
-            'password' => Hash::make($data['new_password'])
+            'password' => Hash::make($data['new_password']),
         ]);
-        session()->forget('password_hash_' . Filament::getCurrentPanel()->getAuthGuard());
+        session()->forget('password_hash_'.Filament::getCurrentPanel()->getAuthGuard());
         Filament::auth()->login($this->user);
-        $this->reset(["data"]);
+        $this->reset(['data']);
         Notification::make()
             ->success()
             ->title(__('filament-breezy::default.profile.password.notify'))

@@ -2,19 +2,19 @@
 
 namespace Jeffgreco13\FilamentBreezy\Livewire;
 
-use Livewire\Component;
-use Filament\Forms\Contracts\HasForms;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
 use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Forms\Contracts\HasForms;
+use Livewire\Component;
 
-class MyProfileComponent extends Component implements HasForms, HasActions
+class MyProfileComponent extends Component implements HasActions, HasForms
 {
-    use InteractsWithForms, InteractsWithActions;
+    use InteractsWithActions, InteractsWithForms;
 
     public static $sort = 0;
 
-    function getName()
+    public function getName()
     {
         return str(static::class)->afterLast('\\')->snake();
     }

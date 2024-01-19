@@ -19,8 +19,11 @@ class MustTwoFactor
             filament()->auth()->check() &&
             ! str($request->route()->getName())->contains('logout')
         ) {
+            /** @var BreezyCore $breezy */
             $breezy = filament('filament-breezy');
-            $myProfileRouteName = 'filament.'.filament()->getCurrentPanel()->getId().'.pages.my-profile';
+
+            $myProfileRouteName = 'filament.'.filament()->getCurrentPanel()->getId().'.pages.'.$breezy->slug();
+
             $myProfileRouteParameters = [];
 
             if (filament()->hasTenancy()) {

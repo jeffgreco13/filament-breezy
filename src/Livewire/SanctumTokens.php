@@ -2,24 +2,25 @@
 
 namespace Jeffgreco13\FilamentBreezy\Livewire;
 
-use Filament\Forms;
-use Filament\Tables;
-use Laravel\Sanctum\Sanctum;
 use Filament\Facades\Filament;
+use Filament\Forms;
 use Filament\Notifications\Notification;
+use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
+use Laravel\Sanctum\Sanctum;
 
 class SanctumTokens extends MyProfileComponent implements Tables\Contracts\HasTable
 {
     use Tables\Concerns\InteractsWithTable;
 
-    protected string $view = "filament-breezy::livewire.sanctum-tokens";
+    protected string $view = 'filament-breezy::livewire.sanctum-tokens';
 
-    protected string $modalWidth = "md";
+    protected string $modalWidth = 'md';
 
     protected int $abilityColumns = 2;
 
     public $user;
+
     public ?string $plainTextToken;
 
     public static $sort = 40;
@@ -32,32 +33,33 @@ class SanctumTokens extends MyProfileComponent implements Tables\Contracts\HasTa
     protected function getTableQuery(): Builder
     {
         $auth = Filament::getCurrentPanel()->auth();
+
         return app(Sanctum::$personalAccessTokenModel)->where([
-            ["tokenable_id", '=', $auth->id()],
-            ["tokenable_type", '=', get_class($auth->user())],
+            ['tokenable_id', '=', $auth->id()],
+            ['tokenable_type', '=', get_class($auth->user())],
         ]);
     }
 
     protected function getTableColumns(): array
     {
         return [
-            Tables\Columns\TextColumn::make("name")
+            Tables\Columns\TextColumn::make('name')
                 ->searchable()
                 ->sortable()
                 ->label(__('filament-breezy::default.fields.token_name')),
-            Tables\Columns\TextColumn::make("created_at")
+            Tables\Columns\TextColumn::make('created_at')
                 ->date()
-                ->label(__("filament-breezy::default.fields.created"))
+                ->label(__('filament-breezy::default.fields.created'))
                 ->sortable(),
-            Tables\Columns\TextColumn::make("expires_at")
-                ->color(fn($record) => now()->gt($record->expires_at) ? 'danger' : null)
+            Tables\Columns\TextColumn::make('expires_at')
+                ->color(fn ($record) => now()->gt($record->expires_at) ? 'danger' : null)
                 ->date()
-                ->label(__("filament-breezy::default.fields.expires"))
+                ->label(__('filament-breezy::default.fields.expires'))
                 ->sortable(),
             Tables\Columns\TextColumn::make('abilities')
                 ->badge()
                 ->label(__('filament-breezy::default.fields.abilities'))
-                ->getStateUsing(fn($record)=>sizeof($record->abilities))
+                ->getStateUsing(fn ($record) => count($record->abilities)),
         ];
     }
 
@@ -74,7 +76,7 @@ class SanctumTokens extends MyProfileComponent implements Tables\Contracts\HasTa
                 ->columns($this->abilityColumns)
                 ->required(),
             Forms\Components\DatePicker::make('expires_at')
-                ->label(__('filament-breezy::default.fields.token_expiry'))
+                ->label(__('filament-breezy::default.fields.token_expiry')),
 
         ];
     }
@@ -83,16 +85,16 @@ class SanctumTokens extends MyProfileComponent implements Tables\Contracts\HasTa
     {
         return [
             Tables\Actions\Action::make('createToken')
-                ->label( __('filament-breezy::default.profile.sanctum.create.submit.label') )
+                ->label(__('filament-breezy::default.profile.sanctum.create.submit.label'))
                 ->modalWidth($this->modalWidth)
                 ->form($this->getSanctumFormSchema())
-                ->action(function($data){
+                ->action(function ($data) {
                     $this->plainTextToken = $this->user->createToken($data['token_name'], array_values($data['abilities']))->plainTextToken;
                     Notification::make()
                         ->success()
                         ->title(__('filament-breezy::default.profile.sanctum.create.notify'))
                         ->send();
-                })
+                }),
         ];
     }
 
@@ -109,10 +111,9 @@ class SanctumTokens extends MyProfileComponent implements Tables\Contracts\HasTa
             Tables\Actions\EditAction::make('edit')
                 ->iconButton()
                 ->modalWidth($this->modalWidth)
-                ->form($this->getSanctumFormSchema(edit:true)),
+                ->form($this->getSanctumFormSchema(edit: true)),
             Tables\Actions\DeleteAction::make()
-                ->iconButton()
+                ->iconButton(),
         ];
     }
-
 }

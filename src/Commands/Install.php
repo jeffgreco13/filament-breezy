@@ -25,19 +25,19 @@ class Install extends Command
      */
     public function handle()
     {
-        $this->line("***************************");
-        $this->line("*     FILAMENT BREEZY     *");
-        $this->line("***************************");
+        $this->line('***************************');
+        $this->line('*     FILAMENT BREEZY     *');
+        $this->line('***************************');
         $this->newLine(2);
-        if ($this->confirm("Do you want to enable Two Factor Authentication? (This will publish a new migration)",true)){
+        if ($this->confirm('Do you want to enable Two Factor Authentication? (This will publish a new migration)', true)) {
             $this->callSilent('vendor:publish', [
-                "--tag" => "filament-breezy-migrations"
+                '--tag' => 'filament-breezy-migrations',
             ]);
-            if ($this->confirm("Do you want to run migrations now?",true)){
-                $this->call("migrate");
-                $this->info("You may now enable 2FA by appending ->enableTwoFactorAuthentication() to BreezyCore::make(). See the docs for more info.");
+            if ($this->confirm('Do you want to run migrations now?', true)) {
+                $this->call('migrate');
+                $this->info('You may now enable 2FA by appending ->enableTwoFactorAuthentication() to BreezyCore::make(). See the docs for more info.');
             } else {
-                $this->warn("You must run migrations before using Breezy.");
+                $this->warn('You must run migrations before using Breezy.');
             }
         }
         $this->newLine();

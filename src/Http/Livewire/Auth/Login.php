@@ -130,7 +130,9 @@ class Login extends FilamentLogin
         return [
             TextInput::make('code')
                 ->label($this->usingRecoveryCode ? __('filament-breezy::default.fields.2fa_recovery_code') : __('filament-breezy::default.fields.2fa_code'))
-                ->placeholder($this->usingRecoveryCode ? __('filament-breezy::default.two_factor.recovery_code_placeholder') : __('filament-breezy::default.two_factor.code_placeholder'))->required(),
+                ->placeholder($this->usingRecoveryCode ? __('filament-breezy::default.two_factor.recovery_code_placeholder') : __('filament-breezy::default.two_factor.code_placeholder'))
+                ->extraInputAttributes(['autocomplete' => $this->usingRecoveryCode ? 'off' : 'one-time-code'])
+                ->required(),
         ];
     }
 

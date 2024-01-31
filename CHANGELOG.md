@@ -2,6 +2,18 @@
 
 All notable changes to `filament-breezy` will be documented in this file.
 
+## v1.5.10 - 2024-01-31
+
+### What's Changed
+
+* Add autocomplete attribute to the OTP field … by @arnevanhoorn in https://github.com/jeffgreco13/filament-breezy/pull/328
+
+### New Contributors
+
+* @arnevanhoorn made their first contribution in https://github.com/jeffgreco13/filament-breezy/pull/328
+
+**Full Changelog**: https://github.com/jeffgreco13/filament-breezy/compare/v1.5.9...v1.5.10
+
 ## v1.5.9 - 2023-07-22
 
 ### What's Changed

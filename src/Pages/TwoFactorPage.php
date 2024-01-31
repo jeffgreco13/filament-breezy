@@ -58,7 +58,7 @@ class TwoFactorPage extends SimplePage
                     <x-filament::link href="#" wire:click="toggleRecoveryCode()">'.($this->usingRecoveryCode ? __('filament-breezy::default.cancel') : __('filament-breezy::default.two_factor.recovery_code_link')).'
                     </x-filament::link>')))
                 ->required()
-                ->extraInputAttributes(['class' => 'text-center'])
+                ->extraInputAttributes(['class' => 'text-center', 'autocomplete' => $this->usingRecoveryCode ? 'off' : 'one-time-code'])
                 ->autofocus(),
         ];
     }

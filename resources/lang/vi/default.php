@@ -119,6 +119,10 @@ return [
             ],
         ],
     ],
+    'clipboard' => [
+        'link' => 'Sao chép',
+        'tooltip' => 'Đã sao chép!',
+    ],
     'fields' => [
         'email' => 'Email',
         'login' => 'Đăng nhập',

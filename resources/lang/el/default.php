@@ -119,6 +119,11 @@ return [
             ],
         ],
     ],
+    'clipboard' => [
+        // 'link' => 'In die Zwischenablage kopieren',
+        'link' => 'Αντιγραφή στο πρόχειρο',
+        'tooltip' => 'Αντιγράφηκε!',
+    ],
     'fields' => [
         'email' => 'Email',
         'login' => 'Συνδεθείτε',

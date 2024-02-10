@@ -119,6 +119,10 @@ return [
             ],
         ],
     ],
+    'clipboard' => [
+        'link' => 'Salin ke papan keratan',
+        'tooltip' => 'Disalin!',
+    ],
     'fields' => [
         'email' => 'E-mel',
         'login' => 'Log masuk',

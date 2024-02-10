@@ -119,6 +119,10 @@ return [
             ],
         ],
     ],
+    'clipboard' => [
+        'link' => 'Skopiuj do schowka',
+        'tooltip' => 'Skopiowano!',
+    ],
     'fields' => [
         'email' => 'Email',
         'login' => 'Login',

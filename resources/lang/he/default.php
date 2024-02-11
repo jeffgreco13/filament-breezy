@@ -119,6 +119,10 @@ return [
             ],
         ],
     ],
+    'clipboard' => [
+        'link' => 'העתק',
+        'tooltip' => 'הועתק!',
+    ],
     'fields' => [
         'email' => 'אימייל',
         'login' => 'כניסה',

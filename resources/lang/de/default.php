@@ -120,6 +120,10 @@ return [
             ],
         ],
     ],
+    'clipboard' => [
+        'link' => 'In die Zwischenablage kopieren',
+        'tooltip' => 'Kopiert!',
+    ],
     'fields' => [
         'email' => 'E-Mail',
         'login' => 'Einloggen',

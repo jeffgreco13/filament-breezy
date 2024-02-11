@@ -119,6 +119,10 @@ return [
             ],
         ],
     ],
+    'clipboard' => [
+        'link' => 'Link másolása',
+        'tooltip' => 'Másolás sikerült!',
+    ],
     'fields' => [
         'email' => 'E-mail cím',
         'login' => 'Bejelentkezés',

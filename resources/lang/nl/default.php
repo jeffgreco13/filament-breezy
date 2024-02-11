@@ -120,6 +120,10 @@ return [
             ],
         ],
     ],
+    'clipboard' => [
+        'link' => 'Kopieer naar klembord',
+        'tooltip' => 'Gekopieerd!',
+    ],
     'fields' => [
         'name' => 'Naam',
         'email' => 'E-mailadres',

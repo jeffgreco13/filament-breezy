@@ -119,6 +119,10 @@ return [
             ],
         ],
     ],
+    'clipboard' => [
+        'link' => 'Kopioi leikepöydälle',
+        'tooltip' => 'Kopioitu!',
+    ],
     'fields' => [
         'email' => 'Sähköposti',
         'login' => 'Kirjaudu',

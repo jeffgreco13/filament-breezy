@@ -58,6 +58,7 @@ return [
         'account' => 'Account',
         'profile' => 'Profilo',
         'my_profile' => 'Il mio profilo',
+        'subheading' => 'Gestisci il tuo profilo.',
         'personal_info' => [
             'heading' => 'Informazioni personali',
             'subheading' => 'Gestisci le tue informazioni personali.',
@@ -84,7 +85,8 @@ return [
                 'confirm_finish' => 'Conferma & procedi',
                 'cancel_setup' => 'Annulla il setup',
             ],
-            'setup_key' => 'Setup della chiave',
+            'setup_key' => 'Chiave di Setup',
+            'must_enable' => 'Per utilizzare questa applicazione devi abilitare la 2FA.',
             'not_enabled' => [
                 'title' => "Non hai abilitato l'autenticazione a due fattori.",
                 'description' => "Quando l'autenticazione a due fattori è attivata, durante l'autenticazione, ti verrà richiesto un token casuale. Potrai recuperare questo toke tramite l'app mobile di Google Authenticator",
@@ -100,6 +102,12 @@ return [
                 'show_codes' => 'Mostra Codici di Ripristino',
                 'hide_codes' => 'Nascondi Codici di Ripristino',
             ],
+            'disabling' => [
+                'notify' => 'L\'autenticazione a due fattori è stata disabilitata.',
+            ],
+            'regenerate_codes' => [
+                'notify' => 'I nuovi codici di recupero sono stati generati.',
+            ],
             'confirmation' => [
                 'success_notification' => 'Codice verificato. Autenticazione a due fattori abilitata.',
                 'invalid_code' => 'Il codice inserito non è valido.',
@@ -110,6 +118,7 @@ return [
             'description' => "Gestisci i token API che permettono l'accesso a questa applicazione a servizi di terze parti. NOTA: il tuo token viene mostrato dopo la creazione. Se perdi il token, dovrai cancellarlo e crearlo nuovamente.",
             'create' => [
                 'notify' => 'Token creato correttamente!',
+                'message' => 'Il tuo token viene mostrato solo una volta. Se perdi il token, dovrai cancellarlo e crearne uno nuovo.',
                 'submit' => [
                     'label' => 'Crea',
                 ],
@@ -117,13 +126,17 @@ return [
             'update' => [
                 'notify' => 'Token aggiornato correttamente!',
             ],
+            'copied' => [
+                'label' => 'Ho copiato il mio token',
+            ],
         ],
     ],
     'clipboard' => [
-        'link' => 'Copia link',
-        'tooltip' => 'Copia negli appunti',
+        'link' => 'Copia negli appunti',
+        'tooltip' => 'Copiato!',
     ],
     'fields' => [
+        'avatar' => 'Avatar',
         'email' => 'Email',
         'login' => 'Login',
         'name' => 'Nome',
@@ -132,6 +145,7 @@ return [
         'new_password' => 'Nuova password',
         'new_password_confirmation' => 'Conferma nuova password',
         'token_name' => 'Nome del Token',
+        'token_expiry' => 'Scadenza del Token',
         'abilities' => 'Abilità',
         '2fa_code' => 'Codice',
         '2fa_recovery_code' => 'Codice di Ripristino',

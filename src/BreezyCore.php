@@ -320,7 +320,7 @@ class BreezyCore implements Plugin
     public function shouldForceTwoFactor(): bool
     {
         if ($this->getCurrentPanel()->isEmailVerificationRequired()) {
-            return $this->forceTwoFactorAuthentication && !$this->auth()->user()?->hasConfirmedTwoFactor() && $this->auth()->user()?->hasVerifiedEmail();
+            return $this->forceTwoFactorAuthentication && ! $this->auth()->user()?->hasConfirmedTwoFactor() && $this->auth()->user()?->hasVerifiedEmail();
         }
 
         return $this->forceTwoFactorAuthentication && ! $this->auth()->user()?->hasConfirmedTwoFactor();

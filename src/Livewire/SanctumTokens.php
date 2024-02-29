@@ -8,6 +8,7 @@ use Filament\Notifications\Notification;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Laravel\Sanctum\Sanctum;
+use Carbon\Carbon;
 
 class SanctumTokens extends MyProfileComponent implements Tables\Contracts\HasTable
 {
@@ -89,7 +90,7 @@ class SanctumTokens extends MyProfileComponent implements Tables\Contracts\HasTa
                 ->modalWidth($this->modalWidth)
                 ->form($this->getSanctumFormSchema())
                 ->action(function ($data) {
-                    $this->plainTextToken = $this->user->createToken($data['token_name'], array_values($data['abilities']))->plainTextToken;
+                    $this->plainTextToken = $this->user->createToken($data['token_name'], array_values($data['abilities']), $data['expires_at'] ? Carbon::createFromFormat('Y-m-d', $data['expires_at']): null)->plainTextToken;
                     Notification::make()
                         ->success()
                         ->title(__('filament-breezy::default.profile.sanctum.create.notify'))

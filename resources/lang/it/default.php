@@ -96,11 +96,10 @@ return [
                 'description' => "Per completare l'abilitazione del login con autenticazione a due fattori, scansiona il seguente QR code utilizzando una applicazione di autenticazione o inserisci la chiave insieme al codice OTP generato.",
             ],
             'enabled' => [
+                'notify' => 'Autenticazione a due fattori attivata.',
                 'title' => "Hai abilitato l'autenticazione a due fattori!",
                 'description' => "L'autenticazione a due fattori adesso è abilitata. Questo permette di rendere più sicuro il tuo account.",
                 'store_codes' => "Salva questi codice di ripristino in un luogo sicuro. Possono essere utilizzati per ripristinare l'accesso al tuo account se il dispositivo che utilizzi viene smarrito",
-                'show_codes' => 'Mostra Codici di Ripristino',
-                'hide_codes' => 'Nascondi Codici di Ripristino',
             ],
             'disabling' => [
                 'notify' => 'L\'autenticazione a due fattori è stata disabilitata.',

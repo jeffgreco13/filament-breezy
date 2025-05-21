@@ -557,7 +557,7 @@ Filament::registerRenderHook(
  PanelsRenderHook::AUTH_LOGIN_FORM_AFTER,
     fn () => Blade::render(<<<'BLADE'
     @if(filament('filament-breezy')->getPasskeysEnabled())
-        <x-authenticate-passkey>
+        <x-authenticate-passkey redirect="/admin">
             <div class="flex justify-center">
                 <button
                     class="fi-link  text-primary-600 relative inline-flex items-center justify-center font-semibold outline-none transition duration-75  hover:underline focus:underline fi-size-md fi-link-size-md gap-1.5 text-sm fi-color-custom text-custom-600 dark:text-custom-400 fi-ac-link-action">
@@ -572,7 +572,18 @@ Filament::registerRenderHook(
 
 ```
 
-7. Enable Passkeys
+Note that the authenticate-passkey component takes a redirect parameter that specifies the URL to redirect to after successful authentication.This can also be set in the config file for spatie/laravel-passkeys.
+
+7. Run migrations (This step is required only for those upgrading from v2.6.3 or earlier).
+
+To use passkeys,you need to publish and run their migrations.You can do this by running the following command.
+
+```
+ php artisan breezy:install
+
+```
+
+8. Enable Passkeys
 
 To enable the Passkeys feature, use the `enablePasskeys` method in `BreezyCore`:
 
@@ -581,11 +592,11 @@ BreezyCore::make()
     ->enablePasskeys(condition: true) // Enable the Passkeys feature (default = false)
 ```
 
-8. Create your first passkey
+9. Create your first passkey
 
 On the user's profile page, passkeys are displayed in a tabular form.You can use the header action to add your passkey.
 
-9. Additional Configuration
+10. Additional Configuration
 
 If you want to customize the component or modify its behavior, you can override the `passkeys` component in the `myProfileComponents` method:
 
@@ -595,6 +606,12 @@ BreezyCore::make()
         'passkeys' => \App\Livewire\CustomPasskeys::class, // Your custom component
     ])
 ```
+
+11. Challanges
+
+(a) You get the following error (in browser console) when you try to add a passkey: WebAuthn is not supported in this browser. Solution: You need to secure your site with HTTPS.
+
+(b) You get the following error (in browser console) when you try to add a passkey: The RP ID "127.0.0.1" is invalid for this domain (or similar). Solution: set the correct secured url in .env file.
 
 ### Customizing the Registration form
 

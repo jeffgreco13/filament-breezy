@@ -2,31 +2,32 @@
 
 namespace Jeffgreco13\FilamentBreezy;
 
-use BaconQrCode\Renderer\Color\Rgb;
-use BaconQrCode\Renderer\Image\SvgImageBackEnd;
-use BaconQrCode\Renderer\ImageRenderer;
-use BaconQrCode\Renderer\RendererStyle\Fill;
-use BaconQrCode\Renderer\RendererStyle\RendererStyle;
-use BaconQrCode\Writer;
 use Closure;
+use Filament\Forms;
+use Filament\Panel;
+use Livewire\Livewire;
+use BaconQrCode\Writer;
 use Filament\Contracts\Plugin;
 use Filament\Facades\Filament;
-use Filament\Forms;
-use Filament\Navigation\MenuItem;
-use Filament\Panel;
-use Filament\Support\Concerns\EvaluatesClosures;
 use Illuminate\Cache\Repository;
-use Illuminate\Contracts\Auth\Authenticatable;
+use Filament\Navigation\MenuItem;
+use PragmaRX\Google2FA\Google2FA;
+use BaconQrCode\Renderer\Color\Rgb;
+use BaconQrCode\Renderer\ImageRenderer;
 use Illuminate\Validation\Rules\Password;
-use Jeffgreco13\FilamentBreezy\Livewire\BrowserSessions;
+use BaconQrCode\Renderer\RendererStyle\Fill;
+use Illuminate\Contracts\Auth\Authenticatable;
+use BaconQrCode\Renderer\Image\SvgImageBackEnd;
+use Filament\Support\Concerns\EvaluatesClosures;
+use Jeffgreco13\FilamentBreezy\Livewire\Passkeys;
+use Jeffgreco13\FilamentBreezy\Pages\TwoFactorPage;
+use BaconQrCode\Renderer\RendererStyle\RendererStyle;
 use Jeffgreco13\FilamentBreezy\Livewire\PersonalInfo;
 use Jeffgreco13\FilamentBreezy\Livewire\SanctumTokens;
-use Jeffgreco13\FilamentBreezy\Livewire\TwoFactorAuthentication;
 use Jeffgreco13\FilamentBreezy\Livewire\UpdatePassword;
+use Jeffgreco13\FilamentBreezy\Livewire\BrowserSessions;
 use Jeffgreco13\FilamentBreezy\Middleware\MustTwoFactor;
-use Jeffgreco13\FilamentBreezy\Pages\TwoFactorPage;
-use Livewire\Livewire;
-use PragmaRX\Google2FA\Google2FA;
+use Jeffgreco13\FilamentBreezy\Livewire\TwoFactorAuthentication;
 
 class BreezyCore implements Plugin
 {
@@ -61,6 +62,8 @@ class BreezyCore implements Plugin
     protected $sanctumPermissions = ['create', 'view', 'update', 'delete'];
 
     protected $browserSessions = false;
+
+    protected $passkeys = false;
 
     protected ?string $customMyProfilePageClass = null;
 
@@ -123,6 +126,13 @@ class BreezyCore implements Plugin
                 Livewire::component('browser_sessions', BrowserSessions::class);
                 $this->myProfileComponents([
                     'browser_sessions' => BrowserSessions::class,
+                ]);
+            }
+
+            if ($this->passkeys) {
+                Livewire::component('passkeys', Passkeys::class);
+                $this->myProfileComponents([
+                    'passkeys' => Passkeys::class,
                 ]);
             }
 
@@ -387,5 +397,16 @@ class BreezyCore implements Plugin
         $this->browserSessions = $condition;
 
         return $this;
+    }
+    public function enablePasskeys(bool $condition = true)
+    {
+        $this->passkeys = $condition;
+
+        return $this;
+    }
+
+    public function getPasskeysEnabled():bool
+    {
+         return $this->passkeys;
     }
 }

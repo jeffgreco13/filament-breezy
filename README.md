@@ -9,6 +9,7 @@ Enhanced security features for Filament (v3) Panels. Includes a customizable My 
 Installs in minutes!
 
 ## Features & Screenshots
+
 My Profile - Personal info with avatar support
 ![Screenshot of Profile with avatar support](./art/profile-with-avatar.png)
 Update password with customizable validation rules
@@ -25,6 +26,9 @@ Create and manage Sanctum personal access tokens
 Manage active browser sessions and log out other sessions  
 ![Screenshot of Browser Sessions](./art/browser-sessions.png)  
 ![Screenshot of Close Browser Sessions Confirmation](./art/close-browser-sessions-confirm-password.png)
+
+Create and manage passkeys
+![Screenshot of passkeys](./art/passkeys.png)
 
 ## Installation
 
@@ -137,7 +141,6 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
 
 #### Customize the avatar upload component
 
-
 ```php
 use Filament\Forms\Components\FileUpload;
 
@@ -187,6 +190,7 @@ return new class extends Migration
 ```
 
 #### Add column to user model
+
 ```php
     protected $fillable = [
         ...
@@ -194,7 +198,6 @@ return new class extends Migration
         ...
     ];
 ```
-
 
 #### Customize password update
 
@@ -221,7 +224,6 @@ BreezyCore::make()
         'update_password'
     ])
 ```
-
 
 #### Create custom My Profile components
 
@@ -323,6 +325,7 @@ BreezyCore::make()
         // 'two_factor_authentication' => ,
         // 'sanctum_tokens' =>
         // 'browser_sessions' =>
+        // 'passkeys' =>
     ])
 ```
 
@@ -361,6 +364,7 @@ class CustomPersonalInfo extends PersonalInfo
 }
 
 ```
+
 Now, as mentioned above, give this component to `BreezyCore::make()->myProfileComponents` to override the original and use your custom component.
 
 #### Sorting My Profile components
@@ -455,9 +459,9 @@ BreezyCore::make()
 
 On the user's profile page, active sessions are displayed with device information, including:
 
-- Browser and platform of the device
-- IP address
-- Last activity of the session
+-   Browser and platform of the device
+-   IP address
+-   Last activity of the session
 
 #### Logging Out of Other Browser Sessions
 
@@ -474,11 +478,130 @@ BreezyCore::make()
     ])
 ```
 
+### Passkeys
+
+This feature uses [**Spatie laravel-passkeys**](https://spatie.be/docs/laravel-passkeys) under the hood.And as such for customization and any advanced stuff you can checkout thier [docs](https://spatie.be/docs/laravel-passkeys).
+
+The **Passkeys** feature, which is disabled by default, allows users to login in using passkeys, enhancing account security.
+
+1. Add InteractsWithPasskeys trait to your Authenticatable model and implement HasPasskeys.
+
+```php
+namespace App\Models;
+
+use Spatie\LaravelPasskeys\Models\Concerns\HasPasskeys;
+use Spatie\LaravelPasskeys\Models\Concerns\InteractsWithPasskeys;
+use Jeffgreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Filament\Models\Contracts\FilamentUser;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
+
+
+class User extends Authenticatable implements FilamentUser, HasPasskeys
+{
+    use HasApiTokens, HasFactory, Notifiable, TwoFactorAuthenticatable,InteractsWithPasskeys;
+    // ...
+
+}
+
+```
+
+2. Install simplewebauthn/browser. You can install this dependencies via NPM (or Yarn).
+
+```
+npm install @simplewebauthn/browser
+
+```
+
+3. Create entry JavaScript file for passkeys.
+
+```
+//say resources/js/passkeys.js or similar file
+
+import {
+    browserSupportsWebAuthn,
+    startAuthentication,
+    startRegistration,
+} from '@simplewebauthn/browser'
+
+window.browserSupportsWebAuthn = browserSupportsWebAuthn;
+window.startAuthentication = startAuthentication;
+window.startRegistration = startRegistration;
+
+```
+
+4. Register the script manually.You can put this code in the boot method of your panel service provider (e.g AdminPanelProvider).
+
+```
+ FilamentAsset::register([
+            Js::make('passkeys-js', Vite::asset('resources/js/passkeys.js'))->module(),
+        ]);
+
+```
+
+Alternatively,you can register the script in 3 above by including it in app.js or bootstrap.js
+
+5. Add passkeys routes to web.php
+
+```
+// routes/web.php
+Route::passkeys();
+
+```
+
+6. Add the authentication component to the login view. Put this code in the boot method of your panel service provider (e.g AdminPanelProvider).
+
+```
+Filament::registerRenderHook(
+ PanelsRenderHook::AUTH_LOGIN_FORM_AFTER,
+    fn () => Blade::render(<<<'BLADE'
+    @if(filament('filament-breezy')->getPasskeysEnabled())
+        <x-authenticate-passkey>
+            <div class="flex justify-center">
+                <button
+                    class="fi-link  text-primary-600 relative inline-flex items-center justify-center font-semibold outline-none transition duration-75  hover:underline focus:underline fi-size-md fi-link-size-md gap-1.5 text-sm fi-color-custom text-custom-600 dark:text-custom-400 fi-ac-link-action">
+                         {{__('filament-breezy::default.profile.passkeys.login_with_passkey')}}
+                </button>
+            </div>
+        </x-authenticate-passkey>
+    @endif
+    BLADE)
+);
+
+
+```
+
+7. Enable Passkeys
+
+To enable the Passkeys feature, use the `enablePasskeys` method in `BreezyCore`:
+
+```php
+BreezyCore::make()
+    ->enablePasskeys(condition: true) // Enable the Passkeys feature (default = false)
+```
+
+8. Create your first passkey
+
+On the user's profile page, passkeys are displayed in a tabular form.You can use the header action to add your passkey.
+
+9. Additional Configuration
+
+If you want to customize the component or modify its behavior, you can override the `passkeys` component in the `myProfileComponents` method:
+
+```php
+BreezyCore::make()
+    ->myProfileComponents([
+        'passkeys' => \App\Livewire\CustomPasskeys::class, // Your custom component
+    ])
+```
+
 ### Customizing the Registration form
 
 Filament v3+ introduces enhanced capabilities for handling and customizing registration forms seamlessly. This feature is now an integral part of the core Filament functionality. Consequently, the ability to customize registration forms, which was available in Breezy v1, has been deprecated in v2 in favor of the more comprehensive and integrated approach provided by Filament v3+. Laravel Daily has a concise tutorial available, guiding users on creating and registering custom registration forms while incorporating additional fields. [Check out the tutorial here ](https://laraveldaily.com/post/filament-registration-form-extra-fields-choose-user-role)for step-by-step instructions.
 
 ## FAQ
+
 > How do 2FA sessions work across multiple panels?
 
 By default, Breezy uses the same guard as defined on your Panel. The default is 'web'. Only panels that have registered the BreezyCore plugin will have access to 2FA. If multiple panels use 2FA, and share the same guard, the User only has to enter the OTP once for the duration of the session.
@@ -490,8 +613,6 @@ When 2FA is properly configured, and the User is prompted for the OTP code befor
 > How long does the 2FA session last?
 
 The 2FA session is the same as the Laravel session lifetime. Once the user is logged out, or the session expires, they will need to enter the OTP code again.
-
-
 
 ## Testing
 

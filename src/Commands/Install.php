@@ -40,7 +40,22 @@ class Install extends Command
                 $this->warn('You must run migrations before using Breezy.');
             }
         }
+        $this->newLine(2);
+
+        if($this->confirm('Do you want to enable Passkeys? (This will publish a new migration)', true)) {
+            $this->callSilent('vendor:publish', [
+                '--tag' => 'passkeys-migrations',
+            ]);
+            if ($this->confirm('Do you want to run migrations now?', true)) {
+                $this->call('migrate');
+                $this->info('You may now enable Passkeys by appending ->enablePasskeys() to BreezyCore::make(). See the docs for more info.');
+            } else {
+                $this->warn('You must run migrations before using Breezy.');
+            }
+        }
+
         $this->newLine();
+
         if ($this->confirm('All done! Would you like to show some love by starring the Breezy on GitHub?', true)) {
             if (PHP_OS_FAMILY === 'Darwin') {
                 exec('open https://github.com/jeffgreco13/filament-breezy');

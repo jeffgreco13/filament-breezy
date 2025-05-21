@@ -111,6 +111,22 @@ return [
             'incorrect_password' => 'The password you entered was incorrect. Please try again.',
             'logout_success' => 'All other browser sessions have been logged out successfully.',
         ],
+        'passkeys' => [
+            'title' => 'Passkeys',
+            'description' => 'Manage passkeys that allow you to log in without a password.',
+            'create' => [
+                'notify' => 'Passkey created successfully!',
+                'message' => 'Your passkey is only shown once upon creation. If you lose your passkey, you will need to delete it and create a new one.',
+                'submit' => [
+                    'label' => 'Create',
+                ],
+            ],
+            'error_generating_the_passkey' => 'Something went wrong when generating the passkey.',
+            'last_used' => 'Last used',
+            'login_with_passkey' => 'Login with passkey',
+
+        ],
+
     ],
     'clipboard' => [
         'link' => 'Copy to clipboard',

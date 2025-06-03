@@ -1,5 +1,6 @@
 <?php
 
+
 declare(strict_types=1);
 
 return [
@@ -95,6 +96,20 @@ return [
             'copied' => [
                 'label' => 'Ik heb mijn token gekopieerd',
             ],
+        ],
+        'browser_sessions' => [
+            'heading' => 'Browsersessies',
+            'subheading' => 'Beheer je actieve sessies.',
+            'label' => 'Browsersessies',
+            'content' => 'Indien nodig kun je uitloggen op al je andere browsersessies op al je apparaten. Enkele van je recente sessies worden hieronder weergegeven; deze lijst is mogelijk niet volledig. Als je denkt dat je account is gecompromitteerd, wijzig dan ook je wachtwoord.',
+            'device' => 'Dit apparaat',
+            'last_active' => 'Laatst actief',
+            'logout_other_sessions' => 'Log uit op andere browsersessies',
+            'logout_heading' => 'Log uit op andere browsersessies',
+            'logout_description' => 'Voer je wachtwoord in om te bevestigen dat je wilt uitloggen op je andere browsersessies op al je apparaten.',
+            'logout_action' => 'Log uit op andere browsersessies',
+            'incorrect_password' => 'Het ingevoerde wachtwoord is onjuist. Probeer het opnieuw.',
+            'logout_success' => 'Alle andere browsersessies zijn succesvol uitgelogd.',
         ],
     ],
     'clipboard' => [

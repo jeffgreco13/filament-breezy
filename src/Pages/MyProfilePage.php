@@ -11,17 +11,17 @@ class MyProfilePage extends Page
 
     protected static string $view = 'filament-breezy::filament.pages.my-profile';
 
-    public function getTitle(): string | Htmlable
+    public function getTitle(): string|Htmlable
     {
         return __('filament-breezy::default.profile.my_profile');
     }
 
-    public function getHeading(): string | Htmlable
+    public function getHeading(): string|Htmlable
     {
         return __('filament-breezy::default.profile.my_profile');
     }
 
-    public function getSubheading(): string | Htmlable | null
+    public function getSubheading(): string|Htmlable|null
     {
         return __('filament-breezy::default.profile.subheading') ?? null;
     }

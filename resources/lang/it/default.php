@@ -124,10 +124,27 @@ return [
             ],
             'update' => [
                 'notify' => 'Token aggiornato correttamente!',
+                'submit' => [
+                    'label' => 'Aggiorna',
+                ],
             ],
             'copied' => [
                 'label' => 'Ho copiato il mio token',
             ],
+        ],
+        'browser_sessions' => [
+            'heading' => 'Sessioni del browser',
+            'subheading' => 'Gestisci le tue sessioni attive.',
+            'label' => 'Sessioni del browser',
+            'content' => 'Se necessario, puoi disconnetterti da tutte le altre sessioni del browser su tutti i tuoi dispositivi. Alcune delle tue sessioni recenti sono elencate qui sotto; tuttavia, questo elenco potrebbe non essere completo. Se ritieni che il tuo account sia stato compromesso, dovresti anche aggiornare la tua password.',
+            'device' => 'Questo dispositivo',
+            'last_active' => 'Ultima attività',
+            'logout_other_sessions' => 'Disconnetti le altre sessioni del browser',
+            'logout_heading' => 'Disconnetti le altre sessioni del browser',
+            'logout_description' => 'Inserisci la tua password per confermare che desideri disconnetterti dalle altre sessioni del browser su tutti i tuoi dispositivi.',
+            'logout_action' => 'Disconnetti le altre sessioni del browser',
+            'incorrect_password' => 'La password che hai inserito non è corretta. Riprova.',
+            'logout_success' => 'Tutte le altre sessioni del browser sono state disconnesse con successo.',
         ],
     ],
     'clipboard' => [

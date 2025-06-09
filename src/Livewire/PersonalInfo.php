@@ -38,14 +38,20 @@ class PersonalInfo extends MyProfileComponent
 
     protected function getProfileFormSchema(): array
     {
-        $groupFields = Forms\Components\Group::make([
-            $this->getNameComponent(),
-            $this->getEmailComponent(),
-        ])->columnSpan(2);
+        $groupFields = Forms\Components\Group::make($this->getProfileFormComponents())
+            ->columnSpan(2);
 
         return ($this->hasAvatars)
             ? [filament('filament-breezy')->getAvatarUploadComponent(), $groupFields]
             : [$groupFields];
+    }
+
+    protected function getProfileFormComponents(): array
+    {
+        return [
+            $this->getNameComponent(),
+            $this->getEmailComponent(),
+        ];
     }
 
     protected function getNameComponent(): Forms\Components\TextInput

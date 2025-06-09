@@ -339,6 +339,16 @@ class CustomPersonalInfo extends PersonalInfo
 {
     public ?array $only = ['custom_name_field', 'custom_email_field'];
 
+    // You can override the default components by returning an array of components.
+    protected function getProfileFormComponents(): array
+    {
+        return [
+            $this->getNameComponent(),
+            $this->getEmailComponent(),
+            $this->getCustomComponent(),
+        ];
+    }
+
     protected function getNameComponent(): Forms\Components\TextInput
     {
         return Forms\Components\TextInput::make('custom_name_field')

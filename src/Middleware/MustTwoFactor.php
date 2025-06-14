@@ -11,7 +11,7 @@ class MustTwoFactor
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param Closure(Request):Response $next
      */
     public function handle(Request $request, Closure $next): Response
     {
@@ -22,7 +22,7 @@ class MustTwoFactor
             /** @var BreezyCore $breezy */
             $breezy = filament('filament-breezy');
 
-            $myProfileRouteName = 'filament.'.filament()->getCurrentPanel()->getId().'.pages.'.$breezy->slug();
+            $myProfileRouteName = 'filament.'.filament()->getCurrentOrDefaultPanel()->getId().'.pages.'.$breezy->slug();
 
             $myProfileRouteParameters = [];
 
@@ -31,9 +31,9 @@ class MustTwoFactor
                     return $next($request);
                 }
                 $myProfileRouteParameters = ['tenant' => $tenantId];
-                $twoFactorRoute = route('filament.'.filament()->getCurrentPanel()->getId().'.auth.two-factor', ['tenant' => $tenantId, 'next' => request()->getRequestUri()]);
+                $twoFactorRoute = route('filament.'.filament()->getCurrentOrDefaultPanel()->getId().'.auth.two-factor', ['tenant' => $tenantId, 'next' => request()->getRequestUri()]);
             } else {
-                $twoFactorRoute = route('filament.'.filament()->getCurrentPanel()->getId().'.auth.two-factor', ['next' => request()->getRequestUri()]);
+                $twoFactorRoute = route('filament.'.filament()->getCurrentOrDefaultPanel()->getId().'.auth.two-factor', ['next' => request()->getRequestUri()]);
             }
 
             if ($breezy->shouldForceTwoFactor() && ! $request->routeIs($myProfileRouteName)) {

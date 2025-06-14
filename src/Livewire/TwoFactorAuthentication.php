@@ -2,6 +2,7 @@
 
 namespace Jeffgreco13\FilamentBreezy\Livewire;
 
+use Filament\Forms\Components\TextInput;
 use Filament\Actions\Action;
 use Filament\Facades\Filament;
 use Filament\Forms;
@@ -24,7 +25,7 @@ class TwoFactorAuthentication extends MyProfileComponent
 
     public function mount()
     {
-        $this->user = Filament::getCurrentPanel()->auth()->user();
+        $this->user = Filament::getCurrentOrDefaultPanel()->auth()->user();
     }
 
     public function enableAction(): Action
@@ -62,8 +63,8 @@ class TwoFactorAuthentication extends MyProfileComponent
             ->color('success')
             ->label(__('filament-breezy::default.profile.2fa.actions.confirm_finish'))
             ->modalWidth('sm')
-            ->form([
-                Forms\Components\TextInput::make('code')
+            ->schema([
+                TextInput::make('code')
                     ->label(__('filament-breezy::default.fields.2fa_code'))
                     ->placeholder('###-###')
                     ->required(),

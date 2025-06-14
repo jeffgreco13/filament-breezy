@@ -2,14 +2,15 @@
 
 namespace Jeffgreco13\FilamentBreezy\Pages;
 
+use Filament\Panel;
 use Filament\Pages\Page;
 use Illuminate\Contracts\Support\Htmlable;
 
 class MyProfilePage extends Page
 {
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-document-text';
 
-    protected static string $view = 'filament-breezy::filament.pages.my-profile';
+    protected string $view = 'filament-breezy::filament.pages.my-profile';
 
     public function getTitle(): string|Htmlable
     {
@@ -26,7 +27,7 @@ class MyProfilePage extends Page
         return __('filament-breezy::default.profile.subheading') ?? null;
     }
 
-    public static function getSlug(): string
+    public static function getSlug(?Panel $panel = null): string
     {
         return filament('filament-breezy')->slug();
     }

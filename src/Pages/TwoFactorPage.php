@@ -2,13 +2,14 @@
 
 namespace Jeffgreco13\FilamentBreezy\Pages;
 
+use Filament\Forms\Components\TextInput;
+use Filament\Auth\Http\Controllers\LogoutController;
 use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
 use DanHarrin\LivewireRateLimiting\WithRateLimiting;
 // use Filament\Pages\CardPage;
 use Filament\Actions\Action;
 use Filament\Facades\Filament;
 use Filament\Forms;
-use Filament\Http\Controllers\Auth\LogoutController;
 use Filament\Pages\Concerns\InteractsWithFormActions;
 use Filament\Pages\SimplePage;
 use Illuminate\Support\Facades\Blade;
@@ -20,7 +21,7 @@ class TwoFactorPage extends SimplePage
     use InteractsWithFormActions;
     use WithRateLimiting;
 
-    protected static string $view = 'filament-breezy::filament.pages.two-factor';
+    protected string $view = 'filament-breezy::filament.pages.two-factor';
 
     protected bool $hasTopbar = false;
 
@@ -53,7 +54,7 @@ class TwoFactorPage extends SimplePage
     protected function getFormSchema(): array
     {
         return [
-            Forms\Components\TextInput::make('code')
+            TextInput::make('code')
                 ->label($this->usingRecoveryCode ? __('filament-breezy::default.fields.2fa_recovery_code') : __('filament-breezy::default.fields.2fa_code'))
                 ->placeholder($this->usingRecoveryCode ? __('filament-breezy::default.two_factor.recovery_code_placeholder') : __('filament-breezy::default.two_factor.code_placeholder'))
                 ->hint(new HtmlString(Blade::render('
@@ -63,7 +64,7 @@ class TwoFactorPage extends SimplePage
                 ->extraInputAttributes(['class' => 'text-center', 'autocomplete' => $this->usingRecoveryCode ? 'off' : 'one-time-code'])
                 ->autofocus()
                 ->suffixAction(
-                    Forms\Components\Actions\Action::make('cancel')
+                    Action::make('cancel')
                         ->ToolTip(__('filament-breezy::default.cancel'))
                         ->icon('heroicon-o-x-circle')
                         ->action(function () {

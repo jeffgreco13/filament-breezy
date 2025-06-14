@@ -2,8 +2,6 @@
 
 namespace Jeffgreco13\FilamentBreezy;
 
-use Filament\Forms\Components\FileUpload;
-use Jeffgreco13\FilamentBreezy\Pages\MyProfilePage;
 use BaconQrCode\Renderer\Color\Rgb;
 use BaconQrCode\Renderer\Image\SvgImageBackEnd;
 use BaconQrCode\Renderer\ImageRenderer;
@@ -13,7 +11,7 @@ use BaconQrCode\Writer;
 use Closure;
 use Filament\Contracts\Plugin;
 use Filament\Facades\Filament;
-use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
 use Filament\Navigation\MenuItem;
 use Filament\Panel;
 use Filament\Support\Concerns\EvaluatesClosures;
@@ -26,6 +24,7 @@ use Jeffgreco13\FilamentBreezy\Livewire\SanctumTokens;
 use Jeffgreco13\FilamentBreezy\Livewire\TwoFactorAuthentication;
 use Jeffgreco13\FilamentBreezy\Livewire\UpdatePassword;
 use Jeffgreco13\FilamentBreezy\Middleware\MustTwoFactor;
+use Jeffgreco13\FilamentBreezy\Pages\MyProfilePage;
 use Jeffgreco13\FilamentBreezy\Pages\TwoFactorPage;
 use Livewire\Livewire;
 use PragmaRX\Google2FA\Google2FA;

@@ -2,13 +2,13 @@
 
 namespace Jeffgreco13\FilamentBreezy\Pages;
 
-use Filament\Panel;
 use Filament\Pages\Page;
+use Filament\Panel;
 use Illuminate\Contracts\Support\Htmlable;
 
 class MyProfilePage extends Page
 {
-    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-document-text';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-document-text';
 
     protected string $view = 'filament-breezy::filament.pages.my-profile';
 

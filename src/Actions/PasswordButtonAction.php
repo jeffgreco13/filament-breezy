@@ -2,9 +2,8 @@
 
 namespace Jeffgreco13\FilamentBreezy\Actions;
 
-use Filament\Forms\Components\TextInput;
 use Filament\Actions\Action;
-use Filament\Forms;
+use Filament\Forms\Components\TextInput;
 
 class PasswordButtonAction extends Action
 {

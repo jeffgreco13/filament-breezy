@@ -2,12 +2,11 @@
 
 namespace Jeffgreco13\FilamentBreezy\Livewire;
 
-use Filament\Schemas\Components\Group;
-use Filament\Forms\Components\TextInput;
-use Filament\Schemas\Schema;
 use Filament\Facades\Filament;
-use Filament\Forms;
+use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
+use Filament\Schemas\Components\Group;
+use Filament\Schemas\Schema;
 
 class PersonalInfo extends MyProfileComponent
 {

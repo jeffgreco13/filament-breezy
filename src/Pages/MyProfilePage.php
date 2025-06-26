@@ -7,7 +7,7 @@ use Illuminate\Contracts\Support\Htmlable;
 
 class MyProfilePage extends Page
 {
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static ?string $navigationIcon = 'heroicon-s-user-circle';
 
     protected static string $view = 'filament-breezy::filament.pages.my-profile';
 

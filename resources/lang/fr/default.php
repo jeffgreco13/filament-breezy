@@ -89,10 +89,27 @@ return [
             ],
             'update' => [
                 'notify' => 'Jeton mis à jour avec succès !',
+                'submit' => [
+                    'label' => 'Mettre à jour',
+                ],
             ],
             'copied' => [
                 'label' => "J'ai copié mon jeton",
             ],
+        ],
+        'browser_sessions' => [
+            'heading' => 'Sessions de navigation',
+            'subheading' => 'Gérez vos sessions actives.',
+            'label' => 'Sessions de navigation',
+            'content' => 'Si nécessaire, vous pouvez vous déconnecter de toutes vos autres sessions de navigation sur l’ensemble de vos appareils. Certaines de vos sessions récentes sont listées ci-dessous ; toutefois, cette liste peut ne pas être exhaustive. Si vous pensez que votre compte a été compromis, vous devriez également mettre à jour votre mot de passe.',
+            'device' => 'Cet appareil',
+            'last_active' => 'Dernière activité',
+            'logout_other_sessions' => 'Se déconnecter des autres sessions',
+            'logout_heading' => 'Se déconnecter des autres sessions',
+            'logout_description' => 'Veuillez entrer votre mot de passe pour confirmer que vous souhaitez vous déconnecter de vos autres sessions de navigation sur tous vos appareils.',
+            'logout_action' => 'Se déconnecter des autres sessions',
+            'incorrect_password' => 'Le mot de passe que vous avez entré est incorrect. Veuillez réessayer.',
+            'logout_success' => 'Toutes les autres sessions de navigation ont été déconnectées avec succès.',
         ],
     ],
     'clipboard' => [
@@ -118,7 +135,6 @@ return [
     ],
     'or' => 'Ou',
     'cancel' => 'Annuler',
-    // //
     'login' => [
         'username_or_email' => 'Identifiant ou E-mail',
         'forgot_password_link' => 'Mot de passe oublié ?',

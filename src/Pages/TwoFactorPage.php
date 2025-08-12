@@ -14,11 +14,15 @@ use Filament\Pages\SimplePage;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\HtmlString;
 use Livewire\Attributes\Url;
+use Filament\Forms\Contracts\HasForms;
+use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Forms\Form;
 
-class TwoFactorPage extends SimplePage
+class TwoFactorPage extends SimplePage implements HasForms
 {
     use InteractsWithFormActions;
     use WithRateLimiting;
+    use InteractsWithForms;
 
     protected string $view = 'filament-breezy::filament.pages.two-factor';
 
@@ -27,6 +31,8 @@ class TwoFactorPage extends SimplePage
     public $usingRecoveryCode = false;
 
     public $code;
+
+    public array $data = []; // holds form state
 
     #[Url]
     public ?string $next;
@@ -57,7 +63,7 @@ class TwoFactorPage extends SimplePage
                 ->label($this->usingRecoveryCode ? __('filament-breezy::default.fields.2fa_recovery_code') : __('filament-breezy::default.fields.2fa_code'))
                 ->placeholder($this->usingRecoveryCode ? __('filament-breezy::default.two_factor.recovery_code_placeholder') : __('filament-breezy::default.two_factor.code_placeholder'))
                 ->hint(new HtmlString(Blade::render('
-                    <x-filament::link href="#" wire:click="toggleRecoveryCode()">'.($this->usingRecoveryCode ? __('filament-breezy::default.cancel') : __('filament-breezy::default.two_factor.recovery_code_link')).'
+                    <x-filament::link href="#" wire:click="toggleRecoveryCode()">' . ($this->usingRecoveryCode ? __('filament-breezy::default.cancel') : __('filament-breezy::default.two_factor.recovery_code_link')) . '
                     </x-filament::link>')))
                 ->required()
                 ->extraInputAttributes(['class' => 'text-center', 'autocomplete' => $this->usingRecoveryCode ? 'off' : 'one-time-code'])
@@ -72,6 +78,13 @@ class TwoFactorPage extends SimplePage
                         })
                 ),
         ];
+    }
+
+    public function form(Form $form): Form
+    {
+        return $form
+            ->schema($this->getFormSchema())
+            ->statePath('data');
     }
 
     public function toggleRecoveryCode()
@@ -121,7 +134,7 @@ class TwoFactorPage extends SimplePage
 
     public function authenticate()
     {
-        $code = data_get($this->form->getState(), 'code', null);
+        $code = data_get($this->data, 'code');
         try {
             $this->rateLimit(5);
         } catch (TooManyRequestsException $exception) {
@@ -133,18 +146,17 @@ class TwoFactorPage extends SimplePage
             return null;
         }
 
+        $this->code = $code; // sync for validation logic
+
         if (! $this->hasValidCode()) {
             $this->addError('code', __('filament-breezy::default.profile.2fa.confirmation.invalid_code'));
-
             return null;
         }
 
-        // If using a recovery code, unset it so it can only be used once
         if ($this->usingRecoveryCode) {
             filament('filament-breezy')->auth()->user()->destroyRecoveryCode($this->code);
         }
 
-        // If it makes it to the bottom, we're going to set the session var and send them to the dashboard.
         filament('filament-breezy')->auth()->user()->setTwoFactorSession();
 
         return redirect()->to($this->next ?? Filament::getHomeUrl());

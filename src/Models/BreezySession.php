@@ -2,14 +2,18 @@
 
 namespace Jeffgreco13\FilamentBreezy\Models;
 
-use Filament\Facades\Filament;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\Contracts\HasApiTokens;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Jeffgreco13\FilamentBreezy\Events\LoginSuccess;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Jeffgreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
 
 class BreezySession extends Model
 {
+
+
     protected $guarded = [
         //
     ];
@@ -89,21 +93,21 @@ class BreezySession extends Model
     public function isEnabled(): Attribute
     {
         return Attribute::make(
-            get: fn () => ! is_null($this->two_factor_secret)
+            get: fn() => ! is_null($this->two_factor_secret)
         );
     }
 
     public function isConfirmed(): Attribute
     {
         return Attribute::make(
-            get: fn () => ! is_null($this->two_factor_secret) && ! is_null($this->two_factor_confirmed_at)
+            get: fn() => ! is_null($this->two_factor_secret) && ! is_null($this->two_factor_confirmed_at)
         );
     }
 
     public function isValid(): Attribute
     {
         return Attribute::make(
-            get: fn () => session()->has('breezy_session_id') && session('breezy_session_id') == md5($this->id)
+            get: fn() => session()->has('breezy_session_id') && session('breezy_session_id') == md5($this->id)
         );
         // return Attribute::make(
         //     get: fn () => !is_null($this->expires_at) && now()->lte($this->expires_at)

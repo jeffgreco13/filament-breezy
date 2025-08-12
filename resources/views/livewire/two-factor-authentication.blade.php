@@ -21,7 +21,7 @@
         @unless ($user->hasEnabledTwoFactor())
             <h3 class="flex items-center gap-2 text-lg font-medium">
                 @svg('heroicon-o-exclamation-circle', 'w-6')
-                {{__('filament-breezy::default.profile.2fa.not_enabled.title') }}
+                {{ __('filament-breezy::default.profile.2fa.not_enabled.title') }}
             </h3>
             <p class="text-sm">{{ __('filament-breezy::default.profile.2fa.not_enabled.description') }}</p>
 
@@ -36,11 +36,11 @@
                     {{ __('filament-breezy::default.profile.2fa.enabled.title') }}
                 </h3>
                 <p class="text-sm">{{ __('filament-breezy::default.profile.2fa.enabled.description') }}</p>
-                @if($showRecoveryCodes)
+                @if ($showRecoveryCodes)
                     <div class="px-4 space-y-3">
                         <p class="text-xs">{{ __('filament-breezy::default.profile.2fa.enabled.store_codes') }}</p>
                         <div>
-                            @foreach ($this->recoveryCodes->toArray() as $code )
+                            @foreach ($this->recoveryCodes->toArray() as $code)
                             <span class="inline-flex items-center p-1 text-xs font-medium text-gray-800 dark:text-gray-400 bg-gray-100 rounded-full dark:bg-gray-900">{{ $code }}</span>
                             @endforeach
                         </div>
@@ -68,7 +68,7 @@
                     <div class="px-4 space-y-3">
                         <p class="text-xs">{{ __('filament-breezy::default.profile.2fa.enabled.store_codes') }}</p>
                         <div>
-                        @foreach ($this->recoveryCodes->toArray() as $code )
+                        @foreach ($this->recoveryCodes->toArray() as $code)
                             <span class="inline-flex items-center p-1 text-xs font-medium text-gray-800 dark:text-gray-400 bg-gray-100 rounded-full dark:bg-gray-900">{{ $code }}</span>
                         @endforeach
                         </div>

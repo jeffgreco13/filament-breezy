@@ -4,8 +4,8 @@
 
             {{ $this->form }}
 
-            <div class="text-right">
-                <x-filament::button type="submit" form="submit" class="align-right">
+            <div class="flex justify-end">
+                <x-filament::button type="submit" form="submit">
                     {{ __('filament-breezy::default.profile.personal_info.submit.label') }}
                 </x-filament::button>
             </div>

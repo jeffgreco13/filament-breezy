@@ -3,7 +3,7 @@
     :field="$field"
 >
     <div>
-        <div class="">
+        <div>
             <div class="text-sm text-gray-600">
                 <div class="text-sm text-gray-600 dark:text-gray-400">
                     {{ __('filament-breezy::default.profile.browser_sessions.content') }}

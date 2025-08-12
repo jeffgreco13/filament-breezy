@@ -9,20 +9,20 @@ use Filament\Auth\Http\Controllers\LogoutController;
 // use Filament\Pages\CardPage;
 use Filament\Facades\Filament;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Forms\Contracts\HasForms;
+use Filament\Forms\Form;
 use Filament\Pages\Concerns\InteractsWithFormActions;
 use Filament\Pages\SimplePage;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\HtmlString;
 use Livewire\Attributes\Url;
-use Filament\Forms\Contracts\HasForms;
-use Filament\Forms\Concerns\InteractsWithForms;
-use Filament\Forms\Form;
 
 class TwoFactorPage extends SimplePage implements HasForms
 {
     use InteractsWithFormActions;
-    use WithRateLimiting;
     use InteractsWithForms;
+    use WithRateLimiting;
 
     protected string $view = 'filament-breezy::filament.pages.two-factor';
 
@@ -63,7 +63,7 @@ class TwoFactorPage extends SimplePage implements HasForms
                 ->label($this->usingRecoveryCode ? __('filament-breezy::default.fields.2fa_recovery_code') : __('filament-breezy::default.fields.2fa_code'))
                 ->placeholder($this->usingRecoveryCode ? __('filament-breezy::default.two_factor.recovery_code_placeholder') : __('filament-breezy::default.two_factor.code_placeholder'))
                 ->hint(new HtmlString(Blade::render('
-                    <x-filament::link href="#" wire:click="toggleRecoveryCode()">' . ($this->usingRecoveryCode ? __('filament-breezy::default.cancel') : __('filament-breezy::default.two_factor.recovery_code_link')) . '
+                    <x-filament::link href="#" wire:click="toggleRecoveryCode()">'.($this->usingRecoveryCode ? __('filament-breezy::default.cancel') : __('filament-breezy::default.two_factor.recovery_code_link')).'
                     </x-filament::link>')))
                 ->required()
                 ->extraInputAttributes(['class' => 'text-center', 'autocomplete' => $this->usingRecoveryCode ? 'off' : 'one-time-code'])
@@ -150,6 +150,7 @@ class TwoFactorPage extends SimplePage implements HasForms
 
         if (! $this->hasValidCode()) {
             $this->addError('code', __('filament-breezy::default.profile.2fa.confirmation.invalid_code'));
+
             return null;
         }
 

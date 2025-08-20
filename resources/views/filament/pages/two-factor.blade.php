@@ -3,7 +3,9 @@
         {{ $this->form }}
 
         <div>
-            <x-filament::button type="submit" color="primary" class="w-full">{{ __('filament-panels::pages/auth/login.form.actions.authenticate.label') ?: __('Login') }}</x-filament::button>
+            <x-filament::button type="submit" color="primary" class="w-full">
+                {{ __('filament-breezy::default.fields.login') }}
+            </x-filament::button>
         </div>
     </form>
 

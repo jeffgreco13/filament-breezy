@@ -5,15 +5,17 @@ namespace Jeffgreco13\FilamentBreezy\Pages;
 use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
 use DanHarrin\LivewireRateLimiting\WithRateLimiting;
 use Filament\Actions\Action;
+use Filament\Actions\ActionGroup;
 use Filament\Auth\Http\Controllers\LogoutController;
-// use Filament\Pages\CardPage;
+
 use Filament\Facades\Filament;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
-use Filament\Forms\Form;
+
 use Filament\Pages\Concerns\InteractsWithFormActions;
 use Filament\Pages\SimplePage;
+use Filament\Schemas\Schema;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\HtmlString;
 use Livewire\Attributes\Url;
@@ -80,10 +82,10 @@ class TwoFactorPage extends SimplePage implements HasForms
         ];
     }
 
-    public function form(Form $form): Form
+    public function form(Schema $schema): Schema
     {
-        return $form
-            ->schema($this->getFormSchema())
+        return $schema
+            ->components($this->getFormSchema())
             ->statePath('data');
     }
 
@@ -98,8 +100,8 @@ class TwoFactorPage extends SimplePage implements HasForms
     {
         if ($this->usingRecoveryCode) {
             return $this->code && collect(filament('filament-breezy')->auth()->user()->two_factor_recovery_codes)->first(function ($code) {
-                return hash_equals($this->code, $code) ? $code : false;
-            });
+                    return hash_equals($this->code, $code) ? $code : false;
+                });
         } else {
             return $this->code && filament('filament-breezy')->verify(code: $this->code);
         }

@@ -4,6 +4,7 @@ namespace Jeffgreco13\FilamentBreezy\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Jeffgreco13\FilamentBreezy\BreezyCore;
 use Symfony\Component\HttpFoundation\Response;
 
 class MustTwoFactor

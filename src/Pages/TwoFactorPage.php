@@ -7,10 +7,12 @@ use DanHarrin\LivewireRateLimiting\WithRateLimiting;
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
 use Filament\Auth\Http\Controllers\LogoutController;
+
 use Filament\Facades\Filament;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
+
 use Filament\Pages\Concerns\InteractsWithFormActions;
 use Filament\Pages\SimplePage;
 use Filament\Schemas\Schema;
@@ -98,8 +100,8 @@ class TwoFactorPage extends SimplePage implements HasForms
     {
         if ($this->usingRecoveryCode) {
             return $this->code && collect(filament('filament-breezy')->auth()->user()->two_factor_recovery_codes)->first(function ($code) {
-                return hash_equals($this->code, $code) ? $code : false;
-            });
+                    return hash_equals($this->code, $code) ? $code : false;
+                });
         } else {
             return $this->code && filament('filament-breezy')->verify(code: $this->code);
         }

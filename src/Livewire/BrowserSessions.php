@@ -12,6 +12,7 @@ use Filament\Schemas\Schema;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\HigherOrderTapProxy;
 use Jenssegers\Agent\Agent;
 
 class BrowserSessions extends MyProfileComponent
@@ -56,7 +57,7 @@ class BrowserSessions extends MyProfileComponent
                         ->action(function (array $data) {
                             self::logoutOtherBrowserSessions($data['password']);
                         })
-                        ->modalWidth('2xl'),
+                        ->modalWidth('xl'),
                 ]),
             ]);
     }
@@ -90,7 +91,7 @@ class BrowserSessions extends MyProfileComponent
         })->toArray();
     }
 
-    protected static function createAgent(mixed $session)
+    protected static function createAgent(mixed $session): Agent|HigherOrderTapProxy
     {
         return tap(new Agent, fn ($agent) => $agent->setUserAgent($session->user_agent));
     }
@@ -120,13 +121,14 @@ class BrowserSessions extends MyProfileComponent
             ->send();
     }
 
-    protected static function deleteOtherSessionRecords()
+    protected static function deleteOtherSessionRecords(): void
     {
         if (config('session.driver') !== 'database') {
             return;
         }
 
-        DB::connection(config('session.connection'))->table(config('session.table'))
+        DB::connection(config('session.connection'))
+            ->table(config('session.table'))
             ->where('user_id', Auth::user()->getAuthIdentifier())
             ->where('id', '!=', request()->session()->getId())
             ->delete();

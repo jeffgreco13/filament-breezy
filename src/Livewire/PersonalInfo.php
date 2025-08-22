@@ -40,7 +40,7 @@ class PersonalInfo extends MyProfileComponent
     protected function getProfileFormSchema(): array
     {
         $groupFields = Group::make($this->getProfileFormComponents())
-            ->columnSpan(2);
+            ->columnSpan($this->hasAvatars ? 2 : 3);
 
         return ($this->hasAvatars)
             ? [filament('filament-breezy')->getAvatarUploadComponent(), $groupFields]

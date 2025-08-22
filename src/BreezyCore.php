@@ -196,7 +196,11 @@ class BreezyCore implements Plugin
     public function getAvatarUploadComponent()
     {
         $fileUpload = FileUpload::make('avatar_url')
-            ->label(__('filament-breezy::default.fields.avatar'))->avatar();
+            ->label(__('filament-breezy::default.fields.avatar'))
+            ->avatar()
+            ->disk('public')
+            ->directory('avatars')
+            ->visible('public');
 
         return is_null($this->avatarUploadComponent) ? $fileUpload : $this->evaluate($this->avatarUploadComponent, namedInjections: [
             'fileUpload' => $fileUpload,

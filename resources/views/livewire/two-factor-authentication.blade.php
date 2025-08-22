@@ -1,12 +1,12 @@
 <x-filament::section :aside="true" :heading="__('filament-breezy::default.profile.2fa.title')" :description="__('filament-breezy::default.profile.2fa.description')">
     @if($this->showRequiresTwoFactorAlert())
-        <div style="{{ \Illuminate\Support\Arr::toCssStyles([\Filament\Support\get_color_css_variables('danger',shades: [300, 400, 500, 600])]) }}" class="p-4 rounded bg-custom-500">
+        <div style="{{ \Illuminate\Support\Arr::toCssStyles([\Filament\Support\get_color_css_variables('danger',shades: [50, 100, 400, 500, 800])]) }}" class="mb-2 p-4 rounded bg-custom-50 dark:bg-custom-400/10 ring-1 ring-custom-100 dark:ring-custom-500/70">
             <div class="flex">
                 <div class="flex-shrink-0">
-                    @svg('heroicon-s-shield-exclamation', 'w-5 h-5 text-danger-600')
+                    @svg('heroicon-s-shield-exclamation', 'w-5 h-5 text-custom-400')
                 </div>
                 <div class="ml-3">
-                    <p class="text-sm text-danger-500">
+                    <p class="text-sm font-medium text-custom-800 dark:text-white">
                         {{ __('filament-breezy::default.profile.2fa.must_enable') }}
                     </p>
                 </div>
@@ -54,7 +54,7 @@
                 {{ __('filament-breezy::default.profile.2fa.finish_enabling.title') }}
             </h3>
             <p class="text-sm">{{ __('filament-breezy::default.profile.2fa.finish_enabling.description') }}</p>
-            <div class="flex mt-3 space-x-4 divide-x">
+            <div class="flex mt-3 space-x-4">
                 <div>
                     {!! $this->getTwoFactorQrCode() !!}
                     <p class="pt-2 text-sm">{{ __('filament-breezy::default.profile.2fa.setup_key') }} {{

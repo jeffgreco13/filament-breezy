@@ -1,11 +1,11 @@
 ![Filament Breezy cover art](./art/breezy-banner.png)
 
-# Enhanced security for Filament v3+ Panels.
+# Enhanced security for Filament v4+ Panels.
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/jeffgreco13/filament-breezy.svg?style=flat-square)](https://packagist.org/packages/jeffgreco13/filament-breezy)
 [![Total Downloads](https://img.shields.io/packagist/dt/jeffgreco13/filament-breezy.svg?style=flat-square)](https://packagist.org/packages/jeffgreco13/filament-breezy)
 
-Enhanced security features for Filament (v3) Panels. Includes a customizable My Profile page with personal info & avatar support, update password, two factor authentication, and Sanctum token management.
+Enhanced security features for Filament (v4) Panels. Includes a customizable My Profile page with personal info & avatar support, update password, two factor authentication, and Sanctum token management.
 Installs in minutes!
 
 ## Features & Screenshots
@@ -114,7 +114,7 @@ BreezyCore::make()
 
 #### Using avatars in your Panel
 
-The instructions for using custom avatars is found in the Filament v3 docs under [Setting up user avatars](https://filamentphp.com/docs/3.x/panels/users#setting-up-user-avatars).
+The instructions for using custom avatars is found in the Filament v4 docs under [Setting up user avatars](https://filamentphp.com/docs/4.x/users/overview#setting-up-user-avatars).
 
 Here is a possible implementation using the example from the docs:
 
@@ -164,9 +164,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
@@ -174,9 +171,6 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
@@ -207,7 +201,7 @@ BreezyCore::make()
     ->passwordUpdateRules(
         rules: [Password::default()->mixedCase()->uncompromised(3)], // you may pass an array of validation rules as well. (default = ['min:8'])
         requiresCurrentPassword: true, // when false, the user can update their password without entering their current password. (default = true)
-        )
+    )
 
 ```
 
@@ -225,7 +219,7 @@ BreezyCore::make()
 
 #### Create custom My Profile components
 
-In Breezy v2, you can now create custom Livewire components for the My Profile page and append them easily.
+You can create a custom Livewire components for the My Profile page and append them easily.
 
 1. Create a new Livewire component in your project using:
 
@@ -238,7 +232,7 @@ php artisan make:livewire MyCustomComponent
 ```php
 use Jeffgreco13\FilamentBreezy\Livewire\MyProfileComponent;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 
 class MyCustomComponent extends MyProfileComponent
 {
@@ -257,10 +251,10 @@ class MyCustomComponent extends MyProfileComponent
         $this->form->fill($this->user->only($this->only));
     }
 
-    public function form(Form $form): Form
+    public function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 TextInput::make('my_custom_field')
                     ->required()
             ])
@@ -278,26 +272,23 @@ class MyCustomComponent extends MyProfileComponent
             ->send();
     }
 }
-
 ```
 
-3. Within your Livewire component's view, you can use Breezy's `grid-section` blade component to match the style:
+3. Within your Livewire component's view, you can use Filament's `<x-filament::section>` Blade component to match the style:
 
 ```blade
-<x-filament-breezy::grid-section md=2 title="Your title" description="This is the description">
-    <x-filament::card>
-        <form wire:submit.prevent="submit" class="space-y-6">
+<x-filament::section :aside="true" hearing="Your title" description="This is the description">
+    <form wire:submit.prevent="submit" class="space-y-6">
 
-            {{ $this->form }}
+        {{ $this->form }}
 
-            <div class="text-right">
-                <x-filament::button type="submit" form="submit" class="align-right">
-                    Submit!
-                </x-filament::button>
-            </div>
-        </form>
-    </x-filament::card>
-</x-filament-breezy::grid-section>
+        <div class="text-right">
+            <x-filament::button type="submit" form="submit" class="align-right">
+                Submit!
+            </x-filament::button>
+        </div>
+    </form>
+</x-filament::section>
 ```
 
 4. Finally, register your new component with Breezy:
@@ -424,7 +415,7 @@ class CustomTwoFactorPage extends TwoFactorPage
 
 ### Sanctum Personal Access tokens
 
-As of Laravel 8.x Sanctum is included with Laravel, but if you don't already have the package follow the [installation instructions here](https://laravel.com/docs/8.x/sanctum#installation).
+Since Laravel 11.x Sanctum is no longer included by default. If you don't already have the package installed follow the [installation instructions here](https://laravel.com/docs/sanctum#installation).
 
 Enable the Sanctum token management component:
 
@@ -441,16 +432,19 @@ This button action will prompt the user to enter their password for sensitive ac
 
 ```php
 use Jeffgreco13\FilamentBreezy\Actions\PasswordButtonAction;
+use Filament\Support\Icons\Heroicon;
 
 PasswordButtonAction::make('secure_action')->action('doSecureAction')
 
 // Customize the icon, action, modalHeading and anything else.
-PasswordButtonAction::make('secure_action')->label('Delete')->icon('heroicon-s-shield-check')->modalHeading('Confirmation')->action(fn()=>$this->doAction())
+PasswordButtonAction::make('secure_action')->label('Delete')->icon(Heroicon::ShieldCheck)->modalHeading('Confirmation')->action(fn() => $this->doAction())
 ```
 
 ### Browser Sessions
 
-The **Browser Sessions** feature, which is disabled by default, allows users to manage their active sessions on different devices and remotely log out of other browser sessions, enhancing account security. To enable this feature, you must use the `enableBrowserSessions` method.
+Sanctum’s **Browser Sessions** feature, which is disabled by default, allows users to manage their active sessions on different devices and remotely log out of other browser sessions, enhancing account security. 
+To enable this feature, you must use the `enableBrowserSessions` method. 
+This requires your session driver to be `database`.
 
 #### Enabling Browser Sessions
 
@@ -483,10 +477,6 @@ BreezyCore::make()
         'browser_sessions' => \App\Livewire\CustomBrowserSessions::class, // Your custom component
     ])
 ```
-
-### Customizing the Registration form
-
-Filament v3+ introduces enhanced capabilities for handling and customizing registration forms seamlessly. This feature is now an integral part of the core Filament functionality. Consequently, the ability to customize registration forms, which was available in Breezy v1, has been deprecated in v2 in favor of the more comprehensive and integrated approach provided by Filament v3+. Laravel Daily has a concise tutorial available, guiding users on creating and registering custom registration forms while incorporating additional fields. [Check out the tutorial here ](https://laraveldaily.com/post/filament-registration-form-extra-fields-choose-user-role)for step-by-step instructions.
 
 ## FAQ
 > How do 2FA sessions work across multiple panels?

@@ -10,7 +10,8 @@ use Livewire\Component;
 
 class MyProfileComponent extends Component implements HasActions, HasForms
 {
-    use InteractsWithActions, InteractsWithForms;
+    use InteractsWithActions;
+    use InteractsWithForms;
 
     public static $sort = 0;
 

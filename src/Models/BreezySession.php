@@ -2,8 +2,6 @@
 
 namespace Jeffgreco13\FilamentBreezy\Models;
 
-use Filament\Facades\Filament;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Jeffgreco13\FilamentBreezy\Events\LoginSuccess;

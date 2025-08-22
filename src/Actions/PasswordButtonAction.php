@@ -3,11 +3,11 @@
 namespace Jeffgreco13\FilamentBreezy\Actions;
 
 use Filament\Actions\Action;
-use Filament\Forms;
+use Filament\Forms\Components\TextInput;
 
 class PasswordButtonAction extends Action
 {
-    protected function isPasswordSessionValid()
+    protected function isPasswordSessionValid(): bool
     {
         return session()->has('auth.password_confirmed_at') && (time() - session('auth.password_confirmed_at', 0)) < config('auth.password_timeout');
     }
@@ -23,8 +23,8 @@ class PasswordButtonAction extends Action
                 ->modalDescription(
                     __('filament-breezy::default.password_confirm.description')
                 )
-                ->form([
-                    Forms\Components\TextInput::make('current_password')
+                ->schema([
+                    TextInput::make('current_password')
                         ->label(__('filament-breezy::default.password_confirm.current_password'))
                         ->required()
                         ->password()
@@ -33,13 +33,13 @@ class PasswordButtonAction extends Action
         }
     }
 
-    public function call(array $data = []): mixed
+    public function call(array $parameters = []): mixed
     {
         // If the session already has a cookie and it's still valid, we don't want to reset the time on it.
         if (! $this->isPasswordSessionValid()) {
             session(['auth.password_confirmed_at' => time()]);
         }
 
-        return parent::call($data);
+        return parent::call($parameters);
     }
 }

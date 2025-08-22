@@ -47,7 +47,8 @@ trait TwoFactorAuthenticatable
     {
         return Attribute::make(
             get: fn () => $this->breezySession ? json_decode(decrypt(
-                $this->breezySession->two_factor_recovery_codes), true) : null
+                $this->breezySession->two_factor_recovery_codes
+            ), true) : null
         );
     }
 

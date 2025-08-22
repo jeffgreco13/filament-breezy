@@ -1,8 +1,13 @@
 <x-filament-panels::page.simple>
-    <x-filament-panels::form wire:submit="authenticate">
+    <form wire:submit="authenticate" class="space-y-6">
         {{ $this->form }}
 
-        <x-filament-panels::form.actions :actions="$this->getCachedFormActions()"
-            :full-width="$this->hasFullWidthFormActions()" />
-    </x-filament-panels::form>
+        <div>
+            <x-filament::button type="submit" color="primary" class="w-full">
+                {{ __('filament-breezy::default.fields.login') }}
+            </x-filament::button>
+        </div>
+    </form>
+
+    <x-filament-actions::modals />
 </x-filament-panels::page.simple>

@@ -11,7 +11,6 @@ use Filament\Forms\Components\CheckboxList;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
-use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
@@ -34,7 +33,7 @@ class SanctumTokens extends MyProfileComponent implements HasTable
 
     public static $sort = 40;
 
-    public function mount()
+    public function mount(): void
     {
         $this->user = Filament::getCurrentOrDefaultPanel()->auth()->user();
     }
@@ -96,6 +95,7 @@ class SanctumTokens extends MyProfileComponent implements HasTable
             Action::make('createToken')
                 ->label(__('filament-breezy::default.profile.sanctum.create.submit.label'))
                 ->modalWidth($this->modalWidth)
+                ->modalSubmitActionLabel(__('filament-breezy::default.profile.sanctum.create.submit.label'))
                 ->schema($this->getSanctumFormSchema())
                 ->action(function ($data) {
                     $this->plainTextToken = $this->user->createToken($data['token_name'], array_values($data['abilities']), $data['expires_at'] ? Carbon::createFromFormat('Y-m-d', $data['expires_at']) : null)->plainTextToken;
@@ -106,13 +106,6 @@ class SanctumTokens extends MyProfileComponent implements HasTable
                 }),
         ];
     }
-
-    // protected function getTableBulkActions(): array
-    // {
-    //     return [
-    //         Tables\Actions\DeleteBulkAction::make()
-    //     ];
-    // }
 
     protected function getTableActions(): array
     {

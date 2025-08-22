@@ -135,6 +135,7 @@ class TwoFactorPage extends SimplePage implements HasForms
     public function authenticate()
     {
         $code = data_get($this->data, 'code');
+
         try {
             $this->rateLimit(5);
         } catch (TooManyRequestsException $exception) {

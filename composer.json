@@ -28,7 +28,9 @@
         "pestphp/pest": "^3.7",
         "pestphp/pest-plugin-arch": "^v3.0.0",
         "pestphp/pest-plugin-laravel": "^v3.1.0",
-        "pestphp/pest-plugin-livewire": "^v3.0.0"
+        "pestphp/pest-plugin-livewire": "^v3.0.0",
+        "laravel/sanctum": "^4.0",
+        "laravel/pint": "^1.0"
     },
     "autoload": {
         "psr-4": {

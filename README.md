@@ -28,38 +28,45 @@ Manage active browser sessions and log out other sessions
 
 ## Installation
 
-Install the package via composer and install:
+1. Install the package via composer and install
 
 ```bash
 composer require jeffgreco13/filament-breezy
 php artisan breezy:install
 ```
 
-Optionally, you can publish the views using:
+2. Add Breezy to your Filament Panel
+
+Add Breezy to a panel by adding the class to your Filament Panel's `plugin()` or `plugins([])` method.
+
+```php
+use Jeffgreco13\FilamentBreezy\BreezyCore;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        ->plugins([
+            BreezyCore::make()
+        ])
+}
+```
+
+3. Integrate Tailwind classes
+
+Filament recommends developers to [create a custom theme](https://filamentphp.com/docs/4.x/styling/overview#creating-a-custom-theme) to better support a plugin's additional Tailwind classes. 
+After you have created your custom theme, add Breezy's views to your theme's `theme.css` file usually located in `resources/css/filament/admin/theme.css`:
+
+```css
+@source '../../../../vendor/jeffgreco13/filament-breezy/resources/**/*';
+```
+
+4. Optionally, you can publish the views
 
 ```bash
 php artisan vendor:publish --tag="filament-breezy-views"
 ```
 
 ## Usage & Configuration
-
-You must enable Breezy by adding the class to your Filament Panel's `plugin()` or `plugins([])` method:
-
-```php
-use Jeffgreco13\FilamentBreezy\BreezyCore;
-
-class CustomersPanelProvider extends PanelProvider
-{
-    public function panel(Panel $panel): Panel
-    {
-        return $panel
-            ...
-            ->plugin(
-                BreezyCore::make()
-            )
-    }
-}
-```
 
 ### Update the auth guard
 

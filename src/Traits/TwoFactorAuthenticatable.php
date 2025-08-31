@@ -61,9 +61,9 @@ trait TwoFactorAuthenticatable
         $this->setTwoFactorSession();
     }
 
-    public function setTwoFactorSession(?int $lifetime = null): void
+    public function setTwoFactorSession(): void
     {
-        $this->breezySession->setSession($lifetime);
+        $this->breezySession->setSession();
     }
 
     public function hasValidTwoFactorSession(): bool

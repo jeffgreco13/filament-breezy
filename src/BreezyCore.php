@@ -303,17 +303,17 @@ class BreezyCore implements Plugin
         return $this->twoFactorRouteAction;
     }
 
-    public function getEngine()
+    public function getEngine(): Google2FA
     {
         return $this->engine;
     }
 
-    public function generateSecretKey()
+    public function generateSecretKey(): string
     {
         return $this->engine->generateSecretKey();
     }
 
-    public function getTwoFactorQrCodeSvg(string $url)
+    public function getTwoFactorQrCodeSvg(string $url): string
     {
         $svg = (new Writer(
             new ImageRenderer(
@@ -325,22 +325,22 @@ class BreezyCore implements Plugin
         return trim(substr($svg, strpos($svg, "\n") + 1));
     }
 
-    public function getQrCodeUrl($companyName, $companyEmail, $secret)
+    public function getQrCodeUrl($companyName, $companyEmail, $secret): string
     {
         return $this->engine->getQRCodeUrl($companyName, $companyEmail, $secret);
     }
 
-    public function verify(string $code, ?Authenticatable $user = null)
+    public function verify(string $code, ?Authenticatable $user = null): bool
     {
         if (is_null($user)) {
             $user = Filament::auth()->user();
         }
-        $secret = decrypt($user->two_factor_secret);
+        $secret = $user->breezySession?->two_factor_secret;
 
         $timestamp = $this->engine->verifyKeyNewer(
             $secret,
             $code,
-            optional($this->cache)->get($key = 'filament.2fa_codes.'.md5($code))
+            optional($this->cache)->get($key = 'filament.2fa_codes.'.md5($code)),
         );
 
         if ($timestamp !== false) {

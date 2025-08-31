@@ -8,12 +8,13 @@ use Jeffgreco13\FilamentBreezy\Events\LoginSuccess;
 
 class BreezySession extends Model
 {
-    protected $guarded = [
-        //
-    ];
+    protected $guarded = [];
 
     protected $casts = [
         'expires_at' => 'datetime',
+        'two_factor_secret' => 'encrypted',
+        'two_factor_recovery_codes' => 'encrypted:array',
+        'two_factor_confirmed_at' => 'datetime',
     ];
 
     protected static function booted(): void

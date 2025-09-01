@@ -25,12 +25,16 @@
         "spatie/laravel-package-tools": "^1.14.0"
     },
     "require-dev": {
+        "larastan/larastan": "^3.0",
+        "laravel/pint": "^1.0",
+        "laravel/sanctum": "^4.0",
+        "orchestra/testbench": "^9.0|^10.0",
         "pestphp/pest": "^3.7",
         "pestphp/pest-plugin-arch": "^v3.0.0",
         "pestphp/pest-plugin-laravel": "^v3.1.0",
         "pestphp/pest-plugin-livewire": "^v3.0.0",
-        "laravel/sanctum": "^4.0",
-        "laravel/pint": "^1.0"
+        "phpstan/phpstan-deprecation-rules": "^2.0",
+        "phpstan/phpstan-phpunit": "^2.0"
     },
     "autoload": {
         "psr-4": {

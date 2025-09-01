@@ -1,4 +1,6 @@
 includes:
+    - vendor/larastan/larastan/extension.neon
+    - vendor/nesbot/carbon/extension.neon
     - phpstan-baseline.neon
 
 parameters:
@@ -9,4 +11,3 @@ parameters:
     tmpDir: build/phpstan
     checkOctaneCompatibility: true
     checkModelProperties: true
-    checkMissingIterableValueType: false

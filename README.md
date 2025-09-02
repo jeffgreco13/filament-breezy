@@ -498,7 +498,37 @@ When 2FA is properly configured, and the User is prompted for the OTP code befor
 
 The 2FA session is the same as the Laravel session lifetime. Once the user is logged out, or the session expires, they will need to enter the OTP code again.
 
+## Upgrade guide (2.x to 3.x)
+If you are upgrade from version `2.x` to `3.x`, please follow these steps:
 
+1. Update the composer package in your `composer.json`:
+```json
+"jeffgreco13/filament-breezy": "^3.0",
+```
+
+2. Integrate Tailwind classes
+
+Filament recommends developers to [create a custom theme](https://filamentphp.com/docs/4.x/styling/overview#creating-a-custom-theme) to better support a plugin's additional Tailwind classes. 
+After you have created your custom theme, add Breezy's views to your theme's `theme.css` file usually located in `resources/css/filament/admin/theme.css`:
+```css
+@source '../../../../vendor/jeffgreco13/filament-breezy/resources/**/*';
+```
+
+3. If you've published views or added custom profile components, update them to match the new syntax:
+```bladehtml
+<x-filament::section :aside="true" hearing="Your title" description="This is the description">
+    <form wire:submit.prevent="submit" class="space-y-6">
+
+        {{ $this->form }}
+
+        <div class="text-right">
+            <x-filament::button type="submit" form="submit" class="align-right">
+                Submit!
+            </x-filament::button>
+        </div>
+    </form>
+</x-filament::section>
+```
 
 ## Testing
 

@@ -1,11 +1,6 @@
 <?php
 
 return [
-    'login' => [
-        'username_or_email' => 'Username o Email',
-        'forgot_password_link' => 'Password dimenticata?',
-        'create_an_account' => 'crea un account',
-    ],
     'password_confirm' => [
         'heading' => 'Conferma password',
         'description' => 'Conferma la tua password per completare questa azione.',
@@ -23,36 +18,6 @@ return [
         'recovery_code_text' => 'Dispositivo smarrito?',
         'recovery_code_link' => 'Usa un codice di ripristino',
         'back_to_login_link' => 'Torna al login',
-    ],
-    'registration' => [
-        'title' => 'Registrazione',
-        'heading' => 'Crea un nuovo account',
-        'submit' => [
-            'label' => 'Registrazione',
-        ],
-        'notification_unique' => 'Un account con questa email è già esistente. Prova ad accedere.',
-    ],
-    'reset_password' => [
-        'title' => 'Password dimenticata',
-        'heading' => 'Ripristina la tua password',
-        'submit' => [
-            'label' => 'Procedi',
-        ],
-        'notification_error' => 'Errore nel ripristino della password. Effettua di nuovo il ripristino.',
-        'notification_error_link_text' => 'Prova di nuovo',
-        'notification_success' => 'Controlla la tua casella di posta per ulteriori istruzioni!',
-    ],
-    'verification' => [
-        'title' => 'Verifica email',
-        'heading' => "Necessaria verifica dell'indirizzo Email",
-        'submit' => [
-            'label' => 'Log out',
-        ],
-        'notification_success' => 'Controlla la tua casella di posta per ulteriori istruzioni!',
-        'notification_resend' => 'È stata inviata una email di verifica.',
-        'before_proceeding' => 'Prima di procedere, controlla la tua casella di posta per verificare la tua email.',
-        'not_receive' => "Se non hai ricevuto l'email di verifica,",
-        'request_another' => 'clicca qui per richiederla di nuovo',
     ],
     'profile' => [
         'account' => 'Account',
@@ -170,4 +135,39 @@ return [
     ],
     'or' => 'O',
     'cancel' => 'Annulla',
+    'login' => [
+        'username_or_email' => 'Username o Email',
+        'forgot_password_link' => 'Password dimenticata?',
+        'create_an_account' => 'crea un account',
+    ],
+    'registration' => [
+        'title' => 'Registrazione',
+        'heading' => 'Crea un nuovo account',
+        'submit' => [
+            'label' => 'Registrazione',
+        ],
+        'notification_unique' => 'Un account con questa email è già esistente. Prova ad accedere.',
+    ],
+    'reset_password' => [
+        'title' => 'Password dimenticata',
+        'heading' => 'Ripristina la tua password',
+        'submit' => [
+            'label' => 'Procedi',
+        ],
+        'notification_error' => 'Errore nel ripristino della password. Effettua di nuovo il ripristino.',
+        'notification_error_link_text' => 'Prova di nuovo',
+        'notification_success' => 'Controlla la tua casella di posta per ulteriori istruzioni!',
+    ],
+    'verification' => [
+        'title' => 'Verifica email',
+        'heading' => "Necessaria verifica dell'indirizzo Email",
+        'submit' => [
+            'label' => 'Log out',
+        ],
+        'notification_success' => 'Controlla la tua casella di posta per ulteriori istruzioni!',
+        'notification_resend' => 'È stata inviata una email di verifica.',
+        'before_proceeding' => 'Prima di procedere, controlla la tua casella di posta per verificare la tua email.',
+        'not_receive' => "Se non hai ricevuto l'email di verifica,",
+        'request_another' => 'clicca qui per richiederla di nuovo',
+    ],
 ];

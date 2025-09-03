@@ -135,4 +135,39 @@ return [
     ],
     'or' => 'Or',
     'cancel' => 'Cancel',
+    'login' => [
+        'username_or_email' => 'Username or Email',
+        'forgot_password_link' => 'Forgot Your Password?',
+        'create_an_account' => 'Create an Account',
+    ],
+    'registration' => [
+        'title' => 'Register',
+        'heading' => 'Create a New Account',
+        'submit' => [
+            'label' => 'Register',
+        ],
+        'notification_unique' => 'An account with this email already exists. Please sign in.',
+    ],
+    'reset_password' => [
+        'title' => 'Forgot Your Password?',
+        'heading' => 'Reset Your Password',
+        'submit' => [
+            'label' => 'Send',
+        ],
+        'notification_error' => 'Error: Please try again later.',
+        'notification_error_link_text' => 'Try Again',
+        'notification_success' => 'Check your email for further instructions!',
+    ],
+    'verification' => [
+        'title' => 'Verify Your Email',
+        'heading' => 'Email Verification Required',
+        'submit' => [
+            'label' => 'Log Out',
+        ],
+        'notification_success' => 'Check your email for further instructions!',
+        'notification_resend' => 'A new verification email has been sent.',
+        'before_proceeding' => 'Before proceeding, please check your email for a verification link.',
+        'not_receive' => 'If you did not receive the email,',
+        'request_another' => 'Click here to request another',
+    ],
 ];

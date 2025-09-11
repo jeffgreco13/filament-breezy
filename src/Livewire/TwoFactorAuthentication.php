@@ -4,7 +4,7 @@ namespace Jeffgreco13\FilamentBreezy\Livewire;
 
 use Filament\Actions\Action;
 use Filament\Facades\Filament;
-use Filament\Forms;
+use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Illuminate\Support\Collection;
 use Jeffgreco13\FilamentBreezy\Actions\PasswordButtonAction;
@@ -13,7 +13,6 @@ class TwoFactorAuthentication extends MyProfileComponent
 {
     protected string $view = 'filament-breezy::livewire.two-factor-authentication';
 
-    // public ?array $data = [];
     public $user;
 
     public $code;
@@ -22,9 +21,9 @@ class TwoFactorAuthentication extends MyProfileComponent
 
     public static $sort = 30;
 
-    public function mount()
+    public function mount(): void
     {
-        $this->user = Filament::getCurrentPanel()->auth()->user();
+        $this->user = Filament::getCurrentOrDefaultPanel()->auth()->user();
     }
 
     public function enableAction(): Action
@@ -62,8 +61,8 @@ class TwoFactorAuthentication extends MyProfileComponent
             ->color('success')
             ->label(__('filament-breezy::default.profile.2fa.actions.confirm_finish'))
             ->modalWidth('sm')
-            ->form([
-                Forms\Components\TextInput::make('code')
+            ->schema([
+                TextInput::make('code')
                     ->label(__('filament-breezy::default.fields.2fa_code'))
                     ->placeholder('###-###')
                     ->required(),
@@ -99,22 +98,27 @@ class TwoFactorAuthentication extends MyProfileComponent
 
     }
 
-    public function getRecoveryCodesProperty(): Collection
+    public function getTwoFactorSecretProperty(): string
     {
-        return collect($this->user->two_factor_recovery_codes ?? []);
+        return $this->user->breezySession?->two_factor_secret ?? '';
     }
 
-    public function getTwoFactorQrCode()
+    public function getRecoveryCodesProperty(): Collection
+    {
+        return collect($this->user->breezySession?->two_factor_recovery_codes ?? []);
+    }
+
+    public function getTwoFactorQrCode(): string
     {
         return filament('filament-breezy')->getTwoFactorQrCodeSvg($this->user->getTwoFactorQrCodeUrl());
     }
 
-    public function toggleRecoveryCodes()
+    public function toggleRecoveryCodes(): void
     {
         $this->showRecoveryCodes = ! $this->showRecoveryCodes;
     }
 
-    public function showRequiresTwoFactorAlert()
+    public function showRequiresTwoFactorAlert(): bool
     {
         return filament('filament-breezy')->shouldForceTwoFactor();
     }

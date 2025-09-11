@@ -3,9 +3,10 @@
 namespace Jeffgreco13\FilamentBreezy\Livewire;
 
 use Filament\Facades\Filament;
-use Filament\Forms;
-use Filament\Forms\Form;
+use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
+use Filament\Schemas\Components\Group;
+use Filament\Schemas\Schema;
 
 class PersonalInfo extends MyProfileComponent
 {
@@ -25,7 +26,7 @@ class PersonalInfo extends MyProfileComponent
 
     public function mount(): void
     {
-        $this->user = Filament::getCurrentPanel()->auth()->user();
+        $this->user = Filament::getCurrentOrDefaultPanel()->auth()->user();
         $this->userClass = get_class($this->user);
         $this->hasAvatars = filament('filament-breezy')->hasAvatars();
 
@@ -38,8 +39,8 @@ class PersonalInfo extends MyProfileComponent
 
     protected function getProfileFormSchema(): array
     {
-        $groupFields = Forms\Components\Group::make($this->getProfileFormComponents())
-            ->columnSpan(2);
+        $groupFields = Group::make($this->getProfileFormComponents())
+            ->columnSpan($this->hasAvatars ? 2 : 3);
 
         return ($this->hasAvatars)
             ? [filament('filament-breezy')->getAvatarUploadComponent(), $groupFields]
@@ -54,26 +55,27 @@ class PersonalInfo extends MyProfileComponent
         ];
     }
 
-    protected function getNameComponent(): Forms\Components\TextInput
+    protected function getNameComponent(): TextInput
     {
-        return Forms\Components\TextInput::make('name')
+        return TextInput::make('name')
             ->required()
             ->label(__('filament-breezy::default.fields.name'));
     }
 
-    protected function getEmailComponent(): Forms\Components\TextInput
+    protected function getEmailComponent(): TextInput
     {
-        return Forms\Components\TextInput::make('email')
+        return TextInput::make('email')
             ->required()
             ->email()
             ->unique($this->userClass, ignorable: $this->user)
             ->label(__('filament-breezy::default.fields.email'));
     }
 
-    public function form(Form $form): Form
+    public function form(Schema $schema): Schema
     {
-        return $form
-            ->schema($this->getProfileFormSchema())->columns(3)
+        return $schema
+            ->components($this->getProfileFormSchema())
+            ->columns(3)
             ->statePath('data');
     }
 

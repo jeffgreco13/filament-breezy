@@ -9,10 +9,10 @@ use BaconQrCode\Renderer\RendererStyle\Fill;
 use BaconQrCode\Renderer\RendererStyle\RendererStyle;
 use BaconQrCode\Writer;
 use Closure;
+use Filament\Actions\Action;
 use Filament\Contracts\Plugin;
 use Filament\Facades\Filament;
-use Filament\Forms;
-use Filament\Navigation\MenuItem;
+use Filament\Forms\Components\FileUpload;
 use Filament\Panel;
 use Filament\Support\Concerns\EvaluatesClosures;
 use Illuminate\Cache\Repository;
@@ -24,6 +24,7 @@ use Jeffgreco13\FilamentBreezy\Livewire\SanctumTokens;
 use Jeffgreco13\FilamentBreezy\Livewire\TwoFactorAuthentication;
 use Jeffgreco13\FilamentBreezy\Livewire\UpdatePassword;
 use Jeffgreco13\FilamentBreezy\Middleware\MustTwoFactor;
+use Jeffgreco13\FilamentBreezy\Pages\MyProfilePage;
 use Jeffgreco13\FilamentBreezy\Pages\TwoFactorPage;
 use Livewire\Livewire;
 use PragmaRX\Google2FA\Google2FA;
@@ -90,7 +91,7 @@ class BreezyCore implements Plugin
                 $panel->authMiddleware([$this->twoFactorAuthenticationMiddleware]);
             }
 
-            Livewire::component('two-factor-page', Pages\TwoFactorPage::class);
+            Livewire::component('two-factor-page', TwoFactorPage::class);
         }
     }
 
@@ -138,12 +139,12 @@ class BreezyCore implements Plugin
                     $tenantId = request()->route()->parameter('tenant');
                     if ($tenantId && $tenant = app($panel->getTenantModel())::where($panel->getTenantSlugAttribute() ?? 'id', $tenantId)->first()) {
                         $panel->userMenuItems([
-                            'account' => MenuItem::make()->url($this->getMyProfilePageClass()::getUrl(panel: $panel->getId(), tenant: $tenant))->label($this->myProfile['userMenuLabel']),
+                            'profile' => fn (Action $action) => $action->url($this->getMyProfilePageClass()::getUrl(panel: $panel->getId(), tenant: $tenant))->label($this->myProfile['userMenuLabel'] ?? Filament::getUserName(auth()->user())),
                         ]);
                     }
                 } else {
                     $panel->userMenuItems([
-                        'account' => MenuItem::make()->url($this->getMyProfilePageClass()::getUrl())->label($this->myProfile['userMenuLabel']),
+                        'profile' => fn (Action $action) => $action->url($this->getMyProfilePageClass()::getUrl())->label($this->myProfile['userMenuLabel'] ?? Filament::getUserName(auth()->user())),
                     ]);
                 }
             }
@@ -152,12 +153,12 @@ class BreezyCore implements Plugin
 
     public function auth()
     {
-        return Filament::getCurrentPanel()->auth();
+        return Filament::getCurrentOrDefaultPanel()->auth();
     }
 
     public function getCurrentPanel()
     {
-        return Filament::getCurrentPanel();
+        return Filament::getCurrentOrDefaultPanel();
     }
 
     public function myProfile(bool $condition = true, bool $shouldRegisterUserMenu = true, bool $shouldRegisterNavigation = false, bool $hasAvatars = false, string $slug = 'my-profile', ?string $navigationGroup = null, ?string $userMenuLabel = null)
@@ -194,8 +195,12 @@ class BreezyCore implements Plugin
 
     public function getAvatarUploadComponent()
     {
-        $fileUpload = Forms\Components\FileUpload::make('avatar_url')
-            ->label(__('filament-breezy::default.fields.avatar'))->avatar();
+        $fileUpload = FileUpload::make('avatar_url')
+            ->label(__('filament-breezy::default.fields.avatar'))
+            ->avatar()
+            ->disk('public')
+            ->directory('avatars')
+            ->visible('public');
 
         return is_null($this->avatarUploadComponent) ? $fileUpload : $this->evaluate($this->avatarUploadComponent, namedInjections: [
             'fileUpload' => $fileUpload,
@@ -298,17 +303,17 @@ class BreezyCore implements Plugin
         return $this->twoFactorRouteAction;
     }
 
-    public function getEngine()
+    public function getEngine(): Google2FA
     {
         return $this->engine;
     }
 
-    public function generateSecretKey()
+    public function generateSecretKey(): string
     {
         return $this->engine->generateSecretKey();
     }
 
-    public function getTwoFactorQrCodeSvg(string $url)
+    public function getTwoFactorQrCodeSvg(string $url): string
     {
         $svg = (new Writer(
             new ImageRenderer(
@@ -320,22 +325,22 @@ class BreezyCore implements Plugin
         return trim(substr($svg, strpos($svg, "\n") + 1));
     }
 
-    public function getQrCodeUrl($companyName, $companyEmail, $secret)
+    public function getQrCodeUrl($companyName, $companyEmail, $secret): string
     {
         return $this->engine->getQRCodeUrl($companyName, $companyEmail, $secret);
     }
 
-    public function verify(string $code, ?Authenticatable $user = null)
+    public function verify(string $code, ?Authenticatable $user = null): bool
     {
         if (is_null($user)) {
             $user = Filament::auth()->user();
         }
-        $secret = decrypt($user->two_factor_secret);
+        $secret = $user->breezySession?->two_factor_secret;
 
         $timestamp = $this->engine->verifyKeyNewer(
             $secret,
             $code,
-            optional($this->cache)->get($key = 'filament.2fa_codes.'.md5($code))
+            optional($this->cache)->get($key = 'filament.2fa_codes.'.md5($code)),
         );
 
         if ($timestamp !== false) {
@@ -379,7 +384,7 @@ class BreezyCore implements Plugin
 
     protected function getMyProfilePageClass(): string
     {
-        return $this->customMyProfilePageClass ?? Pages\MyProfilePage::class;
+        return $this->customMyProfilePageClass ?? MyProfilePage::class;
     }
 
     public function enableBrowserSessions(bool $condition = true)

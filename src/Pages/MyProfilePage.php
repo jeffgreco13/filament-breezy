@@ -4,11 +4,12 @@ namespace Jeffgreco13\FilamentBreezy\Pages;
 
 use Filament\Pages\Page;
 use Filament\Panel;
+use Filament\Support\Icons\Heroicon;
 use Illuminate\Contracts\Support\Htmlable;
 
 class MyProfilePage extends Page
 {
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-s-user-circle';
+    protected static string|\BackedEnum|null $navigationIcon = Heroicon::OutlinedUserCircle;
 
     protected string $view = 'filament-breezy::filament.pages.my-profile';
 

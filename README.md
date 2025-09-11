@@ -402,8 +402,9 @@ class User extends Authenticatable
 BreezyCore::make()
     ->enableTwoFactorAuthentication(
         force: false, // force the user to enable 2FA before they can use the application (default = false)
-        action: CustomTwoFactorPage::class // optionally, use a custom 2FA page
-        authMiddleware: MustTwoFactor::class // optionally, customize 2FA auth middleware or disable it to register manually by setting false
+        action: CustomTwoFactorPage::class, // optionally, use a custom 2FA page
+        authMiddleware: MustTwoFactor::class, // optionally, customize 2FA auth middleware or disable it to register manually by setting false
+        scopeToPanel: true, // scope the 2FA only to the current panel (default = true)
     )
 ```
 

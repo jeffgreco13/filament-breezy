@@ -161,7 +161,7 @@ class BreezyCore implements Plugin
         return Filament::getCurrentOrDefaultPanel();
     }
 
-    public function myProfile(bool $condition = true, bool $shouldRegisterUserMenu = true, bool $shouldRegisterNavigation = false, bool $hasAvatars = false, string $slug = 'my-profile', ?string $navigationGroup = null, ?string $userMenuLabel = null)
+    public function myProfile(bool $condition = true, bool $shouldRegisterUserMenu = true, bool $shouldRegisterNavigation = false, bool $hasAvatars = false, string $slug = 'my-profile', ?string $navigationGroup = null, ?string $userMenuLabel = null): static
     {
         $this->myProfile = get_defined_vars();
 
@@ -169,7 +169,7 @@ class BreezyCore implements Plugin
     }
 
     /** @param class-string<Pages\MyProfilePage> $class */
-    public function customMyProfilePage(string $class)
+    public function customMyProfilePage(string $class): static
     {
         $this->customMyProfilePageClass = $class;
 
@@ -186,7 +186,7 @@ class BreezyCore implements Plugin
         return $this->myProfile['slug'];
     }
 
-    public function avatarUploadComponent(Closure $component)
+    public function avatarUploadComponent(Closure $component): static
     {
         $this->avatarUploadComponent = $component;
 
@@ -207,14 +207,14 @@ class BreezyCore implements Plugin
         ]);
     }
 
-    public function withoutMyProfileComponents(array|Closure $components)
+    public function withoutMyProfileComponents(array|Closure $components): static
     {
         $this->ignoredMyProfileComponents = is_array($components) ? $components : $this->evaluate($components);
 
         return $this;
     }
 
-    public function myProfileComponents(array $components)
+    public function myProfileComponents(array $components): static
     {
 
         $merged = [
@@ -255,7 +255,7 @@ class BreezyCore implements Plugin
         return $components->all();
     }
 
-    public function passwordUpdateRules(array|Password $rules, bool $requiresCurrentPassword = true)
+    public function passwordUpdateRules(array|Password $rules, bool $requiresCurrentPassword = true): static
     {
         $this->passwordUpdateRequireCurrent = $requiresCurrentPassword;
         $this->passwordUpdateRules = $rules;
@@ -283,7 +283,7 @@ class BreezyCore implements Plugin
         return $this->{$key}['navigationGroup'] ?? null;
     }
 
-    public function enableTwoFactorAuthentication(bool $condition = true, bool|Closure $force = false, string|Closure|array|null $action = TwoFactorPage::class, string|false $authMiddleware = MustTwoFactor::class)
+    public function enableTwoFactorAuthentication(bool $condition = true, bool|Closure $force = false, string|Closure|array|null $action = TwoFactorPage::class, string|false $authMiddleware = MustTwoFactor::class): static
     {
         $this->twoFactorAuthentication = $condition;
         $this->forceTwoFactorAuthentication = $force;
@@ -363,7 +363,7 @@ class BreezyCore implements Plugin
         return $forceTwoFactor && ! $this->auth()->user()?->hasConfirmedTwoFactor();
     }
 
-    public function enableSanctumTokens(bool $condition = true, null|array|Closure $permissions = null)
+    public function enableSanctumTokens(bool $condition = true, null|array|Closure $permissions = null): static
     {
         $this->sanctumTokens = $condition;
         if (! is_null($permissions)) {
@@ -387,7 +387,7 @@ class BreezyCore implements Plugin
         return $this->customMyProfilePageClass ?? MyProfilePage::class;
     }
 
-    public function enableBrowserSessions(bool $condition = true)
+    public function enableBrowserSessions(bool $condition = true): static
     {
         $this->browserSessions = $condition;
 

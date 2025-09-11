@@ -49,6 +49,8 @@ class BreezyCore implements Plugin
 
     protected $twoFactorRouteAction;
 
+    protected bool $scopeTwoFactorAuthenticationToPanel;
+
     protected $ignoredMyProfileComponents = [];
 
     protected $registeredMyProfileComponents = [];
@@ -283,12 +285,13 @@ class BreezyCore implements Plugin
         return $this->{$key}['navigationGroup'] ?? null;
     }
 
-    public function enableTwoFactorAuthentication(bool $condition = true, bool|Closure $force = false, string|Closure|array|null $action = TwoFactorPage::class, string|false $authMiddleware = MustTwoFactor::class): static
+    public function enableTwoFactorAuthentication(bool $condition = true, bool|Closure $force = false, string|Closure|array|null $action = TwoFactorPage::class, string|false $authMiddleware = MustTwoFactor::class, bool $scopeToPanel = true): static
     {
         $this->twoFactorAuthentication = $condition;
         $this->forceTwoFactorAuthentication = $force;
         $this->twoFactorRouteAction = $action;
         $this->twoFactorAuthenticationMiddleware = $authMiddleware;
+        $this->scopeTwoFactorAuthenticationToPanel = $scopeToPanel;
 
         return $this;
     }
@@ -361,6 +364,11 @@ class BreezyCore implements Plugin
         }
 
         return $forceTwoFactor && ! $this->auth()->user()?->hasConfirmedTwoFactor();
+    }
+
+    public function scopeTwoFactorAuthenticationToPanel(): bool
+    {
+        return $this->scopeTwoFactorAuthenticationToPanel;
     }
 
     public function enableSanctumTokens(bool $condition = true, null|array|Closure $permissions = null): static

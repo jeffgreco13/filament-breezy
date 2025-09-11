@@ -53,6 +53,7 @@ trait TwoFactorAuthenticatable
     public function disableTwoFactorAuthentication(): void
     {
         $this->breezySession?->delete();
+        $this->load(['breezySessions', 'breezySession']);
     }
 
     public function confirmTwoFactorAuthentication(): void

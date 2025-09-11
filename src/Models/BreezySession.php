@@ -25,7 +25,9 @@ class BreezySession extends Model
             $model->panel_id = $model->panel_id ?? Filament::getCurrentOrDefaultPanel()->getId();
         });
 
-        static::addGlobalScope(new PanelScope);
+        if (filament('filament-breezy')->scopeTwoFactorAuthenticationToPanel()) {
+            static::addGlobalScope(new PanelScope);
+        }
     }
 
     public function authenticatable(): MorphTo

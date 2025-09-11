@@ -51,6 +51,7 @@ return [
                 'disable' => 'Uitschakelen',
                 'confirm_finish' => 'Bevestigen',
                 'cancel_setup' => 'Annuleren',
+                'confirm' => 'Bevestigen',
             ],
             'setup_key' => 'Sleutel: ',
             'must_enable' => 'Je moet tweestapsverificatie instellen om deze applicatie te gebruiken.',

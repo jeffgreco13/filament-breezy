@@ -6,16 +6,19 @@ use Filament\Actions\Action;
 use Filament\Facades\Filament;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Collection;
 use Jeffgreco13\FilamentBreezy\Actions\PasswordButtonAction;
+use Jeffgreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
 
 class TwoFactorAuthentication extends MyProfileComponent
 {
     protected string $view = 'filament-breezy::livewire.two-factor-authentication';
 
+    /**
+     * @var Authenticatable&TwoFactorAuthenticatable
+     */
     public $user;
-
-    public $code;
 
     public bool $showRecoveryCodes = false;
 
@@ -31,7 +34,6 @@ class TwoFactorAuthentication extends MyProfileComponent
         return PasswordButtonAction::make('enable')
             ->label(__('filament-breezy::default.profile.2fa.actions.enable'))
             ->action(function () {
-                // sleep(1);
                 $this->user->enableTwoFactorAuthentication();
                 Notification::make()
                     ->success()
@@ -44,7 +46,7 @@ class TwoFactorAuthentication extends MyProfileComponent
     {
         return PasswordButtonAction::make('disable')
             ->label(__('filament-breezy::default.profile.2fa.actions.disable'))
-            ->color('primary')
+            ->color('danger')
             ->requiresConfirmation()
             ->action(function () {
                 $this->user->disableTwoFactorAuthentication();
@@ -60,6 +62,7 @@ class TwoFactorAuthentication extends MyProfileComponent
         return Action::make('confirm')
             ->color('success')
             ->label(__('filament-breezy::default.profile.2fa.actions.confirm_finish'))
+            ->modalSubmitActionLabel(__('filament-breezy::default.profile.2fa.actions.confirm'))
             ->modalWidth('sm')
             ->schema([
                 TextInput::make('code')

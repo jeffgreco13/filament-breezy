@@ -46,7 +46,7 @@
             @endif
             <div class="flex justify-between mt-3">
                 {{ $this->regenerateCodesAction }}
-                {{ $this->disableAction()->color('danger') }}
+                {{ $this->disableAction }}
             </div>
         @else
             <h3 class="flex items-center gap-2 text-lg font-medium">

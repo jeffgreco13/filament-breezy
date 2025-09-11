@@ -121,6 +121,12 @@ parameters:
 			path: src/Models/BreezySession.php
 
 		-
+			message: '#^Call to an undefined method Filament\\Contracts\\Plugin\:\:scopeTwoFactorAuthenticationToPanel\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/Models/BreezySession.php
+
+		-
 			message: '#^Call to an undefined method Filament\\Contracts\\Plugin\:\:getNavigationGroup\(\)\.$#'
 			identifier: method.notFound
 			count: 1

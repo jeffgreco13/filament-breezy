@@ -61,6 +61,12 @@ parameters:
 			path: src/Livewire/TwoFactorAuthentication.php
 
 		-
+			message: '#^PHPDoc tag @var for property Jeffgreco13\\FilamentBreezy\\Livewire\\TwoFactorAuthentication\:\:\$user contains unresolvable type\.$#'
+			identifier: property.unresolvableType
+			count: 1
+			path: src/Livewire/TwoFactorAuthentication.php
+
+		-
 			message: '#^Using nullsafe property access "\?\-\>two_factor_recovery_codes" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
 			identifier: nullsafe.neverNull
 			count: 1

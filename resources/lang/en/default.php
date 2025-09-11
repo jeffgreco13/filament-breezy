@@ -49,6 +49,7 @@ return [
                 'disable' => 'Disable',
                 'confirm_finish' => 'Confirm & finish',
                 'cancel_setup' => 'Cancel setup',
+                'confirm' => 'Confirm',
             ],
             'setup_key' => 'Setup key',
             'must_enable' => 'You must enable Two Factor Authentication to use this application.',

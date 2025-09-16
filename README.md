@@ -284,7 +284,7 @@ class MyCustomComponent extends MyProfileComponent
 3. Within your Livewire component's view, you can use Filament's `<x-filament::section>` Blade component to match the style:
 
 ```blade
-<x-filament::section :aside="true" hearing="Your title" description="This is the description">
+<x-filament::section :aside="true" heading="Your title" description="This is the description">
     <form wire:submit.prevent="submit" class="space-y-6">
 
         {{ $this->form }}

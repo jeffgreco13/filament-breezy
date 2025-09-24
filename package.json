@@ -1,0 +1,13 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "node bin/build.js --dev",
+        "build": "node bin/build.js"
+    },
+    "devDependencies": {
+        "esbuild": "^0.25.10"
+    },
+    "dependencies": {
+        "@simplewebauthn/browser": "^13.2.0"
+    }
+}

@@ -112,6 +112,26 @@ return [
             'incorrect_password' => 'The password you entered was incorrect. Please try again.',
             'logout_success' => 'All other browser sessions have been logged out successfully.',
         ],
+        'passkeys' => [
+            'heading' => 'Passkeys',
+            'description' => 'Manage passkeys for passwordless and secure access to your account across devices.',
+            'create' => [
+                'notify' => 'Token created successfully!',
+                'message' => 'Your token is only shown once upon creation. If you lose your token, you will need to delete it and create a new one.',
+                'submit' => [
+                    'label' => 'Create',
+                    'submit_label' => 'Create & authenticate',
+                ],
+                'error_message' => 'Something went wrong generating the passkey.',
+                'success_message' => 'Passkey created successfully.',
+            ],
+            'update' => [
+                'notify' => 'Token updated successfully!',
+                'submit' => [
+                    'label' => 'Update',
+                ],
+            ],
+        ],
     ],
     'clipboard' => [
         'link' => 'Copy to clipboard',
@@ -133,6 +153,8 @@ return [
         '2fa_recovery_code' => 'Recovery Code',
         'created' => 'Created',
         'expires' => 'Expires',
+        'passkey_name' => 'Passkey name',
+        'last_used_at' => 'Last used at',
     ],
     'or' => 'Or',
     'cancel' => 'Cancel',

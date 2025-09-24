@@ -17,17 +17,33 @@ use Filament\Panel;
 use Filament\Support\Concerns\EvaluatesClosures;
 use Illuminate\Cache\Repository;
 use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rules\Password;
 use Jeffgreco13\FilamentBreezy\Livewire\BrowserSessions;
+use Jeffgreco13\FilamentBreezy\Livewire\Passkeys;
 use Jeffgreco13\FilamentBreezy\Livewire\PersonalInfo;
 use Jeffgreco13\FilamentBreezy\Livewire\SanctumTokens;
 use Jeffgreco13\FilamentBreezy\Livewire\TwoFactorAuthentication;
 use Jeffgreco13\FilamentBreezy\Livewire\UpdatePassword;
 use Jeffgreco13\FilamentBreezy\Middleware\MustTwoFactor;
+use Jeffgreco13\FilamentBreezy\Models\Passkey;
 use Jeffgreco13\FilamentBreezy\Pages\MyProfilePage;
 use Jeffgreco13\FilamentBreezy\Pages\TwoFactorPage;
 use Livewire\Livewire;
 use PragmaRX\Google2FA\Google2FA;
+use Symfony\Component\Serializer\Serializer;
+use Throwable;
+use Webauthn\AttestationStatement\AttestationStatementSupportManager;
+use Webauthn\AuthenticatorAttestationResponse;
+use Webauthn\AuthenticatorAttestationResponseValidator;
+use Webauthn\CeremonyStep\CeremonyStepManagerFactory;
+use Webauthn\Denormalizer\WebauthnSerializerFactory;
+use Webauthn\PublicKeyCredential;
+use Webauthn\PublicKeyCredentialCreationOptions;
+use Webauthn\PublicKeyCredentialRequestOptions;
+use Webauthn\PublicKeyCredentialRpEntity;
+use Webauthn\PublicKeyCredentialUserEntity;
 
 class BreezyCore implements Plugin
 {
@@ -67,6 +83,16 @@ class BreezyCore implements Plugin
 
     protected ?string $customMyProfilePageClass = null;
 
+    protected $passkeys = false;
+
+    protected $scopePasskeysToPanel = true;
+
+    protected string $passkeyRelyingPartyName;
+
+    protected string $passkeyRelyingPartyId;
+
+    protected ?string $passkeyRelyingPartyIcon;
+
     public function __construct(Google2FA $engine, ?Repository $cache = null)
     {
         $this->engine = $engine;
@@ -85,8 +111,8 @@ class BreezyCore implements Plugin
 
     public function register(Panel $panel): void
     {
-        $panel
-            ->pages($this->preparePages());
+        $panel->pages($this->preparePages());
+
         // If TwoFactor is enabled, register the middleware.
         if ($this->twoFactorAuthentication) {
             if ($this->twoFactorAuthenticationMiddleware) {
@@ -126,6 +152,12 @@ class BreezyCore implements Plugin
                 Livewire::component('browser_sessions', BrowserSessions::class);
                 $this->myProfileComponents([
                     'browser_sessions' => BrowserSessions::class,
+                ]);
+            }
+            if ($this->passkeys) {
+                Livewire::component('passkeys', Passkeys::class);
+                $this->myProfileComponents([
+                    'passkeys' => Passkeys::class,
                 ]);
             }
 
@@ -400,5 +432,167 @@ class BreezyCore implements Plugin
         $this->browserSessions = $condition;
 
         return $this;
+    }
+
+    public function enablePasskeys(bool $condition = true, ?string $relyingPartyName = null, ?string $relyingPartyId = null, ?string $relyingPartyIcon = null, bool $scopeToPanel = true): static
+    {
+        $this->passkeys = $condition;
+        $this->scopePasskeysToPanel = $scopeToPanel;
+        $this->passkeyRelyingPartyName = $relyingPartyName ?? config('app.name');
+        $this->passkeyRelyingPartyId = $relyingPartyId ?? parse_url(config('app.url'), PHP_URL_HOST);
+        $this->passkeyRelyingPartyIcon = $relyingPartyIcon;
+
+        return $this;
+    }
+
+    public function scopePasskeysToPanel(): bool
+    {
+        return $this->scopePasskeysToPanel;
+    }
+
+    public function passkeyRelyingPartyName(): string
+    {
+        return $this->passkeyRelyingPartyName;
+    }
+
+    public function passkeyRelyingPartyId(): string
+    {
+        return $this->passkeyRelyingPartyId;
+    }
+
+    public function passkeyRelyingPartyIcon(): ?string
+    {
+        return $this->passkeyRelyingPartyIcon;
+    }
+
+    public function passkeySerializer(): Serializer
+    {
+        $attestationStatementSupportManager = AttestationStatementSupportManager::create();
+
+        /** @var Serializer $serializer */
+        $serializer = (new WebauthnSerializerFactory($attestationStatementSupportManager))->create();
+
+        return $serializer;
+    }
+
+    public function passkeyRelatedPartyEntity(): PublicKeyCredentialRpEntity
+    {
+        return new PublicKeyCredentialRpEntity(
+            name: $this->passkeyRelyingPartyName(),
+            id: $this->passkeyRelyingPartyId(),
+            icon: $this->passkeyRelyingPartyIcon(),
+        );
+    }
+
+    public function passkeyGenerateUserEntity(): PublicKeyCredentialUserEntity
+    {
+        return new PublicKeyCredentialUserEntity(
+            name: $this->auth()->user()?->email,
+            id: $this->auth()->user()?->id,
+            displayName: $this->auth()->user()?->name,
+        );
+    }
+
+    public function generatePasskeyRegisterOptions(): string
+    {
+        $options = new PublicKeyCredentialCreationOptions(
+            rp: $this->passkeyRelatedPartyEntity(),
+            user: $this->passkeyGenerateUserEntity(),
+            challenge: Str::random(),
+        );
+
+        return $this->passkeySerializer()->serialize($options, 'json');
+    }
+
+    public function generatePasskeyAuthenticationOptions(): string
+    {
+        $options = new PublicKeyCredentialRequestOptions(
+            challenge: Str::random(),
+            rpId: $this->passkeyRelyingPartyId(),
+            allowCredentials: [],
+        );
+
+        $options = $this->passkeySerializer()->serialize($options, 'json');
+
+        Session::flash('passkey-authentication-options', $options);
+
+        return $options;
+    }
+
+    public function storePasskey(Authenticatable $authenticatable, string $passkeyJson, string $passkeyOptionsJson, string $hostName, array $additionalProperties = []): Passkey
+    {
+        $publicKeyCredentialSource = $this->passkeyDeterminePublicKeyCredentialSource(
+            $passkeyJson,
+            $passkeyOptionsJson,
+            $hostName
+        );
+
+        /** @var Passkey $passkey */
+        $passkey = Passkey::create([
+            ...$additionalProperties,
+            'authenticatable_id' => $this->auth()->id(),
+            'authenticatable_type' => $this->auth()->user()->getMorphClass(),
+            'data' => $publicKeyCredentialSource,
+        ]);
+
+        return $passkey;
+    }
+
+    public function passkeyDeterminePublicKeyCredentialSource(string $passkeyJson, string $passkeyOptionsJson, string $hostName)
+    {
+        $passkeyOptions = $this->getPasskeyOptions($passkeyOptionsJson);
+
+        $publicKeyCredential = $this->getPasskey($passkeyJson);
+
+        if (! $publicKeyCredential->response instanceof AuthenticatorAttestationResponse) {
+            throw new \Exception('The given passkey is not a valid public key credential.');
+        }
+
+        $csmFactory = new CeremonyStepManagerFactory;
+        $creationCsm = $csmFactory->creationCeremony();
+
+        try {
+            $publicKeyCredentialSource = AuthenticatorAttestationResponseValidator::create($creationCsm)->check(
+                authenticatorAttestationResponse: $publicKeyCredential->response,
+                publicKeyCredentialCreationOptions: $passkeyOptions,
+                host: $hostName,
+            );
+        } catch (Throwable $exception) {
+            throw new \Exception('The given passkey could not be validated.');
+        }
+
+        return $publicKeyCredentialSource;
+    }
+
+    protected function getPasskeyOptions(string $passkeyOptionsJson): PublicKeyCredentialCreationOptions
+    {
+        if (! json_validate($passkeyOptionsJson)) {
+            throw new \Exception('The given passkey should be formatted as json.');
+        }
+
+        /** @var PublicKeyCredentialCreationOptions $passkeyOptions */
+        $passkeyOptions = $this->passkeySerializer()->deserialize(
+            $passkeyOptionsJson,
+            PublicKeyCredentialCreationOptions::class,
+            'json',
+        );
+
+        return $passkeyOptions;
+    }
+
+    protected function getPasskey(string $passkeyJson): PublicKeyCredential
+    {
+        if (! json_validate($passkeyJson)) {
+            throw new \Exception('The given passkey should be formatted as json.');
+        }
+
+        /** @var PublicKeyCredential $publicKeyCredential */
+        $publicKeyCredential = $this->passkeySerializer()->deserialize(
+            $passkeyJson,
+            PublicKeyCredential::class,
+            'json',
+        );
+
+        return $publicKeyCredential;
     }
 }

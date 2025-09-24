@@ -2,6 +2,8 @@
 
 namespace Jeffgreco13\FilamentBreezy;
 
+use Filament\Support\Assets\Js;
+use Filament\Support\Facades\FilamentAsset;
 use Jeffgreco13\FilamentBreezy\Commands\Install;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -23,7 +25,15 @@ class FilamentBreezyServiceProvider extends PackageServiceProvider
             ->hasMigrations([
                 'create_breezy_sessions_table',
                 'alter_breezy_sessions_table',
+                'create_passkeys_table',
             ])
             ->hasCommand(Install::class);
+    }
+
+    public function packageBooted(): void
+    {
+        FilamentAsset::register([
+            Js::make('filament-breezy', __DIR__.'/../resources/dist/filament-breezy.js'),
+        ]);
     }
 }

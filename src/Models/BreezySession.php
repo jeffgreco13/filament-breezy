@@ -2,6 +2,7 @@
 
 namespace Jeffgreco13\FilamentBreezy\Models;
 
+use Crypt;
 use Filament\Facades\Filament;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
@@ -68,5 +69,34 @@ class BreezySession extends Model
         return Attribute::make(
             get: fn () => session()->has('breezy_session_id') && session('breezy_session_id') == md5($this->id)
         );
+    }
+
+    public function getTwoFactorSecretAttribute($value): ?string
+    {
+        return $this->decryptLegacy($value);
+    }
+
+    public function getTwoFactorRecoveryCodesAttribute($value): ?array
+    {
+        return json_decode($this->decryptLegacy($value), true);
+    }
+
+    protected function decryptLegacy($value): ?string
+    {
+        if ($value === null) {
+            return null;
+        }
+
+        $decrypted = Crypt::decryptString($value);
+
+        // Fallback: decrypt old value (with serialization)
+        if (is_string($decrypted) && preg_match('/^s:\d+:"/', $decrypted)) {
+            $unserialized = @unserialize($decrypted);
+            if ($unserialized !== false || $decrypted === 'b:0;') {
+                return $unserialized;
+            }
+        }
+
+        return $decrypted;
     }
 }

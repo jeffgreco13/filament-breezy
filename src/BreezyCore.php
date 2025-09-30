@@ -355,6 +355,18 @@ class BreezyCore implements Plugin
         return false;
     }
 
+    public function verifyRecoveryCode(string $code, ?Authenticatable $user = null): bool
+    {
+        if (is_null($user)) {
+            $user = Filament::auth()->user();
+        }
+        $recoveryCodes = $user->breezySession?->two_factor_recovery_codes;
+
+        return (bool) collect($recoveryCodes)->first(function ($recoveryCode) use ($code) {
+            return hash_equals($code, $recoveryCode) ? $recoveryCode : false;
+        });
+    }
+
     public function shouldForceTwoFactor(): bool
     {
         $forceTwoFactor = $this->getForceTwoFactorAuthentication();

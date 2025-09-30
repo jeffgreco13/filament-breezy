@@ -14,9 +14,11 @@ use Filament\Forms\Contracts\HasForms;
 use Filament\Pages\Concerns\InteractsWithFormActions;
 use Filament\Pages\SimplePage;
 use Filament\Schemas\Schema;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\HtmlString;
 use Livewire\Attributes\Url;
+use Livewire\Features\SupportRedirects\Redirector;
 
 class TwoFactorPage extends SimplePage implements HasForms
 {
@@ -94,12 +96,10 @@ class TwoFactorPage extends SimplePage implements HasForms
         $this->usingRecoveryCode = ! $this->usingRecoveryCode;
     }
 
-    public function hasValidCode()
+    public function hasValidCode(): bool
     {
         if ($this->usingRecoveryCode) {
-            return $this->code && collect(filament('filament-breezy')->auth()->user()->two_factor_recovery_codes)->first(function ($code) {
-                return hash_equals($this->code, $code) ? $code : false;
-            });
+            return $this->code && filament('filament-breezy')->verifyRecoveryCode(code: $this->code);
         } else {
             return $this->code && filament('filament-breezy')->verify(code: $this->code);
         }
@@ -132,14 +132,14 @@ class TwoFactorPage extends SimplePage implements HasForms
         return app(LogoutController::class);
     }
 
-    public function authenticate()
+    public function authenticate(): RedirectResponse|Redirector|null
     {
         $code = data_get($this->data, 'code');
 
         try {
             $this->rateLimit(5);
         } catch (TooManyRequestsException $exception) {
-            $this->addError('code', __('filament::login.messages.throttled', [
+            $this->addError('data.code', __('filament::login.messages.throttled', [
                 'seconds' => $exception->secondsUntilAvailable,
                 'minutes' => ceil($exception->secondsUntilAvailable / 60),
             ]));
@@ -150,16 +150,16 @@ class TwoFactorPage extends SimplePage implements HasForms
         $this->code = $code; // sync for validation logic
 
         if (! $this->hasValidCode()) {
-            $this->addError('code', __('filament-breezy::default.profile.2fa.confirmation.invalid_code'));
+            $this->addError('data.code', __('filament-breezy::default.profile.2fa.confirmation.invalid_code'));
 
             return null;
         }
 
         if ($this->usingRecoveryCode) {
-            filament('filament-breezy')->auth()->user()->destroyRecoveryCode($this->code);
+            Filament::auth()->user()->destroyRecoveryCode($this->code);
         }
 
-        filament('filament-breezy')->auth()->user()->setTwoFactorSession();
+        Filament::auth()->user()->setTwoFactorSession();
 
         return redirect()->to($this->next ?? Filament::getHomeUrl());
     }

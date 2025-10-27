@@ -49,6 +49,7 @@ return [
                 'disable' => 'Nonaktifkan',
                 'confirm_finish' => 'Konfirmasi & selesai',
                 'cancel_setup' => 'Batalkan pengaturan',
+                'confirm' => 'Konfirmasi',
             ],
             'setup_key' => 'Kunci pengaturan',
             'must_enable' => 'Anda harus mengaktifkan Two Factor Authentication untuk menggunakan aplikasi ini.',
@@ -89,10 +90,27 @@ return [
             ],
             'update' => [
                 'notify' => 'Token berhasil diperbarui!',
+                'submit' => [
+                    'label' => 'Perbarui',
+                ],
             ],
             'copied' => [
                 'label' => 'Saya telah menyalin token saya',
             ],
+        ],
+        'browser_sessions' => [
+            'heading' => 'Sesi Browser',
+            'subheading' => 'Kelola sesi aktif Anda.',
+            'label' => 'Sesi Browser',
+            'content' => 'Jika diperlukan, Anda dapat logout dari semua sesi browser Anda di semua perangkat Anda. Beberapa sesi terbaru Anda tercantum di bawah ini; namun, daftar ini mungkin tidak lengkap. Jika Anda merasa akun Anda telah diretas, Anda juga harus memperbarui kata sandi Anda.',
+            'device' => 'Perangkat ini',
+            'last_active' => 'Terakhir aktif',
+            'logout_other_sessions' => 'Logout dari sesi browser lain',
+            'logout_heading' => 'Logout dari sesi browser lain',
+            'logout_description' => 'Silakan masukkan kata sandi Anda untuk mengonfirmasi bahwa Anda ingin logout dari sesi browser lain di semua perangkat Anda.',
+            'logout_action' => 'Logout dari sesi browser lain',
+            'incorrect_password' => 'Kata sandi yang Anda masukkan salah. Harap coba lagi.',
+            'logout_success' => 'Berhasil logout dari semua sesi browser lainnya.',
         ],
     ],
     'clipboard' => [
@@ -118,4 +136,39 @@ return [
     ],
     'or' => 'Atau',
     'cancel' => 'Batal',
+    'login' => [
+        'username_or_email' => 'Nama pengguna atau Email',
+        'forgot_password_link' => 'Lupa kata sandi Anda?',
+        'create_an_account' => 'Buat Akun',
+    ],
+    'registration' => [
+        'title' => 'Daftar',
+        'heading' => 'Buat Akun Baru',
+        'submit' => [
+            'label' => 'Daftar',
+        ],
+        'notification_unique' => 'Akun dengan alamat email ini sudah ada. Harap login.',
+    ],
+    'reset_password' => [
+        'title' => 'Lupa Kata Sandi Anda?',
+        'heading' => 'Atur Ulang Kata Sandi Anda',
+        'submit' => [
+            'label' => 'Kirim',
+        ],
+        'notification_error' => 'Terjadi Kesalahan: Harap coba lagi nanti.',
+        'notification_error_link_text' => 'Coba Lagi',
+        'notification_success' => 'Periksa email Anda untuk instruksi lebih lanjut!',
+    ],
+    'verification' => [
+        'title' => 'Verifikasi Email Anda',
+        'heading' => 'Verifikasi Email Diperlukan',
+        'submit' => [
+            'label' => 'Log Out',
+        ],
+        'notification_success' => 'Periksa email Anda untuk instruksi lebih lanjut!',
+        'notification_resend' => 'Email verifikasi telah dikirim.',
+        'before_proceeding' => 'Sebelum melanjutkan, silakan periksa email Anda untuk tautan verifikasi.',
+        'not_receive' => 'Jika Anda tidak menerima email tersebut,',
+        'request_another' => 'Klik di sini untuk meminta email lain',
+    ],
 ];

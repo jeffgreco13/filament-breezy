@@ -117,8 +117,8 @@ return [
         'sanctum' => [
             'title' => 'API Tokens',
             'description' => 'Verwalten Sie API-Tokens, mit denen Dienste von Drittanbietern in Ihrem Namen auf diese Anwendung zugreifen können. HINWEIS: Ihr Token wird bei der Erstellung einmalig angezeigt. Wenn Sie Ihr Token verlieren, müssen Sie es löschen und ein neues erstellen.',
-	    'create' => [
-		'message'=> 'Dein Token wird nur einmal bei der Erstellung angezeigt. Wenn du dein Token verlierst, musst du es löschen und ein neues erstellen.',
+            'create' => [
+                'message' => 'Dein Token wird nur einmal bei der Erstellung angezeigt. Wenn du dein Token verlierst, musst du es löschen und ein neues erstellen.',
                 'notify' => 'Token erfolgreich erstellt!',
                 'submit' => [
                     'label' => 'Erstellen',
@@ -126,9 +126,9 @@ return [
             ],
             'update' => [
                 'notify' => 'Token erfolgreich aktualisiert!',
-	    ],
-	      'copied' => [
-		      'label' => 'Ich habe mein Token kopiert',
+            ],
+            'copied' => [
+                'label' => 'Ich habe mein Token kopiert',
             ],
         ],
         'browser_sessions' => [
@@ -159,14 +159,14 @@ return [
         'password_confirm' => 'Passwort bestätigen',
         'new_password' => 'Neues Passwort',
         'new_password_confirmation' => 'Bestätigen Sie das Passwort',
-	'token_name' => 'Token-Name',
-	'token_expiry' => 'Ablaufdatum',
+        'token_name' => 'Token-Name',
+        'token_expiry' => 'Ablaufdatum',
         'abilities' => 'Möglichkeiten',
         '2fa_code' => 'Code',
         '2fa_recovery_code' => 'Wiederherstellungscode',
         'created' => 'Erstellt',
-	'expired' => 'Abgelaufen',
-	'expires' => 'Läuft ab'
+        'expired' => 'Abgelaufen',
+        'expires' => 'Läuft ab',
     ],
     'or' => 'Oder',
     'cancel' => 'Abbrechen',

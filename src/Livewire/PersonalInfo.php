@@ -25,7 +25,7 @@ class PersonalInfo extends MyProfileComponent
 
     public function mount(): void
     {
-        $this->user = Filament::getCurrentPanel()->auth()->user();
+        $this->user = Filament::auth()->user();
         $this->userClass = get_class($this->user);
         $this->hasAvatars = filament('filament-breezy')->hasAvatars();
 

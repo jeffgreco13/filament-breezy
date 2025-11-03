@@ -133,6 +133,12 @@ return [
         'created' => 'ایجاد شده',
         'expires' => 'انقضاء',
     ],
+    'permissions' => [
+        'create' => 'ایجاد',
+        'view' => 'مشاهده',
+        'update' => 'به‌روزرسانی',
+        'delete' => 'حذف',
+    ],
     'or' => 'یا',
     'cancel' => 'لغو',
 ];

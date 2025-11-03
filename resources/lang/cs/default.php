@@ -116,6 +116,12 @@ return [
         'created' => 'Vytvořeno',
         'expires' => 'Expirace',
     ],
+    'permissions' => [
+        'create' => 'Vytvořit',
+        'view' => 'Zobrazit',
+        'update' => 'Aktualizovat',
+        'delete' => 'Smazat',
+    ],
     'or' => 'nebo',
     'cancel' => 'Zrušit',
 ];

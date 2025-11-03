@@ -164,6 +164,12 @@ return [
         'created' => 'Criado',
         'expires' => 'Expira',
     ],
+    'permissions' => [
+        'create' => 'Criar',
+        'view' => 'Visualizar',
+        'update' => 'Atualizar',
+        'delete' => 'Excluir',
+    ],
     'or' => 'Ou',
     'cancel' => 'Cancelar',
 ];

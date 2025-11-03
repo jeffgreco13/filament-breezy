@@ -116,6 +116,12 @@ return [
         'created' => 'Krijuar',
         'expires' => 'Skadon',
     ],
+    'permissions' => [
+        'create' => 'Krijo',
+        'view' => 'Shiko',
+        'update' => 'Përditëso',
+        'delete' => 'Fshi',
+    ],
     'or' => 'Ose',
     'cancel' => 'Anullo',
 ];

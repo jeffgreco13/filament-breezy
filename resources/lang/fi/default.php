@@ -138,6 +138,12 @@ return [
         'created' => 'Luotu',
         'expires' => 'Vanhenee',
     ],
+    'permissions' => [
+        'create' => 'Luo',
+        'view' => 'Näytä',
+        'update' => 'Päivitä',
+        'delete' => 'Poista',
+    ],
     'or' => 'Tai',
     'cancel' => 'Peruuta',
 ];

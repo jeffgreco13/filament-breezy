@@ -168,6 +168,12 @@ return [
         'expired' => 'Abgelaufen',
         'expires' => 'Läuft ab',
     ],
+    'permissions' => [
+        'create' => 'Erstellen',
+        'view' => 'Anzeigen',
+        'update' => 'Aktualisieren',
+        'delete' => 'Löschen',
+    ],
     'or' => 'Oder',
     'cancel' => 'Abbrechen',
 ];

@@ -138,6 +138,12 @@ return [
         'created' => 'Creat',
         'expires' => 'Expiră',
     ],
+    'permissions' => [
+        'create' => 'Creează',
+        'view' => 'Vizualizează',
+        'update' => 'Actualizează',
+        'delete' => 'Șterge',
+    ],
     'or' => 'Sau',
     'cancel' => 'Anulare',
 ];

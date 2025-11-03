@@ -116,6 +116,12 @@ return [
         'created' => 'Oluşturuldu',
         'expires' => 'Sona eriyor',
     ],
+    'permissions' => [
+        'create' => 'Oluştur',
+        'view' => 'Görüntüle',
+        'update' => 'Güncelle',
+        'delete' => 'Sil',
+    ],
     'or' => 'Veya',
     'cancel' => 'Vazgeç',
 ];

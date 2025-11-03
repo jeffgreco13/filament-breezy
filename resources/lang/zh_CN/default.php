@@ -133,6 +133,12 @@ return [
         'created' => '已创建',
         'expires' => '已过期',
     ],
+    'permissions' => [
+        'create' => '创建',
+        'view' => '查看',
+        'update' => '更新',
+        'delete' => '删除',
+    ],
     'or' => '或',
     'cancel' => '取消',
 ];

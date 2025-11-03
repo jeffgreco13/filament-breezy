@@ -154,6 +154,12 @@ return [
         'created' => 'Utworzono',
         'expires' => 'Wygasa',
     ],
+    'permissions' => [
+        'create' => 'Utwórz',
+        'view' => 'Wyświetl',
+        'update' => 'Aktualizuj',
+        'delete' => 'Usuń',
+    ],
     'or' => 'Lub',
     'cancel' => 'Anuluj',
 ];

@@ -134,6 +134,12 @@ return [
         'created' => 'Created',
         'expires' => 'Expires',
     ],
+    'permissions' => [
+        'create' => 'Create',
+        'view' => 'View',
+        'update' => 'Update',
+        'delete' => 'Delete',
+    ],
     'or' => 'Or',
     'cancel' => 'Cancel',
     'login' => [

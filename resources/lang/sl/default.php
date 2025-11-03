@@ -116,6 +116,12 @@ return [
         'created' => 'Ustvarjeno',
         'expires' => 'Poteče',
     ],
+    'permissions' => [
+        'create' => 'Ustvari',
+        'view' => 'Prikaži',
+        'update' => 'Posodobi',
+        'delete' => 'Izbriši',
+    ],
     'or' => 'Ali',
     'cancel' => 'Prekliči',
 ];

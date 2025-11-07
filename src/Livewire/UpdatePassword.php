@@ -6,7 +6,9 @@ use Filament\Facades\Filament;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Schemas\Schema;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UpdatePassword extends MyProfileComponent
 {
@@ -18,7 +20,7 @@ class UpdatePassword extends MyProfileComponent
 
     public static $sort = 20;
 
-    public function mount()
+    public function mount(): void
     {
         $this->user = Filament::getCurrentOrDefaultPanel()->auth()->user();
     }
@@ -47,15 +49,16 @@ class UpdatePassword extends MyProfileComponent
             ->statePath('data');
     }
 
-    public function submit()
+    public function submit(): void
     {
         $data = collect($this->form->getState())->only('new_password')->all();
-        $this->user->update([
+        $this->user->forceFill([
             'password' => Hash::make($data['new_password']),
+            'remember_token' => Str::random(60),
         ]);
-        session()->forget('password_hash_'.Filament::getCurrentOrDefaultPanel()->getAuthGuard());
-        Filament::auth()->login($this->user);
+        session()->forget('password_hash_'.Auth::getDefaultDriver());
         $this->reset(['data']);
+
         Notification::make()
             ->success()
             ->title(__('filament-breezy::default.profile.password.notify'))

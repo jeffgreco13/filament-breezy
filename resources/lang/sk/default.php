@@ -49,6 +49,7 @@ return [
                 'disable' => 'Zakázať',
                 'confirm_finish' => 'Potvrdiť a dokončiť',
                 'cancel_setup' => 'Zrušiť nastavenie',
+                'confirm' => 'Potvrdiť',
             ],
             'setup_key' => 'Nastavenie kľúča',
             'must_enable' => 'V tejto aplikácii je vyžadované dvojfaktorové overenie.',

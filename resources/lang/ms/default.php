@@ -83,6 +83,7 @@ return [
                 'disable' => 'Lumpuhkan',
                 'confirm_finish' => 'Sahkan dan selesaikan',
                 'cancel_setup' => 'Batalkan persediaan',
+                'confirm' => 'Sahkan',
             ],
             'setup_key' => 'Kunci persediaan',
             'not_enabled' => [

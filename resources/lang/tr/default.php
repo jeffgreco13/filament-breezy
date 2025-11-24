@@ -49,6 +49,7 @@ return [
                 'disable' => 'Devredışı bırak',
                 'confirm_finish' => 'Onayla & bitir',
                 'cancel_setup' => 'Kurulumu iptal et',
+                'confirm' => 'Onayla',
             ],
             'setup_key' => 'Kurulum anahtarı',
             'must_enable' => 'Bu uygulamayı kullanmak için iki faktörlü kimlik doğrulamayı etkinleştirmeniz gerekir.',

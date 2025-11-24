@@ -84,6 +84,7 @@ return [
                 'disable' => 'Deshabilitar',
                 'confirm_finish' => 'Confirmar y terminar',
                 'cancel_setup' => 'Cancelar la configuración',
+                'confirm' => 'Confirmar',
             ],
             'setup_key' => 'Llave de configuración',
             'must_enable' => 'Debe habilitar la autenticación de dos factores para usar esta aplicación.',

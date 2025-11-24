@@ -83,6 +83,7 @@ return [
                 'disable' => 'Dezactivare',
                 'confirm_finish' => 'Confirmare și finalizare',
                 'cancel_setup' => 'Anulare setare',
+                'confirm' => 'Confirmare',
             ],
             'setup_key' => 'Setare cheie',
             'not_enabled' => [

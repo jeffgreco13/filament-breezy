@@ -49,6 +49,7 @@ return [
                 'disable' => 'Désactiver',
                 'confirm_finish' => 'Confirmer et terminer',
                 'cancel_setup' => 'Annuler la configuration',
+                'confirm' => 'Confirmer',
             ],
             'setup_key' => 'Clé de configuration',
             'must_enable' => "Vous devez activer l'authentification à deux facteurs pour utiliser cette application.",

@@ -84,6 +84,7 @@ return [
                 'disable' => 'Wyłącz',
                 'confirm_finish' => 'Potwierdź i zapisz',
                 'cancel_setup' => 'Anuluj',
+                'confirm' => 'Potwierdź',
             ],
             'setup_key' => 'Klucz konfiguracji',
             'not_enabled' => [

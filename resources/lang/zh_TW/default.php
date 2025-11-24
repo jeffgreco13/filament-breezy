@@ -49,6 +49,7 @@ return [
                 'disable' => '禁用',
                 'confirm_finish' => '確認並完成',
                 'cancel_setup' => '取消設置',
+                'confirm' => '確認',
             ],
             'setup_key' => '設置金鑰',
             'must_enable' => '您必須啟用雙因素身份驗證才能使用此應用程序。',

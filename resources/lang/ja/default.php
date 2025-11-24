@@ -83,6 +83,7 @@ return [
                 'disable' => '無効にする',
                 'confirm_finish' => '確認と完了',
                 'cancel_setup' => 'セットアップをキャンセル',
+                'confirm' => '確認',
             ],
             'setup_key' => 'セットアップキー',
             'not_enabled' => [

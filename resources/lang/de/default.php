@@ -84,6 +84,7 @@ return [
                 'disable' => 'Deaktivieren',
                 'confirm_finish' => 'Bestätigen & beenden',
                 'cancel_setup' => 'Einstellung abbrechen',
+                'confirm' => 'Bestätigen',
             ],
             'setup_key' => 'Einstellungsschlüssel',
             'must_enable' => 'Sie müssen die Zwei-Faktor-Authentifizierung aktivieren, um diese Anwendung zu verwenden.',

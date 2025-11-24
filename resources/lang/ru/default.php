@@ -83,6 +83,7 @@ return [
                 'disable' => 'Отключить',
                 'confirm_finish' => 'Подтвердить и завершить',
                 'cancel_setup' => 'Отменить',
+                'confirm' => 'Подтвердить',
             ],
             'setup_key' => 'Ключ настройки',
             'not_enabled' => [

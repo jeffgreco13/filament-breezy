@@ -49,6 +49,7 @@ return [
                 'disable' => 'Onemogoči',
                 'confirm_finish' => 'Potrdi in dokončaj',
                 'cancel_setup' => 'Prekliči nastavitev',
+                'confirm' => 'Potrdi',
             ],
             'setup_key' => 'Nastavitveni ključ',
             'must_enable' => 'Za uporabo te aplikacije morate omogočiti dvostopenjsko avtentikacijo.',

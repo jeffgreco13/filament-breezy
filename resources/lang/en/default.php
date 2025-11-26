@@ -19,6 +19,12 @@ return [
         'recovery_code_link' => 'Use a recovery code',
         'back_to_login_link' => 'Back to login',
     ],
+    'passkeys' => [
+        'authenticate_using_passkey' => [
+            'label' => 'Authenticate using Passkey',
+        ],
+        'invalid' => 'Could not login using the given passkey.',
+    ],
     'profile' => [
         'account' => 'Account',
         'profile' => 'Profile',

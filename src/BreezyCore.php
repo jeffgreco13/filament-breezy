@@ -15,12 +15,15 @@ use Filament\Facades\Filament;
 use Filament\Forms\Components\FileUpload;
 use Filament\Panel;
 use Filament\Support\Concerns\EvaluatesClosures;
+use Filament\Support\Facades\FilamentView;
+use Filament\View\PanelsRenderHook;
 use Illuminate\Cache\Repository;
 use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules\Password;
 use Jeffgreco13\FilamentBreezy\Livewire\BrowserSessions;
+use Jeffgreco13\FilamentBreezy\Livewire\PasskeyAction;
 use Jeffgreco13\FilamentBreezy\Livewire\Passkeys;
 use Jeffgreco13\FilamentBreezy\Livewire\PersonalInfo;
 use Jeffgreco13\FilamentBreezy\Livewire\SanctumTokens;
@@ -35,6 +38,8 @@ use PragmaRX\Google2FA\Google2FA;
 use Symfony\Component\Serializer\Serializer;
 use Throwable;
 use Webauthn\AttestationStatement\AttestationStatementSupportManager;
+use Webauthn\AuthenticatorAssertionResponse;
+use Webauthn\AuthenticatorAssertionResponseValidator;
 use Webauthn\AuthenticatorAttestationResponse;
 use Webauthn\AuthenticatorAttestationResponseValidator;
 use Webauthn\CeremonyStep\CeremonyStepManagerFactory;
@@ -43,6 +48,7 @@ use Webauthn\PublicKeyCredential;
 use Webauthn\PublicKeyCredentialCreationOptions;
 use Webauthn\PublicKeyCredentialRequestOptions;
 use Webauthn\PublicKeyCredentialRpEntity;
+use Webauthn\PublicKeyCredentialSource;
 use Webauthn\PublicKeyCredentialUserEntity;
 
 class BreezyCore implements Plugin
@@ -156,9 +162,16 @@ class BreezyCore implements Plugin
             }
             if ($this->passkeys) {
                 Livewire::component('passkeys', Passkeys::class);
+                Livewire::component('passkey_action', PasskeyAction::class);
+
                 $this->myProfileComponents([
                     'passkeys' => Passkeys::class,
                 ]);
+
+                FilamentView::registerRenderHook(
+                    PanelsRenderHook::AUTH_LOGIN_FORM_AFTER,
+                    fn (): string => Blade::render('@livewire(\Jeffgreco13\FilamentBreezy\Livewire\PasskeyAction::class)'),
+                );
             }
 
             Livewire::component('personal_info', PersonalInfo::class);
@@ -512,11 +525,7 @@ class BreezyCore implements Plugin
             allowCredentials: [],
         );
 
-        $options = $this->passkeySerializer()->serialize($options, 'json');
-
-        Session::flash('passkey-authentication-options', $options);
-
-        return $options;
+        return $this->passkeySerializer()->serialize($options, 'json');
     }
 
     public function storePasskey(Authenticatable $authenticatable, string $passkeyJson, string $passkeyOptionsJson, string $hostName, array $additionalProperties = []): Passkey
@@ -594,5 +603,93 @@ class BreezyCore implements Plugin
         );
 
         return $publicKeyCredential;
+    }
+
+    public function findPasskeyToAuthenticate(string $publicKeyCredentialJson, string $passkeyOptionsJson): ?Passkey
+    {
+        $publicKeyCredential = $this->determinePublicKeyCredential($publicKeyCredentialJson);
+
+        if (! $publicKeyCredential) {
+            return null;
+        }
+
+        $passkey = $this->findPasskey($publicKeyCredential);
+
+        if (! $passkey) {
+            return null;
+        }
+
+        /** @var PublicKeyCredentialRequestOptions $passkeyOptions */
+        $passkeyOptions = $this->passkeySerializer()->deserialize(
+            $passkeyOptionsJson,
+            PublicKeyCredentialRequestOptions::class,
+            'json',
+        );
+
+        $publicKeyCredentialSource = $this->determinePublicKeyCredentialSource(
+            $publicKeyCredential,
+            $passkeyOptions,
+            $passkey,
+        );
+
+        if (! $publicKeyCredentialSource) {
+            return null;
+        }
+
+        $this->updatePasskey($passkey, $publicKeyCredentialSource);
+
+        return $passkey;
+    }
+
+    public function determinePublicKeyCredential(string $publicKeyCredentialJson): ?PublicKeyCredential
+    {
+        $publicKeyCredential = $this->passkeySerializer()->deserialize(
+            $publicKeyCredentialJson,
+            PublicKeyCredential::class,
+            'json',
+        );
+
+        if (! $publicKeyCredential->response instanceof AuthenticatorAssertionResponse) {
+            return null;
+        }
+
+        return $publicKeyCredential;
+    }
+
+    protected function findPasskey(PublicKeyCredential $publicKeyCredential): ?Passkey
+    {
+        return Passkey::firstWhere('credential_id', mb_convert_encoding($publicKeyCredential->rawId, 'UTF-8'));
+    }
+
+    protected function determinePublicKeyCredentialSource(PublicKeyCredential $publicKeyCredential, PublicKeyCredentialRequestOptions $passkeyOptions, Passkey $passkey): ?PublicKeyCredentialSource
+    {
+        $csmFactory = new CeremonyStepManagerFactory;
+        $requestCsm = $csmFactory->requestCeremony();
+
+        try {
+            $validator = AuthenticatorAssertionResponseValidator::create($requestCsm);
+
+            $publicKeyCredentialSource = $validator->check(
+                publicKeyCredentialSource: $passkey->data,
+                authenticatorAssertionResponse: $publicKeyCredential->response,
+                publicKeyCredentialRequestOptions: $passkeyOptions,
+                host: parse_url(config('app.url'), PHP_URL_HOST),
+                userHandle: null,
+            );
+        } catch (Throwable) {
+            return null;
+        }
+
+        return $publicKeyCredentialSource;
+    }
+
+    protected function updatePasskey(Passkey $passkey, PublicKeyCredentialSource $publicKeyCredentialSource): self
+    {
+        $passkey->update([
+            'data' => $publicKeyCredentialSource,
+            'last_used_at' => now(),
+        ]);
+
+        return $this;
     }
 }

@@ -13,6 +13,10 @@ class Passkey extends Model
 {
     protected $guarded = [];
 
+    protected $hidden = [
+        'data',
+    ];
+
     protected $casts = [
         'last_used_at' => 'datetime',
     ];

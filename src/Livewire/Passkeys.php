@@ -23,8 +23,6 @@ class Passkeys extends MyProfileComponent implements HasTable
 
     protected string $modalWidth = 'md';
 
-    protected int $abilityColumns = 2;
-
     public $user;
 
     public ?string $name;
@@ -105,6 +103,16 @@ class Passkeys extends MyProfileComponent implements HasTable
             DeleteAction::make()
                 ->iconButton(),
         ];
+    }
+
+    protected function getDefaultTableSortColumn(): ?string
+    {
+        return 'created_at';
+    }
+
+    protected function getDefaultTableSortDirection(): ?string
+    {
+        return 'desc';
     }
 
     public function storePasskey(string $passkey): void

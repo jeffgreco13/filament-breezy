@@ -119,7 +119,7 @@ return [
     'fields' => [
         'avatar' => 'Profielfoto',
         'email' => 'E-mailadres',
-        'login' => 'Gebruikersnaam',
+        'login' => 'Verifiëren',
         'name' => 'Naam',
         'password' => 'Wachtwoord',
         'password_confirm' => 'Wachtwoord bevestigen',

@@ -83,6 +83,7 @@ return [
                 'disable' => 'Tắt',
                 'confirm_finish' => 'Xác nhận & hoàn tất',
                 'cancel_setup' => 'Hủy thiết lập',
+                'confirm' => 'Xác nhận',
             ],
             'setup_key' => 'Thiết lập khóa',
             'not_enabled' => [

@@ -83,6 +83,7 @@ return [
                 'disable' => 'Tiltás',
                 'confirm_finish' => 'Megerősítés és befejezés',
                 'cancel_setup' => 'A beállítás megszakítása',
+                'confirm' => 'Megerősítés',
             ],
             'setup_key' => 'Beállítási kulcs',
             'not_enabled' => [

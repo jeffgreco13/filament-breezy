@@ -49,6 +49,7 @@ return [
                 'disable' => 'Çaktivizo',
                 'confirm_finish' => 'Konfirmo dhe përfundo',
                 'cancel_setup' => 'Anulo konfigurimin',
+                'confirm' => 'Konfirmo',
             ],
             'setup_key' => 'Çelësi i konfigurimit',
             'must_enable' => 'Duhet të aktivizoni autentifikimin me dy faktorë për të përdorur këtë faqe.',

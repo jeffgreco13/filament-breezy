@@ -51,6 +51,7 @@ return [
                 'disable' => '비활성화',
                 'confirm_finish' => '확인 및 완료',
                 'cancel_setup' => '설정 취소',
+                'confirm' => '확인',
             ],
             'setup_key' => '설정 키',
             'must_enable' => '이 애플리케이션을 사용하려면 2단계 인증을 활성화해야 합니다.',

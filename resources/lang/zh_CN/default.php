@@ -49,6 +49,7 @@ return [
                 'disable' => '关闭',
                 'confirm_finish' => '验证代码并完成',
                 'cancel_setup' => '取消设置',
+                'confirm' => '确认',
             ],
             'setup_key' => '设置密钥',
             'must_enable' => '您必须启用双因素身份验证才能使用此应用程序。',

@@ -49,6 +49,7 @@ return [
                 'disable' => 'Disabilita',
                 'confirm_finish' => 'Conferma & procedi',
                 'cancel_setup' => 'Annulla il setup',
+                'confirm' => 'Conferma',
             ],
             'setup_key' => 'Chiave di Setup',
             'must_enable' => 'Per utilizzare questa applicazione devi abilitare la 2FA.',

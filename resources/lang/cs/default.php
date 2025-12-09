@@ -49,6 +49,7 @@ return [
                 'disable' => 'Zakázat',
                 'confirm_finish' => 'Potvrdit a dokončit',
                 'cancel_setup' => 'Zrušit nastavení',
+                'confirm' => 'Potvrdit',
             ],
             'setup_key' => 'Nastavení klíče',
             'must_enable' => 'V této aplikaci je vyžadováno dvoufaktorové ověření.',

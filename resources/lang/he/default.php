@@ -138,6 +138,12 @@ return [
         'created' => 'נוצר',
         'expires' => 'פג תוקף',
     ],
+    'permissions' => [
+        'create' => 'צור',
+        'view' => 'הצג',
+        'update' => 'עדכן',
+        'delete' => 'מחק',
+    ],
     'or' => 'או',
     'cancel' => 'ביטול',
 ];

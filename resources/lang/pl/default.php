@@ -84,6 +84,7 @@ return [
                 'disable' => 'Wyłącz',
                 'confirm_finish' => 'Potwierdź i zapisz',
                 'cancel_setup' => 'Anuluj',
+                'confirm' => 'Potwierdź',
             ],
             'setup_key' => 'Klucz konfiguracji',
             'not_enabled' => [
@@ -153,6 +154,12 @@ return [
         '2fa_recovery_code' => 'Kod odzyskiwania weryfikacji dwuetapowej',
         'created' => 'Utworzono',
         'expires' => 'Wygasa',
+    ],
+    'permissions' => [
+        'create' => 'Utwórz',
+        'view' => 'Wyświetl',
+        'update' => 'Aktualizuj',
+        'delete' => 'Usuń',
     ],
     'or' => 'Lub',
     'cancel' => 'Anuluj',

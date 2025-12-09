@@ -77,7 +77,7 @@ class BreezyCore implements Plugin
 
     protected $registeredMyProfileComponents = [];
 
-    protected $passwordUpdateRules = ['min:8'];
+    protected $passwordUpdateRules = [];
 
     protected bool $passwordUpdateRequireCurrent = true;
 
@@ -304,20 +304,20 @@ class BreezyCore implements Plugin
 
     public function passwordUpdateRules(array|Password $rules, bool $requiresCurrentPassword = true): static
     {
-        $this->passwordUpdateRequireCurrent = $requiresCurrentPassword;
         $this->passwordUpdateRules = $rules;
+        $this->passwordUpdateRequireCurrent = $requiresCurrentPassword;
 
         return $this;
     }
 
-    public function getPasswordUpdateRequiresCurrent()
+    public function getPasswordUpdateRequiresCurrent(): bool
     {
         return $this->passwordUpdateRequireCurrent;
     }
 
-    public function getPasswordUpdateRules()
+    public function getPasswordUpdateRules(): array
     {
-        return $this->passwordUpdateRules;
+        return $this->passwordUpdateRules ?: [Password::defaults()];
     }
 
     public function shouldRegisterNavigation(string $key)
@@ -400,6 +400,18 @@ class BreezyCore implements Plugin
         return false;
     }
 
+    public function verifyRecoveryCode(string $code, ?Authenticatable $user = null): bool
+    {
+        if (is_null($user)) {
+            $user = Filament::auth()->user();
+        }
+        $recoveryCodes = $user->breezySession?->two_factor_recovery_codes;
+
+        return (bool) collect($recoveryCodes)->first(function ($recoveryCode) use ($code) {
+            return hash_equals($code, $recoveryCode) ? $recoveryCode : false;
+        });
+    }
+
     public function shouldForceTwoFactor(): bool
     {
         $forceTwoFactor = $this->getForceTwoFactorAuthentication();
@@ -430,8 +442,13 @@ class BreezyCore implements Plugin
     {
         return collect($this->evaluate($this->sanctumPermissions))->mapWithKeys(function ($item, $key) {
             $key = is_string($key) ? $key : strtolower($item);
+            $translationKey = "filament-breezy::default.permissions.{$key}";
+            $translatedValue = __($translationKey);
 
-            return [$key => $item];
+            // If translation doesn't exist, fall back to the original item
+            $displayValue = $translatedValue !== $translationKey ? $translatedValue : $item;
+
+            return [$key => $displayValue];
         })->toArray();
     }
 

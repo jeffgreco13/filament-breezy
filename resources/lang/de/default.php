@@ -84,6 +84,7 @@ return [
                 'disable' => 'Deaktivieren',
                 'confirm_finish' => 'Bestätigen & beenden',
                 'cancel_setup' => 'Einstellung abbrechen',
+                'confirm' => 'Bestätigen',
             ],
             'setup_key' => 'Einstellungsschlüssel',
             'must_enable' => 'Sie müssen die Zwei-Faktor-Authentifizierung aktivieren, um diese Anwendung zu verwenden.',
@@ -118,6 +119,7 @@ return [
             'title' => 'API Tokens',
             'description' => 'Verwalten Sie API-Tokens, mit denen Dienste von Drittanbietern in Ihrem Namen auf diese Anwendung zugreifen können. HINWEIS: Ihr Token wird bei der Erstellung einmalig angezeigt. Wenn Sie Ihr Token verlieren, müssen Sie es löschen und ein neues erstellen.',
             'create' => [
+                'message' => 'Dein Token wird nur einmal bei der Erstellung angezeigt. Wenn du dein Token verlierst, musst du es löschen und ein neues erstellen.',
                 'notify' => 'Token erfolgreich erstellt!',
                 'submit' => [
                     'label' => 'Erstellen',
@@ -125,6 +127,9 @@ return [
             ],
             'update' => [
                 'notify' => 'Token erfolgreich aktualisiert!',
+            ],
+            'copied' => [
+                'label' => 'Ich habe mein Token kopiert',
             ],
         ],
         'browser_sessions' => [
@@ -156,11 +161,19 @@ return [
         'new_password' => 'Neues Passwort',
         'new_password_confirmation' => 'Bestätigen Sie das Passwort',
         'token_name' => 'Token-Name',
+        'token_expiry' => 'Ablaufdatum',
         'abilities' => 'Möglichkeiten',
         '2fa_code' => 'Code',
         '2fa_recovery_code' => 'Wiederherstellungscode',
         'created' => 'Erstellt',
         'expired' => 'Abgelaufen',
+        'expires' => 'Läuft ab',
+    ],
+    'permissions' => [
+        'create' => 'Erstellen',
+        'view' => 'Anzeigen',
+        'update' => 'Aktualisieren',
+        'delete' => 'Löschen',
     ],
     'or' => 'Oder',
     'cancel' => 'Abbrechen',

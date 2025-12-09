@@ -83,6 +83,7 @@ return [
                 'disable' => 'Отключить',
                 'confirm_finish' => 'Подтвердить и завершить',
                 'cancel_setup' => 'Отменить',
+                'confirm' => 'Подтвердить',
             ],
             'setup_key' => 'Ключ настройки',
             'not_enabled' => [
@@ -137,6 +138,12 @@ return [
         '2fa_recovery_code' => 'Код восстановления',
         'created' => 'Создано',
         'expires' => 'Истекает',
+    ],
+    'permissions' => [
+        'create' => 'Создать',
+        'view' => 'Просмотр',
+        'update' => 'Обновить',
+        'delete' => 'Удалить',
     ],
     'or' => 'или',
     'cancel' => 'Отмена',

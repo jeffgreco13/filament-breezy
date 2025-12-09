@@ -83,6 +83,7 @@ return [
                 'disable' => 'Lumpuhkan',
                 'confirm_finish' => 'Sahkan dan selesaikan',
                 'cancel_setup' => 'Batalkan persediaan',
+                'confirm' => 'Sahkan',
             ],
             'setup_key' => 'Kunci persediaan',
             'not_enabled' => [
@@ -137,6 +138,12 @@ return [
         '2fa_recovery_code' => 'Kod Pemulihan',
         'created' => 'Dicipta',
         'expires' => 'Tamat tempoh',
+    ],
+    'permissions' => [
+        'create' => 'Cipta',
+        'view' => 'Lihat',
+        'update' => 'Kemas kini',
+        'delete' => 'Padam',
     ],
     'or' => 'Atau',
     'cancel' => 'Batal',

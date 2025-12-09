@@ -81,7 +81,7 @@ trait TwoFactorAuthenticatable
 
     public function destroyRecoveryCode(string $recoveryCode): void
     {
-        $unusedCodes = array_filter($this->two_factor_recovery_codes ?? [], fn ($code) => $code !== $recoveryCode);
+        $unusedCodes = array_filter($this->breezySession?->two_factor_recovery_codes ?? [], fn ($code) => $code !== $recoveryCode);
 
         $this->breezySession->forceFill([
             'two_factor_recovery_codes' => $unusedCodes ?: null,

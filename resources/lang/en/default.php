@@ -162,6 +162,12 @@ return [
         'passkey_name' => 'Passkey name',
         'last_used_at' => 'Last used at',
     ],
+    'permissions' => [
+        'create' => 'Create',
+        'view' => 'View',
+        'update' => 'Update',
+        'delete' => 'Delete',
+    ],
     'or' => 'Or',
     'cancel' => 'Cancel',
     'login' => [

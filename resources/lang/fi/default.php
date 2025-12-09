@@ -83,6 +83,7 @@ return [
                 'disable' => 'Ota pois käytöstä',
                 'confirm_finish' => 'Vahvista & Lopeta',
                 'cancel_setup' => 'Peruuta asetus',
+                'confirm' => 'Vahvista',
             ],
             'setup_key' => 'Avaimen asetus',
             'not_enabled' => [
@@ -137,6 +138,12 @@ return [
         '2fa_recovery_code' => 'Palautuskoodi',
         'created' => 'Luotu',
         'expires' => 'Vanhenee',
+    ],
+    'permissions' => [
+        'create' => 'Luo',
+        'view' => 'Näytä',
+        'update' => 'Päivitä',
+        'delete' => 'Poista',
     ],
     'or' => 'Tai',
     'cancel' => 'Peruuta',

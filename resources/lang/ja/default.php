@@ -83,6 +83,7 @@ return [
                 'disable' => '無効にする',
                 'confirm_finish' => '確認と完了',
                 'cancel_setup' => 'セットアップをキャンセル',
+                'confirm' => '確認',
             ],
             'setup_key' => 'セットアップキー',
             'not_enabled' => [
@@ -137,6 +138,12 @@ return [
         '2fa_recovery_code' => 'リカバリーコード',
         'created' => '作成日時',
         'expires' => '有効期限',
+    ],
+    'permissions' => [
+        'create' => '作成',
+        'view' => '表示',
+        'update' => '更新',
+        'delete' => '削除',
     ],
     'or' => 'または',
     'cancel' => 'キャンセル',

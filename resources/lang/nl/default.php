@@ -119,7 +119,7 @@ return [
     'fields' => [
         'avatar' => 'Profielfoto',
         'email' => 'E-mailadres',
-        'login' => 'Gebruikersnaam',
+        'login' => 'Verifiëren',
         'name' => 'Naam',
         'password' => 'Wachtwoord',
         'password_confirm' => 'Wachtwoord bevestigen',
@@ -132,6 +132,12 @@ return [
         '2fa_recovery_code' => 'Herstelcode',
         'created' => 'Aangemaakt',
         'expires' => 'Verloopt',
+    ],
+    'permissions' => [
+        'create' => 'Aanmaken',
+        'view' => 'Bekijken',
+        'update' => 'Bijwerken',
+        'delete' => 'Verwijderen',
     ],
     'or' => 'Of',
     'cancel' => 'Annuleren',

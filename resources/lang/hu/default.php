@@ -83,6 +83,7 @@ return [
                 'disable' => 'Tiltás',
                 'confirm_finish' => 'Megerősítés és befejezés',
                 'cancel_setup' => 'A beállítás megszakítása',
+                'confirm' => 'Megerősítés',
             ],
             'setup_key' => 'Beállítási kulcs',
             'not_enabled' => [
@@ -137,6 +138,12 @@ return [
         '2fa_recovery_code' => 'Helyreállítási kód',
         'created' => 'Létrehozva',
         'expires' => 'Lejár',
+    ],
+    'permissions' => [
+        'create' => 'Létrehozás',
+        'view' => 'Megtekintés',
+        'update' => 'Frissítés',
+        'delete' => 'Törlés',
     ],
     'or' => 'Vagy',
     'cancel' => 'Mégsem',

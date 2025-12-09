@@ -83,6 +83,7 @@ return [
                 'disable' => 'Dezactivare',
                 'confirm_finish' => 'Confirmare și finalizare',
                 'cancel_setup' => 'Anulare setare',
+                'confirm' => 'Confirmare',
             ],
             'setup_key' => 'Setare cheie',
             'not_enabled' => [
@@ -137,6 +138,12 @@ return [
         '2fa_recovery_code' => 'Cod de recuperare',
         'created' => 'Creat',
         'expires' => 'Expiră',
+    ],
+    'permissions' => [
+        'create' => 'Creează',
+        'view' => 'Vizualizează',
+        'update' => 'Actualizează',
+        'delete' => 'Șterge',
     ],
     'or' => 'Sau',
     'cancel' => 'Anulare',

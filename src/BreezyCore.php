@@ -55,7 +55,7 @@ class BreezyCore implements Plugin
 
     protected $registeredMyProfileComponents = [];
 
-    protected $passwordUpdateRules = ['min:8'];
+    protected $passwordUpdateRules = [];
 
     protected bool $passwordUpdateRequireCurrent = true;
 
@@ -259,20 +259,20 @@ class BreezyCore implements Plugin
 
     public function passwordUpdateRules(array|Password $rules, bool $requiresCurrentPassword = true): static
     {
-        $this->passwordUpdateRequireCurrent = $requiresCurrentPassword;
         $this->passwordUpdateRules = $rules;
+        $this->passwordUpdateRequireCurrent = $requiresCurrentPassword;
 
         return $this;
     }
 
-    public function getPasswordUpdateRequiresCurrent()
+    public function getPasswordUpdateRequiresCurrent(): bool
     {
         return $this->passwordUpdateRequireCurrent;
     }
 
-    public function getPasswordUpdateRules()
+    public function getPasswordUpdateRules(): array
     {
-        return $this->passwordUpdateRules;
+        return $this->passwordUpdateRules ?: [Password::defaults()];
     }
 
     public function shouldRegisterNavigation(string $key)

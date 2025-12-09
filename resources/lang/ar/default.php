@@ -133,6 +133,12 @@ return [
         'created' => 'تاريخ الإنشاء',
         'expires' => 'تاريخ الإنتهاء',
     ],
+    'permissions' => [
+        'create' => 'إنشاء',
+        'view' => 'عرض',
+        'update' => 'تحديث',
+        'delete' => 'حذف',
+    ],
     'or' => 'أو',
     'cancel' => 'إلغاء',
     'login' => [

@@ -397,8 +397,13 @@ class BreezyCore implements Plugin
     {
         return collect($this->evaluate($this->sanctumPermissions))->mapWithKeys(function ($item, $key) {
             $key = is_string($key) ? $key : strtolower($item);
+            $translationKey = "filament-breezy::default.permissions.{$key}";
+            $translatedValue = __($translationKey);
 
-            return [$key => $item];
+            // If translation doesn't exist, fall back to the original item
+            $displayValue = $translatedValue !== $translationKey ? $translatedValue : $item;
+
+            return [$key => $displayValue];
         })->toArray();
     }
 

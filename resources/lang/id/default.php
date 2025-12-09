@@ -134,6 +134,12 @@ return [
         'created' => 'Dibuat',
         'expires' => 'Kedaluwarsa',
     ],
+    'permissions' => [
+        'create' => 'Buat',
+        'view' => 'Lihat',
+        'update' => 'Perbarui',
+        'delete' => 'Hapus',
+    ],
     'or' => 'Atau',
     'cancel' => 'Batal',
     'login' => [

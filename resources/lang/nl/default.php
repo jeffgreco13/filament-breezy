@@ -133,6 +133,12 @@ return [
         'created' => 'Aangemaakt',
         'expires' => 'Verloopt',
     ],
+    'permissions' => [
+        'create' => 'Aanmaken',
+        'view' => 'Bekijken',
+        'update' => 'Bijwerken',
+        'delete' => 'Verwijderen',
+    ],
     'or' => 'Of',
     'cancel' => 'Annuleren',
 ];

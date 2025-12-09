@@ -133,6 +133,12 @@ return [
         'created' => 'Créé',
         'expires' => 'Expire',
     ],
+    'permissions' => [
+        'create' => 'Créer',
+        'view' => 'Voir',
+        'update' => 'Mettre à jour',
+        'delete' => 'Supprimer',
+    ],
     'or' => 'Ou',
     'cancel' => 'Annuler',
     'login' => [

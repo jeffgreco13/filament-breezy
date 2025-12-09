@@ -116,6 +116,12 @@ return [
         'created' => 'Vytvorené',
         'expires' => 'Expirácia',
     ],
+    'permissions' => [
+        'create' => 'Vytvoriť',
+        'view' => 'Zobraziť',
+        'update' => 'Aktualizovať',
+        'delete' => 'Odstrániť',
+    ],
     'or' => 'alebo',
     'cancel' => 'Zrušiť',
 ];

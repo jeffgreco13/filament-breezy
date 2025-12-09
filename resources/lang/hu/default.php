@@ -138,6 +138,12 @@ return [
         'created' => 'Létrehozva',
         'expires' => 'Lejár',
     ],
+    'permissions' => [
+        'create' => 'Létrehozás',
+        'view' => 'Megtekintés',
+        'update' => 'Frissítés',
+        'delete' => 'Törlés',
+    ],
     'or' => 'Vagy',
     'cancel' => 'Mégsem',
 ];

@@ -138,6 +138,12 @@ return [
         'created' => 'Dicipta',
         'expires' => 'Tamat tempoh',
     ],
+    'permissions' => [
+        'create' => 'Cipta',
+        'view' => 'Lihat',
+        'update' => 'Kemas kini',
+        'delete' => 'Padam',
+    ],
     'or' => 'Atau',
     'cancel' => 'Batal',
 ];

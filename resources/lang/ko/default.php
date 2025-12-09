@@ -116,6 +116,12 @@ return [
         '2fa_code' => '코드',
         '2fa_recovery_code' => '복구 코드',
     ],
+    'permissions' => [
+        'create' => '생성',
+        'view' => '보기',
+        'update' => '수정',
+        'delete' => '삭제',
+    ],
     'or' => '또는',
     'cancel' => '취소',
 ];

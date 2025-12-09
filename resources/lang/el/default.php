@@ -139,6 +139,12 @@ return [
         'created' => 'Created',
         'expires => "Expires',
     ],
+    'permissions' => [
+        'create' => 'Δημιουργία',
+        'view' => 'Προβολή',
+        'update' => 'Ενημέρωση',
+        'delete' => 'Διαγραφή',
+    ],
     'or' => 'ή',
     'cancel' => 'Ακύρωση',
 ];

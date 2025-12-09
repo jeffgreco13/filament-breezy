@@ -138,6 +138,12 @@ return [
         'created' => '作成日時',
         'expires' => '有効期限',
     ],
+    'permissions' => [
+        'create' => '作成',
+        'view' => '表示',
+        'update' => '更新',
+        'delete' => '削除',
+    ],
     'or' => 'または',
     'cancel' => 'キャンセル',
 ];

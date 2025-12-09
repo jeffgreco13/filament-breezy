@@ -116,6 +116,12 @@ return [
         'created' => '創建',
         'expires' => '到期',
     ],
+    'permissions' => [
+        'create' => '建立',
+        'view' => '檢視',
+        'update' => '更新',
+        'delete' => '刪除',
+    ],
     'or' => ' 或 ',
     'cancel' => '取消',
 ];

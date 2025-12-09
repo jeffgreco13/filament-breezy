@@ -138,6 +138,12 @@ return [
         'created' => 'Đã tạo',
         'expires' => 'Hết hạn',
     ],
+    'permissions' => [
+        'create' => 'Tạo',
+        'view' => 'Xem',
+        'update' => 'Cập nhật',
+        'delete' => 'Xóa',
+    ],
     'or' => 'Hoặc',
     'cancel' => 'Hủy',
 ];

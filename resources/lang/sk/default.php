@@ -49,6 +49,7 @@ return [
                 'disable' => 'Zakázať',
                 'confirm_finish' => 'Potvrdiť a dokončiť',
                 'cancel_setup' => 'Zrušiť nastavenie',
+                'confirm' => 'Potvrdiť',
             ],
             'setup_key' => 'Nastavenie kľúča',
             'must_enable' => 'V tejto aplikácii je vyžadované dvojfaktorové overenie.',
@@ -89,10 +90,27 @@ return [
             ],
             'update' => [
                 'notify' => 'Token úspešne aktualizovaný!',
+                'submit' => [
+                    'label' => 'Aktualizovať',
+                ],
             ],
             'copied' => [
                 'label' => 'Token mám skopírovaný',
             ],
+        ],
+        'browser_sessions' => [
+            'heading' => 'Relácie prehliadača',
+            'subheading' => 'Spravujte svoje aktívne relácie.',
+            'label' => 'Relácie prehliadača',
+            'content' => 'V prípade potreby sa môžete odhlásiť zo všetkých ostatných relácií prehliadača na všetkých vašich zariadeniach. Niektoré z vašich posledných relácií sú uvedené nižšie; tento zoznam však nemusí byť úplný. Ak máte podozrenie, že váš účet bol ohrozený, mali by ste si tiež zmeniť heslo.',
+            'device' => 'Toto zariadenie',
+            'last_active' => 'Posledná aktivita',
+            'logout_other_sessions' => 'Odhlásiť ostatné relácie prehliadača',
+            'logout_heading' => 'Odhlásiť ostatné relácie prehliadača',
+            'logout_description' => 'Ak sa chcete odhlásiť zo všetkých ostatných relácií prehliadača na všetkých vašich zariadeniach, zadajte svoje heslo.',
+            'logout_action' => 'Odhlásiť ostatné relácie prehliadača',
+            'incorrect_password' => 'Zadané heslo nie je správne. Skúste to znova.',
+            'logout_success' => 'Všetky ostatné relácie prehliadača boli úspešne odhlásené.',
         ],
     ],
     'clipboard' => [
@@ -124,4 +142,39 @@ return [
     ],
     'or' => 'alebo',
     'cancel' => 'Zrušiť',
+    'login' => [
+        'username_or_email' => 'Používateľské meno alebo email',
+        'forgot_password_link' => 'Zabudnuté heslo?',
+        'create_an_account' => 'Vytvoriť účet',
+    ],
+    'registration' => [
+        'title' => 'Registrácia',
+        'heading' => 'Vytvoriť nový účet',
+        'submit' => [
+            'label' => 'Registrovať',
+        ],
+        'notification_unique' => 'Účet s tým emailom už existuje. Prihláste sa.',
+    ],
+    'reset_password' => [
+        'title' => 'Zabudnuté heslo?',
+        'heading' => 'Resetovať heslo',
+        'submit' => [
+            'label' => 'Odoslať',
+        ],
+        'notification_error' => 'Chyba: Vyskušajte neskôr.',
+        'notification_error_link_text' => 'Skúsiť znovu',
+        'notification_success' => 'Skontrolujte email pre ďalšie inštrukcie!',
+    ],
+    'verification' => [
+        'title' => 'Overiť Váš email',
+        'heading' => 'Overenie emailu je požadované',
+        'submit' => [
+            'label' => 'Odhlásiť sa',
+        ],
+        'notification_success' => 'Skontrolujte email pre ďalšie inštrukcie!',
+        'notification_resend' => 'Nový overovací email bol odoslaný.',
+        'before_proceeding' => 'Pred pokračovaním si, prosím, skontrolujte svoj email a potvrďte ho kliknutím na overovací odkaz.',
+        'not_receive' => 'Ak Vám nebol email doručený,',
+        'request_another' => 'Kliknite tu pre odoslanie znovu',
+    ],
 ];

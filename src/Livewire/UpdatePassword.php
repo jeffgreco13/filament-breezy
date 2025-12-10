@@ -55,7 +55,7 @@ class UpdatePassword extends MyProfileComponent
         $this->user->forceFill([
             'password' => Hash::make($data['new_password']),
             'remember_token' => Str::random(60),
-        ]);
+        ])->save();
         session()->forget('password_hash_'.Auth::getDefaultDriver());
         $this->reset(['data']);
 

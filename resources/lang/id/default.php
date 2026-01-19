@@ -41,7 +41,7 @@ return [
             'notify' => 'Kata sandi berhasil diperbarui!',
         ],
         '2fa' => [
-            'title' => 'two factor authentication',
+            'title' => 'verifikasi dua langkah',
             'description' => 'Atur 2 factor authentication untuk akun Anda (disarankan).',
             'actions' => [
                 'enable' => 'Aktifkan',
@@ -52,29 +52,29 @@ return [
                 'confirm' => 'Konfirmasi',
             ],
             'setup_key' => 'Kunci pengaturan',
-            'must_enable' => 'Anda harus mengaktifkan two factor authentication untuk menggunakan aplikasi ini.',
+            'must_enable' => 'Anda harus mengaktifkan verifikasi dua langkah untuk menggunakan aplikasi ini.',
             'not_enabled' => [
-                'title' => 'Anda belum mengaktifkan two factor authentication.',
-                'description' => 'Ketika two factor authentication aktif, Anda akan diminta token acak yang aman saat autentikasi. Anda dapat menerima token ini dari aplikasi Google Authenticator di ponsel Anda.',
+                'title' => 'Anda belum mengaktifkan verifikasi dua langkah.',
+                'description' => 'Ketika verifikasi dua langkah aktif, Anda akan diminta token acak yang aman saat autentikasi. Anda dapat menerima token ini dari aplikasi Google Authenticator di ponsel Anda.',
             ],
             'finish_enabling' => [
-                'title' => 'Selesaikan pengaktifan two factor authentication.',
-                'description' => 'Untuk menyelesaikan pengaktifan two factor authentication, scan QR code berikut menggunakan aplikasi authenticator dari ponsel Anda atau masukkan kunci pengaturan dan masukkan kode OTP yang dihasilkan.',
+                'title' => 'Selesaikan pengaktifan verifikasi dua langkah.',
+                'description' => 'Untuk menyelesaikan pengaktifan verifikasi dua langkah, scan QR code berikut menggunakan aplikasi authenticator dari ponsel Anda atau masukkan kunci pengaturan dan masukkan kode OTP yang dihasilkan.',
             ],
             'enabled' => [
-                'notify' => 'Two factor authentication diaktifkan.',
-                'title' => 'Anda telah mengaktifkan two factor authentication!',
-                'description' => 'Two factor authentication sudah diaktifkan. Scan QR code berikut menggunakan aplikasi authenticator ponsel Anda atau gunakan kunci pengaturan lalu masukkan OTP yang dihasilkan.',
-                'store_codes' => 'Simpan kode pemulihan ini di tempat yang aman. Kode ini dapat digunakan untuk memulihkan akses ke akun Anda jika perangkat two factor authentication Anda tidak dapat digunakan. Penting! Kode ini hanya ditampilkan satu kali.',
+                'notify' => 'verifikasi dua langkah diaktifkan.',
+                'title' => 'Anda telah mengaktifkan verifikasi dua langkah!',
+                'description' => 'Verifikasi dua langkah sudah diaktifkan. Scan QR code berikut menggunakan aplikasi authenticator ponsel Anda atau gunakan kunci pengaturan lalu masukkan OTP yang dihasilkan.',
+                'store_codes' => 'Simpan kode pemulihan ini di tempat yang aman. Kode ini dapat digunakan untuk memulihkan akses ke akun Anda jika perangkat verifikasi dua langkah Anda tidak dapat digunakan. Penting! Kode ini hanya ditampilkan satu kali.',
             ],
             'disabling' => [
-                'notify' => 'Two factor authentication telah dinonaktifkan.',
+                'notify' => 'Verifikasi dua langkah telah dinonaktifkan.',
             ],
             'regenerate_codes' => [
                 'notify' => 'Kode pemulihan baru telah dibuat.',
             ],
             'confirmation' => [
-                'success_notification' => 'Kode terverifikasi. Two factor authentication diaktifkan.',
+                'success_notification' => 'Kode terverifikasi. Verifikasi dua langkah diaktifkan.',
                 'invalid_code' => 'Kode yang Anda masukkan tidak valid.',
             ],
         ],

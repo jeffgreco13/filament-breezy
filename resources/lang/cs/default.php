@@ -90,10 +90,27 @@ return [
             ],
             'update' => [
                 'notify' => 'Token úspěšně aktualizován!',
+                'submit' => [
+                    'label' => 'Aktualizovat',
+                ],
             ],
             'copied' => [
                 'label' => 'Token mám zkopírován',
             ],
+        ],
+        'browser_sessions' => [
+            'heading' => 'Relace prohlížeče',
+            'subheading' => 'Spravujte své aktivní relace.',
+            'label' => 'Relace prohlížeče',
+            'content' => 'Pokud je to nutné, můžete se odhlásit ze všech ostatních relací prohlížeče na všech svých zařízeních. Některé z vašich nedávných relací jsou uvedeny níže; tento seznam však nemusí být úplný. Pokud máte podezření, že byl váš účet kompromitován, měli byste také aktualizovat své heslo.',
+            'device' => 'Toto zařízení',
+            'last_active' => 'Naposledy aktivní',
+            'logout_other_sessions' => 'Odhlásit se ze všech ostatních relací prohlížeče',
+            'logout_heading' => 'Odhlásit se ze všech ostatních relací prohlížeče',
+            'logout_description' => 'Zadejte své heslo pro potvrzení, že se chcete odhlásit ze všech ostatních relací prohlížeče na všech svých zařízeních.',
+            'logout_action' => 'Odhlásit ostatní relace',
+            'incorrect_password' => 'Zadané heslo je nesprávné. Zkuste to prosím znovu.',
+            'logout_success' => 'Všechny ostatní relace prohlížeče byly úspěšně odhlášeny.',
         ],
     ],
     'clipboard' => [

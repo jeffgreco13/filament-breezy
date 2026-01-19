@@ -2,16 +2,16 @@
 
 return [
     'password_confirm' => [
-        'heading' => 'Konfirmasi kata sandi',
+        'heading' => 'Konfirmasi Kata Sandi',
         'description' => 'Harap konfirmasi kata sandi Anda untuk melanjutkan.',
         'current_password' => 'Kata sandi saat ini',
     ],
     'two_factor' => [
-        'heading' => 'two factor challenge',
+        'heading' => 'Verifikasi Dua Langkah',
         'description' => 'Harap konfirmasi akses ke akun Anda dengan memasukkan kode autentikasi yang telah diberikan oleh aplikasi autentikator Anda.',
         'code_placeholder' => 'XXX-XXX',
         'recovery' => [
-            'heading' => 'two factor challenge',
+            'heading' => 'Verifikasi Dua Langkah',
             'description' => 'Harap konfirmasi akses ke akun Anda dengan memasukkan salah satu dari kode pemulihan darurat Anda.',
         ],
         'recovery_code_placeholder' => 'abcdef-98765',
@@ -25,7 +25,7 @@ return [
         'my_profile' => 'Profil saya',
         'subheading' => 'Kelola profil pengguna Anda di sini.',
         'personal_info' => [
-            'heading' => 'Informasi pribadi',
+            'heading' => 'Informasi Pribadi',
             'subheading' => 'Kelola informasi pribadi Anda.',
             'submit' => [
                 'label' => 'Perbarui',
@@ -33,7 +33,7 @@ return [
             'notify' => 'Profil berhasil diperbarui!',
         ],
         'password' => [
-            'heading' => 'Kata sandi',
+            'heading' => 'Kata Sandi',
             'subheading' => 'Harus 8 karakter atau lebih.',
             'submit' => [
                 'label' => 'Perbarui',

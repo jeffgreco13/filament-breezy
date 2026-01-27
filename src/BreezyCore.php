@@ -26,7 +26,6 @@ use Jeffgreco13\FilamentBreezy\Livewire\UpdatePassword;
 use Jeffgreco13\FilamentBreezy\Middleware\MustTwoFactor;
 use Jeffgreco13\FilamentBreezy\Pages\MyProfilePage;
 use Jeffgreco13\FilamentBreezy\Pages\TwoFactorPage;
-use Livewire\Livewire;
 use PragmaRX\Google2FA\Google2FA;
 
 class BreezyCore implements Plugin
@@ -85,15 +84,13 @@ class BreezyCore implements Plugin
 
     public function register(Panel $panel): void
     {
-        $panel
-            ->pages($this->preparePages());
+        $panel->pages($this->preparePages());
+
         // If TwoFactor is enabled, register the middleware.
         if ($this->twoFactorAuthentication) {
             if ($this->twoFactorAuthenticationMiddleware) {
                 $panel->authMiddleware([$this->twoFactorAuthenticationMiddleware]);
             }
-
-            Livewire::component('two-factor-page', TwoFactorPage::class);
         }
     }
 
@@ -111,26 +108,21 @@ class BreezyCore implements Plugin
     {
         if ($this->myProfile) {
             if ($this->sanctumTokens) {
-                Livewire::component('sanctum_tokens', SanctumTokens::class);
                 $this->myProfileComponents([
                     'sanctum_tokens' => SanctumTokens::class,
                 ]);
             }
             if ($this->twoFactorAuthentication) {
-                Livewire::component('two_factor_authentication', TwoFactorAuthentication::class);
                 $this->myProfileComponents([
                     'two_factor_authentication' => TwoFactorAuthentication::class,
                 ]);
             }
             if ($this->browserSessions) {
-                Livewire::component('browser_sessions', BrowserSessions::class);
                 $this->myProfileComponents([
                     'browser_sessions' => BrowserSessions::class,
                 ]);
             }
 
-            Livewire::component('personal_info', PersonalInfo::class);
-            Livewire::component('update_password', UpdatePassword::class);
             $this->myProfileComponents([
                 'personal_info' => PersonalInfo::class,
                 'update_password' => UpdatePassword::class,
@@ -218,7 +210,6 @@ class BreezyCore implements Plugin
 
     public function myProfileComponents(array $components): static
     {
-
         $merged = [
             ...$components,
             ...$this->registeredMyProfileComponents,

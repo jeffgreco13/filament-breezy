@@ -2,6 +2,7 @@
 
 namespace Jeffgreco13\FilamentBreezy\Livewire;
 
+use Filament\Facades\Filament;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
@@ -40,11 +41,11 @@ class PasskeyAction extends Component
             return back()->with('authenticatePasskey::message', __('filament-breezy::default.passkeys.invalid'));
         }
 
-        // Authenticate
-        auth()->login($passkey->authenticatable);
+        // Authenticate using Filament's panel auth guard
+        Filament::auth()->login($passkey->authenticatable);
         Session::regenerate();
 
-        return redirect()->intended();
+        return redirect()->intended(Filament::getUrl());
     }
 
     public function render(): View

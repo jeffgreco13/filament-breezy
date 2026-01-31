@@ -1,10 +1,58 @@
 parameters:
 	ignoreErrors:
 		-
-			message: '#^Access to an undefined property Illuminate\\Contracts\\Auth\\Authenticatable\:\:\$breezySession\.$#'
+			message: '#^Parameter \$class of method Jeffgreco13\\FilamentBreezy\\BreezyCore\:\:customMyProfilePage\(\) has invalid type Jeffgreco13\\FilamentBreezy\\Concerns\\Plugin\\Pages\\MyProfilePage\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Concerns/Plugin/HasMyProfile.php
+
+		-
+			message: '#^Call to function is_array\(\) with array will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: src/Concerns/Plugin/HasMyProfile.php
+
+		-
+			message: '#^Access to an undefined property Jeffgreco13\\FilamentBreezy\\Models\\Passkey\:\:\$data\.$#'
 			identifier: property.notFound
-			count: 2
-			path: src/BreezyCore.php
+			count: 1
+			path: src/Concerns/Plugin/HasPasskeys.php
+
+		-
+			message: '#^Call to an undefined method Filament\\Contracts\\Plugin\:\:storePasskey\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/Livewire/Passkeys.php
+
+		-
+			message: '#^Call to an undefined method Filament\\Contracts\\Plugin\:\:generatePasskeyRegisterOptions\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/Livewire/Passkeys.php
+
+		-
+			message: '#^Call to an undefined method Filament\\Contracts\\Plugin\:\:auth\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/Livewire/PersonalInfo.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$panel_id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Models/Passkey.php
+
+		-
+			message: '#^Call to an undefined method Filament\\Contracts\\Plugin\:\:scopePasskeysToPanel\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/Models/Passkey.php
+
+		-
+			message: '#^Call to an undefined method Filament\\Contracts\\Plugin\:\:passkeySerializer\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/Models/Passkey.php
 
 		-
 			message: '#^Access to an undefined property Illuminate\\Foundation\\Auth\\User\:\:\$password\.$#'

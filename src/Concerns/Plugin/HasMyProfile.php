@@ -75,7 +75,6 @@ trait HasMyProfile
 
     public function myProfileComponents(array $components): static
     {
-
         $merged = [
             ...$components,
             ...$this->registeredMyProfileComponents,

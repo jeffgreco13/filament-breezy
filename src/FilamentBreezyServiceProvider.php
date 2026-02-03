@@ -19,6 +19,23 @@ use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class FilamentBreezyServiceProvider extends PackageServiceProvider
 {
+    public function bootingPackage(): void
+    {
+        FilamentAsset::register([
+            Js::make('filament-breezy', __DIR__.'/../resources/dist/filament-breezy.js'),
+        ]);
+
+        Livewire::component('personal_info', PersonalInfo::class);
+        Livewire::component('update_password', UpdatePassword::class);
+        Livewire::component('sanctum_tokens', SanctumTokens::class);
+        Livewire::component('two_factor_authentication', TwoFactorAuthentication::class);
+        Livewire::component('browser_sessions', BrowserSessions::class);
+        Livewire::component('passkeys', Passkeys::class);
+
+        Livewire::component('two-factor-page', TwoFactorPage::class);
+        Livewire::component('passkey_action', PasskeyAction::class);
+    }
+
     public function configurePackage(Package $package): void
     {
         /*
@@ -37,22 +54,5 @@ class FilamentBreezyServiceProvider extends PackageServiceProvider
                 'create_passkeys_table',
             ])
             ->hasCommand(Install::class);
-    }
-
-    public function packageBooted(): void
-    {
-        FilamentAsset::register([
-            Js::make('filament-breezy', __DIR__.'/../resources/dist/filament-breezy.js'),
-        ]);
-
-        // Register Livewire components here so they're available during subsequent requests
-        Livewire::component('sanctum_tokens', SanctumTokens::class);
-        Livewire::component('two_factor_authentication', TwoFactorAuthentication::class);
-        Livewire::component('browser_sessions', BrowserSessions::class);
-        Livewire::component('passkeys', Passkeys::class);
-        Livewire::component('passkey_action', PasskeyAction::class);
-        Livewire::component('personal_info', PersonalInfo::class);
-        Livewire::component('update_password', UpdatePassword::class);
-        Livewire::component('two-factor-page', TwoFactorPage::class);
     }
 }

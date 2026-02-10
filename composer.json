@@ -1,12 +1,7 @@
 {
-    "name": "jeffgreco13/filament-breezy",
-    "description": "A custom package for Filament with login flow, profile and teams support.",
-    "keywords": [
-        "jeffgreco13",
-        "laravel",
-        "filament-breezy"
-    ],
-    "homepage": "https://github.com/jeffgreco13/filament-breezy",
+    "name": "artcore-society/filament-breezy",
+    "description": "filament-breezy fork to resolve unmaintained issue in jenssegers/agent.",
+    "homepage": "https://artcoresociety.com",
     "license": "MIT",
     "authors": [
         {

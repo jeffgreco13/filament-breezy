@@ -6,6 +6,7 @@ use Filament\Facades\Filament;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
+use Jeffgreco13\FilamentBreezy\Events\PasskeyUsedToAuthenticate;
 use Livewire\Component;
 use Livewire\Features\SupportRedirects\Redirector;
 
@@ -44,6 +45,8 @@ class PasskeyAction extends Component
         // Authenticate using Filament's panel auth guard
         Filament::auth()->login($passkey->authenticatable);
         Session::regenerate();
+
+        event(new PasskeyUsedToAuthenticate($passkey));
 
         return redirect()->intended(Filament::getUrl());
     }

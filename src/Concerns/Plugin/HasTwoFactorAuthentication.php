@@ -37,6 +37,11 @@ trait HasTwoFactorAuthentication
         return $this;
     }
 
+    public function twoFactorAuthenticationEnabled(): bool
+    {
+        return $this->twoFactorAuthentication;
+    }
+
     public function getForceTwoFactorAuthentication(): ?bool
     {
         return $this->evaluate($this->forceTwoFactorAuthentication);

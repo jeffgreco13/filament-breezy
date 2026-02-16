@@ -2,7 +2,6 @@
 
 namespace Jeffgreco13\FilamentBreezy\Livewire;
 
-use Filament\Facades\Filament;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Schemas\Components\Group;
@@ -26,7 +25,7 @@ class PersonalInfo extends MyProfileComponent
 
     public function mount(): void
     {
-        $this->user = Filament::getCurrentOrDefaultPanel()->auth()->user();
+        $this->user = filament('filament-breezy')->auth()->user();
         $this->userClass = get_class($this->user);
         $this->hasAvatars = filament('filament-breezy')->hasAvatars();
 

@@ -16,10 +16,16 @@ Route::name('filament.')
                     ->prefix($panel->getPath())
                     ->group(function () use ($panel, $hasTenancy) {
                         if ($panel->hasPlugin('filament-breezy')) {
-                            $route = $hasTenancy ? '/{tenant}/two-factor-authentication' : '/two-factor-authentication';
-                            $action = filament('filament-breezy')->getTwoFactorRouteAction();
+                            Route::prefix($hasTenancy ? '/{tenant}' : '/')->group(function () use ($panel) {
+                                /** @var \Jeffgreco13\FilamentBreezy\BreezyCore $plugin */
+                                $plugin = $panel->getPlugin('filament-breezy');
 
-                            Route::get($route, $action)->name('auth.two-factor');
+                                Route::get('/two-factor-authentication', $plugin->getTwoFactorRouteAction())->name('auth.two-factor');
+
+                                Route::get('/passkeys/authentication-options', function () {
+                                    return [];
+                                })->name('passkeys.authentication_options');
+                            });
                         }
                     });
             }

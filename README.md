@@ -5,7 +5,8 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/jeffgreco13/filament-breezy.svg?style=flat-square)](https://packagist.org/packages/jeffgreco13/filament-breezy)
 [![Total Downloads](https://img.shields.io/packagist/dt/jeffgreco13/filament-breezy.svg?style=flat-square)](https://packagist.org/packages/jeffgreco13/filament-breezy)
 
-Enhanced security features for Filament (v4) Panels. Includes a customizable My Profile page with personal info & avatar support, update password, two factor authentication, and Sanctum token management.
+Enhanced security features for Filament (v4) Panels. 
+Includes a customizable My Profile page with personal info & avatar support, update password, two factor authentication, passkey authentication and Sanctum token management.
 Installs in minutes!
 
 ## Features & Screenshots
@@ -25,6 +26,9 @@ Create and manage Sanctum personal access tokens
 Manage active browser sessions and log out other sessions  
 ![Screenshot of Browser Sessions](./art/browser-sessions.png)  
 ![Screenshot of Close Browser Sessions Confirmation](./art/close-browser-sessions-confirm-password.png)
+Passkeys for passwordless authentication
+![Screenshot of Passkeys](./art/passkeys-create.png)
+![Authenticate using Passkey](./art/authenticate-using-passkey.png)
 
 ## Installation
 
@@ -158,7 +162,7 @@ BreezyCore::make()
 
 If you wish to have your own avatar, you need to create a column on the users table named `avatar_url`. It is reccomended that you create a new migration for it, and add the column there:
 
-```
+```bash
 php artisan make:migration add_avatar_url_column_to_users_table
 ```
 
@@ -199,7 +203,8 @@ return new class extends Migration
 
 #### Customize password update
 
-You can customize the validation rules for the update password component by passing an array of validation strings, or an instance of the `Illuminate\Validation\Rules\Password` class.
+By default Breezy uses the [default password rules](https://laravel.com/docs/12.x/validation#defining-default-password-rules) defined in your Laravel project. 
+You may customize the validation rules for the update password component by passing an array of validation strings, or an instance of the `Illuminate\Validation\Rules\Password` class.
 
 ```php
 use Illuminate\Validation\Rules\Password;
@@ -230,7 +235,7 @@ You can create a custom Livewire components for the My Profile page and append t
 
 1. Create a new Livewire component in your project using:
 
-```
+```bash
 php artisan make:livewire MyCustomComponent
 ```
 
@@ -283,7 +288,7 @@ class MyCustomComponent extends MyProfileComponent
 
 3. Within your Livewire component's view, you can use Filament's `<x-filament::section>` Blade component to match the style:
 
-```blade
+```bladehtml
 <x-filament::section :aside="true" heading="Your title" description="This is the description">
     <form wire:submit.prevent="submit" class="space-y-6">
 
@@ -486,6 +491,33 @@ BreezyCore::make()
     ])
 ```
 
+### Passkeys
+
+Passkeys let users securely manage their passkeys and sign in without passwords, providing faster and more secure authentication.
+
+#### Enabling Passkeys
+Enable passkey authentication using the `enablePasskeys()` method on the Breezy plugin.
+
+```php
+BreezyCore::make()
+    ->enablePasskeys( 
+        relyingPartyName: 'My App', // optionally, change the passkey's party name (default = APP_NAME)
+        relyingPartyId: 'https://my-app.com', // optionally, change the passkey's party id (default = APP_URL)
+        relyingPartyIcon: '/logo.png', // optionally, change the passkey's party icon 
+        scopeToPanel: true, // scope the passkeys only to the current panel (default = true)
+    )
+```
+
+#### Additional Configuration
+If you want to customize the component or modify its behavior, you can override the passkeys component in the myProfileComponents method:
+
+```php
+BreezyCore::make()
+    ->myProfileComponents([
+        'passkeys' => \App\Livewire\CustomPasskeys::class, // Your custom component
+    ])
+```
+
 ## FAQ
 > How do 2FA sessions work across multiple panels?
 
@@ -499,37 +531,9 @@ When 2FA is properly configured, and the User is prompted for the OTP code befor
 
 The 2FA session is the same as the Laravel session lifetime. Once the user is logged out, or the session expires, they will need to enter the OTP code again.
 
-## Upgrade guide (2.x to 3.x)
-If you are upgrade from version `2.x` to `3.x`, please follow these steps:
+## Upgrading
 
-1. Update the composer package in your `composer.json`:
-```json
-"jeffgreco13/filament-breezy": "^3.0",
-```
-
-2. Integrate Tailwind classes
-
-Filament recommends developers to [create a custom theme](https://filamentphp.com/docs/4.x/styling/overview#creating-a-custom-theme) to better support a plugin's additional Tailwind classes. 
-After you have created your custom theme, add Breezy's views to your theme's `theme.css` file usually located in `resources/css/filament/admin/theme.css`:
-```css
-@source '../../../../vendor/jeffgreco13/filament-breezy/resources/**/*';
-```
-
-3. If you've published views or added custom profile components, update them to match the new syntax:
-```bladehtml
-<x-filament::section :aside="true" hearing="Your title" description="This is the description">
-    <form wire:submit.prevent="submit" class="space-y-6">
-
-        {{ $this->form }}
-
-        <div class="text-right">
-            <x-filament::button type="submit" form="submit" class="align-right">
-                Submit!
-            </x-filament::button>
-        </div>
-    </form>
-</x-filament::section>
-```
+Please see the [UPGRADING](UPGRADING.md) guide for detailed upgrade instructions between major versions.
 
 ## Testing
 
@@ -551,8 +555,9 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
--   [Jeff Greco](https://github.com/jeffgreco13)
--   [All Contributors](../../contributors)
+- [Jeff Greco](https://github.com/jeffgreco13)
+- [Jacobtims](https://github.com/Jacobtims)
+- [All Contributors](../../contributors)
 
 ## License
 

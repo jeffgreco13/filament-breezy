@@ -19,6 +19,18 @@ parameters:
 			path: src/BreezyCore.php
 
 		-
+			message: '#^Call to an undefined method Filament\\Contracts\\Plugin\:\:twoFactorAuthenticationEnabled\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/Listeners/SkipTwoFactorAfterPasskeyAuthentication.php
+
+		-
+			message: '#^PHPDoc tag @var for variable \$authenticatable contains unresolvable type\.$#'
+			identifier: varTag.unresolvableType
+			count: 1
+			path: src/Listeners/SkipTwoFactorAfterPasskeyAuthentication.php
+
+		-
 			message: '#^Access to an undefined property Illuminate\\Foundation\\Auth\\User\:\:\$password\.$#'
 			identifier: property.notFound
 			count: 1

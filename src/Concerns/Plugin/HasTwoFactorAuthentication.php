@@ -16,15 +16,15 @@ use PragmaRX\Google2FA\Google2FA;
 
 trait HasTwoFactorAuthentication
 {
-    protected bool $twoFactorAuthentication;
+    protected bool $twoFactorAuthentication = false;
 
     protected string|false $twoFactorAuthenticationMiddleware = MustTwoFactor::class;
 
-    protected bool|Closure $forceTwoFactorAuthentication;
+    protected bool|Closure $forceTwoFactorAuthentication = false;
 
-    protected string|Closure|array|null $twoFactorRouteAction;
+    protected string|Closure|array|null $twoFactorRouteAction = TwoFactorPage::class;
 
-    protected bool $scopeTwoFactorAuthenticationToPanel;
+    protected bool $scopeTwoFactorAuthenticationToPanel = true;
 
     public function enableTwoFactorAuthentication(bool $condition = true, bool|Closure $force = false, string|Closure|array|null $action = TwoFactorPage::class, string|false $authMiddleware = MustTwoFactor::class, bool $scopeToPanel = true): static
     {

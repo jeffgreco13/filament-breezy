@@ -9,7 +9,7 @@ use Jeffgreco13\FilamentBreezy\Pages\MyProfilePage;
 
 trait HasMyProfile
 {
-    protected array $myProfile;
+    protected array $myProfile = [];
 
     protected ?string $customMyProfilePageClass = null;
 

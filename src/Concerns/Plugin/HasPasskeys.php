@@ -27,11 +27,11 @@ trait HasPasskeys
 
     protected bool $scopePasskeysToPanel = true;
 
-    protected string $passkeyRelyingPartyName;
+    protected string $passkeyRelyingPartyName = '';
 
-    protected string $passkeyRelyingPartyId;
+    protected string $passkeyRelyingPartyId = '';
 
-    protected ?string $passkeyRelyingPartyIcon;
+    protected ?string $passkeyRelyingPartyIcon = null;
 
     public function enablePasskeys(bool $condition = true, ?string $relyingPartyName = null, ?string $relyingPartyId = null, ?string $relyingPartyIcon = null, bool $scopeToPanel = true): static
     {

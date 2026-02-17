@@ -19,6 +19,12 @@ return [
         'recovery_code_link' => 'Usa un codice di ripristino',
         'back_to_login_link' => 'Torna al login',
     ],
+    'passkeys' => [
+        'authenticate_using_passkey' => [
+            'label' => 'Autenticati con una Passkey',
+        ],
+        'invalid' => 'Impossibile effettuare l\'accesso utilizzando la passkey fornita.',
+    ],
     'profile' => [
         'account' => 'Account',
         'profile' => 'Profilo',
@@ -112,6 +118,26 @@ return [
             'incorrect_password' => 'La password che hai inserito non è corretta. Riprova.',
             'logout_success' => 'Tutte le altre sessioni del browser sono state disconnesse con successo.',
         ],
+        'passkeys' => [
+            'heading' => 'Passkeys',
+            'description' => 'Gestisci le tue passkeys per un accesso sicur al tuo account senza password e su tutti i dispositivi.',
+            'create' => [
+                'notify' => 'Token creato con successo!',
+                'message' => 'Il tuo token verrà visualizzato una sola volta al momento della creazione. Se lo perdi, dovrai eliminarlo e crearne uno nuovo.',
+                'submit' => [
+                    'label' => 'Crea',
+                    'submit_label' => 'Crea & Autenticati',
+                ],
+                'error_message' => 'Si è verificato un errore durante la generazione della passkey.',
+                'success_message' => 'Passkey creata con successo.',
+            ],
+            'update' => [
+                'notify' => 'Token aggiornato con successo!',
+                'submit' => [
+                    'label' => 'Aggiorna',
+                ],
+            ],
+        ],
     ],
     'clipboard' => [
         'link' => 'Copia negli appunti',
@@ -133,6 +159,8 @@ return [
         '2fa_recovery_code' => 'Codice di Ripristino',
         'created' => 'Creato',
         'expires' => 'Scade',
+        'passkey_name' => 'Nome Passkey',
+        'last_used_at' => 'Ultimo utilizzo',
     ],
     'permissions' => [
         'create' => 'Crea',

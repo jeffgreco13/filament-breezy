@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\HigherOrderTapProxy;
-use Jenssegers\Agent\Agent;
+use Jeffgreco13\FilamentBreezy\Agent;
 
 class BrowserSessions extends MyProfileComponent
 {

@@ -7,23 +7,16 @@ use Illuminate\Console\Command;
 class Install extends Command
 {
     /**
-     * The name and signature of the console command.
-     *
      * @var string
      */
     protected $signature = 'breezy:install';
 
     /**
-     * The console command description.
-     *
      * @var string
      */
     protected $description = 'Install script for Breezy.';
 
-    /**
-     * Execute the console command.
-     */
-    public function handle()
+    public function handle(): int
     {
         $this->line('***************************');
         $this->line('*     FILAMENT BREEZY     *');
@@ -40,16 +33,27 @@ class Install extends Command
                 $this->warn('You must run migrations before using Breezy.');
             }
         }
+        if ($this->confirm('Do you want to enable Passkeys? (This will publish a new migration)', true)) {
+            $this->callSilent('vendor:publish', [
+                '--tag' => 'filament-breezy-migrations',
+            ]);
+            if ($this->confirm('Do you want to run migrations now?', true)) {
+                $this->call('migrate');
+                $this->info('You may now enable Passkeys by appending ->enablePasskeys() to BreezyCore::make(). See the docs for more info.');
+            } else {
+                $this->warn('You must run migrations before using Breezy.');
+            }
+        }
         $this->newLine();
         if ($this->confirm('All done! Would you like to show some love by starring the Breezy on GitHub?', true)) {
             if (PHP_OS_FAMILY === 'Darwin') {
-                exec('open https://github.com/jeffgreco13/filament-breezy');
+                exec('open https://github.com/jacobtims/filament-breezy');
             }
             if (PHP_OS_FAMILY === 'Linux') {
-                exec('xdg-open https://github.com/jeffgreco13/filament-breezy');
+                exec('xdg-open https://github.com/jacobtims/filament-breezy');
             }
             if (PHP_OS_FAMILY === 'Windows') {
-                exec('start https://github.com/jeffgreco13/filament-breezy');
+                exec('start https://github.com/jacobtims/filament-breezy');
             }
 
             $this->components->info('Thank you!');

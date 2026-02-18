@@ -17,7 +17,7 @@ class Agent extends MobileDetect
      *
      * @var array<string, string>
      */
-    protected static $additionalOperatingSystems = [
+    protected static array $additionalOperatingSystems = [
         'Windows' => 'Windows',
         'Windows NT' => 'Windows NT',
         'OS X' => 'Mac OS X',
@@ -34,7 +34,7 @@ class Agent extends MobileDetect
      *
      * @var array<string, string>
      */
-    protected static $additionalBrowsers = [
+    protected static array $additionalBrowsers = [
         'Opera Mini' => 'Opera Mini',
         'Opera' => 'Opera|OPR',
         'Edge' => 'Edge|Edg',
@@ -52,12 +52,10 @@ class Agent extends MobileDetect
 
     /**
      * Get the platform name from the User Agent.
-     *
-     * @return string|null
      */
-    public function platform()
+    public function platform(): ?string
     {
-        return $this->retrieveUsingCacheOrResolve('jetstream.platform', function () {
+        return $this->retrieveUsingCacheOrResolve('breezy.platform', function () {
             return $this->findDetectionRulesAgainstUserAgent(
                 $this->mergeRules(MobileDetect::getOperatingSystems(), static::$additionalOperatingSystems)
             );
@@ -66,12 +64,10 @@ class Agent extends MobileDetect
 
     /**
      * Get the browser name from the User Agent.
-     *
-     * @return string|null
      */
-    public function browser()
+    public function browser(): ?string
     {
-        return $this->retrieveUsingCacheOrResolve('jetstream.browser', function () {
+        return $this->retrieveUsingCacheOrResolve('breezy.browser', function () {
             return $this->findDetectionRulesAgainstUserAgent(
                 $this->mergeRules(static::$additionalBrowsers, MobileDetect::getBrowsers())
             );
@@ -80,12 +76,10 @@ class Agent extends MobileDetect
 
     /**
      * Determine if the device is a desktop computer.
-     *
-     * @return bool
      */
-    public function isDesktop()
+    public function isDesktop(): bool
     {
-        return $this->retrieveUsingCacheOrResolve('jetstream.desktop', function () {
+        return $this->retrieveUsingCacheOrResolve('breezy.desktop', function () {
             // Check specifically for cloudfront headers if the useragent === 'Amazon CloudFront'
             if (
                 $this->getUserAgent() === static::$cloudFrontUA
@@ -100,10 +94,8 @@ class Agent extends MobileDetect
 
     /**
      * Match a detection rule and return the matched key.
-     *
-     * @return string|null
      */
-    protected function findDetectionRulesAgainstUserAgent(array $rules)
+    protected function findDetectionRulesAgainstUserAgent(array $rules): ?string
     {
         $userAgent = $this->getUserAgent();
 
@@ -123,13 +115,9 @@ class Agent extends MobileDetect
     /**
      * Retrieve from the given key from the cache or resolve the value.
      *
-     * @param  string  $key
-     * @param  \Closure():mixed  $callback
-     * @return mixed
-     *
      * @throws \Detection\Exception\MobileDetectException
      */
-    protected function retrieveUsingCacheOrResolve(string $key, Closure $callback)
+    protected function retrieveUsingCacheOrResolve(string $key, Closure $callback): mixed
     {
         try {
             $cacheKey = $this->createCacheKey($key);
@@ -152,7 +140,7 @@ class Agent extends MobileDetect
      * @param  array  $all
      * @return array<string, string>
      */
-    protected function mergeRules(...$all)
+    protected function mergeRules(...$all): array
     {
         $merged = [];
 

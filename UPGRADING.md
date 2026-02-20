@@ -27,7 +27,7 @@ After you have created your custom theme, add Breezy's views to your theme's `th
 
 3. If you have published views or added custom profile components, update them to match the new syntax:
 ```bladehtml
-<x-filament::section :aside="true" hearing="Your title" description="This is the description">
+<x-filament::section :aside="true" heading="Your title" description="This is the description">
     <form wire:submit.prevent="submit" class="space-y-6">
 
         {{ $this->form }}

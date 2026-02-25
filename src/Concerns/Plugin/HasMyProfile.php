@@ -2,8 +2,10 @@
 
 namespace Jeffgreco13\FilamentBreezy\Concerns\Plugin;
 
+use BackedEnum;
 use Closure;
 use Filament\Forms\Components\FileUpload;
+use Filament\Support\Icons\Heroicon;
 use Illuminate\Validation\Rules\Password;
 use Jeffgreco13\FilamentBreezy\Pages\MyProfilePage;
 
@@ -20,7 +22,7 @@ trait HasMyProfile
 
     protected array $registeredMyProfileComponents = [];
 
-    public function myProfile(bool $condition = true, bool $shouldRegisterUserMenu = true, bool $shouldRegisterNavigation = false, bool $hasAvatars = false, string $slug = 'my-profile', ?string $navigationGroup = null, ?string $userMenuLabel = null): static
+    public function myProfile(bool $condition = true, bool $shouldRegisterUserMenu = true, bool $shouldRegisterNavigation = false, bool $hasAvatars = false, string $slug = 'my-profile', ?string $navigationGroup = null, ?string $userMenuLabel = null, string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUserCircle): static
     {
         $this->myProfile = get_defined_vars();
 
@@ -134,6 +136,11 @@ trait HasMyProfile
     public function shouldRegisterNavigation(string $key)
     {
         return $this->{$key}['shouldRegisterNavigation'];
+    }
+
+    public function getNavigationIcon(string $key)
+    {
+        return $this->{$key}['navigationIcon'];
     }
 
     public function getNavigationGroup(string $key)

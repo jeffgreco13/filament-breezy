@@ -13,6 +13,11 @@
             "name": "Jeff Greco",
             "email": "jeff@jeffpgreco.com",
             "role": "Developer"
+        },
+        {
+            "name": "Jacobtims",
+            "email": "jacobtimmer04@gmail.com",
+            "role": "Developer"
         }
     ],
     "require": {

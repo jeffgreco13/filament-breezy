@@ -2,15 +2,13 @@
 
 namespace Jeffgreco13\FilamentBreezy\Pages;
 
+use BackedEnum;
 use Filament\Pages\Page;
 use Filament\Panel;
-use Filament\Support\Icons\Heroicon;
 use Illuminate\Contracts\Support\Htmlable;
 
 class MyProfilePage extends Page
 {
-    protected static string|\BackedEnum|null $navigationIcon = Heroicon::OutlinedUserCircle;
-
     protected string $view = 'filament-breezy::filament.pages.my-profile';
 
     public function getTitle(): string|Htmlable
@@ -41,6 +39,11 @@ class MyProfilePage extends Page
     public static function shouldRegisterNavigation(): bool
     {
         return filament('filament-breezy')->shouldRegisterNavigation('myProfile');
+    }
+
+    public static function getNavigationIcon(): string|BackedEnum|Htmlable|null
+    {
+        return filament('filament-breezy')->getNavigationIcon('myProfile');
     }
 
     public static function getNavigationGroup(): ?string

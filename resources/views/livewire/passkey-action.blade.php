@@ -1,4 +1,4 @@
-<div>
+<div @if($autoPrompt) wire:init="authenticateWithPasskey" @endif>
     @if(\Filament\Facades\Filament::getCurrentOrDefaultPanel()?->hasPlugin('filament-breezy'))
         <div>
             <x-filament::button class="w-full" color="gray" wire:click="authenticateWithPasskey">

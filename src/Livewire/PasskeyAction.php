@@ -12,7 +12,14 @@ use Livewire\Features\SupportRedirects\Redirector;
 
 class PasskeyAction extends Component
 {
+    public bool $autoPrompt = false;
+
     public string $passkeyAuthenticationOptions;
+
+    public function mount(): void
+    {
+        $this->autoPrompt = filament('filament-breezy')->autoPromptPasskeys();
+    }
 
     public function authenticateWithPasskey(): void
     {

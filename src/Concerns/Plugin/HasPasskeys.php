@@ -18,7 +18,6 @@ use Webauthn\PublicKeyCredential;
 use Webauthn\PublicKeyCredentialCreationOptions;
 use Webauthn\PublicKeyCredentialRequestOptions;
 use Webauthn\PublicKeyCredentialRpEntity;
-use Webauthn\PublicKeyCredentialSource;
 use Webauthn\PublicKeyCredentialUserEntity;
 
 trait HasPasskeys
@@ -38,7 +37,7 @@ trait HasPasskeys
         $this->passkeys = $condition;
         $this->scopePasskeysToPanel = $scopeToPanel;
         $this->passkeyRelyingPartyName = $relyingPartyName ?? config('app.name');
-        $this->passkeyRelyingPartyId = $relyingPartyId ?? parse_url(config('app.url'), PHP_URL_HOST);
+        $this->passkeyRelyingPartyId = $relyingPartyId ?? request()->getHost();
         $this->passkeyRelyingPartyIcon = $relyingPartyIcon;
 
         return $this;
@@ -148,9 +147,9 @@ trait HasPasskeys
 
         try {
             $publicKeyCredentialSource = AuthenticatorAttestationResponseValidator::create($creationCsm)->check(
-                authenticatorAttestationResponse: $publicKeyCredential->response,
-                publicKeyCredentialCreationOptions: $passkeyOptions,
-                host: $hostName,
+                $publicKeyCredential->response,
+                $passkeyOptions,
+                $hostName,
             );
         } catch (Throwable $exception) {
             throw new \Exception('The given passkey could not be validated.');
@@ -247,7 +246,7 @@ trait HasPasskeys
         return Passkey::firstWhere('credential_id', mb_convert_encoding($publicKeyCredential->rawId, 'UTF-8'));
     }
 
-    protected function determinePublicKeyCredentialSource(PublicKeyCredential $publicKeyCredential, PublicKeyCredentialRequestOptions $passkeyOptions, Passkey $passkey): ?PublicKeyCredentialSource
+    protected function determinePublicKeyCredentialSource(PublicKeyCredential $publicKeyCredential, PublicKeyCredentialRequestOptions $passkeyOptions, Passkey $passkey): mixed
     {
         $csmFactory = new CeremonyStepManagerFactory;
         $requestCsm = $csmFactory->requestCeremony();
@@ -256,11 +255,11 @@ trait HasPasskeys
             $validator = AuthenticatorAssertionResponseValidator::create($requestCsm);
 
             $publicKeyCredentialSource = $validator->check(
-                publicKeyCredentialSource: $passkey->data,
-                authenticatorAssertionResponse: $publicKeyCredential->response,
-                publicKeyCredentialRequestOptions: $passkeyOptions,
-                host: parse_url(config('app.url'), PHP_URL_HOST),
-                userHandle: null,
+                $passkey->data,
+                $publicKeyCredential->response,
+                $passkeyOptions,
+                request()->getHost(),
+                null,
             );
         } catch (Throwable) {
             return null;
@@ -269,7 +268,7 @@ trait HasPasskeys
         return $publicKeyCredentialSource;
     }
 
-    protected function updatePasskey(Passkey $passkey, PublicKeyCredentialSource $publicKeyCredentialSource): self
+    protected function updatePasskey(Passkey $passkey, mixed $publicKeyCredentialSource): self
     {
         $passkey->update([
             'data' => $publicKeyCredentialSource,

@@ -133,7 +133,7 @@ trait HasPasskeys
         return $passkey;
     }
 
-    public function passkeyDeterminePublicKeyCredentialSource(string $passkeyJson, string $passkeyOptionsJson, string $hostName)
+    public function passkeyDeterminePublicKeyCredentialSource(string $passkeyJson, string $passkeyOptionsJson, string $hostName): mixed
     {
         $passkeyOptions = $this->getPasskeyOptions($passkeyOptionsJson);
 

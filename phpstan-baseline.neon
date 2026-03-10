@@ -199,6 +199,12 @@ parameters:
 			path: src/Pages/MyProfilePage.php
 
 		-
+			message: '#^Call to an undefined method Filament\\Contracts\\Plugin\:\:getNavigationIcon\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/Pages/MyProfilePage.php
+
+		-
 			message: '#^Call to an undefined method Filament\\Contracts\\Plugin\:\:getRegisteredMyProfileComponents\(\)\.$#'
 			identifier: method.notFound
 			count: 1

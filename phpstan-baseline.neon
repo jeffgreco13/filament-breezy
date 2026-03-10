@@ -43,6 +43,12 @@ parameters:
 			path: src/Livewire/MyProfileComponent.php
 
 		-
+			message: '#^Call to an undefined method Filament\\Contracts\\Plugin\:\:autoPromptPasskeys\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/Livewire/PasskeyAction.php
+
+		-
 			message: '#^Call to an undefined method Filament\\Contracts\\Plugin\:\:generatePasskeyRegisterOptions\(\)\.$#'
 			identifier: method.notFound
 			count: 1

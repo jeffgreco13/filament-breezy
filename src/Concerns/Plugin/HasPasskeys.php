@@ -32,13 +32,16 @@ trait HasPasskeys
 
     protected ?string $passkeyRelyingPartyIcon = null;
 
-    public function enablePasskeys(bool $condition = true, ?string $relyingPartyName = null, ?string $relyingPartyId = null, ?string $relyingPartyIcon = null, bool $scopeToPanel = true): static
+    protected bool $autoPromptPasskeys = false;
+
+    public function enablePasskeys(bool $condition = true, ?string $relyingPartyName = null, ?string $relyingPartyId = null, ?string $relyingPartyIcon = null, bool $scopeToPanel = true, bool $autoPrompt = false): static
     {
         $this->passkeys = $condition;
         $this->scopePasskeysToPanel = $scopeToPanel;
         $this->passkeyRelyingPartyName = $relyingPartyName ?? config('app.name');
         $this->passkeyRelyingPartyId = $relyingPartyId ?? request()->getHost();
         $this->passkeyRelyingPartyIcon = $relyingPartyIcon;
+        $this->autoPromptPasskeys = $autoPrompt;
 
         return $this;
     }
@@ -61,6 +64,11 @@ trait HasPasskeys
     public function passkeyRelyingPartyIcon(): ?string
     {
         return $this->passkeyRelyingPartyIcon;
+    }
+
+    public function autoPromptPasskeys(): bool
+    {
+        return $this->autoPromptPasskeys;
     }
 
     public function passkeySerializer(): Serializer

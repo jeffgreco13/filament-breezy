@@ -6,6 +6,7 @@ use Filament\Facades\Filament;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
+use Jeffgreco13\FilamentBreezy\BreezyCore;
 use Jeffgreco13\FilamentBreezy\Events\PasskeyUsedToAuthenticate;
 use Livewire\Component;
 use Livewire\Features\SupportRedirects\Redirector;
@@ -16,7 +17,7 @@ class PasskeyAction extends Component
 
     public function authenticateWithPasskey(): void
     {
-        /** @var \Jeffgreco13\FilamentBreezy\BreezyCore $plugin */
+        /** @var BreezyCore $plugin */
         $plugin = filament('filament-breezy');
 
         $options = $plugin->generatePasskeyAuthenticationOptions();
@@ -30,7 +31,7 @@ class PasskeyAction extends Component
     {
         $startAuthenticationResponse = json_encode($startAuthenticationResponse);
 
-        /** @var \Jeffgreco13\FilamentBreezy\BreezyCore $plugin */
+        /** @var BreezyCore $plugin */
         $plugin = filament('filament-breezy');
 
         $passkey = $plugin->findPasskeyToAuthenticate(

@@ -115,7 +115,7 @@ class Agent extends MobileDetect
     /**
      * Retrieve from the given key from the cache or resolve the value.
      *
-     * @throws \Detection\Exception\MobileDetectException
+     * @throws MobileDetectException
      */
     protected function retrieveUsingCacheOrResolve(string $key, Closure $callback): mixed
     {

@@ -21,6 +21,12 @@ return [
         'recovery_code_link' => 'Gebruik een herstelcode',
         'back_to_login_link' => 'Terug naar inloggen',
     ],
+    'passkeys' => [
+        'authenticate_using_passkey' => [
+            'label' => 'Inloggen met Passkey',
+        ],
+        'invalid' => 'Kan niet inloggen met de opgegeven passkey.',
+    ],
     'profile' => [
         'account' => 'Account',
         'profile' => 'Profiel',
@@ -111,6 +117,23 @@ return [
             'incorrect_password' => 'Het ingevoerde wachtwoord is onjuist. Probeer het opnieuw.',
             'logout_success' => 'Alle andere browsersessies zijn succesvol uitgelogd.',
         ],
+        'passkeys' => [
+            'heading' => 'Passkeys',
+            'description' => 'Beheer passkeys voor wachtwoordloze en veilige toegang tot uw account op verschillende apparaten.',
+            'create' => [
+                'submit' => [
+                    'label' => 'Aanmaken',
+                    'submit_label' => 'Aanmaken & bevestigen',
+                ],
+                'error_message' => 'Er is iets misgegaan bij het genereren van de passkey.',
+                'success_message' => 'Passkey succesvol aangemaakt.',
+            ],
+            'update' => [
+                'submit' => [
+                    'label' => 'Bijwerken',
+                ],
+            ],
+        ],
     ],
     'clipboard' => [
         'link' => 'Kopieer naar klembord',
@@ -132,6 +155,8 @@ return [
         '2fa_recovery_code' => 'Herstelcode',
         'created' => 'Aangemaakt',
         'expires' => 'Verloopt',
+        'passkey_name' => 'Passkey naam',
+        'last_used_at' => 'Laatst gebruikt',
     ],
     'permissions' => [
         'create' => 'Aanmaken',

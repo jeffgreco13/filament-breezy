@@ -122,8 +122,6 @@ return [
             'heading' => 'Passkeys',
             'description' => 'Manage passkeys for passwordless and secure access to your account across devices.',
             'create' => [
-                'notify' => 'Passkey created successfully!',
-                'message' => 'Your passkey is only shown once upon creation. If you lose your passkey, you will need to delete it and create a new one.',
                 'submit' => [
                     'label' => 'Create',
                     'submit_label' => 'Create & authenticate',
@@ -132,7 +130,6 @@ return [
                 'success_message' => 'Passkey created successfully.',
             ],
             'update' => [
-                'notify' => 'Passkey updated successfully!',
                 'submit' => [
                     'label' => 'Update',
                 ],

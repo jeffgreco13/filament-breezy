@@ -7,11 +7,11 @@ return [
         'current_password' => 'Current password',
     ],
     'two_factor' => [
-        'heading' => 'Two Factor Challenge',
+        'heading' => 'Two-Factor Challenge',
         'description' => 'Please confirm access to your account by entering the code provided by your authenticator application.',
         'code_placeholder' => 'XXX-XXX',
         'recovery' => [
-            'heading' => 'Two Factor Challenge',
+            'heading' => 'Two-Factor Challenge',
             'description' => 'Please confirm access to your account by entering one of your emergency recovery codes.',
         ],
         'recovery_code_placeholder' => 'abcdef-98765',
@@ -47,8 +47,8 @@ return [
             'notify' => 'Password updated successfully!',
         ],
         '2fa' => [
-            'title' => 'Two Factor Authentication',
-            'description' => 'Manage 2 factor authentication for your account (recommended).',
+            'title' => 'Two-Factor Authentication',
+            'description' => 'Manage two-factor authentication for your account (recommended).',
             'actions' => [
                 'enable' => 'Enable',
                 'regenerate_codes' => 'Regenerate Recovery Codes',
@@ -58,29 +58,29 @@ return [
                 'confirm' => 'Confirm',
             ],
             'setup_key' => 'Setup key',
-            'must_enable' => 'You must enable Two Factor Authentication to use this application.',
+            'must_enable' => 'You must enable Two-Factor Authentication to use this application.',
             'not_enabled' => [
-                'title' => 'You have not enabled two factor authentication.',
-                'description' => 'When two factor authentication is enabled, you will be prompted for a secure, random token during authentication. You can use Authenticator apps on your smart phone such as Google Authenticator, Microsoft Authenticator etc to facilitate this',
+                'title' => 'You have not enabled two-factor authentication.',
+                'description' => "When two-factor authentication is enabled, you will be prompted for a secure, random token during authentication. You may retrieve this token using your phone's authenticator application (e.g. Microsoft Authenticator, Google Authenticator).",
             ],
             'finish_enabling' => [
-                'title' => 'Finish enabling two factor authentication.',
-                'description' => "To finish enabling two factor authentication, scan the following QR code using your phone's authenticator application or enter the setup key and provide the generated OTP code.",
+                'title' => 'Finish enabling two-factor authentication.',
+                'description' => "To finish enabling two-factor authentication, scan the following QR code using your phone's authenticator application or enter the setup key and provide the generated One-Time Password (OTP) code.",
             ],
             'enabled' => [
-                'notify' => 'Two factor authentication enabled.',
-                'title' => 'You have enabled two factor authentication!',
-                'description' => 'Two factor authentication is now enabled. This helps make your account more secure.',
+                'notify' => 'Two-factor authentication enabled.',
+                'title' => 'You have enabled two-factor authentication!',
+                'description' => 'Two-factor authentication is now enabled. This helps make your account more secure.',
                 'store_codes' => 'These codes can be used to recover access to your account if your device is lost. Warning! These codes will only be shown once.',
             ],
             'disabling' => [
-                'notify' => 'Two factor authentication has been disabled.',
+                'notify' => 'Two-factor authentication has been disabled.',
             ],
             'regenerate_codes' => [
                 'notify' => 'New recovery codes have been generated.',
             ],
             'confirmation' => [
-                'success_notification' => 'Code verified. Two factor authentication enabled.',
+                'success_notification' => 'Code verified. Two-factor authentication enabled.',
                 'invalid_code' => 'The code you have entered is invalid.',
             ],
         ],
@@ -122,8 +122,6 @@ return [
             'heading' => 'Passkeys',
             'description' => 'Manage passkeys for passwordless and secure access to your account across devices.',
             'create' => [
-                'notify' => 'Token created successfully!',
-                'message' => 'Your token is only shown once upon creation. If you lose your token, you will need to delete it and create a new one.',
                 'submit' => [
                     'label' => 'Create',
                     'submit_label' => 'Create & authenticate',
@@ -132,7 +130,6 @@ return [
                 'success_message' => 'Passkey created successfully.',
             ],
             'update' => [
-                'notify' => 'Token updated successfully!',
                 'submit' => [
                     'label' => 'Update',
                 ],

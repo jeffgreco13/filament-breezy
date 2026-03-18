@@ -2,6 +2,7 @@
 
 use Filament\Facades\Filament;
 use Illuminate\Support\Facades\Route;
+use Jeffgreco13\FilamentBreezy\BreezyCore;
 
 Route::name('filament.')
     ->group(function () {
@@ -17,7 +18,7 @@ Route::name('filament.')
                     ->group(function () use ($panel, $hasTenancy) {
                         if ($panel->hasPlugin('filament-breezy')) {
                             Route::prefix($hasTenancy ? '/{tenant}' : '/')->group(function () use ($panel) {
-                                /** @var \Jeffgreco13\FilamentBreezy\BreezyCore $plugin */
+                                /** @var BreezyCore $plugin */
                                 $plugin = $panel->getPlugin('filament-breezy');
 
                                 Route::get('/two-factor-authentication', $plugin->getTwoFactorRouteAction())->name('auth.two-factor');

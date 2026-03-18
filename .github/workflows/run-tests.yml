@@ -3,11 +3,11 @@ name: run-tests
 on:
   push:
     paths:
-      - '**.php'
-      - '.github/workflows/run-tests.yml'
-      - 'phpunit.xml.dist'
-      - 'composer.json'
-      - 'composer.lock'
+      - "**.php"
+      - ".github/workflows/run-tests.yml"
+      - "phpunit.xml.dist"
+      - "composer.json"
+      - "composer.lock"
 
 jobs:
   test:
@@ -17,12 +17,15 @@ jobs:
       fail-fast: true
       matrix:
         os: [ubuntu-latest, windows-latest]
-        php: [8.4, 8.3, 8.2]
-        laravel: [12.*]
+        php: [8.2, 8.3, 8.4, 8.5]
+        laravel: [12.*, 13.*]
         stability: [prefer-lowest, prefer-stable]
         include:
           - laravel: 12.*
             testbench: 10.*
+            carbon: ^3.8.4
+          - laravel: 13.*
+            testbench: 11.*
             carbon: ^3.8.4
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}

@@ -19,6 +19,12 @@ return [
         'recovery_code_link' => 'Utiliser un code de récupération',
         'back_to_login_link' => 'Retour à la page de connexion',
     ],
+    'passkeys' => [
+        'authenticate_using_passkey' => [
+            'label' => 'Authentification par Clé d\'Accès',
+        ],
+        'invalid' => 'Impossible de vous identifier avec cette clé d\'accès.',
+    ],
     'profile' => [
         'account' => 'Compte',
         'profile' => 'Profil',
@@ -112,6 +118,23 @@ return [
             'incorrect_password' => 'Le mot de passe que vous avez entré est incorrect. Veuillez réessayer.',
             'logout_success' => 'Toutes les autres sessions de navigation ont été déconnectées avec succès.',
         ],
+        'passkeys' => [
+            'heading' => 'Clés d\'Accès',
+            'description' => 'Gérez vos clés d\'accès pour une authentification sans mot de passe et sécurisée à votre compte sur tous vos périphériques.',
+            'create' => [
+                'submit' => [
+                    'label' => 'Créer',
+                    'submit_label' => 'Créer et s\'identifier',
+                ],
+                'error_message' => 'La génération de la clé de sécurité a échoué.',
+                'success_message' => 'La clé de sécurité a été créée avec succès.',
+            ],
+            'update' => [
+                'submit' => [
+                    'label' => 'Mettre à jour',
+                ],
+            ],
+        ],
     ],
     'clipboard' => [
         'link' => 'Copier dans le presse-papiers',
@@ -133,6 +156,8 @@ return [
         '2fa_recovery_code' => 'Code de récupération',
         'created' => 'Créé',
         'expires' => 'Expire',
+        'passkey_name' => 'Nom de la clé d\'accès',
+        'last_used_at' => 'Dernière utilisation',
     ],
     'permissions' => [
         'create' => 'Créer',

@@ -123,7 +123,7 @@ class TwoFactorPage extends SimplePage implements HasForms
     protected function getAuthenticateFormAction(): Action
     {
         return Action::make('authenticate')
-            ->label(__('filament-panels::pages/auth/login.form.actions.authenticate.label'))
+            ->label(__('filament-panels::auth/pages/login.form.actions.authenticate.label'))
             ->submit('authenticate');
     }
 
@@ -139,10 +139,12 @@ class TwoFactorPage extends SimplePage implements HasForms
         try {
             $this->rateLimit(5);
         } catch (TooManyRequestsException $exception) {
-            $this->addError('data.code', __('filament::login.messages.throttled', [
-                'seconds' => $exception->secondsUntilAvailable,
-                'minutes' => ceil($exception->secondsUntilAvailable / 60),
-            ]));
+            $this->addError('data.code',                 
+                __('filament-panels::auth/pages/login.notifications.throttled.title') . '. ' .
+                __('filament-panels::auth/pages/login.notifications.throttled.body', [
+                    'seconds' => $exception->secondsUntilAvailable,
+                    'minutes' => ceil($exception->secondsUntilAvailable / 60),
+                ]));
 
             return null;
         }

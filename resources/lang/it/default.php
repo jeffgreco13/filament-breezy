@@ -61,7 +61,7 @@ return [
             'must_enable' => 'Per utilizzare questa applicazione devi abilitare la 2FA.',
             'not_enabled' => [
                 'title' => "Non hai abilitato l'autenticazione a due fattori.",
-                'description' => "Quando l'autenticazione a due fattori è attivata, durante l'autenticazione, ti verrà richiesto un token casuale. Potrai recuperare questo toke tramite l'app mobile di Google Authenticator",
+                'description' => "Quando l'autenticazione a due fattori è attivata, durante l'autenticazione, ti verrà richiesto un token casuale. Potrai recuperare questo token tramite l'app mobile di Google Authenticator",
             ],
             'finish_enabling' => [
                 'title' => "Finisci di abilitare l'autenticazione a due fattori.",

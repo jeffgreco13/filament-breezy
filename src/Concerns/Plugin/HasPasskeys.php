@@ -17,6 +17,7 @@ use Webauthn\Denormalizer\WebauthnSerializerFactory;
 use Webauthn\PublicKeyCredential;
 use Webauthn\PublicKeyCredentialCreationOptions;
 use Webauthn\PublicKeyCredentialRequestOptions;
+use Webauthn\AuthenticatorSelectionCriteria;
 use Webauthn\PublicKeyCredentialRpEntity;
 use Webauthn\PublicKeyCredentialUserEntity;
 
@@ -34,7 +35,9 @@ trait HasPasskeys
 
     protected bool $autoPromptPasskeys = false;
 
-    public function enablePasskeys(bool $condition = true, ?string $relyingPartyName = null, ?string $relyingPartyId = null, ?string $relyingPartyIcon = null, bool $scopeToPanel = true, bool $autoPrompt = false): static
+    protected ?string $residentKey = null;
+
+    public function enablePasskeys(bool $condition = true, ?string $relyingPartyName = null, ?string $relyingPartyId = null, ?string $relyingPartyIcon = null, bool $scopeToPanel = true, bool $autoPrompt = false, ?string $residentKey = null): static
     {
         $this->passkeys = $condition;
         $this->scopePasskeysToPanel = $scopeToPanel;
@@ -42,6 +45,7 @@ trait HasPasskeys
         $this->passkeyRelyingPartyId = $relyingPartyId ?? request()->getHost();
         $this->passkeyRelyingPartyIcon = $relyingPartyIcon;
         $this->autoPromptPasskeys = $autoPrompt;
+        $this->residentKey = $residentKey;
 
         return $this;
     }
@@ -69,6 +73,11 @@ trait HasPasskeys
     public function autoPromptPasskeys(): bool
     {
         return $this->autoPromptPasskeys;
+    }
+
+    public function residentKey(): ?string
+    {
+        return $this->residentKey;
     }
 
     public function passkeySerializer(): Serializer
@@ -105,6 +114,7 @@ trait HasPasskeys
             rp: $this->passkeyRelatedPartyEntity(),
             user: $this->passkeyGenerateUserEntity(),
             challenge: Str::random(),
+            authenticatorSelection: new AuthenticatorSelectionCriteria(residentKey: $this->residentKey()),
         );
 
         return $this->passkeySerializer()->serialize($options, 'json');

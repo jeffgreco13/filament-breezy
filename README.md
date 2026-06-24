@@ -500,13 +500,23 @@ Enable passkey authentication using the `enablePasskeys()` method on the Breezy 
 
 ```php
 BreezyCore::make()
-    ->enablePasskeys( 
-        relyingPartyName: 'My App', // optionally, change the passkey's party name (default = APP_NAME)
-        relyingPartyId: 'https://my-app.com', // optionally, change the passkey's party id (default = APP_URL)
-        relyingPartyIcon: '/logo.png', // optionally, change the passkey's party icon 
-        scopeToPanel: true, // scope the passkeys only to the current panel (default = true)
+    ->enablePasskeys(
+        relyingPartyName: 'My App',    // optional — relying party name shown to the user (default: APP_NAME)
+        relyingPartyId: 'my-app.com',  // optional — relying party ID, must match the browser origin hostname (default: current host)
+        relyingPartyIcon: '/logo.png', // optional — icon URL shown by the authenticator
+        scopeToPanel: true,            // optional — scope passkeys to the current panel only (default: true)
+        autoPrompt: false,             // optional — automatically prompt for passkey on the login page (default: false)
+        residentKey: null,             // optional — controls passkey discoverability (default: no_preference)
     )
 ```
+
+> **Note on `residentKey`:** For full compatibility with password managers such as Bitwarden or 1Password, set `residentKey` to `RESIDENT_KEY_REQUIREMENT_REQUIRED`. Without this, passkeys may be registered as non-discoverable, meaning password managers cannot find them during authentication. Platform authenticators like Apple Keychain are more lenient and work regardless.
+>
+> Available values:
+> - `AuthenticatorSelectionCriteria::RESIDENT_KEY_REQUIREMENT_REQUIRED` — discoverable, recommended for password manager compatibility
+> - `AuthenticatorSelectionCriteria::RESIDENT_KEY_REQUIREMENT_PREFERRED` — discoverable if supported by the authenticator
+> - `AuthenticatorSelectionCriteria::RESIDENT_KEY_REQUIREMENT_DISCOURAGED` — non-discoverable (hardware keys with limited storage)
+> - `null` / not set — no preference, authenticator decides (default)
 
 #### Additional Configuration
 If you want to customize the component or modify its behavior, you can override the passkeys component in the myProfileComponents method:

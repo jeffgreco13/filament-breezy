@@ -24,6 +24,12 @@ return [
         'recovery_code_link' => 'Utilice un código de recuperación',
         'back_to_login_link' => 'Regresar a la página de acceso',
     ],
+    'passkeys' => [
+        'authenticate_using_passkey' => [
+            'label' => 'Autenticar usando Llave de acceso',
+        ],
+        'invalid' => 'No se pudo iniciar sesión con la llave de acceso proporcionada.',
+    ],
     'registration' => [
         'title' => 'Registro',
         'heading' => 'Creación de cuenta',
@@ -107,6 +113,9 @@ return [
             'disabling' => [
                 'notify' => 'La autenticación de dos factores ha sido deshabilitada.',
             ],
+            'regenerate_codes' => [
+                'notify' => 'Se han generado nuevos códigos de recuperación.',
+            ],
             'confirmation' => [
                 'success_notification' => 'El código ha sido verificado. La autentificación de dos factores se ha habilitado.',
                 'invalid_code' => 'El código tecleado no es válido.',
@@ -124,6 +133,9 @@ return [
             ],
             'update' => [
                 'notify' => '¡Token actualizado exitosamente!',
+                'submit' => [
+                    'label' => 'Actualizar',
+                ],
             ],
             'copied' => [
                 'label' => 'Copié mi ficha',
@@ -142,6 +154,23 @@ return [
             'logout_action' => 'Cerrar otras sesiones de navegador',
             'incorrect_password' => 'La contraseña ingresada es incorrecta. Intenta nuevamente.',
             'logout_success' => 'Todas las demás sesiones de navegador se han cerrado correctamente.',
+        ],
+        'passkeys' => [
+            'heading' => 'Llaves de acceso',
+            'description' => 'Administre las llaves de acceso para un acceso seguro y sin contraseña a su cuenta en todos sus dispositivos.',
+            'create' => [
+                'submit' => [
+                    'label' => 'Crear',
+                    'submit_label' => 'Crear y autenticar',
+                ],
+                'error_message' => 'Algo salió mal al generar la llave de acceso.',
+                'success_message' => 'Llave de acceso creada exitosamente.',
+            ],
+            'update' => [
+                'submit' => [
+                    'label' => 'Actualizar',
+                ],
+            ],
         ],
     ],
     'clipboard' => [
@@ -164,6 +193,8 @@ return [
         '2fa_recovery_code' => 'Código de recuperación',
         'created' => 'Creado',
         'expires' => 'Expira',
+        'passkey_name' => 'Nombre de la llave de acceso',
+        'last_used_at' => 'Último uso el',
     ],
     'permissions' => [
         'create' => 'Crear',

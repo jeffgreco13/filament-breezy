@@ -507,6 +507,8 @@ BreezyCore::make()
         scopeToPanel: true,            // optional — scope passkeys to the current panel only (default: true)
         autoPrompt: false,             // optional — automatically prompt for passkey on the login page (default: false)
         residentKey: null,             // optional — controls passkey discoverability (default: no_preference)
+        authenticatorAttachment: null, // optional — restrict to platform or cross-platform authenticators (default: no preference)
+        userVerification: null,        // optional — require user verification (PIN/biometric) during registration and login (default: preferred)
     )
 ```
 
@@ -516,6 +518,20 @@ BreezyCore::make()
 > - `AuthenticatorSelectionCriteria::RESIDENT_KEY_REQUIREMENT_REQUIRED` — discoverable, recommended for password manager compatibility
 > - `AuthenticatorSelectionCriteria::RESIDENT_KEY_REQUIREMENT_PREFERRED` — discoverable if supported by the authenticator
 > - `AuthenticatorSelectionCriteria::RESIDENT_KEY_REQUIREMENT_DISCOURAGED` — non-discoverable (hardware keys with limited storage)
+
+> **Note on `authenticatorAttachment`:** Controls whether registration is restricted to a specific authenticator type. Only applies to registration (not login).
+>
+> Available values:
+> - `AuthenticatorSelectionCriteria::AUTHENTICATOR_ATTACHMENT_PLATFORM` — built-in authenticators only (e.g. Apple Keychain, Windows Hello)
+> - `AuthenticatorSelectionCriteria::AUTHENTICATOR_ATTACHMENT_CROSS_PLATFORM` — external authenticators only (e.g. security keys, phones)
+> - `null` — no preference (default)
+
+> **Note on `userVerification`:** Controls whether the authenticator must verify the user (PIN, biometric) during both registration and login.
+>
+> Available values:
+> - `AuthenticatorSelectionCriteria::USER_VERIFICATION_REQUIREMENT_REQUIRED` — verification mandatory
+> - `AuthenticatorSelectionCriteria::USER_VERIFICATION_REQUIREMENT_PREFERRED` — verification requested if supported (default)
+> - `AuthenticatorSelectionCriteria::USER_VERIFICATION_REQUIREMENT_DISCOURAGED` — verification not requested
 > - `null` / not set — no preference, authenticator decides (default)
 
 #### Additional Configuration

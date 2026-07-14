@@ -37,7 +37,11 @@ trait HasPasskeys
 
     protected ?string $residentKey = null;
 
-    public function enablePasskeys(bool $condition = true, ?string $relyingPartyName = null, ?string $relyingPartyId = null, ?string $relyingPartyIcon = null, bool $scopeToPanel = true, bool $autoPrompt = false, ?string $residentKey = null): static
+    protected ?string $authenticatorAttachment = null;
+
+    protected ?string $userVerification = null;
+
+    public function enablePasskeys(bool $condition = true, ?string $relyingPartyName = null, ?string $relyingPartyId = null, ?string $relyingPartyIcon = null, bool $scopeToPanel = true, bool $autoPrompt = false, ?string $residentKey = null, ?string $authenticatorAttachment = null, ?string $userVerification = null): static
     {
         $this->passkeys = $condition;
         $this->scopePasskeysToPanel = $scopeToPanel;
@@ -46,6 +50,8 @@ trait HasPasskeys
         $this->passkeyRelyingPartyIcon = $relyingPartyIcon;
         $this->autoPromptPasskeys = $autoPrompt;
         $this->residentKey = $residentKey;
+        $this->authenticatorAttachment = $authenticatorAttachment;
+        $this->userVerification = $userVerification;
 
         return $this;
     }
@@ -78,6 +84,16 @@ trait HasPasskeys
     public function residentKey(): ?string
     {
         return $this->residentKey;
+    }
+
+    public function authenticatorAttachment(): ?string
+    {
+        return $this->authenticatorAttachment;
+    }
+
+    public function userVerification(): ?string
+    {
+        return $this->userVerification;
     }
 
     public function passkeySerializer(): Serializer
@@ -114,7 +130,11 @@ trait HasPasskeys
             rp: $this->passkeyRelatedPartyEntity(),
             user: $this->passkeyGenerateUserEntity(),
             challenge: Str::random(),
-            authenticatorSelection: new AuthenticatorSelectionCriteria(residentKey: $this->residentKey()),
+            authenticatorSelection: new AuthenticatorSelectionCriteria(
+                authenticatorAttachment: $this->authenticatorAttachment(),
+                userVerification: $this->userVerification() ?? AuthenticatorSelectionCriteria::USER_VERIFICATION_REQUIREMENT_PREFERRED,
+                residentKey: $this->residentKey(),
+            ),
         );
 
         return $this->passkeySerializer()->serialize($options, 'json');
@@ -126,6 +146,7 @@ trait HasPasskeys
             challenge: Str::random(),
             rpId: $this->passkeyRelyingPartyId(),
             allowCredentials: [],
+            userVerification: $this->userVerification(),
         );
 
         return $this->passkeySerializer()->serialize($options, 'json');

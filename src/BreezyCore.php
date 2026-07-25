@@ -90,7 +90,7 @@ class BreezyCore implements Plugin
                 $panel->authMiddleware([$this->twoFactorAuthenticationMiddleware]);
             }
 
-            Livewire::component('two-factor-page', Pages\TwoFactorPage::class);
+            Livewire::component('two-factor-page', TwoFactorPage::class);
         }
     }
 

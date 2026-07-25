@@ -51,6 +51,7 @@ class PersonalInfo extends MyProfileComponent
         return [
             $this->getNameComponent(),
             $this->getEmailComponent(),
+            $this->getCurrentPasswordComponent(),
         ];
     }
 
@@ -66,8 +67,20 @@ class PersonalInfo extends MyProfileComponent
         return Forms\Components\TextInput::make('email')
             ->required()
             ->email()
+            ->live(onBlur: true)
             ->unique($this->userClass, ignorable: $this->user)
             ->label(__('filament-breezy::default.fields.email'));
+    }
+
+    protected function getCurrentPasswordComponent(): Forms\Components\TextInput
+    {
+        return Forms\Components\TextInput::make('current_password')
+            ->password()
+            ->rule('current_password')
+            ->required()
+            ->autocomplete('current-password')
+            ->visible(fn (Get $get): bool => $get('email') !== $this->user->email)
+            ->label(__('filament-breezy::default.password_confirm.current_password'));
     }
 
     public function form(Form $form): Form
@@ -81,6 +94,7 @@ class PersonalInfo extends MyProfileComponent
     {
         $data = collect($this->form->getState())->only($this->only)->all();
         $this->user->update($data);
+        $this->form->fill($this->user->only($this->only));
         $this->sendNotification();
     }
 

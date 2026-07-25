@@ -326,6 +326,10 @@ BreezyCore::make()
     ])
 ```
 
+> [!IMPORTANT]
+> Changing the email address on the personal info form requires the user to re-enter their current password. The confirmation field appears as soon as the email input differs from the user's saved address. This protects against an attacker with access to an authenticated session taking over the account by changing the login email.<br/>
+> If you override `getProfileFormComponents()`, keep `$this->getCurrentPasswordComponent()` in the returned components.
+
 If you want to customize only the fields and notification in the personal info component, you can extend the original breezy component:
 
 ```php

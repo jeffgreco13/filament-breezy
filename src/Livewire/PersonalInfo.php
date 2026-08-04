@@ -79,7 +79,7 @@ class PersonalInfo extends MyProfileComponent
             ->rule('current_password')
             ->required()
             ->autocomplete('current-password')
-            ->visible(fn (Get $get): bool => $get('email') !== $this->user->email)
+            ->visible(fn (Forms\Get $get): bool => $get('email') !== $this->user->email)
             ->label(__('filament-breezy::default.password_confirm.current_password'));
     }
 

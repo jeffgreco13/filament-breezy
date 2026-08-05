@@ -63,7 +63,7 @@ parameters:
 		-
 			message: '#^Access to an undefined property Jeffgreco13\\FilamentBreezy\\Livewire\\PersonalInfo\:\:\$form\.$#'
 			identifier: property.notFound
-			count: 2
+			count: 3
 			path: src/Livewire/PersonalInfo.php
 
 		-
@@ -197,6 +197,12 @@ parameters:
 			identifier: method.notFound
 			count: 1
 			path: src/Models/Passkey.php
+
+		-
+			message: '#^Parameter \#1 \$builder \(Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\) of method Jeffgreco13\\FilamentBreezy\\Models\\Scopes\\PanelScope\:\:apply\(\) should be compatible with parameter \$builder \(Illuminate\\Database\\Eloquent\\Builder\<covariant Illuminate\\Database\\Eloquent\\Model\>\) of method Illuminate\\Database\\Eloquent\\Scope\<Illuminate\\Database\\Eloquent\\Model\>\:\:apply\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/Models/Scopes/PanelScope.php
 
 		-
 			message: '#^Call to an undefined method Filament\\Contracts\\Plugin\:\:getNavigationGroup\(\)\.$#'

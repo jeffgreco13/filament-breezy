@@ -8,6 +8,6 @@
         "esbuild": "^0.25.10"
     },
     "dependencies": {
-        "@simplewebauthn/browser": "^13.2.0"
+        "@simplewebauthn/browser": "^13.3.0"
     }
 }
